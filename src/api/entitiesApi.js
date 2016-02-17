@@ -2,14 +2,38 @@
 "use strict";
 
 //This file is mocking a web API by hitting hard coded data.
-var Entities = require('./rawDataFromServer.js').entities;
+//var Entities = require('./rawDataFromServer.js').entities;
+var Entities = [];
 var _ = require('lodash');
 
 function findCorrespondingIdThenReturnField(ID, field) {
   return _.result(_.find(Entities, {'cpref': ID}), field);
 }
 
+function queryString(event) {
+ if (event.length > 0) {
+   return "query_string=" + event;
+
+ }
+ return "";
+}
+
 var EntitiesApi = {
+ fetchData: function(event) {
+   return $.ajax({
+     url: "http://api.lvh.me:3000/search?" + queryString(event),
+     dataType: 'json',
+     success: function(data) {
+       console.log("the request to the backend server was made successfully", data.fact_table);
+       Entities = data.fact_table;
+       return data.fact_table;
+     },
+     error: function(data) {
+       console.log("An error occured whil making a request to the backend");
+       return data;
+     }
+   });
+ },
  getTableData: function () {
     return _.map(Entities, function(item) { return {'Name': item.name,
               'CPREF': item.cpref,

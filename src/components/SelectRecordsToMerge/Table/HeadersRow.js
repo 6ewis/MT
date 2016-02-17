@@ -15,6 +15,14 @@ var HeadersRow = React.createClass({
   },
   //the props addHeader should be an array of strings - use it to add headers
   render: function () {
+    console.log(this.props.entitiesTableData.length );
+    if (this.props.entitiesTableData.length === 0) {
+      return (
+        <thead>
+        </thead>
+      );
+    }
+
     var that = this;
     var headers = Object.keys(that.props.entitiesTableData[0]).concat(that.props.addHeader);
     

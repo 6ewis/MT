@@ -83,21 +83,23 @@ var CellWithCheckbox = React.createClass({
        });
      }
   },
- componentDidUpdate: function() {
+ componentDidUpdate: function(prevProps, prevState) {
+   if (prevState.selected !== this.state.selected) {
     var me = this;
     var promise = new Promise(
       function(resolve, reject) {
         resolve(me._storeInIndexdb());
       }
     );
+   }
 
-    promise.then(function() {
-      console.log("This is a message from the componentDidUpdate: " + savedData);
-      //not doing anything with it for now 
-      //were considering storing it in memory instead
-      //this need to be refactored. This code is ugly
-      window.globalSavedData = savedData;
-    });
+   // promise.then(function() {
+   //   console.log("This is a message from the componentDidUpdate: " + savedData);
+   //   //not doing anything with it for now 
+   //   //were considering storing it in memory instead
+   //   //this need to be refactored. This code is ugly
+   //   window.globalSavedData = savedData;
+   // });
  },
  render: function() {
     return (
