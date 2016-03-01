@@ -1,0 +1,993 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'redux-promise' ]
+2 info using npm@2.14.12
+3 info using node@v4.3.1
+4 verbose install initial load of /home/ldackam/merge_tool/package.json
+5 warn package.json merge-tool@0.0.0 No description
+6 warn package.json merge-tool@0.0.0 No repository field.
+7 warn package.json merge-tool@0.0.0 No README data
+8 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/babelify/package.json
+9 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/bower/package.json
+10 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/browserify/package.json
+11 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/browserify-shim/package.json
+12 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/connect-history-api-fallback/package.json
+13 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/dexie/package.json
+14 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/es6-promise/package.json
+15 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/flux/package.json
+16 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/foundation-sites/package.json
+17 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/gulp/package.json
+18 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/gulp-concat/package.json
+19 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/gulp-connect/package.json
+20 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/gulp-eslint/package.json
+21 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/gulp-open/package.json
+22 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/gulp-sourcemaps/package.json
+23 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/gulp-util/package.json
+24 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/history/package.json
+25 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/inflection/package.json
+26 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/jquery/package.json
+27 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/lodash/package.json
+28 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/moment/package.json
+29 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/react/package.json
+30 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/react-dom/package.json
+31 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/react-input-calendar/package.json
+32 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/react-redux/package.json
+33 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/react-router/package.json
+34 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/reactify/package.json
+35 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/redux/package.json
+36 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/redux-promise/package.json
+37 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/vinyl-buffer/package.json
+38 verbose installManyTop reading scoped package data from /home/ldackam/merge_tool/node_modules/vinyl-source-stream/package.json
+39 info package.json gulp-eslint@0.15.0 No license field.
+40 info package.json foundation-sites@5.5.3 No license field.
+41 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/package.json
+42 verbose install redux-promise is installed as 0.5.1
+43 silly cache add args [ 'redux-promise', null ]
+44 verbose cache add spec redux-promise
+45 silly cache add parsed spec Result {
+45 silly cache add   raw: 'redux-promise',
+45 silly cache add   scope: null,
+45 silly cache add   name: 'redux-promise',
+45 silly cache add   rawSpec: '',
+45 silly cache add   spec: 'latest',
+45 silly cache add   type: 'tag' }
+46 silly addNamed redux-promise@latest
+47 verbose addNamed "latest" is being treated as a dist-tag for redux-promise
+48 info addNameTag [ 'redux-promise', 'latest' ]
+49 silly mapToRegistry name redux-promise
+50 silly mapToRegistry using default registry
+51 silly mapToRegistry registry https://registry.npmjs.org/
+52 silly mapToRegistry uri https://registry.npmjs.org/redux-promise
+53 verbose addNameTag registry:https://registry.npmjs.org/redux-promise not in flight; fetching
+54 verbose request uri https://registry.npmjs.org/redux-promise
+55 verbose request no auth needed
+56 info attempt registry request try #1 at 2:41:06 PM
+57 verbose request id c18b9f22e50ec495
+58 verbose etag "2HJPRZC373K6GG7WJ0UTGG6MP"
+59 http request GET https://registry.npmjs.org/redux-promise
+60 http 304 https://registry.npmjs.org/redux-promise
+61 verbose headers { date: 'Fri, 19 Feb 2016 19:41:06 GMT',
+61 verbose headers   via: '1.1 varnish',
+61 verbose headers   'cache-control': 'max-age=300',
+61 verbose headers   etag: '"2HJPRZC373K6GG7WJ0UTGG6MP"',
+61 verbose headers   age: '0',
+61 verbose headers   connection: 'keep-alive',
+61 verbose headers   'x-served-by': 'cache-ord1733-ORD',
+61 verbose headers   'x-cache': 'HIT',
+61 verbose headers   'x-cache-hits': '1',
+61 verbose headers   'x-timer': 'S1455910866.609513,VS0,VE302',
+61 verbose headers   vary: 'Accept' }
+62 silly get cb [ 304,
+62 silly get   { date: 'Fri, 19 Feb 2016 19:41:06 GMT',
+62 silly get     via: '1.1 varnish',
+62 silly get     'cache-control': 'max-age=300',
+62 silly get     etag: '"2HJPRZC373K6GG7WJ0UTGG6MP"',
+62 silly get     age: '0',
+62 silly get     connection: 'keep-alive',
+62 silly get     'x-served-by': 'cache-ord1733-ORD',
+62 silly get     'x-cache': 'HIT',
+62 silly get     'x-cache-hits': '1',
+62 silly get     'x-timer': 'S1455910866.609513,VS0,VE302',
+62 silly get     vary: 'Accept' } ]
+63 verbose etag https://registry.npmjs.org/redux-promise from cache
+64 verbose get saving redux-promise to /home/ldackam/.npm/registry.npmjs.org/redux-promise/.cache.json
+65 silly addNameTag next cb for redux-promise with tag latest
+66 silly addNamed redux-promise@0.5.1
+67 verbose addNamed "0.5.1" is a plain semver version for redux-promise
+68 silly cache afterAdd redux-promise@0.5.1
+69 verbose afterAdd /home/ldackam/.npm/redux-promise/0.5.1/package/package.json not in flight; writing
+70 verbose afterAdd /home/ldackam/.npm/redux-promise/0.5.1/package/package.json written
+71 silly install resolved [ { name: 'redux-promise',
+71 silly install resolved     version: '0.5.1',
+71 silly install resolved     description: 'FSA-compliant promise middleware for Redux.',
+71 silly install resolved     main: 'lib/index.js',
+71 silly install resolved     scripts: { test: 'make test', prepublish: 'make clean build' },
+71 silly install resolved     repository:
+71 silly install resolved      { type: 'git',
+71 silly install resolved        url: 'git+https://github.com/acdlite/redux-promise.git' },
+71 silly install resolved     homepage: 'https://github.com/acdlite/redux-promise',
+71 silly install resolved     keywords:
+71 silly install resolved      [ 'redux',
+71 silly install resolved        'promise',
+71 silly install resolved        'middleware',
+71 silly install resolved        'redux-middleware',
+71 silly install resolved        'fsa',
+71 silly install resolved        'flux' ],
+71 silly install resolved     author: { name: 'Andrew Clark', email: 'acdlite@me.com' },
+71 silly install resolved     license: 'MIT',
+71 silly install resolved     devDependencies:
+71 silly install resolved      { babel: '^5.6.14',
+71 silly install resolved        'babel-core': '^5.6.15',
+71 silly install resolved        'babel-eslint': '^3.1.20',
+71 silly install resolved        chai: '^3.0.0',
+71 silly install resolved        'chai-as-promised': '^5.1.0',
+71 silly install resolved        eslint: '^0.24.0',
+71 silly install resolved        'eslint-config-airbnb': '0.0.6',
+71 silly install resolved        mocha: '^2.2.5',
+71 silly install resolved        sinon: '^1.15.4' },
+71 silly install resolved     dependencies: { 'flux-standard-action': '0.6.0' },
+71 silly install resolved     gitHead: '1fe2ef333cfe03886edfd72840582d8f2af446f8',
+71 silly install resolved     bugs: { url: 'https://github.com/acdlite/redux-promise/issues' },
+71 silly install resolved     _id: 'redux-promise@0.5.1',
+71 silly install resolved     _shasum: '44a6e2a2abde1fe3f22c402e235b3e3ca6678a6d',
+71 silly install resolved     _from: 'redux-promise@latest',
+71 silly install resolved     _npmVersion: '3.3.6',
+71 silly install resolved     _nodeVersion: '5.0.0',
+71 silly install resolved     _npmUser: { name: 'acdlite', email: 'acdlite@me.com' },
+71 silly install resolved     dist:
+71 silly install resolved      { shasum: '44a6e2a2abde1fe3f22c402e235b3e3ca6678a6d',
+71 silly install resolved        tarball: 'http://registry.npmjs.org/redux-promise/-/redux-promise-0.5.1.tgz' },
+71 silly install resolved     maintainers: [ [Object] ],
+71 silly install resolved     directories: {},
+71 silly install resolved     _resolved: 'https://registry.npmjs.org/redux-promise/-/redux-promise-0.5.1.tgz',
+71 silly install resolved     readme: 'ERROR: No README data found!' } ]
+72 info install redux-promise@0.5.1 into /home/ldackam/merge_tool
+73 info installOne redux-promise@0.5.1
+74 verbose installOne of redux-promise to /home/ldackam/merge_tool not in flight; installing
+75 verbose lock using /home/ldackam/.npm/_locks/redux-promise-2a350883a41a8fcf.lock for /home/ldackam/merge_tool/node_modules/redux-promise
+76 silly install write writing redux-promise 0.5.1 to /home/ldackam/merge_tool/node_modules/redux-promise
+77 verbose unbuild node_modules/redux-promise
+78 info preuninstall redux-promise@0.5.1
+79 info uninstall redux-promise@0.5.1
+80 verbose unbuild rmStuff redux-promise@0.5.1 from /home/ldackam/merge_tool/node_modules
+81 info postuninstall redux-promise@0.5.1
+82 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise is being purged from base /home/ldackam/merge_tool
+83 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise
+84 silly vacuum-fs purging /home/ldackam/merge_tool/node_modules/redux-promise
+85 silly vacuum-fs quitting because other entries in /home/ldackam/merge_tool/node_modules
+86 verbose tar unpack /home/ldackam/.npm/redux-promise/0.5.1/package.tgz
+87 verbose tar unpacking to /home/ldackam/merge_tool/node_modules/redux-promise
+88 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise is being purged
+89 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise
+90 silly gunzTarPerm modes [ '755', '644' ]
+91 silly gunzTarPerm extractEntry package.json
+92 silly gunzTarPerm extractEntry .npmignore
+93 silly gunzTarPerm extractEntry README.md
+94 silly gunzTarPerm extractEntry Makefile
+95 silly gunzTarPerm extractEntry .travis.yml
+96 silly gunzTarPerm extractEntry .eslintrc
+97 silly gunzTarPerm extractEntry lib/index.js
+98 silly gunzTarPerm extractEntry lib/__tests__/init.js
+99 silly gunzTarPerm extractEntry lib/__tests__/promiseMiddleware-test.js
+100 verbose write writing to /home/ldackam/merge_tool/node_modules/redux-promise/package.json
+101 info preinstall redux-promise@0.5.1
+102 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/package.json
+103 silly prepareForInstallMany adding flux-standard-action@0.6.0 from redux-promise dependencies
+104 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/package.json
+105 silly cache add args [ 'flux-standard-action@0.6.0', null ]
+106 verbose cache add spec flux-standard-action@0.6.0
+107 silly cache add parsed spec Result {
+107 silly cache add   raw: 'flux-standard-action@0.6.0',
+107 silly cache add   scope: null,
+107 silly cache add   name: 'flux-standard-action',
+107 silly cache add   rawSpec: '0.6.0',
+107 silly cache add   spec: '0.6.0',
+107 silly cache add   type: 'version' }
+108 silly addNamed flux-standard-action@0.6.0
+109 verbose addNamed "0.6.0" is a plain semver version for flux-standard-action
+110 silly mapToRegistry name flux-standard-action
+111 silly mapToRegistry using default registry
+112 silly mapToRegistry registry https://registry.npmjs.org/
+113 silly mapToRegistry uri https://registry.npmjs.org/flux-standard-action
+114 verbose addNameVersion registry:https://registry.npmjs.org/flux-standard-action not in flight; fetching
+115 verbose request uri https://registry.npmjs.org/flux-standard-action
+116 verbose request no auth needed
+117 info attempt registry request try #1 at 2:41:06 PM
+118 verbose etag "7O5M344SVU058ANQJ7F05BCW7"
+119 http request GET https://registry.npmjs.org/flux-standard-action
+120 http 304 https://registry.npmjs.org/flux-standard-action
+121 verbose headers { date: 'Fri, 19 Feb 2016 19:41:07 GMT',
+121 verbose headers   via: '1.1 varnish',
+121 verbose headers   'cache-control': 'max-age=300',
+121 verbose headers   etag: '"7O5M344SVU058ANQJ7F05BCW7"',
+121 verbose headers   age: '0',
+121 verbose headers   connection: 'keep-alive',
+121 verbose headers   'x-served-by': 'cache-ord1729-ORD',
+121 verbose headers   'x-cache': 'HIT',
+121 verbose headers   'x-cache-hits': '1',
+121 verbose headers   'x-timer': 'S1455910867.045401,VS0,VE299',
+121 verbose headers   vary: 'Accept' }
+122 silly get cb [ 304,
+122 silly get   { date: 'Fri, 19 Feb 2016 19:41:07 GMT',
+122 silly get     via: '1.1 varnish',
+122 silly get     'cache-control': 'max-age=300',
+122 silly get     etag: '"7O5M344SVU058ANQJ7F05BCW7"',
+122 silly get     age: '0',
+122 silly get     connection: 'keep-alive',
+122 silly get     'x-served-by': 'cache-ord1729-ORD',
+122 silly get     'x-cache': 'HIT',
+122 silly get     'x-cache-hits': '1',
+122 silly get     'x-timer': 'S1455910867.045401,VS0,VE299',
+122 silly get     vary: 'Accept' } ]
+123 verbose etag https://registry.npmjs.org/flux-standard-action from cache
+124 verbose get saving flux-standard-action to /home/ldackam/.npm/registry.npmjs.org/flux-standard-action/.cache.json
+125 silly cache afterAdd flux-standard-action@0.6.0
+126 verbose afterAdd /home/ldackam/.npm/flux-standard-action/0.6.0/package/package.json not in flight; writing
+127 verbose afterAdd /home/ldackam/.npm/flux-standard-action/0.6.0/package/package.json written
+128 silly install resolved [ { name: 'flux-standard-action',
+128 silly install resolved     version: '0.6.0',
+128 silly install resolved     description: 'A human-friendly standard for Flux action objects',
+128 silly install resolved     main: 'lib/index.js',
+128 silly install resolved     scripts: { test: 'make test', prepublish: 'make clean build' },
+128 silly install resolved     keywords: [ 'flux', 'redux', 'actions', 'fsa' ],
+128 silly install resolved     author: { name: 'Andrew Clark', email: 'acdlite@me.com' },
+128 silly install resolved     license: 'MIT',
+128 silly install resolved     devDependencies:
+128 silly install resolved      { babel: '^5.6.14',
+128 silly install resolved        'babel-core': '^5.6.15',
+128 silly install resolved        'babel-eslint': '^3.1.20',
+128 silly install resolved        chai: '^3.0.0',
+128 silly install resolved        eslint: '^0.24.0',
+128 silly install resolved        'eslint-config-airbnb': '0.0.6',
+128 silly install resolved        mocha: '^2.2.5' },
+128 silly install resolved     dependencies: { 'lodash.isplainobject': '^3.2.0' },
+128 silly install resolved     gitHead: 'dbc07ef5904df5614e6eab954a6d4b379608cfc9',
+128 silly install resolved     _id: 'flux-standard-action@0.6.0',
+128 silly install resolved     _shasum: 'e0ef9cdcc7442e9e76464d7b8d7a5c2a5012948d',
+128 silly install resolved     _from: 'flux-standard-action@0.6.0',
+128 silly install resolved     _npmVersion: '2.12.0',
+128 silly install resolved     _nodeVersion: '2.2.1',
+128 silly install resolved     _npmUser: { name: 'acdlite', email: 'acdlite@me.com' },
+128 silly install resolved     dist:
+128 silly install resolved      { shasum: 'e0ef9cdcc7442e9e76464d7b8d7a5c2a5012948d',
+128 silly install resolved        tarball: 'http://registry.npmjs.org/flux-standard-action/-/flux-standard-action-0.6.0.tgz' },
+128 silly install resolved     maintainers: [ [Object] ],
+128 silly install resolved     directories: {},
+128 silly install resolved     _resolved: 'https://registry.npmjs.org/flux-standard-action/-/flux-standard-action-0.6.0.tgz',
+128 silly install resolved     readme: 'ERROR: No README data found!' } ]
+129 info install flux-standard-action@0.6.0 into /home/ldackam/merge_tool/node_modules/redux-promise
+130 info installOne flux-standard-action@0.6.0
+131 verbose installOne of flux-standard-action to /home/ldackam/merge_tool/node_modules/redux-promise not in flight; installing
+132 verbose lock using /home/ldackam/.npm/_locks/flux-standard-action-068c7928c683ccdd.lock for /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action
+133 silly install write writing flux-standard-action 0.6.0 to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action
+134 verbose unbuild node_modules/redux-promise/node_modules/flux-standard-action
+135 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action is being purged from base /home/ldackam/merge_tool
+136 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action
+137 verbose tar unpack /home/ldackam/.npm/flux-standard-action/0.6.0/package.tgz
+138 verbose tar unpacking to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action
+139 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action is being purged
+140 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action
+141 silly gunzTarPerm modes [ '755', '644' ]
+142 silly gunzTarPerm extractEntry package.json
+143 silly gunzTarPerm extractEntry .npmignore
+144 silly gunzTarPerm extractEntry README.md
+145 silly gunzTarPerm extractEntry Makefile
+146 silly gunzTarPerm extractEntry .travis.yml
+147 silly gunzTarPerm extractEntry .babelrc
+148 silly gunzTarPerm extractEntry .eslintrc
+149 silly gunzTarPerm extractEntry lib/index.js
+150 silly gunzTarPerm extractEntry lib/__tests__/init.js
+151 silly gunzTarPerm extractEntry lib/__tests__/isError-test.js
+152 silly gunzTarPerm extractEntry lib/__tests__/isFSA-test.js
+153 verbose write writing to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/package.json
+154 info preinstall flux-standard-action@0.6.0
+155 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/package.json
+156 silly prepareForInstallMany adding lodash.isplainobject@^3.2.0 from flux-standard-action dependencies
+157 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/package.json
+158 silly cache add args [ 'lodash.isplainobject@^3.2.0', null ]
+159 verbose cache add spec lodash.isplainobject@^3.2.0
+160 silly cache add parsed spec Result {
+160 silly cache add   raw: 'lodash.isplainobject@^3.2.0',
+160 silly cache add   scope: null,
+160 silly cache add   name: 'lodash.isplainobject',
+160 silly cache add   rawSpec: '^3.2.0',
+160 silly cache add   spec: '>=3.2.0 <4.0.0',
+160 silly cache add   type: 'range' }
+161 silly addNamed lodash.isplainobject@>=3.2.0 <4.0.0
+162 verbose addNamed ">=3.2.0 <4.0.0" is a valid semver range for lodash.isplainobject
+163 silly addNameRange { name: 'lodash.isplainobject',
+163 silly addNameRange   range: '>=3.2.0 <4.0.0',
+163 silly addNameRange   hasData: false }
+164 silly mapToRegistry name lodash.isplainobject
+165 silly mapToRegistry using default registry
+166 silly mapToRegistry registry https://registry.npmjs.org/
+167 silly mapToRegistry uri https://registry.npmjs.org/lodash.isplainobject
+168 verbose addNameRange registry:https://registry.npmjs.org/lodash.isplainobject not in flight; fetching
+169 verbose request uri https://registry.npmjs.org/lodash.isplainobject
+170 verbose request no auth needed
+171 info attempt registry request try #1 at 2:41:07 PM
+172 verbose etag "BBAYJ49OOPDW781F2TA8XP5BD"
+173 http request GET https://registry.npmjs.org/lodash.isplainobject
+174 http 304 https://registry.npmjs.org/lodash.isplainobject
+175 verbose headers { date: 'Fri, 19 Feb 2016 19:41:07 GMT',
+175 verbose headers   via: '1.1 varnish',
+175 verbose headers   'cache-control': 'max-age=300',
+175 verbose headers   etag: '"BBAYJ49OOPDW781F2TA8XP5BD"',
+175 verbose headers   age: '35',
+175 verbose headers   connection: 'keep-alive',
+175 verbose headers   'x-served-by': 'cache-ord1734-ORD',
+175 verbose headers   'x-cache': 'HIT',
+175 verbose headers   'x-cache-hits': '540',
+175 verbose headers   'x-timer': 'S1455910867.419421,VS0,VE0',
+175 verbose headers   vary: 'Accept' }
+176 silly get cb [ 304,
+176 silly get   { date: 'Fri, 19 Feb 2016 19:41:07 GMT',
+176 silly get     via: '1.1 varnish',
+176 silly get     'cache-control': 'max-age=300',
+176 silly get     etag: '"BBAYJ49OOPDW781F2TA8XP5BD"',
+176 silly get     age: '35',
+176 silly get     connection: 'keep-alive',
+176 silly get     'x-served-by': 'cache-ord1734-ORD',
+176 silly get     'x-cache': 'HIT',
+176 silly get     'x-cache-hits': '540',
+176 silly get     'x-timer': 'S1455910867.419421,VS0,VE0',
+176 silly get     vary: 'Accept' } ]
+177 verbose etag https://registry.npmjs.org/lodash.isplainobject from cache
+178 verbose get saving lodash.isplainobject to /home/ldackam/.npm/registry.npmjs.org/lodash.isplainobject/.cache.json
+179 silly addNameRange number 2 { name: 'lodash.isplainobject',
+179 silly addNameRange   range: '>=3.2.0 <4.0.0',
+179 silly addNameRange   hasData: true }
+180 silly addNameRange versions [ 'lodash.isplainobject',
+180 silly addNameRange   [ '2.0.0',
+180 silly addNameRange     '2.1.0',
+180 silly addNameRange     '2.2.0',
+180 silly addNameRange     '2.2.1',
+180 silly addNameRange     '2.3.0',
+180 silly addNameRange     '2.4.0',
+180 silly addNameRange     '2.4.1',
+180 silly addNameRange     '3.0.0',
+180 silly addNameRange     '3.0.1',
+180 silly addNameRange     '3.0.2',
+180 silly addNameRange     '3.1.0',
+180 silly addNameRange     '3.2.0',
+180 silly addNameRange     '4.0.0',
+180 silly addNameRange     '4.0.1',
+180 silly addNameRange     '4.0.2' ] ]
+181 silly addNamed lodash.isplainobject@3.2.0
+182 verbose addNamed "3.2.0" is a plain semver version for lodash.isplainobject
+183 silly cache afterAdd lodash.isplainobject@3.2.0
+184 verbose afterAdd /home/ldackam/.npm/lodash.isplainobject/3.2.0/package/package.json not in flight; writing
+185 verbose afterAdd /home/ldackam/.npm/lodash.isplainobject/3.2.0/package/package.json written
+186 silly install resolved [ { name: 'lodash.isplainobject',
+186 silly install resolved     version: '3.2.0',
+186 silly install resolved     description: 'The modern build of lodash’s `_.isPlainObject` as a module.',
+186 silly install resolved     homepage: 'https://lodash.com/',
+186 silly install resolved     icon: 'https://lodash.com/icon.svg',
+186 silly install resolved     license: 'MIT',
+186 silly install resolved     keywords: [ 'lodash', 'lodash-modularized', 'stdlib', 'util' ],
+186 silly install resolved     author:
+186 silly install resolved      { name: 'John-David Dalton',
+186 silly install resolved        email: 'john.david.dalton@gmail.com',
+186 silly install resolved        url: 'http://allyoucanleet.com/' },
+186 silly install resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+186 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/lodash/lodash.git' },
+186 silly install resolved     scripts: { test: 'echo "See https://travis-ci.org/lodash/lodash-cli for testing details."' },
+186 silly install resolved     dependencies:
+186 silly install resolved      { 'lodash._basefor': '^3.0.0',
+186 silly install resolved        'lodash.isarguments': '^3.0.0',
+186 silly install resolved        'lodash.keysin': '^3.0.0' },
+186 silly install resolved     bugs: { url: 'https://github.com/lodash/lodash/issues' },
+186 silly install resolved     _id: 'lodash.isplainobject@3.2.0',
+186 silly install resolved     _shasum: '9a8238ae16b200432960cd7346512d0123fbf4c5',
+186 silly install resolved     _from: 'lodash.isplainobject@>=3.2.0 <4.0.0',
+186 silly install resolved     _npmVersion: '2.12.0',
+186 silly install resolved     _nodeVersion: '0.12.5',
+186 silly install resolved     _npmUser: { name: 'jdalton', email: 'john.david.dalton@gmail.com' },
+186 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
+186 silly install resolved     dist:
+186 silly install resolved      { shasum: '9a8238ae16b200432960cd7346512d0123fbf4c5',
+186 silly install resolved        tarball: 'http://registry.npmjs.org/lodash.isplainobject/-/lodash.isplainobject-3.2.0.tgz' },
+186 silly install resolved     directories: {},
+186 silly install resolved     _resolved: 'https://registry.npmjs.org/lodash.isplainobject/-/lodash.isplainobject-3.2.0.tgz',
+186 silly install resolved     readme: 'ERROR: No README data found!' } ]
+187 info install lodash.isplainobject@3.2.0 into /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action
+188 info installOne lodash.isplainobject@3.2.0
+189 verbose installOne of lodash.isplainobject to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action not in flight; installing
+190 verbose lock using /home/ldackam/.npm/_locks/lodash-isplainobject-6f3c9a60c750ad09.lock for /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject
+191 silly install write writing lodash.isplainobject 3.2.0 to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject
+192 verbose unbuild node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject
+193 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject is being purged from base /home/ldackam/merge_tool
+194 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject
+195 verbose tar unpack /home/ldackam/.npm/lodash.isplainobject/3.2.0/package.tgz
+196 verbose tar unpacking to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject
+197 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject is being purged
+198 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject
+199 silly gunzTarPerm modes [ '755', '644' ]
+200 silly gunzTarPerm extractEntry package.json
+201 silly gunzTarPerm extractEntry README.md
+202 silly gunzTarPerm extractEntry LICENSE
+203 silly gunzTarPerm extractEntry index.js
+204 verbose write writing to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/package.json
+205 info preinstall lodash.isplainobject@3.2.0
+206 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/package.json
+207 silly prepareForInstallMany adding lodash._basefor@^3.0.0 from lodash.isplainobject dependencies
+208 silly prepareForInstallMany adding lodash.isarguments@^3.0.0 from lodash.isplainobject dependencies
+209 silly prepareForInstallMany adding lodash.keysin@^3.0.0 from lodash.isplainobject dependencies
+210 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/package.json
+211 silly cache add args [ 'lodash._basefor@^3.0.0', null ]
+212 verbose cache add spec lodash._basefor@^3.0.0
+213 silly cache add args [ 'lodash.isarguments@^3.0.0', null ]
+214 verbose cache add spec lodash.isarguments@^3.0.0
+215 silly cache add parsed spec Result {
+215 silly cache add   raw: 'lodash._basefor@^3.0.0',
+215 silly cache add   scope: null,
+215 silly cache add   name: 'lodash._basefor',
+215 silly cache add   rawSpec: '^3.0.0',
+215 silly cache add   spec: '>=3.0.0 <4.0.0',
+215 silly cache add   type: 'range' }
+216 silly addNamed lodash._basefor@>=3.0.0 <4.0.0
+217 verbose addNamed ">=3.0.0 <4.0.0" is a valid semver range for lodash._basefor
+218 silly addNameRange { name: 'lodash._basefor',
+218 silly addNameRange   range: '>=3.0.0 <4.0.0',
+218 silly addNameRange   hasData: false }
+219 silly mapToRegistry name lodash._basefor
+220 silly mapToRegistry using default registry
+221 silly mapToRegistry registry https://registry.npmjs.org/
+222 silly mapToRegistry uri https://registry.npmjs.org/lodash._basefor
+223 verbose addNameRange registry:https://registry.npmjs.org/lodash._basefor not in flight; fetching
+224 silly cache add parsed spec Result {
+224 silly cache add   raw: 'lodash.isarguments@^3.0.0',
+224 silly cache add   scope: null,
+224 silly cache add   name: 'lodash.isarguments',
+224 silly cache add   rawSpec: '^3.0.0',
+224 silly cache add   spec: '>=3.0.0 <4.0.0',
+224 silly cache add   type: 'range' }
+225 silly addNamed lodash.isarguments@>=3.0.0 <4.0.0
+226 verbose addNamed ">=3.0.0 <4.0.0" is a valid semver range for lodash.isarguments
+227 silly addNameRange { name: 'lodash.isarguments',
+227 silly addNameRange   range: '>=3.0.0 <4.0.0',
+227 silly addNameRange   hasData: false }
+228 silly mapToRegistry name lodash.isarguments
+229 silly mapToRegistry using default registry
+230 silly mapToRegistry registry https://registry.npmjs.org/
+231 silly mapToRegistry uri https://registry.npmjs.org/lodash.isarguments
+232 verbose addNameRange registry:https://registry.npmjs.org/lodash.isarguments not in flight; fetching
+233 silly cache add args [ 'lodash.keysin@^3.0.0', null ]
+234 verbose cache add spec lodash.keysin@^3.0.0
+235 silly cache add parsed spec Result {
+235 silly cache add   raw: 'lodash.keysin@^3.0.0',
+235 silly cache add   scope: null,
+235 silly cache add   name: 'lodash.keysin',
+235 silly cache add   rawSpec: '^3.0.0',
+235 silly cache add   spec: '>=3.0.0 <4.0.0',
+235 silly cache add   type: 'range' }
+236 silly addNamed lodash.keysin@>=3.0.0 <4.0.0
+237 verbose addNamed ">=3.0.0 <4.0.0" is a valid semver range for lodash.keysin
+238 silly addNameRange { name: 'lodash.keysin',
+238 silly addNameRange   range: '>=3.0.0 <4.0.0',
+238 silly addNameRange   hasData: false }
+239 silly mapToRegistry name lodash.keysin
+240 silly mapToRegistry using default registry
+241 silly mapToRegistry registry https://registry.npmjs.org/
+242 silly mapToRegistry uri https://registry.npmjs.org/lodash.keysin
+243 verbose addNameRange registry:https://registry.npmjs.org/lodash.keysin not in flight; fetching
+244 verbose request uri https://registry.npmjs.org/lodash.isarguments
+245 verbose request no auth needed
+246 info attempt registry request try #1 at 2:41:07 PM
+247 verbose etag "4D5YN6XGCTDZEJ5CW5YU480BH"
+248 http request GET https://registry.npmjs.org/lodash.isarguments
+249 verbose request uri https://registry.npmjs.org/lodash.keysin
+250 verbose request no auth needed
+251 info attempt registry request try #1 at 2:41:07 PM
+252 verbose etag "9LUWUU4SO9XCD4LTRID44SCU7"
+253 http request GET https://registry.npmjs.org/lodash.keysin
+254 verbose request uri https://registry.npmjs.org/lodash._basefor
+255 verbose request no auth needed
+256 info attempt registry request try #1 at 2:41:07 PM
+257 verbose etag "7WBP01X8D1CGCDJNZU8SEJTMV"
+258 http request GET https://registry.npmjs.org/lodash._basefor
+259 http 304 https://registry.npmjs.org/lodash.keysin
+260 verbose headers { date: 'Fri, 19 Feb 2016 19:41:07 GMT',
+260 verbose headers   via: '1.1 varnish',
+260 verbose headers   'cache-control': 'max-age=300',
+260 verbose headers   etag: '"9LUWUU4SO9XCD4LTRID44SCU7"',
+260 verbose headers   age: '261',
+260 verbose headers   connection: 'keep-alive',
+260 verbose headers   'x-served-by': 'cache-ord1727-ORD',
+260 verbose headers   'x-cache': 'HIT',
+260 verbose headers   'x-cache-hits': '6',
+260 verbose headers   'x-timer': 'S1455910867.509623,VS0,VE0',
+260 verbose headers   vary: 'Accept' }
+261 silly get cb [ 304,
+261 silly get   { date: 'Fri, 19 Feb 2016 19:41:07 GMT',
+261 silly get     via: '1.1 varnish',
+261 silly get     'cache-control': 'max-age=300',
+261 silly get     etag: '"9LUWUU4SO9XCD4LTRID44SCU7"',
+261 silly get     age: '261',
+261 silly get     connection: 'keep-alive',
+261 silly get     'x-served-by': 'cache-ord1727-ORD',
+261 silly get     'x-cache': 'HIT',
+261 silly get     'x-cache-hits': '6',
+261 silly get     'x-timer': 'S1455910867.509623,VS0,VE0',
+261 silly get     vary: 'Accept' } ]
+262 verbose etag https://registry.npmjs.org/lodash.keysin from cache
+263 verbose get saving lodash.keysin to /home/ldackam/.npm/registry.npmjs.org/lodash.keysin/.cache.json
+264 http 304 https://registry.npmjs.org/lodash._basefor
+265 verbose headers { date: 'Fri, 19 Feb 2016 19:41:07 GMT',
+265 verbose headers   via: '1.1 varnish',
+265 verbose headers   'cache-control': 'max-age=300',
+265 verbose headers   etag: '"7WBP01X8D1CGCDJNZU8SEJTMV"',
+265 verbose headers   age: '268',
+265 verbose headers   connection: 'keep-alive',
+265 verbose headers   'x-served-by': 'cache-ord1720-ORD',
+265 verbose headers   'x-cache': 'HIT',
+265 verbose headers   'x-cache-hits': '2',
+265 verbose headers   'x-timer': 'S1455910867.508577,VS0,VE0',
+265 verbose headers   vary: 'Accept' }
+266 silly get cb [ 304,
+266 silly get   { date: 'Fri, 19 Feb 2016 19:41:07 GMT',
+266 silly get     via: '1.1 varnish',
+266 silly get     'cache-control': 'max-age=300',
+266 silly get     etag: '"7WBP01X8D1CGCDJNZU8SEJTMV"',
+266 silly get     age: '268',
+266 silly get     connection: 'keep-alive',
+266 silly get     'x-served-by': 'cache-ord1720-ORD',
+266 silly get     'x-cache': 'HIT',
+266 silly get     'x-cache-hits': '2',
+266 silly get     'x-timer': 'S1455910867.508577,VS0,VE0',
+266 silly get     vary: 'Accept' } ]
+267 verbose etag https://registry.npmjs.org/lodash._basefor from cache
+268 verbose get saving lodash._basefor to /home/ldackam/.npm/registry.npmjs.org/lodash._basefor/.cache.json
+269 http 304 https://registry.npmjs.org/lodash.isarguments
+270 verbose headers { date: 'Fri, 19 Feb 2016 19:41:07 GMT',
+270 verbose headers   via: '1.1 varnish',
+270 verbose headers   'cache-control': 'max-age=300',
+270 verbose headers   etag: '"4D5YN6XGCTDZEJ5CW5YU480BH"',
+270 verbose headers   age: '233',
+270 verbose headers   connection: 'keep-alive',
+270 verbose headers   'x-served-by': 'cache-ord1729-ORD',
+270 verbose headers   'x-cache': 'HIT',
+270 verbose headers   'x-cache-hits': '14',
+270 verbose headers   'x-timer': 'S1455910867.510966,VS0,VE0',
+270 verbose headers   vary: 'Accept' }
+271 silly get cb [ 304,
+271 silly get   { date: 'Fri, 19 Feb 2016 19:41:07 GMT',
+271 silly get     via: '1.1 varnish',
+271 silly get     'cache-control': 'max-age=300',
+271 silly get     etag: '"4D5YN6XGCTDZEJ5CW5YU480BH"',
+271 silly get     age: '233',
+271 silly get     connection: 'keep-alive',
+271 silly get     'x-served-by': 'cache-ord1729-ORD',
+271 silly get     'x-cache': 'HIT',
+271 silly get     'x-cache-hits': '14',
+271 silly get     'x-timer': 'S1455910867.510966,VS0,VE0',
+271 silly get     vary: 'Accept' } ]
+272 verbose etag https://registry.npmjs.org/lodash.isarguments from cache
+273 verbose get saving lodash.isarguments to /home/ldackam/.npm/registry.npmjs.org/lodash.isarguments/.cache.json
+274 silly addNameRange number 2 { name: 'lodash._basefor',
+274 silly addNameRange   range: '>=3.0.0 <4.0.0',
+274 silly addNameRange   hasData: true }
+275 silly addNameRange versions [ 'lodash._basefor', [ '3.0.0', '3.0.1', '3.0.2', '3.0.3' ] ]
+276 silly addNamed lodash._basefor@3.0.3
+277 verbose addNamed "3.0.3" is a plain semver version for lodash._basefor
+278 silly addNameRange number 2 { name: 'lodash.keysin', range: '>=3.0.0 <4.0.0', hasData: true }
+279 silly addNameRange versions [ 'lodash.keysin',
+279 silly addNameRange   [ '3.0.0',
+279 silly addNameRange     '3.0.1',
+279 silly addNameRange     '3.0.2',
+279 silly addNameRange     '3.0.3',
+279 silly addNameRange     '3.0.4',
+279 silly addNameRange     '3.0.5',
+279 silly addNameRange     '3.0.6',
+279 silly addNameRange     '3.0.7',
+279 silly addNameRange     '3.0.8',
+279 silly addNameRange     '4.0.0',
+279 silly addNameRange     '4.0.1',
+279 silly addNameRange     '4.0.2',
+279 silly addNameRange     '4.1.0',
+279 silly addNameRange     '4.1.1' ] ]
+280 silly addNamed lodash.keysin@3.0.8
+281 verbose addNamed "3.0.8" is a plain semver version for lodash.keysin
+282 silly addNameRange number 2 { name: 'lodash.isarguments',
+282 silly addNameRange   range: '>=3.0.0 <4.0.0',
+282 silly addNameRange   hasData: true }
+283 silly addNameRange versions [ 'lodash.isarguments',
+283 silly addNameRange   [ '2.0.0',
+283 silly addNameRange     '2.1.0',
+283 silly addNameRange     '2.2.0',
+283 silly addNameRange     '2.2.1',
+283 silly addNameRange     '2.3.0',
+283 silly addNameRange     '2.4.0',
+283 silly addNameRange     '2.4.1',
+283 silly addNameRange     '3.0.0',
+283 silly addNameRange     '3.0.1',
+283 silly addNameRange     '3.0.2',
+283 silly addNameRange     '3.0.3',
+283 silly addNameRange     '3.0.4',
+283 silly addNameRange     '3.0.5',
+283 silly addNameRange     '3.0.6',
+283 silly addNameRange     '3.0.7' ] ]
+284 silly addNamed lodash.isarguments@3.0.7
+285 verbose addNamed "3.0.7" is a plain semver version for lodash.isarguments
+286 silly cache afterAdd lodash._basefor@3.0.3
+287 verbose afterAdd /home/ldackam/.npm/lodash._basefor/3.0.3/package/package.json not in flight; writing
+288 silly cache afterAdd lodash.keysin@3.0.8
+289 verbose afterAdd /home/ldackam/.npm/lodash.keysin/3.0.8/package/package.json not in flight; writing
+290 silly cache afterAdd lodash.isarguments@3.0.7
+291 verbose afterAdd /home/ldackam/.npm/lodash.isarguments/3.0.7/package/package.json not in flight; writing
+292 verbose afterAdd /home/ldackam/.npm/lodash.keysin/3.0.8/package/package.json written
+293 verbose afterAdd /home/ldackam/.npm/lodash._basefor/3.0.3/package/package.json written
+294 verbose afterAdd /home/ldackam/.npm/lodash.isarguments/3.0.7/package/package.json written
+295 silly install resolved [ { name: 'lodash.keysin',
+295 silly install resolved     version: '3.0.8',
+295 silly install resolved     description: 'The modern build of lodash’s `_.keysIn` as a module.',
+295 silly install resolved     homepage: 'https://lodash.com/',
+295 silly install resolved     icon: 'https://lodash.com/icon.svg',
+295 silly install resolved     license: 'MIT',
+295 silly install resolved     keywords: [ 'lodash', 'lodash-modularized', 'stdlib', 'util' ],
+295 silly install resolved     author:
+295 silly install resolved      { name: 'John-David Dalton',
+295 silly install resolved        email: 'john.david.dalton@gmail.com',
+295 silly install resolved        url: 'http://allyoucanleet.com/' },
+295 silly install resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+295 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/lodash/lodash.git' },
+295 silly install resolved     scripts: { test: 'echo "See https://travis-ci.org/lodash/lodash-cli for testing details."' },
+295 silly install resolved     dependencies: { 'lodash.isarguments': '^3.0.0', 'lodash.isarray': '^3.0.0' },
+295 silly install resolved     bugs: { url: 'https://github.com/lodash/lodash/issues' },
+295 silly install resolved     _id: 'lodash.keysin@3.0.8',
+295 silly install resolved     _shasum: '22c4493ebbedb1427962a54b445b2c8a767fb47f',
+295 silly install resolved     _from: 'lodash.keysin@>=3.0.0 <4.0.0',
+295 silly install resolved     _npmVersion: '2.10.1',
+295 silly install resolved     _nodeVersion: '2.0.2',
+295 silly install resolved     _npmUser: { name: 'jdalton', email: 'john.david.dalton@gmail.com' },
+295 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
+295 silly install resolved     dist:
+295 silly install resolved      { shasum: '22c4493ebbedb1427962a54b445b2c8a767fb47f',
+295 silly install resolved        tarball: 'http://registry.npmjs.org/lodash.keysin/-/lodash.keysin-3.0.8.tgz' },
+295 silly install resolved     directories: {},
+295 silly install resolved     _resolved: 'https://registry.npmjs.org/lodash.keysin/-/lodash.keysin-3.0.8.tgz',
+295 silly install resolved     readme: 'ERROR: No README data found!' },
+295 silly install resolved   { name: 'lodash._basefor',
+295 silly install resolved     version: '3.0.3',
+295 silly install resolved     description: 'The internal lodash function `baseFor` exported as a module.',
+295 silly install resolved     homepage: 'https://lodash.com/',
+295 silly install resolved     icon: 'https://lodash.com/icon.svg',
+295 silly install resolved     license: 'MIT',
+295 silly install resolved     author:
+295 silly install resolved      { name: 'John-David Dalton',
+295 silly install resolved        email: 'john.david.dalton@gmail.com',
+295 silly install resolved        url: 'http://allyoucanleet.com/' },
+295 silly install resolved     contributors: [ [Object], [Object], [Object] ],
+295 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/lodash/lodash.git' },
+295 silly install resolved     scripts: { test: 'echo "See https://travis-ci.org/lodash/lodash-cli for testing details."' },
+295 silly install resolved     bugs: { url: 'https://github.com/lodash/lodash/issues' },
+295 silly install resolved     _id: 'lodash._basefor@3.0.3',
+295 silly install resolved     _shasum: '7550b4e9218ef09fad24343b612021c79b4c20c2',
+295 silly install resolved     _from: 'lodash._basefor@>=3.0.0 <4.0.0',
+295 silly install resolved     _npmVersion: '2.14.15',
+295 silly install resolved     _nodeVersion: '5.4.0',
+295 silly install resolved     _npmUser: { name: 'jdalton', email: 'john.david.dalton@gmail.com' },
+295 silly install resolved     dist:
+295 silly install resolved      { shasum: '7550b4e9218ef09fad24343b612021c79b4c20c2',
+295 silly install resolved        tarball: 'http://registry.npmjs.org/lodash._basefor/-/lodash._basefor-3.0.3.tgz' },
+295 silly install resolved     maintainers: [ [Object], [Object], [Object] ],
+295 silly install resolved     directories: {},
+295 silly install resolved     _resolved: 'https://registry.npmjs.org/lodash._basefor/-/lodash._basefor-3.0.3.tgz',
+295 silly install resolved     readme: 'ERROR: No README data found!' },
+295 silly install resolved   { name: 'lodash.isarguments',
+295 silly install resolved     version: '3.0.7',
+295 silly install resolved     description: 'The lodash method `_.isArguments` exported as a module.',
+295 silly install resolved     homepage: 'https://lodash.com/',
+295 silly install resolved     icon: 'https://lodash.com/icon.svg',
+295 silly install resolved     license: 'MIT',
+295 silly install resolved     keywords: [ 'lodash-modularized', 'isarguments' ],
+295 silly install resolved     author:
+295 silly install resolved      { name: 'John-David Dalton',
+295 silly install resolved        email: 'john.david.dalton@gmail.com',
+295 silly install resolved        url: 'http://allyoucanleet.com/' },
+295 silly install resolved     contributors: [ [Object], [Object], [Object] ],
+295 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/lodash/lodash.git' },
+295 silly install resolved     scripts: { test: 'echo "See https://travis-ci.org/lodash/lodash-cli for testing details."' },
+295 silly install resolved     bugs: { url: 'https://github.com/lodash/lodash/issues' },
+295 silly install resolved     _id: 'lodash.isarguments@3.0.7',
+295 silly install resolved     _shasum: 'f0b9169cf412c11d8a479ce21e06fe1145417495',
+295 silly install resolved     _from: 'lodash.isarguments@>=3.0.0 <4.0.0',
+295 silly install resolved     _npmVersion: '2.14.18',
+295 silly install resolved     _nodeVersion: '5.5.0',
+295 silly install resolved     _npmUser: { name: 'jdalton', email: 'john.david.dalton@gmail.com' },
+295 silly install resolved     dist:
+295 silly install resolved      { shasum: 'f0b9169cf412c11d8a479ce21e06fe1145417495',
+295 silly install resolved        tarball: 'http://registry.npmjs.org/lodash.isarguments/-/lodash.isarguments-3.0.7.tgz' },
+295 silly install resolved     maintainers: [ [Object], [Object], [Object] ],
+295 silly install resolved     _npmOperationalInternal:
+295 silly install resolved      { host: 'packages-9-west.internal.npmjs.com',
+295 silly install resolved        tmp: 'tmp/lodash.isarguments-3.0.7.tgz_1455615337545_0.9485303950496018' },
+295 silly install resolved     directories: {},
+295 silly install resolved     _resolved: 'https://registry.npmjs.org/lodash.isarguments/-/lodash.isarguments-3.0.7.tgz',
+295 silly install resolved     readme: 'ERROR: No README data found!' } ]
+296 info install lodash.keysin@3.0.8 into /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject
+297 info install lodash._basefor@3.0.3 into /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject
+298 info install lodash.isarguments@3.0.7 into /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject
+299 info installOne lodash.keysin@3.0.8
+300 verbose installOne of lodash.keysin to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject not in flight; installing
+301 info installOne lodash._basefor@3.0.3
+302 verbose installOne of lodash._basefor to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject not in flight; installing
+303 info installOne lodash.isarguments@3.0.7
+304 verbose installOne of lodash.isarguments to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject not in flight; installing
+305 verbose lock using /home/ldackam/.npm/_locks/lodash-keysin-33762a5dd0eeacb0.lock for /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin
+306 verbose lock using /home/ldackam/.npm/_locks/lodash-basefor-4a79ef81f80f149d.lock for /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor
+307 verbose lock using /home/ldackam/.npm/_locks/lodash-isarguments-29c03cdc5ce5f30d.lock for /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments
+308 silly install write writing lodash.keysin 3.0.8 to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin
+309 silly install write writing lodash._basefor 3.0.3 to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor
+310 silly install write writing lodash.isarguments 3.0.7 to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments
+311 verbose unbuild node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin
+312 verbose unbuild node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor
+313 verbose unbuild node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments
+314 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin is being purged from base /home/ldackam/merge_tool
+315 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin
+316 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor is being purged from base /home/ldackam/merge_tool
+317 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor
+318 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments is being purged from base /home/ldackam/merge_tool
+319 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments
+320 verbose tar unpack /home/ldackam/.npm/lodash.keysin/3.0.8/package.tgz
+321 verbose tar unpacking to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin
+322 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin is being purged
+323 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin
+324 verbose tar unpack /home/ldackam/.npm/lodash._basefor/3.0.3/package.tgz
+325 verbose tar unpacking to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor
+326 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor is being purged
+327 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor
+328 verbose tar unpack /home/ldackam/.npm/lodash.isarguments/3.0.7/package.tgz
+329 verbose tar unpacking to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments
+330 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments is being purged
+331 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments
+332 silly gunzTarPerm modes [ '755', '644' ]
+333 silly gunzTarPerm modes [ '755', '644' ]
+334 silly gunzTarPerm modes [ '755', '644' ]
+335 silly gunzTarPerm extractEntry package.json
+336 silly gunzTarPerm extractEntry package.json
+337 silly gunzTarPerm extractEntry package.json
+338 silly gunzTarPerm extractEntry README.md
+339 silly gunzTarPerm extractEntry index.js
+340 silly gunzTarPerm extractEntry README.md
+341 silly gunzTarPerm extractEntry LICENSE
+342 silly gunzTarPerm extractEntry README.md
+343 silly gunzTarPerm extractEntry LICENSE
+344 silly gunzTarPerm extractEntry LICENSE.txt
+345 silly gunzTarPerm extractEntry index.js
+346 silly gunzTarPerm extractEntry index.js
+347 verbose write writing to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments/package.json
+348 verbose write writing to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor/package.json
+349 verbose write writing to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/package.json
+350 info preinstall lodash.isarguments@3.0.7
+351 info preinstall lodash._basefor@3.0.3
+352 info preinstall lodash.keysin@3.0.8
+353 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments/package.json
+354 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor/package.json
+355 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/package.json
+356 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor/package.json
+357 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments/package.json
+358 silly prepareForInstallMany adding lodash.isarray@^3.0.0 from lodash.keysin dependencies
+359 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/package.json
+360 silly install resolved []
+361 verbose about to build /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor
+362 info build /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor
+363 silly install resolved []
+364 verbose about to build /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments
+365 info build /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments
+366 silly cache add args [ 'lodash.isarray@^3.0.0', null ]
+367 verbose cache add spec lodash.isarray@^3.0.0
+368 silly cache add parsed spec Result {
+368 silly cache add   raw: 'lodash.isarray@^3.0.0',
+368 silly cache add   scope: null,
+368 silly cache add   name: 'lodash.isarray',
+368 silly cache add   rawSpec: '^3.0.0',
+368 silly cache add   spec: '>=3.0.0 <4.0.0',
+368 silly cache add   type: 'range' }
+369 silly addNamed lodash.isarray@>=3.0.0 <4.0.0
+370 verbose addNamed ">=3.0.0 <4.0.0" is a valid semver range for lodash.isarray
+371 silly addNameRange { name: 'lodash.isarray',
+371 silly addNameRange   range: '>=3.0.0 <4.0.0',
+371 silly addNameRange   hasData: false }
+372 silly mapToRegistry name lodash.isarray
+373 silly mapToRegistry using default registry
+374 silly mapToRegistry registry https://registry.npmjs.org/
+375 silly mapToRegistry uri https://registry.npmjs.org/lodash.isarray
+376 verbose addNameRange registry:https://registry.npmjs.org/lodash.isarray not in flight; fetching
+377 info linkStuff lodash._basefor@3.0.3
+378 silly linkStuff lodash._basefor@3.0.3 has /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules as its parent node_modules
+379 info linkStuff lodash.isarguments@3.0.7
+380 silly linkStuff lodash.isarguments@3.0.7 has /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules as its parent node_modules
+381 verbose request uri https://registry.npmjs.org/lodash.isarray
+382 verbose request no auth needed
+383 info attempt registry request try #1 at 2:41:07 PM
+384 verbose etag "DD13L05CGB0BXKMJO8EVTLF3F"
+385 http request GET https://registry.npmjs.org/lodash.isarray
+386 verbose linkBins lodash._basefor@3.0.3
+387 verbose linkMans lodash._basefor@3.0.3
+388 verbose rebuildBundles lodash._basefor@3.0.3
+389 verbose linkBins lodash.isarguments@3.0.7
+390 verbose linkMans lodash.isarguments@3.0.7
+391 verbose rebuildBundles lodash.isarguments@3.0.7
+392 info install lodash._basefor@3.0.3
+393 info install lodash.isarguments@3.0.7
+394 info postinstall lodash._basefor@3.0.3
+395 info postinstall lodash.isarguments@3.0.7
+396 verbose unlock done using /home/ldackam/.npm/_locks/lodash-basefor-4a79ef81f80f149d.lock for /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash._basefor
+397 verbose unlock done using /home/ldackam/.npm/_locks/lodash-isarguments-29c03cdc5ce5f30d.lock for /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.isarguments
+398 http 304 https://registry.npmjs.org/lodash.isarray
+399 verbose headers { date: 'Fri, 19 Feb 2016 19:41:07 GMT',
+399 verbose headers   via: '1.1 varnish',
+399 verbose headers   'cache-control': 'max-age=300',
+399 verbose headers   etag: '"DD13L05CGB0BXKMJO8EVTLF3F"',
+399 verbose headers   age: '137',
+399 verbose headers   connection: 'keep-alive',
+399 verbose headers   'x-served-by': 'cache-ord1720-ORD',
+399 verbose headers   'x-cache': 'HIT',
+399 verbose headers   'x-cache-hits': '9',
+399 verbose headers   'x-timer': 'S1455910867.608003,VS0,VE0',
+399 verbose headers   vary: 'Accept' }
+400 silly get cb [ 304,
+400 silly get   { date: 'Fri, 19 Feb 2016 19:41:07 GMT',
+400 silly get     via: '1.1 varnish',
+400 silly get     'cache-control': 'max-age=300',
+400 silly get     etag: '"DD13L05CGB0BXKMJO8EVTLF3F"',
+400 silly get     age: '137',
+400 silly get     connection: 'keep-alive',
+400 silly get     'x-served-by': 'cache-ord1720-ORD',
+400 silly get     'x-cache': 'HIT',
+400 silly get     'x-cache-hits': '9',
+400 silly get     'x-timer': 'S1455910867.608003,VS0,VE0',
+400 silly get     vary: 'Accept' } ]
+401 verbose etag https://registry.npmjs.org/lodash.isarray from cache
+402 verbose get saving lodash.isarray to /home/ldackam/.npm/registry.npmjs.org/lodash.isarray/.cache.json
+403 silly addNameRange number 2 { name: 'lodash.isarray',
+403 silly addNameRange   range: '>=3.0.0 <4.0.0',
+403 silly addNameRange   hasData: true }
+404 silly addNameRange versions [ 'lodash.isarray',
+404 silly addNameRange   [ '2.0.0',
+404 silly addNameRange     '2.1.0',
+404 silly addNameRange     '2.2.0',
+404 silly addNameRange     '2.2.1',
+404 silly addNameRange     '2.3.0',
+404 silly addNameRange     '2.4.0',
+404 silly addNameRange     '2.4.1',
+404 silly addNameRange     '3.0.0',
+404 silly addNameRange     '3.0.1',
+404 silly addNameRange     '3.0.2',
+404 silly addNameRange     '3.0.3',
+404 silly addNameRange     '3.0.4',
+404 silly addNameRange     '4.0.0' ] ]
+405 silly addNamed lodash.isarray@3.0.4
+406 verbose addNamed "3.0.4" is a plain semver version for lodash.isarray
+407 silly cache afterAdd lodash.isarray@3.0.4
+408 verbose afterAdd /home/ldackam/.npm/lodash.isarray/3.0.4/package/package.json not in flight; writing
+409 verbose afterAdd /home/ldackam/.npm/lodash.isarray/3.0.4/package/package.json written
+410 silly install resolved [ { name: 'lodash.isarray',
+410 silly install resolved     version: '3.0.4',
+410 silly install resolved     description: 'The modern build of lodash’s `_.isArray` as a module.',
+410 silly install resolved     homepage: 'https://lodash.com/',
+410 silly install resolved     icon: 'https://lodash.com/icon.svg',
+410 silly install resolved     license: 'MIT',
+410 silly install resolved     keywords: [ 'lodash', 'lodash-modularized', 'stdlib', 'util' ],
+410 silly install resolved     author:
+410 silly install resolved      { name: 'John-David Dalton',
+410 silly install resolved        email: 'john.david.dalton@gmail.com',
+410 silly install resolved        url: 'http://allyoucanleet.com/' },
+410 silly install resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+410 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/lodash/lodash.git' },
+410 silly install resolved     scripts: { test: 'echo "See https://travis-ci.org/lodash/lodash-cli for testing details."' },
+410 silly install resolved     bugs: { url: 'https://github.com/lodash/lodash/issues' },
+410 silly install resolved     _id: 'lodash.isarray@3.0.4',
+410 silly install resolved     _shasum: '79e4eb88c36a8122af86f844aa9bcd851b5fbb55',
+410 silly install resolved     _from: 'lodash.isarray@>=3.0.0 <4.0.0',
+410 silly install resolved     _npmVersion: '2.12.0',
+410 silly install resolved     _nodeVersion: '0.12.5',
+410 silly install resolved     _npmUser: { name: 'jdalton', email: 'john.david.dalton@gmail.com' },
+410 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
+410 silly install resolved     dist:
+410 silly install resolved      { shasum: '79e4eb88c36a8122af86f844aa9bcd851b5fbb55',
+410 silly install resolved        tarball: 'http://registry.npmjs.org/lodash.isarray/-/lodash.isarray-3.0.4.tgz' },
+410 silly install resolved     directories: {},
+410 silly install resolved     _resolved: 'https://registry.npmjs.org/lodash.isarray/-/lodash.isarray-3.0.4.tgz',
+410 silly install resolved     readme: 'ERROR: No README data found!' } ]
+411 info install lodash.isarray@3.0.4 into /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin
+412 info installOne lodash.isarray@3.0.4
+413 verbose installOne of lodash.isarray to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin not in flight; installing
+414 verbose lock using /home/ldackam/.npm/_locks/lodash-isarray-5e05e11eb2aaa4da.lock for /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray
+415 silly install write writing lodash.isarray 3.0.4 to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray
+416 verbose unbuild node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray
+417 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray is being purged from base /home/ldackam/merge_tool
+418 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray
+419 verbose tar unpack /home/ldackam/.npm/lodash.isarray/3.0.4/package.tgz
+420 verbose tar unpacking to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray
+421 silly gentlyRm /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray is being purged
+422 verbose gentlyRm don't care about contents; nuking /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray
+423 silly gunzTarPerm modes [ '755', '644' ]
+424 silly gunzTarPerm extractEntry package.json
+425 silly gunzTarPerm extractEntry README.md
+426 silly gunzTarPerm extractEntry LICENSE
+427 silly gunzTarPerm extractEntry index.js
+428 verbose write writing to /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray/package.json
+429 info preinstall lodash.isarray@3.0.4
+430 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray/package.json
+431 verbose readDependencies loading dependencies from /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray/package.json
+432 silly install resolved []
+433 verbose about to build /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray
+434 info build /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray
+435 info linkStuff lodash.isarray@3.0.4
+436 silly linkStuff lodash.isarray@3.0.4 has /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules as its parent node_modules
+437 verbose linkBins lodash.isarray@3.0.4
+438 verbose linkMans lodash.isarray@3.0.4
+439 verbose rebuildBundles lodash.isarray@3.0.4
+440 info install lodash.isarray@3.0.4
+441 info postinstall lodash.isarray@3.0.4
+442 verbose unlock done using /home/ldackam/.npm/_locks/lodash-isarray-5e05e11eb2aaa4da.lock for /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin/node_modules/lodash.isarray
+443 verbose about to build /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin
+444 info build /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin
+445 info linkStuff lodash.keysin@3.0.8
+446 silly linkStuff lodash.keysin@3.0.8 has /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules as its parent node_modules
+447 verbose linkBins lodash.keysin@3.0.8
+448 verbose linkMans lodash.keysin@3.0.8
+449 verbose rebuildBundles lodash.keysin@3.0.8
+450 verbose rebuildBundles [ 'lodash.isarray' ]
+451 info install lodash.keysin@3.0.8
+452 info postinstall lodash.keysin@3.0.8
+453 verbose unlock done using /home/ldackam/.npm/_locks/lodash-keysin-33762a5dd0eeacb0.lock for /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject/node_modules/lodash.keysin
+454 verbose about to build /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject
+455 info build /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject
+456 info linkStuff lodash.isplainobject@3.2.0
+457 silly linkStuff lodash.isplainobject@3.2.0 has /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules as its parent node_modules
+458 verbose linkBins lodash.isplainobject@3.2.0
+459 verbose linkMans lodash.isplainobject@3.2.0
+460 verbose rebuildBundles lodash.isplainobject@3.2.0
+461 verbose rebuildBundles [ 'lodash._basefor', 'lodash.isarguments', 'lodash.keysin' ]
+462 info install lodash.isplainobject@3.2.0
+463 info postinstall lodash.isplainobject@3.2.0
+464 verbose unlock done using /home/ldackam/.npm/_locks/lodash-isplainobject-6f3c9a60c750ad09.lock for /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action/node_modules/lodash.isplainobject
+465 verbose about to build /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action
+466 info build /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action
+467 info linkStuff flux-standard-action@0.6.0
+468 silly linkStuff flux-standard-action@0.6.0 has /home/ldackam/merge_tool/node_modules/redux-promise/node_modules as its parent node_modules
+469 verbose linkBins flux-standard-action@0.6.0
+470 verbose linkMans flux-standard-action@0.6.0
+471 verbose rebuildBundles flux-standard-action@0.6.0
+472 verbose rebuildBundles [ 'lodash.isplainobject' ]
+473 info install flux-standard-action@0.6.0
+474 info postinstall flux-standard-action@0.6.0
+475 verbose unlock done using /home/ldackam/.npm/_locks/flux-standard-action-068c7928c683ccdd.lock for /home/ldackam/merge_tool/node_modules/redux-promise/node_modules/flux-standard-action
+476 verbose about to build /home/ldackam/merge_tool/node_modules/redux-promise
+477 info build /home/ldackam/merge_tool/node_modules/redux-promise
+478 info linkStuff redux-promise@0.5.1
+479 silly linkStuff redux-promise@0.5.1 has /home/ldackam/merge_tool/node_modules as its parent node_modules
+480 verbose linkBins redux-promise@0.5.1
+481 verbose linkMans redux-promise@0.5.1
+482 verbose rebuildBundles redux-promise@0.5.1
+483 verbose rebuildBundles [ 'flux-standard-action' ]
+484 info install redux-promise@0.5.1
+485 info postinstall redux-promise@0.5.1
+486 verbose unlock done using /home/ldackam/.npm/_locks/redux-promise-2a350883a41a8fcf.lock for /home/ldackam/merge_tool/node_modules/redux-promise
+487 verbose validateInstall loading /home/ldackam/merge_tool/package.json for validation
+488 verbose stack Error: The package history@1.12.6 does not satisfy its siblings' peerDependencies requirements!
+488 verbose stack     at /usr/lib/node_modules/npm/lib/install.js:125:32
+488 verbose stack     at /usr/lib/node_modules/npm/lib/install.js:268:7
+488 verbose stack     at /usr/lib/node_modules/npm/node_modules/read-installed/read-installed.js:142:5
+488 verbose stack     at /usr/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+488 verbose stack     at cb (/usr/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+488 verbose stack     at /usr/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+488 verbose stack     at cb (/usr/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+488 verbose stack     at /usr/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+488 verbose stack     at cb (/usr/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+488 verbose stack     at /usr/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+489 verbose cwd /home/ldackam/merge_tool/src/SelectRecords/reducers
+490 error Linux 3.19.0-26-generic
+491 error argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "--save" "redux-promise"
+492 error node v4.3.1
+493 error npm  v2.14.12
+494 error code EPEERINVALID
+495 error peerinvalid The package history@1.12.6 does not satisfy its siblings' peerDependencies requirements!
+495 error peerinvalid Peer react-router@1.0.3 wants history@^1.17.0
+496 verbose exit [ 1, true ]
