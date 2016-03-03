@@ -50,6 +50,4 @@ class SearchBar extends Component {
     return bindActionCreators({fetchEntities}, dispatch);
   }
 
-
-
 export default connect(null, mapDispatchToProps)(SearchBar);

@@ -8,7 +8,9 @@ import Sidebar from './containers/sidebar';
 import ListOfEntities from './containers/listOfEntities';
 import reducers from './reducers';
 
+//should be defined outside the component - everytime SelectRecords re-renders it's recreating the store
 const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
+const store = createStoreWithMiddleware(reducers);
 
 class SelectRecords extends Component {
   constructor(props) {
@@ -17,7 +19,7 @@ class SelectRecords extends Component {
 
   render() {
     return (
-      <Provider store={createStoreWithMiddleware(reducers)}>
+      <Provider store={store}>
         <div className="container-fluid">
            <Sidebar />
            <div className="col-md-10">

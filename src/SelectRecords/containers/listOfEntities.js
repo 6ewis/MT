@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { selectEntity } from '../actions/index';
+import {bindActionCreators} from 'redux';
+
 
 class ListOfEntities extends Component {
   constructor(props) {
@@ -19,7 +22,7 @@ class ListOfEntities extends Component {
      let {address_line_1, address_line_2, address_line_3, address_line_4, province, cpname, cpref, id} = entity;
      return <div key={id} className="twbs-container-fluid" style={{ paddingTop: '10px'}}>
         <div className="twbs-row-fluid entity" style={{padding: '10px 10px 10px 10px' }}>
-          <div className="col-md-12" style={{ backgroundColor: styleBackground() , paddingBottom: '10px', paddingTop: '10px'}}>
+          <div className="col-md-12" style={{ backgroundColor: styleBackground(), paddingBottom: '10px', paddingTop: '10px'}}>
             <h3 style={{ marginTop: '0px' }}>
             <a className="h3" href="#">{cpname}</a> 
             <small>&nbsp;[{id}]</small></h3> 
@@ -45,7 +48,12 @@ class ListOfEntities extends Component {
              </span>
               </div>
               <div className="col-md-4 text-right">
-                <a href="#" title="Select Entity" className="btn btn-primary">Select</a>
+                <a href="#" 
+                   onClick= {() => this.props.selectEntity(entity) }
+                   title="Select Entity" 
+                   className="btn btn-primary">
+                   Select
+                </a>
               </div>
             </div>
           </div>
@@ -74,4 +82,8 @@ function mapStateToProps({ entities }) {
   return { entities };
 }
 
-export default connect(mapStateToProps)(ListOfEntities);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({selectEntity}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListOfEntities);
