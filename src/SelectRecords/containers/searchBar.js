@@ -39,15 +39,10 @@ class SearchBar extends Component {
   }
 }
 
- // function mapStateToProps(state) {
- //   console.log(state.entities)
- //   return {
- //     entities: state.entities
- //   };
- // }
-
   function mapDispatchToProps(dispatch) {
     return bindActionCreators({fetchEntities}, dispatch);
   }
+
+
 
 export default connect(null, mapDispatchToProps)(SearchBar);

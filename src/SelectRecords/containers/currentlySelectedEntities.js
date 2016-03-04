@@ -14,6 +14,12 @@ class CurrentlySelectedEntities extends Component {
   }
 
  render() {
+
+  // if ((this.props.selectedEntities.length === 0) || (this.props.selectedEntities.length === 1)) {
+  //    if (document.querySelector('.flip-container') !== null ) {
+  //   document.querySelector('.flip-container').classList.toggle('hover');
+  //   }
+  // }
    return (
      <div>
        { this.renderSelectedEntities() }

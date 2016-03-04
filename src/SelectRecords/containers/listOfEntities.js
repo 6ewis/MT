@@ -19,7 +19,7 @@ class ListOfEntities extends Component {
        } 
      };
 
-     let {address_line_1, address_line_2, address_line_3, address_line_4, province, cpname, cpref, id} = entity;
+     let {address_line_1, address_line_2, address_line_3, address_line_4, province, postal_code, country, cpname, id} = entity;
      return <div key={id} className="twbs-container-fluid" style={{ paddingTop: '10px'}}>
         <div className="twbs-row-fluid entity" style={{padding: '10px 10px 10px 10px' }}>
           <div className="col-md-12" style={{ backgroundColor: styleBackground(), paddingBottom: '10px', paddingTop: '10px'}}>
@@ -30,9 +30,12 @@ class ListOfEntities extends Component {
             {/* <!--- Icons and selection button --->*/}
             <div className="twbs-row-fluid" style={{ paddingTop: '10px' }}>
               <div className="col-md-12 address" style={{ paddingLeft: '0px' }}> { address_line_1 }
-                <br/> { address_line_2 } 
+                <br/> { address_line_2 }
                 <br/> { address_line_3 }
                 <br/> { address_line_4 }
+                <br/> { province }
+                <br/> { postal_code }
+                <br/> { country }
               </div>
             </div>
             {/*
@@ -48,9 +51,9 @@ class ListOfEntities extends Component {
              </span>
               </div>
               <div className="col-md-4 text-right">
-                <a href="#" 
-                   onClick= {() => this.props.selectEntity(entity) }
-                   title="Select Entity" 
+                <a href="#"
+                   onClick= {() => this.props.selectEntity(entity)}
+                   title="Select Entity"
                    className="btn btn-primary">
                    Select
                 </a>
