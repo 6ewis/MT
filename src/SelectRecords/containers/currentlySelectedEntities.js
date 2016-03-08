@@ -13,13 +13,15 @@ class CurrentlySelectedEntities extends Component {
     });
   }
 
- render() {
+  componentWillReceiveProps(nextProps) {
+    //if the number of items currently selected goes from 0 to 1 OR 0 to 1 then we want the sidebar to hover
+    if ( (nextProps.selectedEntities.length === 1 && this.props.selectedEntities.length === 0)
+       || (nextProps.selectedEntities.length === 0 && this.props.selectedEntities.length === 1) ){
+      document.querySelector('.flip-container').classList.toggle('hover');
+    }
+  }
 
-  // if ((this.props.selectedEntities.length === 0) || (this.props.selectedEntities.length === 1)) {
-  //    if (document.querySelector('.flip-container') !== null ) {
-  //   document.querySelector('.flip-container').classList.toggle('hover');
-  //   }
-  // }
+ render() {
    return (
      <div>
        { this.renderSelectedEntities() }

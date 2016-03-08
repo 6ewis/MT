@@ -14,7 +14,7 @@ var babelify = require('babelify'); //transpiler es6
 //var buffer = require('vinyl-buffer');
 
 var config = {
-  port: 9005,
+  port: 8888,
   devBaseUrl: 'http://localhost',
   paths: {
     html: './src/*.html',

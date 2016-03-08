@@ -21,14 +21,17 @@ class SelectRecords extends Component {
     return (
       <Provider store={store}>
         <div className="container-fluid">
-           <Sidebar />
-           <div className="col-md-10">
-             <SearchBar />
-             <br/>
-             <ListOfEntities />
-           </div>
-         </div>
-       </Provider>
+          <div className="col-md-2">
+             <Sidebar />
+          </div>
+          <div className="col-md-10">
+            <br/>
+            <SearchBar />
+            <br/>
+            <ListOfEntities />
+          </div>
+        </div>
+      </Provider>
 
            );
   }

@@ -9,6 +9,15 @@ class ListOfEntities extends Component {
     super(props);
   }
 
+  renderEntityTypeIcon() {
+    if (this.props.entity_type_code === 'I') {
+      return <i className="fa fa-user fa-2x"></i>;
+    }
+    else if (this.props.entity_type_code === 'C') {
+      return <i className="fa fa-building fa-2x"></i>;
+    }
+  }
+
   renderEntities() {
    
     return this.props.entities.map((entity, index) => {
@@ -29,13 +38,10 @@ class ListOfEntities extends Component {
             <em className="aliases">Placeholder for aliases</em> 
             {/* <!--- Icons and selection button --->*/}
             <div className="twbs-row-fluid" style={{ paddingTop: '10px' }}>
-              <div className="col-md-12 address" style={{ paddingLeft: '0px' }}> { address_line_1 }
-                <br/> { address_line_2 }
-                <br/> { address_line_3 }
-                <br/> { address_line_4 }
-                <br/> { province }
-                <br/> { postal_code }
-                <br/> { country }
+              <div className="col-md-12 address" style={{ paddingLeft: '0px' }}>
+               {[address_line_1, address_line_2, address_line_3, address_line_4, province, postal_code, country].map((item, map_index) => {
+                  if (item !== 'null') { return (<span key={map_index}>{item} <br/> </span>); }
+                })}
               </div>
             </div>
             {/*
@@ -46,8 +52,8 @@ class ListOfEntities extends Component {
              <i className="fa fa-certificate fa-stack-2x" style={{color: 'purple'}}></i>
              <i className="fa fa-check fa-stack-1x fa-inverse"></i>
              </span>
-                <span className="fa-stack fa-lg" title="Individual">
-             <i className="fa fa-user fa-2x"></i>
+                <span className="fa-stack fa-lg" title="entity_type">
+             { this.renderEntityTypeIcon }
              </span>
               </div>
               <div className="col-md-4 text-right">

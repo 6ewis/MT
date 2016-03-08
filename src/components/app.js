@@ -25,7 +25,6 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div>
-          <Header />
           {this.props.children}
         </div>
       </Provider>

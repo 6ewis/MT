@@ -4,7 +4,7 @@ import CurrentlySelectedEntities from './currentlySelectedEntities';
 export default (props) => {
    let myFlipContainer;
    return (
-     <div className="col-md-2">
+     <div>
        <br/>
        <br/>
        <div className="flip-container" id="flip-toggle" ref={(ref) => myFlipContainer = ref}>
@@ -22,7 +22,7 @@ export default (props) => {
            </div>
            <div className="front">
              <div className="jumbotron" style={{padding: '5px'}}>
-               <h4>Do you need any Help?</h4>
+               <h4><strong><center>INSTRUCTIONS</center></strong></h4>
                <ol>
                  <li><h5> Use the search bar to look for the entities that match a specific term</h5></li>
                  <li><h5> Select the entities that might be duplicates </h5>
@@ -34,7 +34,7 @@ export default (props) => {
                  <li><h5> Clik Next to continue the process</h5></li>
                </ol>
                <br/>
-               <i className="fa fa-list fa-2"
+               <i className="fa fa-remove fa-2"
                   onClick={() => myFlipContainer.classList.toggle('hover')}
                >
                </i>

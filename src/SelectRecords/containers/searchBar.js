@@ -25,15 +25,18 @@ class SearchBar extends Component {
   render() {
 
     return (
-      <div className="input-group col-md-12 input-group-lg">
-        <br/>
-        <input
+      <div className="input-group col-md-12 input-group-lg" style={{marginLeft: '10px'}}>
+         <input
           type="text"
           className="form-control"
           placeholder="Search Entity..."
           value={this.state.term}
           onChange={(event) => this.onInputChange(event.target.value)}
         />
+        <span className="input-group-addon">
+          <i className="fa fa-search">
+          </i>
+        </span>
       </div>
     );
   }

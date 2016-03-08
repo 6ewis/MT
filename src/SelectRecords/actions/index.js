@@ -13,7 +13,7 @@ export function fetchEntities(term = "") {
   }
 
   const request = $.ajax({
-    url: "http://api.lvh.me:3000/search?" + queryString(term),
+    url: "http://172.16.130.31:3000/search?" + queryString(term),
     dataType: 'json'
   });
 
