@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import RoundedSquareToDND from '../../../containers/roundedSquareToDND';
+import Dustin from '../../../containers/dustbin';
 
 export default (props) => {
   return (
@@ -13,9 +13,9 @@ export default (props) => {
       </div>
       <div id="collapseOne" className="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
         <div className="panel-body">
-          <RoundedSquareToDND name="Entity Type"/>
-          <RoundedSquareToDND name="Name"/>
-          <RoundedSquareToDND name="Sort Name"/>
+          <Dustin name="Entity Type"/>
+          <Dustin name="Name"/>
+          <Dustin name="Sort Name"/>
         </div>
       </div>
     </div>

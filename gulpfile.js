@@ -14,7 +14,7 @@ var babelify = require('babelify'); //transpiler es6
 //var buffer = require('vinyl-buffer');
 
 var config = {
-  port: 8888,
+  port: 9005,
   devBaseUrl: 'http://localhost',
   paths: {
     html: './src/*.html',
@@ -51,7 +51,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('js', function() {//presets so we have access to the spread operator
-  browserify(config.paths.mainJs, {debug: true})
+  browserify([require.resolve("babel/polyfill"), config.paths.mainJs], {debug: true})
     .transform(babelify)
     .bundle()
     .on('error', console.error.bind(console))

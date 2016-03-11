@@ -9,6 +9,7 @@
   "author": "Lewis Dackam",
   "license": "ISC",
   "dependencies": {
+    "babel-polyfill": "^6.7.2",
     "browserify": "^11.0.1",
     "connect-history-api-fallback": "^1.1.0",
     "es6-promise": "^3.0.2",

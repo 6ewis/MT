@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CorporatePersonTab from '../containers/corporatePersonTab/index.js';
+import CorporatePersonTab from './corporatePersonTab/index';
 
 export default (props) => {
   return (

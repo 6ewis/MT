@@ -1,38 +1,41 @@
-import React, {Component} from 'react';
+import React from 'react';
+import NameSidebar from '../components/sidebar/Name/index';
 
 export default (props) => {
   let styleHeader = {
     fontWeight: 'bold'
   };
 
-  let styleIcon = {
-  };
-
   let styleIconLabel = {
     marginBottom: '5%'
   };
+
+  //data ajax req to serve return with minimun possible data for the sidebar
+  //data coming from reducers depending on the accordion
+  let first_entity = {
+    id: "1231",
+    entity_type: "Individual",
+    name: "John Smith",
+    sort_name: "JOHN SMITH"
+  };
+  
+  let second_entity = {
+    id: "123331",
+    entity_type: "Company",
+    name: "John T. Smith",
+    sort_name: "SMITH T JOHN"
+  };
+
+  let content = [first_entity, second_entity];
 
   return (
     <div>
       <center>
       <br/>
       <div className="well well-lg">
-        <h4 style={styleHeader}> Entity Types </h4>
-          <i style={styleIcon} className="fa fa-user fa-3x"></i>
-          <div style={styleIconLabel}> Individual</div>
-          <i style={styleIcon} className="fa fa-building fa-3x"></i>
-          <div style={styleIconLabel}> Company </div>
-         <hr/>
-        <h4 style={styleHeader}> Names </h4>
-        John Smith (CP: 1231)
-        John T. Smith (CP: 123331)
-        <hr/>
-        <h4 style={styleHeader}> Sort Names </h4>
-        JOHN SMITH (CP: 1231)
-        SMITH T JOHN (CP: 1233)
-        <hr/>
+        <NameSidebar content={content} styleHeader={styleHeader} styleIconLabel={styleIconLabel}/>
       </div>
       </center>
-    </div>
+   </div>
      );
 };

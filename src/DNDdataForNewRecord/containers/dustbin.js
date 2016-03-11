@@ -5,7 +5,7 @@ export default (props) => {
        borderRadius: '10%',
        border: 'dotted #8AC007',
        padding: '2% 0 2% 0',
-       width: '20%',
+       width: '20%'
     };
 
   return (
