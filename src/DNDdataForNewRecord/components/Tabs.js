@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CorporatePersonTab from './corporatePersonTab/index';
+import StateOfCorporatePersonTab from '../containers/stateOfCorporatePersonTab';
 
 export default (props) => {
   return (
@@ -14,7 +14,7 @@ export default (props) => {
       </ul>
       {/*<!-- Tab panes --> */}
       <div className="tab-content">
-        <CorporatePersonTab />
+        <StateOfCorporatePersonTab />
 
         <div role="tabpanel" className="tab-pane" id="profile">
          ShareHolder Content

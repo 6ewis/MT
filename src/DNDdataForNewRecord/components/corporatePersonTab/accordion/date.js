@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 export default (props) => {
   return (
-  <div className="panel panel-default">
+  <div onClick={props.onClick} className="panel panel-default">
     <div className="panel-heading" role="tab" id="headingTwo">
       <h4 className="panel-title">
         <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">

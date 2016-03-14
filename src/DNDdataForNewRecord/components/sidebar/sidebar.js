@@ -1,5 +1,5 @@
 import React from 'react';
-import CurrentSidebarContent from './currentSidebarContent';
+import CurrentSidebarContent from '../../containers/currentSidebarContent';
 
 export default (props) => {
   let styleHeader = {
@@ -16,7 +16,6 @@ export default (props) => {
       <center>
       <br/>
       <div className="well well-lg">
-      { /* <NameSidebar content={content} styleHeader={styleHeader} styleIconLabel={styleIconLabel}/> */ }
         <CurrentSidebarContent />
       </div>
       </center>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({styleHeader, styleIconLabel, content}) => {
+export default ({styleHeader, styleIconLabel, content, opacity, connectDragSource}) => {
 
  let classEntityTypes = {
    'Individual': 'fa fa-user fa-3x',
@@ -17,7 +17,7 @@ export default ({styleHeader, styleIconLabel, content}) => {
 
   function renderEntityTypes() {
     let uniqEntityTypes = Array.from(getUniqueEntityTypes()).map((entityType, index) => {
-      return (<div key={index}>
+      return connectDragSource(<div style={{opacity}} key={index}>
                <i className={classEntityTypes[entityType]}>
                </i>
                <div style={styleIconLabel}> { entityType } </div>

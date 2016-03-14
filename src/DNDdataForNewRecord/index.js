@@ -4,8 +4,9 @@ import { createStore, applyMiddleware } from 'redux';
 import reduxPromise from 'redux-promise';
 
 import Tabs from './components/Tabs.js';
-import Sidebar from './containers/sidebar';
+import Sidebar from './components/sidebar/sidebar';
 import reducers from './reducers';
+import { initialize } from './actions/index';
 
 //should be defined outside the component - everytime SelectRecords re-renders it's recreating the store
 const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
@@ -17,6 +18,9 @@ class SelectRecords extends Component {
   }
 
   render() {
+
+    store.dispatch(initialize());
+
     return (
       <Provider store={store}>
         <div className="container-fluid">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { fetchEntities } from '../actions/index';
-import {bindActionCreators} from 'redux';
 
 import _ from 'lodash';
 
@@ -42,9 +42,9 @@ class SearchBar extends Component {
   }
 }
 
-  function mapDispatchToProps(dispatch) {
-    return bindActionCreators({fetchEntities}, dispatch);
-  }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({fetchEntities}, dispatch);
+}
 
 
 
