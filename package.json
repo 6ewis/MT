@@ -39,7 +39,15 @@
   "devDependencies": {
     "babelify": "^6.4.0",
     "browserify-shim": "^3.8.11",
-    "dexie": "^1.1.0"
+    "dexie": "^1.1.0",
+    "babel-core": "^6.0.20",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.0.15",
+    "babel-preset-react": "^6.0.15",
+    "babel-preset-stage-0": "^6.0.15",
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.6.2",
+    "babel-eslint": "^4.1.3"
   },
   "browser": {
     "jquery": "./node_modules/jquery/dist/jquery.js",

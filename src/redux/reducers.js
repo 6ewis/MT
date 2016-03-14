@@ -7,7 +7,7 @@ import _ from 'lodash';
 *THE REDUCERS BELOW ARE RELEVANT TO /SelectDataForNewRecord.js *
 ***************************************************************/
 let initialState = [];
-let reviewContentState =  {};
+let reviewContentState = {};
 
 function sidebar(state = [], action) {
   switch (action.type) {
@@ -26,11 +26,11 @@ function findCorrespondingIdThenReturnField(ID, field) {
   return _.result(_.find(initialState, {'CPREF': ID}), field);
 }
 
-function sidebarContent(state = [], action ){
+function sidebarContent(state = [], action ) {
   switch (action.type) {
    case 'LOAD_DATA':
-     initialState = action.data
-     return action.data
+     initialState = action.data;
+     return action.data;
    case 'DROP_ATTRIBUTE': 
     return state.map((item) =>
       {
@@ -49,12 +49,13 @@ function sidebarContent(state = [], action ){
    case 'RESET':
     return state.map((item) =>
       {
-        if (item.CPREF === action.cpref) { //apply to all attributes but irrelevant for entityType 
+        if (item.CPREF === action.cpref) { 
+          //apply to all attributes but irrelevant for entityType 
           let originalAttribute = findCorrespondingIdThenReturnField(action.cpref, action.attribute);
           return {...item, [action.attribute]: originalAttribute};
         } else if (action.attribute === "entityType") {
-          let originalEntityType = findCorrespondingIdThenReturnField(item.CPREF, action.attribute)
-          return {...item, [action.attribute]: originalEntityType}
+          let originalEntityType = findCorrespondingIdThenReturnField(item.CPREF, action.attribute);
+          return {...item, [action.attribute]: originalEntityType};
         }
           return item;
       });

@@ -2,7 +2,6 @@ import React from 'react';
 
 import {Route, IndexRoute} from 'react-router';
 //move the import of line 7-12 here for consistency
-
 const routes = (
     <Route path="/" component={require("./components/app.js")}>
       <IndexRoute component={require("./components/homePage.js")} />

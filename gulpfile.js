@@ -1,5 +1,4 @@
-"use strict"
-
+"use strict" 
 var gulp = require('gulp'); //task runner
 var connect = require('gulp-connect'); // Runs a local dev server
 var history = require('connect-history-api-fallback'); //middleware to proxy request through a specified index page
@@ -51,7 +50,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('js', function() {//presets so we have access to the spread operator
-  browserify([require.resolve("babel/polyfill"), config.paths.mainJs], {debug: true})
+  browserify(config.paths.mainJs, {debug: true})
     .transform(babelify)
     .bundle()
     .on('error', console.error.bind(console))

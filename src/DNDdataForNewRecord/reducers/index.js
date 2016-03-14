@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 const RootReducer = combineReducers({
-  entities: () => []
+  selectedAccordion: () => ''
 });
 
 export default RootReducer;
