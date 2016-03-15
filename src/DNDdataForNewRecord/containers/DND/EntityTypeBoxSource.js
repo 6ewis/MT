@@ -1,18 +1,12 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import EntityType from '../../components/sidebar/Name/entityType.js';
 import { DragSource } from 'react-dnd';
 
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend';
-
-
 const boxSource = {
   beginDrag(props) {
     return {
-      name: 'Individual'
+      value: 'Individual'
     };
   }
 };
@@ -35,4 +29,4 @@ class EntityTypeBoxSource extends Component {
     }
 }
 
-export default connect(null, null)(DragDropContext(HTML5Backend)(DragSource("Enity Type", boxSource, collect)(EntityTypeBoxSource)));
+export default DragSource("Entity Type", boxSource, collect)(EntityTypeBoxSource);

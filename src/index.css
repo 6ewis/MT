@@ -41,3 +41,8 @@
 .back {
 	transform: rotateY(180deg);
 }
+
+/* DNDdataForNewRecord */
+.hover:hover {
+  background: darkseagreen
+}

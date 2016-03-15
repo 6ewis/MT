@@ -10,12 +10,18 @@ export default (props) => {
     marginBottom: '5%'
   };
 
+  let styleCursor = {
+    cursor: 'move'
+  };
+
+  let style = {styleHeader, styleIconLabel, styleCursor};
+
   return (
     <div>
       <center>
       <br/>
       <div className="well well-lg">
-        <CurrentSidebarContent />
+        <CurrentSidebarContent {...style}/>
       </div>
       </center>
    </div>

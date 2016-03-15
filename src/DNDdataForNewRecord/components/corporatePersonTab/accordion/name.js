@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Dustin from '../../../containers/dustbin';
+import EntityTypeBoxTarget from '../../../containers/DND/EntityTypeBoxTarget.js';
 
 export default (props) => {
   return (
@@ -13,9 +13,10 @@ export default (props) => {
       </div>
       <div id="collapseOne" className="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
         <div className="panel-body">
-          <Dustin name="Entity Type"/>
-          <Dustin name="Name"/>
-          <Dustin name="Sort Name"/>
+          <EntityTypeBoxTarget name="Entity Type"/>
+          { /* <Dustin name="Name"/>
+               <Dustin name="Sort Name"/>
+           */}
         </div>
       </div>
     </div>

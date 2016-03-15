@@ -1,10 +1,10 @@
 import React from 'react';
 import EntityType from '../Name/entityType.js';
-import Source from '../../../containers/DND/source';
+import EntityTypeBoxSource from '../../../containers/DND/EntityTypeBoxSource.js';
 
 export default (props) => {
 
-  let {styleHeader, styleIconLabel, content } = props;
+  let {styleHeader, content } = props;
 
   function getUniqueEntityTypes() {
    let entitiesTypes = content.map( function(item) {
@@ -16,7 +16,7 @@ export default (props) => {
 
   function renderEntityTypes() {
     let uniqEntityTypes = Array.from(getUniqueEntityTypes()).map((entityType, index) => {
-      return (<Source entityType={entityType}
+      return (<EntityTypeBoxSource entityType={entityType}
                           key={index} {...props} />
              );
      });

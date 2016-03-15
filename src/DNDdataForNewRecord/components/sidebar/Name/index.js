@@ -3,14 +3,14 @@ import ListOfEntityTypes from './listOfEntitTypes';
 import ListOfNames from './listOfNames';
 import ListOfSortNames from './listOfSortNames';
 
-export default ({content, styleHeader, styleIconLabel}) => {
+export default (props) => {
   return (
     <div>
-        <ListOfEntityTypes content={content} styleHeader={styleHeader} styleIconLabel={styleIconLabel}/>
+        <ListOfEntityTypes {...props}/>
         <hr/>
-        <ListOfNames content={content} styleHeader={styleHeader} styleIconLabel={styleIconLabel}/>
+        <ListOfNames {...props}/>
         <hr/>
-        <ListOfSortNames content={content} styleHeader={styleHeader} styleIconLabel={styleIconLabel}/>
+        <ListOfSortNames {...props}/>
         <hr/>
    </div>
      );
