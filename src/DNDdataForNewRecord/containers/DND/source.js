@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import EntityTypes from '../../components/sidebar/Name/entityTypes.js';
+import EntityType from '../../components/sidebar/Name/entityType.js';
 import { DragSource } from 'react-dnd';
 
 import { DragDropContext } from 'react-dnd';
@@ -27,9 +27,10 @@ function collect(connect, monitor) {
 class StateOfEntityTypes extends Component {
     render() {
       let opacity = this.props.isDragging ? 0.4 : 1;
-      let newProps = Object.assign({}, this.props, {opacity: opacity});
+      let color = this.props.isDragging ? "#A9B5AC" : "";
+      let newProps = Object.assign({}, this.props, {opacity: opacity, backgroundColor: color});
       return (
-        <EntityTypes {...newProps} />
+        <EntityType {...newProps} />
       );
     }
 }

@@ -10,7 +10,6 @@ export default (props) => {
     marginBottom: '5%'
   };
 
-
   return (
     <div>
       <center>
