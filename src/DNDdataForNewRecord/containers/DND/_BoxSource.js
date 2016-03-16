@@ -4,7 +4,7 @@ import { DragSource } from 'react-dnd';
 const boxSource = {
   beginDrag(props) {
     return {
-      value: props.entityType
+      value: props._valueSource
     };
   }
 };

@@ -1,13 +1,12 @@
 import React from 'react';
+import Name from './name';
+import _BoxSource from '../../../containers/DND/_BoxSource';
 
-export default ({styleHeader, styleIconLabel, content}) => {
+export default ({styleHeader, content}) => {
    function renderNames() {
      let names = content.map(({name, id}, index) => {
-         return (
-             <div key={index}>
-               {`${name} (CP: ${id})`}
-             </div>
-         );
+       let newProps = Object.assign({}, {}, {_valueSource: name, name: name, id: id, key: index});
+         return React.createElement(_BoxSource('Name', Name), newProps);
      });
 
      return (

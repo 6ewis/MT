@@ -7,8 +7,8 @@ export default class DustbinSmartComponent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let {didDrop, item} = nextProps;
-    if (didDrop === true) { this.setState({item: item.value}); }
+    let {didDrop, item, getItemType, name} = nextProps;
+    if ((didDrop === true) && (getItemType === name)) { this.setState({item: item.value}); }
   }
 
   style() {
@@ -46,12 +46,12 @@ export default class DustbinSmartComponent extends Component {
   }
 
   render() {
-   let {connectDropTarget, name} = this.props;
+   let {connectDropTarget, name, getItemType} = this.props;
 
    return connectDropTarget(
      <div>
        <h4><strong> {name + ":"} </strong></h4>
-       {this.state.item ?
+       {(this.state.item) ?
          this.renderWhenItemDropped() :
          this.renderContainerBox()
        }

@@ -1,6 +1,6 @@
 import React from 'react';
 //styleIconLabel should be in this component
-export default ( {backgroundColor, index,
+export default ( {backgroundColor,
                   styleIconLabel, styleCursor,
                   opacity, connectDragSource, entityType}
                ) => {
@@ -12,7 +12,7 @@ export default ( {backgroundColor, index,
   let cursor = styleCursor.cursor;
 
   return connectDragSource(
-     <div className='hover' style={{opacity, backgroundColor, cursor}} key={index}>
+     <div className='hover' style={{opacity, backgroundColor, cursor}}>
             <i className={classEntityTypes[entityType]}>
             </i>
             <div style={styleIconLabel}>

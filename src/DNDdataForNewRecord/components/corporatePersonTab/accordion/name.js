@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
-import EntityTypeBoxTarget from '../../../containers/DND/entityType/entityTypeBoxTarget.js';
+import Dustbin from './shared/dustbin';
+import _BoxTarget from '../../../containers/DND/_BoxTarget';
 
 export default (props) => {
+  function renderDropTargetOf(Type, Element, newProp) {
+    return React.createElement(_BoxTarget(Type, Element), newProp);
+  }
+
   return (
     <div onClick={props.onClick} className="panel panel-default">
       <div className="panel-heading" role="tab" id="headingOne">
@@ -13,10 +18,9 @@ export default (props) => {
       </div>
       <div id="collapseOne" className="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
         <div className="panel-body">
-          <EntityTypeBoxTarget name="Entity Type"/>
-          { /* <Dustin name="Name"/>
-               <Dustin name="Sort Name"/>
-           */}
+          {renderDropTargetOf('Entity Type', Dustbin, {name: 'Entity Type'})}
+          {renderDropTargetOf('Name', Dustbin, {name: 'Name'})}
+          {renderDropTargetOf('Sort Name', Dustbin, {name: 'Sort Name'})}
         </div>
       </div>
     </div>

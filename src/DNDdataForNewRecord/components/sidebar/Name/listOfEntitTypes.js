@@ -10,7 +10,7 @@ export default (props) => {
 
   function getUniqueEntityTypes() {
    let entitiesTypes = content.map( function(item) {
-      return item.entity_type;
+      return item.entityType;
      });
 
      return new Set(entitiesTypes);
@@ -18,7 +18,7 @@ export default (props) => {
 
   function renderEntityTypes() {
     let uniqEntityTypes = Array.from(getUniqueEntityTypes()).map((entityType, index) => {
-      let newProps = Object.assign({}, props, {entityType: entityType, key: index});
+      let newProps = Object.assign({}, props, {_valueSource: entityType, entityType: entityType, key: index});
       return React.createElement(_BoxSource('Entity Type', EntityType), newProps);
     });
 
