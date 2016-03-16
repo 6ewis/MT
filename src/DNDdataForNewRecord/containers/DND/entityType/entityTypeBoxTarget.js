@@ -1,7 +1,6 @@
 import React, {PropTypes, Component} from 'react';
 
-import Dustbin from '../../components/corporatePersonTab/accordion/shared/dustbin';
-import StateOfCorporatePersonTab from '../stateOfCorporatePersonTab';
+import Dustbin from '../../../components/corporatePersonTab/accordion/shared/dustbin';
 import { DropTarget } from 'react-dnd';
 
 const boxTarget = {

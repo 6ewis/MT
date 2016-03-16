@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import EntityTypeBoxTarget from '../../../containers/DND/EntityTypeBoxTarget.js';
+import EntityTypeBoxTarget from '../../../containers/DND/entityType/entityTypeBoxTarget.js';
 
 export default (props) => {
   return (

@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-
-import EntityType from '../../components/sidebar/Name/entityType.js';
 import { DragSource } from 'react-dnd';
 
 const boxSource = {
   beginDrag(props) {
     return {
-      value: 'Individual'
+      value: props.entityType
     };
   }
 };
@@ -18,15 +16,19 @@ function collect(connect, monitor) {
   };
 }
 
-class EntityTypeBoxSource extends Component {
-    render() {
+let ComponentSource = (OriginalComponent) => {
+  return class extends Component {
+     render() {
       let opacity = this.props.isDragging ? 0.4 : 1;
       let color = this.props.isDragging ? "ghostwhite" : "";
       let newProps = Object.assign({}, this.props, {opacity: opacity, backgroundColor: color});
       return (
-        <EntityType {...newProps} />
+        <OriginalComponent {...newProps} />
       );
     }
-}
+  };
+};
 
-export default DragSource("Entity Type", boxSource, collect)(EntityTypeBoxSource);
+export default (Type, OriginalComponent) => {
+  return DragSource(Type, boxSource, collect)(ComponentSource(OriginalComponent));
+};

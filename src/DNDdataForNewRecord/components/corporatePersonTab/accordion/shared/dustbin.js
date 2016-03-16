@@ -31,7 +31,7 @@ export default class DustbinSmartComponent extends Component {
   }
 
   renderWhenItemDropped() {
-    return <h4 style={{color:'#337ab7', fontFamily: "cursive"}}>{this.state.item}</h4>;
+    return <h4 style={{color: '#337ab7', fontFamily: "Times New Roman"}}>{this.state.item}</h4>;
   }
 
   renderContainerBox() {
