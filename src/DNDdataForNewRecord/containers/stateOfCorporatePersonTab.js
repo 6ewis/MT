@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { selectAccordion } from '../actions/index';
+import { selectAccordion, clickX } from '../actions/index';
 import CorporatePersonTab from '../components/corporatePersonTab/index';
 
 class StateOfCorporatePersonTab extends Component {
@@ -13,7 +13,8 @@ class StateOfCorporatePersonTab extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({selectAccordion}, dispatch);
+  return bindActionCreators({selectAccordion,
+                             clickX}, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(StateOfCorporatePersonTab);

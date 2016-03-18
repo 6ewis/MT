@@ -4,7 +4,9 @@ import { DragSource } from 'react-dnd';
 const boxSource = {
   beginDrag(props) {
     return {
-      value: props._valueSource
+      attribute: props._draggedItem.attribute,
+      value: props._draggedItem.value,
+      id: props._draggedItem.id
     };
   }
 };

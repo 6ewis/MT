@@ -18,7 +18,8 @@ export default (props) => {
 
   function renderEntityTypes() {
     let uniqEntityTypes = Array.from(getUniqueEntityTypes()).map((entityType, index) => {
-      let newProps = Object.assign({}, props, {_valueSource: entityType, entityType: entityType, key: index});
+      let draggedItem = {attribute: 'entityType', value: entityType};
+      let newProps = Object.assign({}, props, {_draggedItem: draggedItem, entityType: entityType, key: index});
       return React.createElement(_BoxSource('Entity Type', EntityType), newProps);
     });
 

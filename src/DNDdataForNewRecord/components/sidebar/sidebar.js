@@ -11,7 +11,7 @@ export default (props) => {
   };
 
   let styleCursor = {
-    cursor: 'move'
+    cursor: 'pointer'
   };
 
   let style = {styleHeader, styleIconLabel, styleCursor};

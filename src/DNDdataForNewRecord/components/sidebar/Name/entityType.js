@@ -10,9 +10,11 @@ export default ( {backgroundColor,
    };
 
   let cursor = styleCursor.cursor;
-
+  let paddingTop = '2%'
+  let paddingBottom = '1%'
   return connectDragSource(
-     <div className='hover' style={{opacity, backgroundColor, cursor}}>
+     <div style={{opacity, backgroundColor, cursor, paddingTop, paddingBottom}} 
+          className='hover'>
             <i className={classEntityTypes[entityType]}>
             </i>
             <div style={styleIconLabel}>

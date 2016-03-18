@@ -3,12 +3,12 @@ import React, {Component} from 'react';
 export default class DustbinSmartComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {item: null};
+    this.state = {value: null, id: null, attribute: null};
   }
 
   componentWillReceiveProps(nextProps) {
-    let {didDrop, item, getItemType, name} = nextProps;
-    if ((didDrop === true) && (getItemType === name)) { this.setState({item: item.value}); }
+    let {didDrop, item, getItemType, title} = nextProps;
+    if ((didDrop === true) && (getItemType === title)) { this.setState({value: item.value, id: item.id, attribute: item.attribute}); }
   }
 
   style() {
@@ -22,16 +22,20 @@ export default class DustbinSmartComponent extends Component {
   }
 
   renderIfActive() {
-     return <center><h4 style={{color: "#337ab7"}}> Release to drop </h4></center>;
+     return <center><small style={{color: "#337ab7"}}> Release to drop </small></center>;
    }
 
   renderIfNotActive() {
-     let {didDrop, item} = this.props;
      return <center><small> Drag and Drop here! </small></center>;
   }
 
   renderWhenItemDropped() {
-    return <h4 style={{color: '#337ab7', fontFamily: "Times New Roman"}}>{this.state.item}</h4>;
+    let {clickX} = this.props;
+    return <div>
+             <h4 style={{color: '#337ab7', fontFamily: "Times New Roman"}}>
+               {this.state.value} <i onClick={() => {clickX(this.state); this.setState({value: null}); }} style={{color: 'firebrick', cursor: 'pointer'}} className="fa fa-times"></i>
+             </h4>
+          </div>;
   }
 
   renderContainerBox() {
@@ -46,12 +50,12 @@ export default class DustbinSmartComponent extends Component {
   }
 
   render() {
-   let {connectDropTarget, name, getItemType} = this.props;
+   let {connectDropTarget, title, getItemType} = this.props;
 
    return connectDropTarget(
      <div>
-       <h4><strong> {name + ":"} </strong></h4>
-       {(this.state.item) ?
+       <h4><strong> {title + ":"} </strong></h4>
+       {(this.state.value) ?
          this.renderWhenItemDropped() :
          this.renderContainerBox()
        }

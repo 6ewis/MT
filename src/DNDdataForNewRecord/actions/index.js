@@ -1,5 +1,7 @@
 export const SELECT_ACCORDION = 'SELECT_ACCORDION';
 export const INITIALIZE = 'INITIALIZE';
+export const DROP_ITEM = 'DROP_ITEM';
+export const CLICK_X = 'CLICK_X';
 //
   //data ajax req to serve return with minimun possible data for the sidebar
   //data coming from reducers depending on the accordion
@@ -29,6 +31,21 @@ export function selectAccordion(selectedAccordion) {
   return {
     type: SELECT_ACCORDION,
     payload: selectedAccordion
+  };
+}
+
+export function clickX(selectedItem) {
+  console.log('Im in the action', selectedItem);
+  return {
+    type: CLICK_X,
+    payload: selectedItem
+  };
+}
+
+export function dropItem(item) {
+  return {
+    type: DROP_ITEM,
+    payload: item
   };
 }
 

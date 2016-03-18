@@ -1,9 +1,17 @@
 import React, {Component} from 'react';
+//DND
 import { DropTarget } from 'react-dnd';
+//Redux
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { dropItem } from '../../actions/index';
+
 
 const boxTarget = {
    drop(props, monitor) {
      console.log("Thanks for dropping: ", monitor.getItem());
+     let dispatchDropItem = props.dropItem;
+     dispatchDropItem(monitor.getItem());
    }
 };
 
@@ -39,6 +47,11 @@ let ComponentTarget = (DestinationComponent) => {
   };
 };
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({dropItem}, dispatch);
+}
+
 export default (Type, DestinationComponent) => {
-  return DropTarget(Type, boxTarget, collect)(ComponentTarget(DestinationComponent));
+  let Partial = DropTarget(Type, boxTarget, collect)(ComponentTarget(DestinationComponent));
+  return connect(null, mapDispatchToProps)(Partial);
 };
