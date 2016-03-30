@@ -10,8 +10,8 @@ export default ( {backgroundColor,
    };
 
   let cursor = styleCursor.cursor;
-  let paddingTop = '2%'
-  let paddingBottom = '1%'
+  let paddingTop = '2%';
+  let paddingBottom = '1%';
   return connectDragSource(
      <div style={{opacity, backgroundColor, cursor, paddingTop, paddingBottom}} 
           className='hover'>

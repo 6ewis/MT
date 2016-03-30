@@ -1,7 +1,5 @@
 import React from 'react';
 import EntityType from '../Name/entityType.js';
-//import EntityTypeBoxSource from '../../../containers/DND/entityType/entityTypeBoxSource.js';
-
 import _BoxSource from '../../../containers/DND/_BoxSource';
 
 export default (props) => {
@@ -20,7 +18,7 @@ export default (props) => {
     let uniqEntityTypes = Array.from(getUniqueEntityTypes()).map((entityType, index) => {
       let draggedItem = {attribute: 'entityType', value: entityType};
       let newProps = Object.assign({}, props, {_draggedItem: draggedItem, entityType: entityType, key: index});
-      return React.createElement(_BoxSource('Entity Type', EntityType), newProps);
+      return React.createElement(_BoxSource('Entity Types', EntityType), newProps);
     });
 
    return (

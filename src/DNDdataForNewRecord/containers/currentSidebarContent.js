@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
-import ContentWithDates from '../components/sidebar/Dates/index';
+import ContentWithDates from '../components/sidebar/dates';
 import ContentWithNames from '../components/sidebar/Name/index';
+import ContentWithDomicileNationalityResidence from '../components/sidebar/domicileNationalityResidence';
+import ContentWithPhoneFax from '../components/sidebar/phoneFax';
+import ContentWithAddress from '../components/sidebar/address';
 
 import { connect } from 'react-redux';
 
@@ -10,6 +13,12 @@ function selectContent(selectedAccordion, sidebarContent) {
      return <ContentWithDates content={sidebarContent}/>;
    case 'Names':
      return <ContentWithNames content={sidebarContent}/>;
+   case 'Domicile/Nationality/Residence':
+     return <ContentWithDomicileNationalityResidence content={sidebarContent}/>;
+   case 'Phone/Fax':
+     return <ContentWithPhoneFax content={sidebarContent}/>;
+   case 'Address':
+     return <ContentWithAddress content={sidebarContent}/>;
    default:
      return <ContentWithNames content={sidebarContent}/>;
   }

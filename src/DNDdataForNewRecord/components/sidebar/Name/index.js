@@ -1,16 +1,34 @@
 import React from 'react';
 import ListOfEntityTypes from './listOfEntitTypes';
-import ListOfNames from './listOfNames';
-import ListOfSortNames from './listOfSortNames';
+import ListOf from '../shared/_ListOfAttributes';
+import _Attribute from '../shared/_attribute';
+
 
 export default (props) => {
+  let namesOptions = {
+    attributeName: 'name',
+    attributeTitle: 'Names',
+    boxSourceType: 'Names',
+    boxSourceComponent: _Attribute,
+    ...props
+  };
+
+  let sortNamesOptions = {
+   attributeName: 'sortName',
+   attributeTitle: 'Sort Names',
+   boxSourceType: 'Sort Names',
+   boxSourceComponent: _Attribute,
+   ...props
+   };
+
+
   return (
     <div>
         <ListOfEntityTypes {...props}/>
         <hr/>
-        <ListOfNames {...props}/>
+        <ListOf {...namesOptions}/>
         <hr/>
-        <ListOfSortNames {...props}/>
+        <ListOf {...sortNamesOptions}/>
         <hr/>
    </div>
      );

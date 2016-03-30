@@ -12,7 +12,16 @@ export const CLICK_X = 'CLICK_X';
     name: "John Smith",
     sortName: "JOHN SMITH",
     birthDate: "23/21/10",
-    deathDate: "00/03/33"
+    deathDate: "00/03/33",
+    domicile: "British Virgin Islands",
+    residence: "British Virgin Islands",
+    nationality: "Italian",
+    phone: "1-988-123-1234",
+    fax: "716-234-530",
+    city: "Burlington",
+    province: "New Jersey",
+    zipCode: "08016",
+    country: "USA"
   };
   
   let second_entity = {
@@ -21,8 +30,16 @@ export const CLICK_X = 'CLICK_X';
     name: "John T. Smith",
     sortName: "SMITH T JOHN",
     birthDate: "25/21/10",
-    deathDate: "01/03/33"
-
+    deathDate: "01/03/33",
+    domicile: "Mexico",
+    residence: "England",
+    nationality: "South African",
+    phone: "1-788-443-5534",
+    fax: "812-333-430",
+    city: "Hamptons",
+    province: "New York",
+    zipCode: "10791",
+    country: "USA"
   };
 
   let content = {entities: [first_entity, second_entity]};

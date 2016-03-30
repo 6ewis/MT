@@ -39,7 +39,7 @@ export default class DustbinSmartComponent extends Component {
   }
 
   renderContainerBox() {
-    return (
+    return this.props.connectDropTarget(
       <div style={this.style()}>
         {this.props.isActive ?
           this.renderIfActive() :
@@ -50,11 +50,9 @@ export default class DustbinSmartComponent extends Component {
   }
 
   render() {
-   let {connectDropTarget, title, getItemType} = this.props;
-
-   return connectDropTarget(
+   return (
      <div>
-       <h4><strong> {title + ":"} </strong></h4>
+       <h4><strong> {this.props.title} </strong></h4>
        {(this.state.value) ?
          this.renderWhenItemDropped() :
          this.renderContainerBox()
