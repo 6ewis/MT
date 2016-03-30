@@ -17,17 +17,12 @@
 .flipper {
 	transition: 0.6s;
 	transform-style: preserve-3d;
-
 	position: relative;
 }
 
 /* hide back of pane during swap */
 .front, .back {
 	backface-visibility: hidden;
-
-	position: absolute;
-	top: 0;
-	left: 0;
 }
 
 /* front pane, placed above back */
@@ -35,6 +30,9 @@
 	z-index: 2;
 	/* for firefox 31 */
 	transform: rotateY(0deg);
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 /* back, initially hidden pane */
@@ -43,6 +41,23 @@
 }
 
 /* DNDdataForNewRecord */
-.hover:hover {
+.DNDhover:hover {
   background: darkseagreen
 }
+
+.panel-heading a:after {
+    font-family:'Glyphicons Halflings';
+    content:"\e114";
+    float: right;
+    color: grey;
+}
+
+.panel-heading a.collapsed:after {
+  content:"\e080";
+}
+
+.panel-heading {
+  cursor: pointer;
+  background-color: darkgray;
+}
+

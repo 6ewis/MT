@@ -21,10 +21,10 @@ class SelectRecords extends Component {
     return (
       <Provider store={store}>
         <div className="container-fluid">
-          <div className="col-md-2">
+          <div className="col-md-3">
              <Sidebar />
           </div>
-          <div className="col-md-10">
+          <div className="col-md-9">
             <br/>
             <SearchBar />
             <br/>

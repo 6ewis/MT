@@ -10,7 +10,6 @@ export default (props) => {
        <div className="flip-container" id="flip-toggle" ref={(ref) => myFlipContainer = ref}>
          <div className="flipper">
            <div className="back">
-             <div className="jumbotron" style={{padding: '5px'}}>
                <div className="list-group">
                  <CurrentlySelectedEntities />
                </div>
@@ -18,10 +17,9 @@ export default (props) => {
                <i className="fa fa-question-circle fa-2"
                   onClick={() => myFlipContainer.classList.toggle('hover')}>
                </i>
-             </div>
            </div>
            <div className="front">
-             <div className="jumbotron" style={{padding: '5px'}}>
+             <div className="well well-lg">
                <h4><strong><center>INSTRUCTIONS</center></strong></h4>
                <ol>
                  <li><h5> Use the search bar to look for the entities that match a specific term</h5></li>
