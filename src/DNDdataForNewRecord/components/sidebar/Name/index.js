@@ -14,7 +14,7 @@ export default (props) => {
   };
 
   let sortNamesOptions = {
-   attributeName: 'sortName',
+   attributeName: 'sort_name',
    attributeTitle: 'Sort Names',
    boxSourceType: 'Sort Names',
    boxSourceComponent: _Attribute,

@@ -4,7 +4,7 @@ import _Attribute from './shared/_attribute';
 
 export default (props) => {
   let birthDatesOptions = {
-    attributeName: 'birthDate',
+    attributeName: 'birth_date',
     attributeTitle: 'Birth Dates',
     boxSourceType: 'Birth Dates',
     boxSourceComponent: _Attribute,
@@ -12,7 +12,7 @@ export default (props) => {
   };
 
   let deathDatesOptions = {
-   attributeName: 'deathDate',
+   attributeName: 'death_date',
    attributeTitle: 'Death Dates',
    boxSourceType: 'Death Dates',
    boxSourceComponent: _Attribute,

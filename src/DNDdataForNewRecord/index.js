@@ -16,13 +16,9 @@ const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
 class DNDdataForNewRecord extends Component {
-  constructor(props) {
-    super(props);
-  }
+   render() {
 
-  render() {
-
-    store.dispatch(initialize());
+    store.dispatch(initialize(this.props.location.state));
 
     return (
       <Provider store={store}>

@@ -66,9 +66,9 @@ export function dropItem(item) {
   };
 }
 
-export function initialize() {
+export function initialize(initialData) {
   return {
     type: INITIALIZE,
-    payload: content.entities
+    payload: initialData.selectedEntities
   };
 }

@@ -8,7 +8,7 @@ export default (props) => {
 
   function getUniqueEntityTypes() {
    let entitiesTypes = content.map( function(item) {
-      return item.entityType;
+      return item.entity_type;
      });
 
      return new Set(entitiesTypes);
@@ -16,8 +16,11 @@ export default (props) => {
 
   function renderEntityTypes() {
     let uniqEntityTypes = Array.from(getUniqueEntityTypes()).map((entityType, index) => {
-      let draggedItem = {attribute: 'entityType', value: entityType};
-      let newProps = Object.assign({}, props, {_draggedItem: draggedItem, entityType: entityType, key: index});
+      let draggedItem = {attribute: 'entity_type', value: entityType};
+      let newProps = Object.assign({}, props, {
+        _draggedItem: draggedItem, 
+        entityType: entityType, 
+        key: index});
       return React.createElement(_BoxSource('Entity Types', EntityType), newProps);
     });
 

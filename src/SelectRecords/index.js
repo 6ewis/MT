@@ -7,14 +7,25 @@ import SearchBar from './containers/searchBar';
 import Sidebar from './containers/sidebar';
 import ListOfEntities from './containers/listOfEntities';
 import reducers from './reducers';
+import R from 'ramda';
+import { Link } from 'react-router';
 
 //should be defined outside the component - everytime SelectRecords re-renders it's recreating the store
 const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
 class SelectRecords extends Component {
-  constructor(props) {
-    super(props);
+  renderNextButton() {
+    let {selectedEntities} = store.getState();
+    if (!R.isEmpty(selectedEntities)) {
+      return <div style={{marginTop: '5%'}} className="col-md-5 col-md-offset-7">
+               <Link to="/SelectDataForNewRecord"
+                     state={{selectedEntities: selectedEntities}}
+                     className='btn btn-default btn-lg btn-block'>
+                     Next
+               </Link>
+             </div>;
+    }
   }
 
   render() {
@@ -29,10 +40,10 @@ class SelectRecords extends Component {
             <SearchBar />
             <br/>
             <ListOfEntities />
+            {this.renderNextButton()}
           </div>
         </div>
       </Provider>
-
            );
   }
 }

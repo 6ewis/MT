@@ -5,8 +5,8 @@ export default ( {backgroundColor,
                   opacity, connectDragSource, entityType}
                ) => {
   let classEntityTypes = {
-    'Individual': 'fa fa-user fa-3x',
-    'Company': 'fa fa-building-o fa-3x'
+    'I': 'fa fa-user fa-3x',
+    'C': 'fa fa-building-o fa-3x'
    };
 
   let cursor = styleCursor.cursor;
@@ -14,7 +14,7 @@ export default ( {backgroundColor,
   let paddingBottom = '1%';
   return connectDragSource(
      <div style={{opacity, backgroundColor, cursor, paddingTop, paddingBottom}} 
-          className='hover'>
+          className='DNDhover'>
             <i className={classEntityTypes[entityType]}>
             </i>
             <div style={styleIconLabel}>

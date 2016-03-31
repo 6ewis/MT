@@ -10,10 +10,10 @@ class ListOfEntities extends Component {
   }
 
   renderEntityTypeIcon() {
-    if (this.props.entity_type_code === 'I') {
+    if (this.props.entity_type === 'I') {
       return <i className="fa fa-user fa-2x"></i>;
     }
-    else if (this.props.entity_type_code === 'C') {
+    else if (this.props.entity_type === 'C') {
       return <i className="fa fa-building fa-2x"></i>;
     }
   }
@@ -28,12 +28,12 @@ class ListOfEntities extends Component {
        } 
      };
 
-     let {address_line_1, address_line_2, address_line_3, address_line_4, province, postal_code, country, cpname, id} = entity;
+     let {address_line_1, address_line_2, address_line_3, address_line_4, province, postal_code, country, name, id} = entity;
      return <div key={id} className="twbs-container-fluid" style={{ paddingTop: '10px'}}>
         <div className="twbs-row-fluid entity" style={{padding: '10px 10px 10px 10px' }}>
           <div className="col-md-12" style={{ backgroundColor: styleBackground(), paddingBottom: '10px', paddingTop: '10px'}}>
             <h3 style={{ marginTop: '0px' }}>
-            <a className="h3" href="#">{cpname}</a> 
+            <a className="h3" href="#">{name}</a> 
             <small>&nbsp;[{id}]</small></h3> 
             <em className="aliases">Placeholder for aliases</em> 
             {/* <!--- Icons and selection button --->*/}

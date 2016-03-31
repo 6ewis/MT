@@ -20,7 +20,7 @@ class selectedEntity extends Component {
   }
 
   render() {
-    let {id, cpname} = this.props.entity;
+    let {id, name} = this.props.entity;
 
     return (
       <a href="#"
@@ -33,7 +33,7 @@ class selectedEntity extends Component {
         <span className="badge">
           {id}
         </span>
-          {cpname}
+          {name}
       </a>
            );
   }

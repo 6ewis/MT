@@ -20,7 +20,7 @@ export default (props) => {
    };
 
   let zipCodesOptions = {
-   attributeName: 'zipCode',
+   attributeName: 'zip_code',
    attributeTitle: 'ZipCodes',
    boxSourceType: 'ZipCodes',
    boxSourceComponent: _Attribute,
