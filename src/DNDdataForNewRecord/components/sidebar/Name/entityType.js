@@ -1,12 +1,13 @@
 import React from 'react';
-//styleIconLabel should be in this component
+
 export default ( {backgroundColor,
                   styleIconLabel, styleCursor,
                   opacity, connectDragSource, entityType}
                ) => {
+
   let classEntityTypes = {
-    'I': 'fa fa-user fa-3x',
-    'C': 'fa fa-building-o fa-3x'
+    'Individual': 'fa fa-user fa-3x',
+    'Company': 'fa fa-building-o fa-3x'
    };
 
   let cursor = styleCursor.cursor;

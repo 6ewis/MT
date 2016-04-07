@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import { Accordion } from 'react-bootstrap';
 import _AccordionHeader from './accordion/shared/_accordion_header.js';
+import { NameTypes, DateTypes, DomicileTypes, PhoneFaxTypes, AddressTypes } from '../../config/DNDTargetTypes';
 
 export default (props) => {
    let Name = {
      dispatchSelectAccordionValue: 'Names',
      header: 'Names',
-     dropTargetTypes: ['Entity Types', 'Names', 'Sort Names'],
+     dropTargetTypes: NameTypes,
      eventKey: '1',
      ...props
    };
@@ -15,7 +16,7 @@ export default (props) => {
     dispatchSelectAccordionValue: 'Dates',
     header: 'Dates',
     eventKey: '2',
-    dropTargetTypes: ['Birth Dates', 'Death Dates'],
+    dropTargetTypes: DateTypes,
     ...props
    };
 
@@ -24,7 +25,7 @@ export default (props) => {
      dispatchSelectAccordionValue: 'Domicile/Nationality/Residence',
      header: 'Domicile/Nationality/Residence',
      eventKey: '3',
-     dropTargetTypes: ['Domiciles', 'Nationalities', 'Residences'],
+     dropTargetTypes: DomicileTypes,
      ...props
    };
 
@@ -32,7 +33,7 @@ export default (props) => {
      dispatchSelectAccordionValue: 'Phone/Fax',
      header: 'Phone/Fax',
      eventKey: '4',
-     dropTargetTypes: ['Phones', 'Faxes'],
+     dropTargetTypes: PhoneFaxTypes,
      ...props
     };
 
@@ -40,7 +41,7 @@ export default (props) => {
      dispatchSelectAccordionValue: 'Address',
      header: 'Address',
      eventKey: '5',
-     dropTargetTypes: ['Cities', 'Provinces', 'ZipCodes', 'Countries'],
+     dropTargetTypes: AddressTypes,
      ...props
    };
 

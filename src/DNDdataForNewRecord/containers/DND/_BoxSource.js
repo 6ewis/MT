@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { DragSource } from 'react-dnd';
+import R from 'ramda';
 
 const boxSource = {
   beginDrag(props) {
@@ -31,6 +32,6 @@ let ComponentSource = (OriginalComponent) => {
   };
 };
 
-export default (Type, OriginalComponent) => {
+export default R.memoize((Type, OriginalComponent) => {
   return DragSource(Type, boxSource, collect)(ComponentSource(OriginalComponent));
-};
+});

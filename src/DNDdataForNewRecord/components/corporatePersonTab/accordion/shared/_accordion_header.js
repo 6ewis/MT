@@ -18,20 +18,18 @@ export default (props) => {
     let {clickX, dropTargetTypes} = props;
 
     return dropTargetTypes.map((x, index) => {
-      return <span key={index}>
-               { renderDropTargetOf(x, Dustbin, {title: x, clickX: clickX}) }
-             </span>;
+      return renderDropTargetOf(x, Dustbin, {title: x, clickX: clickX, key: index});
       //the title of the dustin shown on the UI is equivalent to the drop target types
       //that _BoxSource and _BoxTarget  use
     });
   }
 
-  let header = <span onClick= {handleOnClick.bind(this)}>
+  let header = <span onClick= {handleOnClick}>
                        { props.header }
                </span>;
 
   return (
-      <Panel {...props} header= {header}>
+      <Panel {...props} header={header} className={props.expanded && 'panel-expanded'}>
         {renderDropTargets()}
       </Panel>
     );

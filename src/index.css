@@ -41,10 +41,12 @@
 }
 
 /* DNDdataForNewRecord */
+/**********************/
 .DNDhover:hover {
   background: darkseagreen
 }
 
+/* icons for accordion */
 .panel-heading a:after {
     font-family:'Glyphicons Halflings';
     content:"\e114";
@@ -56,8 +58,12 @@
   content:"\e080";
 }
 
+/* accordion bg color */
 .panel-heading {
   cursor: pointer;
   background-color: darkgray;
 }
 
+.panel-default.panel-expanded > .panel-heading{
+  background-color: #337ab7;
+}

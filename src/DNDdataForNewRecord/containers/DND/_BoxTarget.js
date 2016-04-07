@@ -5,6 +5,7 @@ import { DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { dropItem } from '../../actions/index';
+import R from 'ramda';
 
 
 const boxTarget = {
@@ -51,7 +52,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({dropItem}, dispatch);
 }
 
-export default (Type, DestinationComponent) => {
+export default R.memoize((Type, DestinationComponent) => {
   let Partial = DropTarget(Type, boxTarget, collect)(ComponentTarget(DestinationComponent));
   return connect(null, mapDispatchToProps)(Partial);
-};
+});

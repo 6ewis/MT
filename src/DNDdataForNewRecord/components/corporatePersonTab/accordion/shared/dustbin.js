@@ -32,7 +32,7 @@ export default class DustbinSmartComponent extends Component {
   renderWhenItemDropped() {
     let {clickX} = this.props;
     return <div>
-             <h4 style={{color: '#337ab7', fontFamily: "Times New Roman"}}>
+             <h4 style={{color: '#337ab7'}}>
                {this.state.value} <i onClick={() => {clickX(this.state); this.setState({value: null}); }} style={{color: 'firebrick', cursor: 'pointer'}} className="fa fa-times"></i>
              </h4>
           </div>;
