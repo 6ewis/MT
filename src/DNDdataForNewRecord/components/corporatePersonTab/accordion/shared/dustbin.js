@@ -27,7 +27,7 @@ export default class DustbinSmartComponent extends Component {
    }
 
   renderIfNotActive() {
-     return <center><small> Drag and Drop here! </small></center>;
+     return <center> Drag and Drop here! </center>;
   }
 
   renderWhenItemDropped() {

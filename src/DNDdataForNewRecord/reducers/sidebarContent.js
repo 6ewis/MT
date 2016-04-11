@@ -7,6 +7,7 @@ export default function(state = {}, action) {
     console.log("I'm in the reducer and the data during initialization is: ", action.payload);
     return action.payload;
   case DROP_ITEM:
+    debugger;
     const isPayloadDropItem = R.anyPass([R.propEq('id', action.payload.id),
                                          R.propEq('entity_type', action.payload.value)]);
     const removePayloadAttr = R.when(isPayloadDropItem, R.dissoc(action.payload.attribute));

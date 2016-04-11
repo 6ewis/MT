@@ -15,7 +15,7 @@ export default (props) => {
   };
 
   let deathDatesOptions = {
-   attributeName: 'death_date',
+   attributeName: 'deceased_date',
    attributeTitle: 'Death Dates',
    boxSourceType: deceasedDateType,
    boxSourceComponent: _Attribute,
