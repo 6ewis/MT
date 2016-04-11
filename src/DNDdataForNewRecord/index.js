@@ -23,10 +23,10 @@ class DNDdataForNewRecord extends Component {
     return (
       <Provider store={store}>
         <div className="container-fluid">
-          <div className="col-md-3">
+          <div className="col-md-3" style={{position: 'fixed'}}>
             <Sidebar />
           </div>
-          <div className="col-md-9">
+          <div className="col-md-9 col-md-offset-3">
             <br/>
             <Tabs/>
           </div>
