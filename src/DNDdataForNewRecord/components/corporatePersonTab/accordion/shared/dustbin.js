@@ -13,10 +13,11 @@ export default class DustbinSmartComponent extends Component {
 
   style() {
     return {
-      borderRadius: '10%',
+      borderRadius: '3vh',
       border: 'dotted #8AC007',
       padding: '2% 0 2% 0',
-      width: '20%',
+      width: '100%',
+      height: '20vh',
       backgroundColor: this.props.backgroundColor
     };
   }

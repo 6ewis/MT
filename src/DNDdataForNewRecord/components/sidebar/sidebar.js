@@ -17,11 +17,13 @@ export default (props) => {
   let style = {styleHeader, styleIconLabel, styleCursor};
 
   return (
-    <div>
+    <div style={{overflow: 'scroll'}}>
       <center>
       <br/>
       <div className="well well-lg">
+        <div>
         <CurrentSidebarContent {...style}/>
+        </div>
       </div>
       </center>
    </div>
