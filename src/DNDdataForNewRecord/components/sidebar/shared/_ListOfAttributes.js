@@ -33,9 +33,12 @@ export default ( {
   };
 
   const listAttributes = R.addIndex(R.reduce)(processItem, [], content);
+  const notValid = R.all(R.compose(R.either(R.isNil, R.isEmpty),
+    R.when(R.is(String), R.trim)))(retrieveAttributeValue(listAttributes));
+
   return ( <div>
              <h4 style={styleHeader}> {attributeTitle} </h4>
-             {R.all(R.or(R.isNil, R.isEmpty))(retrieveAttributeValue(listAttributes)) ? "No data available" : listAttributes }
+             {notValid ? "No data available" : listAttributes }
            </div>
          );
  }

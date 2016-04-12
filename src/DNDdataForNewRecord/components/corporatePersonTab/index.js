@@ -1,53 +1,20 @@
 import React, {Component} from 'react';
 import { Accordion } from 'react-bootstrap';
 import _AccordionHeader from './accordion/shared/_accordion_header.js';
-import { NameTypes, DateTypes, DomicileTypes, PhoneFaxTypes, AddressConfig } from '../../config/DNDTargetTypes';
+import { NameConfig, DateConfig, DomicileConfig, PhoneFaxConfig, AddressConfig } from '../../config/DNDsourceTarget';
 
 export default (props) => {
-   let Name = {
-     dispatchSelectAccordionValue: 'Names',
-     header: 'Names',
-     dropTargetTypes: NameTypes,
-     eventKey: '1',
-     ...props
-   };
-
-   let Date_ = {
-    dispatchSelectAccordionValue: 'Dates',
-    header: 'Dates',
-    eventKey: '2',
-    dropTargetTypes: DateTypes,
-    ...props
-   };
-
-
-   let Domicile = {
-     dispatchSelectAccordionValue: 'Domicile/Nationality/Residence',
-     header: 'Domicile/Nationality/Residence',
-     eventKey: '3',
-     dropTargetTypes: DomicileTypes,
-     ...props
-   };
-
-   let Phone = {
-     dispatchSelectAccordionValue: 'Phone/Fax',
-     header: 'Phone/Fax',
-     eventKey: '4',
-     dropTargetTypes: PhoneFaxTypes,
-     ...props
-    };
-
-   let Address = Object.assign(AddressConfig.target, props);
+  function renderAccordionHeaders() {
+    return [NameConfig, DateConfig, DomicileConfig, PhoneFaxConfig, AddressConfig].map(
+      (config, index) => <_AccordionHeader key={index} {...Object.assign(config.target, props)} />
+    );
+  }
 
    return (
      <div>
        <br/>
        <Accordion defaultActiveKey='1'>
-          <_AccordionHeader {...Name} />
-          <_AccordionHeader {...Date_} />
-          <_AccordionHeader {...Domicile} />
-          <_AccordionHeader {...Phone} />
-          <_AccordionHeader {...Address} />
+        {renderAccordionHeaders()}
        </Accordion>
      </div>
    );

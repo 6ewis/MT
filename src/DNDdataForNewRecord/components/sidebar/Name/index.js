@@ -1,35 +1,16 @@
 import React from 'react';
 import ListOfEntityTypes from './listOfEntitTypes';
-import ListOf from '../shared/_ListOfAttributes';
-import _Attribute from '../shared/_attribute';
-
+import { NameConfig } from '../../../config/DNDsourceTarget';
+import RenderListOfSidebar from '../../sidebar/shared/_renderListOfSidebar.js';
 
 export default (props) => {
-  let namesOptions = {
-    attributeName: 'name',
-    attributeTitle: 'Names',
-    boxSourceType: 'Names',
-    boxSourceComponent: _Attribute,
-    ...props
-  };
-
-  let sortNamesOptions = {
-   attributeName: 'sort_name',
-   attributeTitle: 'Sort Names',
-   boxSourceType: 'Sort Names',
-   boxSourceComponent: _Attribute,
-   ...props
-   };
-
+  const {names, sortNames, salutations} = NameConfig.source;
 
   return (
     <div>
-        <ListOfEntityTypes {...props}/>
-        <hr/>
-        <ListOf {...namesOptions}/>
-        <hr/>
-        <ListOf {...sortNamesOptions}/>
-        <hr/>
-   </div>
-     );
+      <ListOfEntityTypes {...props}/>
+      <hr/>
+      {RenderListOfSidebar([names, sortNames, salutations], props)}
+    </div>
+         );
 };

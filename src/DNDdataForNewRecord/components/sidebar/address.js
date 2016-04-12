@@ -1,14 +1,13 @@
 import React from 'react';
-import ListOf from './shared/_ListOfAttributes';
-import { AddressConfig } from '../../config/DNDTargetTypes';
+import { AddressConfig } from '../../config/DNDsourceTarget';
+import RenderListOfSidebar from '../sidebar/shared/_renderListOfSidebar.js';
 
 export default (props) => {
-  const registeredAddress = Object.assign(AddressConfig.source, props);
+  const {registeredAddresses, mailingAddresses, dividendAddresses} = AddressConfig.source;
 
   return (
     <div>
-      <ListOf {...registeredAddress}/>
-      <hr/>
-   </div>
+      {RenderListOfSidebar([registeredAddresses, mailingAddresses, dividendAddresses], props)}
+    </div>
         );
 };

@@ -1,30 +1,35 @@
 import R from 'ramda';
 
 export default (data) => {
-  let serializeNullValue = value => (value === 'null' ? null : value);
+  const serializeNullValue = value => (value === 'null' ? null : value);
 
-  let serializeEntityType = entity_type => {
+  const serializeEntityType = entity_type => {
     switch (entity_type) {
       case 'I': return 'Individual';
       case 'C': return 'Company';
     }
   };
 
-  let addRegisteredAddress = (object) => R.assoc('concatenated_registered_address', 
-                                                 `${object.regaddr_line_1 || ''} 
-                                                  ${object.regaddr_line_2 || ''} 
-                                                  ${object.regaddr_line_3 || ''} 
-                                                  ${object.regaddr_line_4 || ''} 
-                                                  ${object.regaddr_locality || ''} 
-                                                  ${object.regaddr_region || ''} 
-                                                  ${object.regaddr_postal_code || ''} 
-                                                  ${object.regaddr_country_name || ''}
-                                                  `)(object);
+  const curryPrefixAddress = R.curry((prefix, value) => `${prefix}${value}`);
+  const fields = (prefix) => R.map(curryPrefixAddress(prefix),
+    ['_line_1', '_line_2', '_line_3', '_line_4', '_locality', '_region', '_postal_code', '_country_name']);
 
-  let updateEntityType = R.evolve({
+  const addRegisteredAddress = (object) =>
+    R.assoc('concatenated_registered_address',
+      R.join(" ", R.props(fields('regaddr'), object)))(object);
+
+  const addMailingAddress = (object) =>
+    R.assoc('concatenated_mailing_address',
+      R.join(" ", R.props(fields('mailaddr'), object)))(object);
+
+  const addDividendAddress = (object) =>
+    R.assoc('concatenated_dividend_address',
+      R.join(" ", R.props(fields('divaddr'), object)))(object);
+
+  const updateEntityType = R.evolve({
     'entity_type': serializeEntityType
   });
 
-  let objectUpdater = R.compose(addRegisteredAddress, R.map(serializeNullValue), updateEntityType);
+  const objectUpdater = R.compose(addMailingAddress, addDividendAddress, addRegisteredAddress, R.map(serializeNullValue), updateEntityType);
   return R.map(objectUpdater, data);
 };

@@ -15,7 +15,7 @@ export const CLICK_X = 'CLICK_X';
    "salutation": "Mr",
    "internal": 1,
   //Address
-   //registers address
+   //registered address
    "regaddr_line_1": "Clarendon House",
    "regaddr_line_2": "2 Church Stree",
    "regaddr_line_3": "Hamilton HM 11",
@@ -26,10 +26,10 @@ export const CLICK_X = 'CLICK_X';
    "regaddr_country_name": null,
    "regaddr_country_numeric_code": null,
    //mailing address
-   "mailaddr_line1": "Conyer, Dill & Pearman",
-   "mailaddr_line2": "PO. Box 666",
-   "mailaddr_line3": "Hamilton HM CX",
-   "mailaddr_line4": "Bermuda",
+   "mailaddr_line_1": "Conyer, Dill & Pearman",
+   "mailaddr_line_2": "PO. Box 666",
+   "mailaddr_line_3": "Hamilton HM CX",
+   "mailaddr_line_4": "Bermuda",
    "mailaddr_locality": null,
    "mailaddr_region": null,
    "mailaddr_postal_code": null,
@@ -82,10 +82,10 @@ export const CLICK_X = 'CLICK_X';
    "regaddr_country_name": null,
    "regaddr_country_numeric_code": null,
    //mailing address
-   "mailaddr_line1": "Conyer, Dill & Pearman",
-   "mailaddr_line2": "PO. Box 777",
-   "mailaddr_line3": "Circle HM CX",
-   "mailaddr_line4": "Cayman Island",
+   "mailaddr_line_1": "Conyer, Dill & Pearman",
+   "mailaddr_line_2": "PO. Box 777",
+   "mailaddr_line_3": "Circle HM CX",
+   "mailaddr_line_4": "Cayman Island",
    "mailaddr_locality": null,
    "mailaddr_region": null,
    "mailaddr_postal_code": null,
@@ -143,6 +143,7 @@ export function dropItem(item) {
 }
 
 export function initialize(initialData) {
+  console.log(serializeData(content.entities));
   return {
     type: INITIALIZE,
   //  payload: serializeData(initialData.selectedEntities)

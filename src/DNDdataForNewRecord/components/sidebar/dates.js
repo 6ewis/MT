@@ -1,33 +1,13 @@
 import React from 'react';
-import ListOf from './shared/_ListOfAttributes';
-import _Attribute from './shared/_attribute';
-import { DateTypes } from '../../config/DNDTargetTypes';
-
-let [birthDateType, deceasedDateType] = DateTypes;
+import { DateConfig } from '../../config/DNDsourceTarget';
+import RenderListOfSidebar from '../sidebar/shared/_renderListOfSidebar.js';
 
 export default (props) => {
-  let birthDatesOptions = {
-    attributeName: 'birth_date',
-    attributeTitle: 'Birth Dates',
-    boxSourceType: birthDateType,
-    boxSourceComponent: _Attribute,
-    ...props
-  };
-
-  let deathDatesOptions = {
-   attributeName: 'deceased_date',
-   attributeTitle: 'Death Dates',
-   boxSourceType: deceasedDateType,
-   boxSourceComponent: _Attribute,
-   ...props
-   };
+  const {birthDates, deathDates} = DateConfig.source;
 
   return (
     <div>
-        <ListOf {...birthDatesOptions}/>
-        <hr/>
-        <ListOf {...deathDatesOptions}/>
-        <hr/>
+      {RenderListOfSidebar([birthDates, deathDates], props)}
     </div>
-     );
+         );
 };
