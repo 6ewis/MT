@@ -65,7 +65,7 @@ export const CLICK_X = 'CLICK_X';
   let second_entity = {
    "id": "1234",
   //Name
-   "entity_type": "I", //real data use I for 'Individual' and 'C' for Company
+   "entity_type": "C", //real data use I for 'Individual' and 'C' for Company
    "name": "Johny Moul Smith",
    "sort_name": "JOHNY S SMITH",
    "salutation": "Sr",

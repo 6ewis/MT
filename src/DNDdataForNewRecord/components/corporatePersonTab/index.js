@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Accordion } from 'react-bootstrap';
 import _AccordionHeader from './accordion/shared/_accordion_header.js';
-import { NameTypes, DateTypes, DomicileTypes, PhoneFaxTypes, AddressTypes } from '../../config/DNDTargetTypes';
+import { NameTypes, DateTypes, DomicileTypes, PhoneFaxTypes, AddressConfig } from '../../config/DNDTargetTypes';
 
 export default (props) => {
    let Name = {
@@ -37,13 +37,7 @@ export default (props) => {
      ...props
     };
 
-   let Address = {
-     dispatchSelectAccordionValue: 'Address',
-     header: 'Address',
-     eventKey: '5',
-     dropTargetTypes: AddressTypes,
-     ...props
-   };
+   let Address = Object.assign(AddressConfig.target, props);
 
    return (
      <div>
