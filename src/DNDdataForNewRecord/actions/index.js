@@ -1,4 +1,5 @@
 import serializeData from '../config/serializeData';
+import axios from 'axios';
 
 export const SELECT_ACCORDION = 'SELECT_ACCORDION';
 export const INITIALIZE = 'INITIALIZE';
@@ -142,11 +143,30 @@ export function dropItem(item) {
   };
 }
 
-export function initialize(initialData) {
-  console.log(serializeData(content.entities));
-  return {
+export function initialize() {
+  const initialData = "1,2,3,4,5";
+  const config = {
+    transformResponse: [(data) => serializeData(data)],
+    responseType: 'json'
+  };
+
+   const request = axios.get(`http://172.16.130.31:3000/corporate_persons/${initialData}`, config)
+    .catch((response) => {
+      if (response instanceof Error) {
+        console.log('Error', response.message);
+      } else {
+         // The request was made, but the server responded with a status code
+         // that falls out of the range of 2xx
+         console.log(response.data);
+         console.log(response.status);
+         console.log(response.headers);
+         console.log(response.config);
+      }
+    });
+
+   return {
     type: INITIALIZE,
-  //  payload: serializeData(initialData.selectedEntities)
-    payload: serializeData(content.entities)
+    payload: request
+  //payload: serializeData(content.entities)
   };
 }

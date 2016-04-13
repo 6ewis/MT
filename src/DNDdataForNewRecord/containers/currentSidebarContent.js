@@ -25,6 +25,7 @@ function selectContent(selectedAccordion, sidebarContent) {
 }
 
 function mapStateToProps({selectedAccordion, sidebarContent}) {
+  console.log(sidebarContent);
   return { sidebar: selectContent(selectedAccordion, sidebarContent)};
 }
 

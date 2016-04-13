@@ -1,4 +1,5 @@
-import _Attribute from '../components/sidebar/shared/_attribute.js';
+import _Attribute from '../components/sidebar/shared/_attribute';
+import EntityType from '../components/sidebar/Name/entityType';
 
 //Name
 const NameTypes = ['Entity Types', 'Names', 'Sort Names', 'Salutation'];
@@ -7,6 +8,12 @@ const [entityType, nameType, sortNameType, salutationType] = NameTypes;
 export const NameConfig = {
   //sidebar source
   source: {
+   // entityType: {
+   //  attributeName: 'entity_type',
+   //  attributeTitle: 'Entity Types',
+   //  boxSourceType: entityType,
+   //  boxSourceComponent: EntityType
+   // },
     names: {
      attributeName: 'name',
      attributeTitle: 'Names',
