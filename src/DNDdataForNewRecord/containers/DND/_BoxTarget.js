@@ -27,10 +27,10 @@ function collect(connect, monitor) {
   };
 }
 
-let ComponentTarget = (DestinationComponent) => {
+const ComponentTarget = (DestinationComponent) => {
   return class extends Component {
     render() {
-      let { canDrop, isOver } = this.props;
+      const { canDrop, isOver } = this.props;
       let isActive = canDrop && isOver;
 
       let backgroundColor;
@@ -53,6 +53,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default R.memoize((Type, DestinationComponent) => {
-  let Partial = DropTarget(Type, boxTarget, collect)(ComponentTarget(DestinationComponent));
+  const Partial = DropTarget(Type, boxTarget, collect)(ComponentTarget(DestinationComponent));
   return connect(null, mapDispatchToProps)(Partial);
 });

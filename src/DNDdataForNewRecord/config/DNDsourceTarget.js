@@ -8,12 +8,12 @@ const [entityType, nameType, sortNameType, salutationType] = NameTypes;
 export const NameConfig = {
   //sidebar source
   source: {
-   // entityType: {
-   //  attributeName: 'entity_type',
-   //  attributeTitle: 'Entity Types',
-   //  boxSourceType: entityType,
-   //  boxSourceComponent: EntityType
-   // },
+    entityType: {
+     attributeName: 'entity_type',
+     attributeTitle: 'Entity Types',
+     boxSourceType: entityType,
+     boxSourceComponent: EntityType
+    },
     names: {
      attributeName: 'name',
      attributeTitle: 'Names',

@@ -2,19 +2,15 @@ import React from 'react';
 import CurrentSidebarContent from '../../containers/currentSidebarContent';
 
 export default (props) => {
-  let styleHeader = {
+  const styleHeader = {
     fontWeight: 'bold'
   };
 
-  let styleIconLabel = {
-    marginBottom: '5%'
-  };
-
-  let styleCursor = {
+  const styleCursor = {
     cursor: 'pointer'
   };
 
-  let style = {styleHeader, styleIconLabel, styleCursor};
+  const style = {styleHeader, styleCursor};
 
   return (
     <div style={{overflow: 'scroll'}}>

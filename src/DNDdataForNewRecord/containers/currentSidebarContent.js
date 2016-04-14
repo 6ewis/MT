@@ -25,14 +25,13 @@ function selectContent(selectedAccordion, sidebarContent) {
 }
 
 function mapStateToProps({selectedAccordion, sidebarContent}) {
-  console.log(sidebarContent);
   return { sidebar: selectContent(selectedAccordion, sidebarContent)};
 }
 
 //@connect(mapStateToProps) - to be used when upgrading to webpack
 class SidebarContent extends Component {
   render() {
-    let {sidebar, styleHeader, styleIconLabel, styleCursor } = this.props;
+    const {sidebar, styleHeader, styleIconLabel, styleCursor } = this.props;
 
     return (
       <div>{React.cloneElement(sidebar, {styleHeader, styleIconLabel, styleCursor})}</div>
