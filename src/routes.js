@@ -9,7 +9,8 @@ const routes = (
       <Route path="SelectRecordsToMerge" component={require('./SelectRecords/index.js')} />
       {/* <Route path="SelectDataForNewRecord" component={require('./components/SelectDataForNewRecord/SelectDataForNewRecord.js')} /> */}
       <Route path="SelectDataForNewRecord" component={require('./DNDdataForNewRecord/index.js')} />
-      <Route path="ReviewAndModifyRecordDetails" component={require('./components/ReviewAndModifyRecordDetails/reviewAndModifyRecordDetails.js')} />
+      <Route path="ModifyRecord" component={require('./ModifyRecord/index.js')} />
+      {/* <Route path="ReviewAndModifyRecordDetails" component={require('./components/ReviewAndModifyRecordDetails/reviewAndModifyRecordDetails.js')} /> */}
       <Route path="PreviewOfProposedMerge" component={require('./components/PreviewOfProposedMerge/previewOfProposedMerge')} />
       <Route path="*" component={require('./components/404.js')} />
     </Route>

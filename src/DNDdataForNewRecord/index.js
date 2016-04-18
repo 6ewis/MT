@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 //Components
-import Tabs from './components/Tabs.js';
+import Tabs from './components/Tabs';
 import Sidebar from './components/sidebar/sidebar';
 //Redux
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxPromise from 'redux-promise';
-import reducers from './reducers';
+import reducers from './reducers/index';
 import { initialize } from './actions/index';
 //Transition Buttons
 import {BackButton, NextButton, CancelButton} from '../shared/transitionButtons/index.js';
@@ -37,7 +37,7 @@ class DNDdataForNewRecord extends Component {
                <BackButton url="/SelectRecordsToMerge"/>
              </div>
              <div className="col-md-3">
-               <NextButton url="" state={{}}/>
+               <NextButton url="/ModifyRecord" state={{}}/>
              </div>
              <div className="col-md-3">
                <CancelButton />
