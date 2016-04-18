@@ -19,7 +19,7 @@ function collect(connect, monitor) {
   };
 }
 
-let ComponentSource = (OriginalComponent) => {
+const ComponentSource = (OriginalComponent) => {
   return class extends Component {
      render() {
       let opacity = this.props.isDragging ? 0.4 : 1;

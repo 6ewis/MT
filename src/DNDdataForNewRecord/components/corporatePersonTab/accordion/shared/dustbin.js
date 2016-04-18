@@ -23,11 +23,11 @@ export default class DustbinSmartComponent extends Component {
   }
 
   renderIfActive() {
-     return <center><small style={{color: "#337ab7"}}> Release to drop </small></center>;
+     return <center><span style={{color: "#337ab7"}}> Release to drop </span></center>;
    }
 
   renderIfNotActive() {
-     return <center><small> Drag and Drop here! </small></center>;
+     return <center> Drag and Drop here! </center>;
   }
 
   renderWhenItemDropped() {

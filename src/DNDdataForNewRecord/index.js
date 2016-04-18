@@ -11,7 +11,7 @@ import { initialize } from './actions/index';
 import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 
-//should be defined outside the component - everytime SelectRecords re-renders it's recreating the store
+//should be defined outside the component - everytime it re-renders it's recreating the store
 const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
 const store = createStoreWithMiddleware(reducers);
 

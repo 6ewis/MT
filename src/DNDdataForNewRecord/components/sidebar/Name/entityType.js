@@ -1,25 +1,27 @@
 import React from 'react';
 
-export default ( {backgroundColor,
-                  styleIconLabel, styleCursor,
-                  opacity, connectDragSource, entityType}
+export default ( {backgroundColor, cursor, opacity, connectDragSource, attributeValue}
                ) => {
 
-  let classEntityTypes = {
+  const classEntityTypes = {
     'Individual': 'fa fa-user fa-3x',
     'Company': 'fa fa-building-o fa-3x'
    };
 
-  let cursor = styleCursor.cursor;
-  let paddingTop = '2%';
-  let paddingBottom = '1%';
+  const styleIconLabel = {
+    marginBottom: '5%'
+  };
+
+  const paddingTop = '2%';
+  const paddingBottom = '1%';
+
   return connectDragSource(
      <div style={{opacity, backgroundColor, cursor, paddingTop, paddingBottom}} 
           className='DNDhover'>
-            <i className={classEntityTypes[entityType]}>
+            <i className={classEntityTypes[attributeValue]}>
             </i>
             <div style={styleIconLabel}>
-              { entityType }
+              { attributeValue }
             </div>
       </div>
   );

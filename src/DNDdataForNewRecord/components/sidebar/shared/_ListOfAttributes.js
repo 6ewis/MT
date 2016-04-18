@@ -7,27 +7,41 @@ export default ( {
    attributeTitle, boxSourceType, boxSourceComponent
   }) => {
 
-   let arrayOfAttributeNames = [];
+ function renderAttributes() {
+   const createElementWithNewProps = (key, index) => {
+     const draggedItem = {attribute: attributeName, value: key[attributeName], id: key.id};
+     const newProps = {
+       _draggedItem: draggedItem,
+       attributeValue: key[attributeName],
+       id: key.id,
+       key: index,
+       cursor: styleCursor.cursor
+    };
+    return React.createElement(_BoxSource(boxSourceType, boxSourceComponent), newProps);
+  };
 
-   function renderAttributes() {
-     let listAttributes = content.map((key, index) => {
-       arrayOfAttributeNames.push(key[attributeName]);
-       let draggedItem = {attribute: attributeName, value: key[attributeName], id: key.id};
-       let newProps = Object.assign({}, {}, {
-         _draggedItem: draggedItem,
-         attributeValue: key[attributeName],
-         id: key.id,
-         key: index,
-         cursor: styleCursor.cursor});
-         return React.createElement(_BoxSource(boxSourceType, boxSourceComponent), newProps);
-     });
+  const retrieveAttributeValue = R.map(R.path(['props', 'attributeValue']));
 
-     return ( <div>
-                <h4 style={styleHeader}> {attributeTitle} </h4>
-                {R.all(R.isNil)(arrayOfAttributeNames) ? "No data available" : listAttributes }
-              </div>
-            );
-   }
+  const alreadyProcessed = (resultList, item) => {
+    const arrayOfAttributeValues = retrieveAttributeValue(resultList);
+    return R.contains(item[attributeName], arrayOfAttributeValues);
+  };
+
+  const processItem = (results, item, index) => {
+    if (alreadyProcessed(results, item)) {return results; }
+    return R.append(createElementWithNewProps(item, index), results);
+  };
+
+  const listAttributes = R.addIndex(R.reduce)(processItem, [], content);
+  const notValid = R.all(R.compose(R.either(R.isNil, R.isEmpty),
+    R.when(R.is(String), R.trim)))(retrieveAttributeValue(listAttributes));
+
+  return ( <div>
+             <h4 style={styleHeader}> {attributeTitle} </h4>
+             {notValid ? "No data available" : listAttributes }
+           </div>
+         );
+ }
 
  return renderAttributes();
 };
