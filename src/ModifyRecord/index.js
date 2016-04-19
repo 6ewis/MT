@@ -24,10 +24,11 @@ export default class ModifyRecord extends Component {
          <div className="container-fluid">
            <div className="col-md-3" style={{position: 'fixed'}}>
            </div>
-           <div className="col-md-9 col-md-offset-3" style={{marginBottom: '1%'}}>
+           <div className="col-md-6 col-md-offset-3" style={{marginBottom: '1%'}}>
              <br/>
              <Form />
            </div>
+           <div className="col-md-3"></div>
          </div>
        </Provider>
             );

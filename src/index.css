@@ -67,3 +67,14 @@
 .panel-default.panel-expanded > .panel-heading{
   background-color: #337ab7;
 }
+
+/***************Modify Record*************/
+/* icons for calendar */
+.input-calendar .calendar-icon {
+ padding: 0px 30px !important;
+}
+
+/* remove button*/
+.makeItRed {
+  color: red
+}
