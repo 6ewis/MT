@@ -1,7 +1,8 @@
+import FormContentReducer from './formContent';
 import { combineReducers } from 'redux';
 
 const RootReducer = combineReducers({
-  inputContent: () => []
+  formContent: FormContentReducer
 });
 
 export default RootReducer;

@@ -1,24 +1,20 @@
 import React from 'react';
 import {Row, SplitButton, MenuItem} from 'react-bootstrap';
 
-export default ({label, data}) => {
-  const [defaultTitle, ...restOfData] = data;
+export default ({data, fieldName, defaultSelection}) => {
 
+  //const [defaultTitle, ...restOfData] = data;
+  //we might not need it anymore since defaultTitle is coming from second page
+  
   function renderMenuItems() {
-   return restOfData.map((item, index) => {
-     return ( <MenuItem eventKey={index}>{item}</MenuItem>);
+   return data.map((item) => {
+    return ( <MenuItem key={item.id + fieldName} eventKey={item.id}>{item[fieldName]}</MenuItem>);
    });
   }
 
   return (
-    <Row>
-      <label className="control-label">{label}</label>
-        <div>
-          <SplitButton bsStyle='default' title={defaultTitle} id='split-button-basic-1'>
-           {renderMenuItems()}
-          </SplitButton>
-        </div>
-       <br/>
-    </Row>
+    <SplitButton bsStyle='default' title={defaultSelection || data[0][fieldName]} id='split-button-basic-{fieldName}'>
+     {renderMenuItems()}
+    </SplitButton>
   );
 };

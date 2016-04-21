@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //Components
-import Form from './components/form.js';
+import Form from './containers/stateOfForm.js';
 //add help sidebar
 //Redux
 import { Provider } from 'react-redux';
