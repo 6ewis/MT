@@ -22,12 +22,12 @@ export default ({aliases, entityTypes, countries, billingClient}) => {
       <_InputText label="Full Name" />
       <_InputText label="Sort Name" />
      
-      <Aliases data={aliases}/>
+      <Aliases data={aliases} fieldName="alias"/>
       <_Autosuggest label="Billing Client" data={billingClient}/>
 
       <_SplitButtonWithLabel 
         label="Nationality" 
-        defaultSelection="Canada"
+        defaultSelection="CA"
         fieldName="country"
         data={countries} />
       <_SplitButtonWithLabel 

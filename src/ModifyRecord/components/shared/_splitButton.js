@@ -1,17 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Row, SplitButton, MenuItem} from 'react-bootstrap';
 
-export default ({data, fieldName, defaultSelection}) => {
 
-  function renderMenuItems() {
-   return data.map((item) => {
-    return ( <MenuItem key={item.id + fieldName} eventKey={item.id}>{item[fieldName]}</MenuItem>);
-   });
+export default class _SplitButton extends Component {
+  constructor(props) {
+    super(props);
+    const {data, defaultSelection, fieldName} = props;
+    this.state = {
+      title: (defaultSelection || data[0][fieldName])
+    };
   }
 
-  return (
-    <SplitButton bsStyle='default' title={defaultSelection || data[0][fieldName]} id='split-button-basic-{fieldName}'>
-     {renderMenuItems()}
-    </SplitButton>
-  );
-};
+  renderMenuItems() {
+    const {data, fieldName} = this.props;
+    return data.map((item) => {
+     return (item[fieldName] === this.state.title) ?
+       null :
+     ( <MenuItem
+         onClick={() => this.setState({title: item[fieldName]})} 
+         key={item.id + fieldName} 
+         eventKey={item.id}>{item[fieldName]}
+       </MenuItem>);
+    });
+  }
+
+  render() {
+    return (
+      <SplitButton bsStyle='default'
+        title={this.state.title}
+        id='split-button-basic-{this.props.fieldName}'>
+       {this.renderMenuItems()}
+      </SplitButton>
+    );
+  }
+}
