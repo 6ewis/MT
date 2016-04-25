@@ -6,7 +6,7 @@ import _SplitButtonWithLabel from './shared/_splitButtonWithLabel';
 import _InputText from './shared/_inputText';
 import Aliases from './aliases';
 import _Label from './shared/_label';
-import Autosuggest from './smart/autosuggest';
+import _Autosuggest from './smart/autosuggest';
 
 export default ({aliases, entityTypes, countries, billingClient}) => {
  return (
@@ -23,8 +23,7 @@ export default ({aliases, entityTypes, countries, billingClient}) => {
       <_InputText label="Sort Name" />
      
       <Aliases data={aliases}/>
-      <_InputText label="Billing Client" />
-      <Autosuggest data={billingClient}/>
+      <_Autosuggest label="Billing Client" data={billingClient}/>
 
       <_SplitButtonWithLabel 
         label="Nationality" 

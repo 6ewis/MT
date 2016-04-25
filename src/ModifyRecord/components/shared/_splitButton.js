@@ -3,9 +3,6 @@ import {Row, SplitButton, MenuItem} from 'react-bootstrap';
 
 export default ({data, fieldName, defaultSelection}) => {
 
-  //const [defaultTitle, ...restOfData] = data;
-  //we might not need it anymore since defaultTitle is coming from second page
-  
   function renderMenuItems() {
    return data.map((item) => {
     return ( <MenuItem key={item.id + fieldName} eventKey={item.id}>{item[fieldName]}</MenuItem>);

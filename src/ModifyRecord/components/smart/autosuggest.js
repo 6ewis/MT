@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Row, Input} from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
 import Autosuggest from 'react-autosuggest';
+import _Label from '../shared/_label';
 
-class _Autosuggest extends Component {
+export default class _Autosuggest extends Component {
   constructor() {
     super();
 
@@ -55,16 +56,22 @@ class _Autosuggest extends Component {
     const inputProps = {
       placeholder: 'Type a Billing Client Number',
       value,
+      className: 'form-control',
       onChange: this.onChange
     };
 
     return (
-      <Autosuggest 
-        suggestions={suggestions}
-        onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
-        getSuggestionValue={this.getSuggestionValue}
-        renderSuggestion={this.renderSuggestion}
-        inputProps={inputProps} />
+      <Row>
+       <_Label name={this.props.label}/>
+       <Autosuggest 
+         className="formControl"
+         suggestions={suggestions}
+         onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
+         getSuggestionValue={this.getSuggestionValue}
+         renderSuggestion={this.renderSuggestion}
+         inputProps={inputProps} />
+       <br/>
+      </Row>
     );
   }
 }
