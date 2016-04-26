@@ -32,9 +32,9 @@ export default ({aliases, entityTypes, countries, billingClient}) => {
       <Countries
         data={countries}
         items={[
-          {label: "Nationality", defaultSelection: "CA"},
-          {label: "Residence", defaultSelection: "CA"},
-          {label: "Domicile", defaultSelection: "CA"}
+          {label: "Nationality", defaultSelection: "Canada"},
+          {label: "Residence", defaultSelection: "Canada"},
+          {label: "Domicile", defaultSelection: "Canada"}
         ]}
         />
 
