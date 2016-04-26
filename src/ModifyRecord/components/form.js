@@ -26,7 +26,7 @@ export default ({aliases, entityTypes, countries, billingClient}) => {
 
       <Appellations labels={["Salutation", "Full Name", "Sort Name"]} />
 
-      <Aliases data={aliases} fieldName="alias"/>
+      <Aliases data={aliases} />
       <_Autosuggest label="Billing Client" data={billingClient}/>
 
       <Countries

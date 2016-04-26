@@ -1,13 +1,21 @@
 export const INITIALIZE = 'INITIALIZE';
 
 const data = {
- "entityTypes": [{"id": "1", "entityType": "Individual"}, 
-                 {"id": "2", "entityType": "Company"}, 
-                 {"id": "3", "entityType": "Trust"}, 
+  //entityTYpe coming from the second page
+ "entityTypes": [{"id": "1", "entityType": "Individual"},
+                 {"id": "2", "entityType": "Company"},
+                 {"id": "3", "entityType": "Trust"},
                  {"id": "4", "entityType": "PartnerShip"}],
- "aliases": [{"id": "1", "alias": "AKA"}, 
-             {"id": "2", "alias": "FKA"}],
- "countries": [{"id": "1", "country": "CA"}, 
+  //salutation coming from the second page
+  //full Name coming from the second page
+  //sortName coming from the second page
+ "aliases": [
+  {id: 1, cpref: 123, alias: "Joe smith", alias_type: "AKA"},
+  {id: 2, cpref: 456, alias: "John Smith", alias_type: "AKA"},
+  {id: 3, cpref: 123, alias: "Bobby tables", alias_type: "FKA"},
+  {id: 4, cpref: 789, alias: "J E Smith", alias_type: "AKA"}
+ ],
+ "countries": [{"id": "1", "country": "CA"},
                {"id": "2", "country": "USA"}],
  "billing_client": [
    {"id": "1", client_number: "000789", client_name: "Avoradk Communications ltd"},

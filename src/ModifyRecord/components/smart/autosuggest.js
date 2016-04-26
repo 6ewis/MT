@@ -3,6 +3,11 @@ import {Row} from 'react-bootstrap';
 import Autosuggest from 'react-autosuggest';
 import _Label from '../shared/_label';
 
+//return everything when you dont specify client number
+//add search by name and show address
+//name (client number)
+//address
+
 export default class _Autosuggest extends Component {
   constructor() {
     super();
@@ -22,17 +27,17 @@ export default class _Autosuggest extends Component {
   getSuggestions(value) {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
-  
+
     return inputLength === 0 ? [] : this.props.data.filter(billingClient =>
       billingClient.client_number.toLowerCase().slice(0, inputLength) === inputValue
     );
   }
-  
-  getSuggestionValue(suggestion) { 
+
+  getSuggestionValue(suggestion) {
     // when suggestion selected, this function tells
     // what should be the value of the input
     return suggestion.client_number; }
-  
+
   renderSuggestion(suggestion) {
     return (
       <span>{suggestion.client_number}</span>
@@ -63,7 +68,7 @@ export default class _Autosuggest extends Component {
     return (
       <Row>
        <_Label name={this.props.label}/>
-       <Autosuggest 
+       <Autosuggest
          className="formControl"
          suggestions={suggestions}
          onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
@@ -75,4 +80,3 @@ export default class _Autosuggest extends Component {
     );
   }
 }
-

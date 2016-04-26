@@ -1,3 +1,5 @@
+//need to be refactored - technical debt due to approaching dateline
+//numberOfAliases should not be negative otherwise it returns an error
 import React, {Component} from 'react';
 import {Row, SplitButton, Button, MenuItem} from 'react-bootstrap';
 
@@ -9,31 +11,41 @@ export default class Aliases extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     numberOfAliases: 1
+     numberOfAliases: 0,
+     data: props.data,
+     value: null
     };
-    this.renderAliases = this.renderAliases.bind(this);
+    this.renderNewAliases = this.renderNewAliases.bind(this);
   }
-  renderAliases(n) {
+  renderNewAliases(n, alias) {
     return (
       <Row key={n} className="form-inline">
-         <_SplitButton data={this.props.data} fieldName={this.props.fieldName}/>
-         &nbsp; <input type="text" className="form-control"/>
+         <_SplitButton data={[{"alias_type": 'AKA'}, {"alias_type": 'FKA'}]} fieldName={"alias_type"}/>
+         &nbsp; <input onChange={(e) => this.seState({value: e.target.val})} type="text" value={alias || this.state.value} className="form-control"/>
          &nbsp;
          <i style={{cursor: "pointer"}}
-            onClick ={() => this.setState({numberOfAliases: --this.state.numberOfAliases})}
+            onClick ={() => alias ?
+              this.setState({data: R.remove(n, 1, this.state.data)}) :
+              this.setState({numberOfAliases: --this.state.numberOfAliases})}
             className="fa fa-minus-circle makeItRed" ariaHidden="true">
          </i>
          <br/>
       </Row>
     );
   }
+
+  renderKnownAliases() {
+    return this.state.data.map((item, index) => this.renderNewAliases(index, item.alias));
+  }
+
   render() {
     return (
       <div>
         <Row>
           <_Label name="Aliases" />
         </Row>
-        {R.times(this.renderAliases, this.state.numberOfAliases)}
+        {this.renderKnownAliases()}
+        {R.times(this.renderNewAliases, this.state.numberOfAliases)}
         <br/>
         <Row>
           <Button
