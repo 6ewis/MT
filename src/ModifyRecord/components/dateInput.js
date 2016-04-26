@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import Calendar from 'react-input-calendar';
+import {Row} from 'react-bootstrap';
 
-export default class DateInput extends Component {
+export default class _DateInput extends Component {
   renderDate() {
     return (
-       <div className="row">
+       <Row>
          <label htmlFor={this.props.title}> <strong> {this.props.title} </strong></label>
          <Calendar format="DD/MM/YYYY" date={this.props.value} />
-       </div>
+         <br/>
+       </Row>
     );
   }
 

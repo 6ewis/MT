@@ -1,12 +1,17 @@
 import React, {Component } from 'react';
-import {Row, Col, Input, ButtonInput, SplitButton, MenuItem, Button} from 'react-bootstrap';
-//Fields
-import DateInput from './dateInput';
+import {Row, Col} from 'react-bootstrap';
+//Shared Components
 import _SplitButtonWithLabel from './shared/_splitButtonWithLabel';
 import _InputText from './shared/_inputText';
-import Aliases from './aliases';
 import _Label from './shared/_label';
 import _Autosuggest from './smart/autosuggest';
+
+//Not Shared
+import Aliases from './aliases';
+import Appellations from './appellations.js';
+import Contacts from './contacts.js';
+import DateInput from './dateInput';
+import Countries from './countries.js';
 
 export default ({aliases, entityTypes, countries, billingClient}) => {
  return (
@@ -18,33 +23,30 @@ export default ({aliases, entityTypes, countries, billingClient}) => {
         data={entityTypes}
         fieldName="entityType"
         />
-      <_InputText label="Salutation" />
-      <_InputText label="Full Name" />
-      <_InputText label="Sort Name" />
-     
+
+      <Appellations labels={["Salutation", "Full Name", "Sort Name"]} />
+
       <Aliases data={aliases} fieldName="alias"/>
       <_Autosuggest label="Billing Client" data={billingClient}/>
 
-      <_SplitButtonWithLabel 
-        label="Nationality" 
-        defaultSelection="CA"
-        fieldName="country"
-        data={countries} />
-      <_SplitButtonWithLabel 
-        label="Residence" 
-        defaultSelection="USA"
-        fieldName="country"
-        data={countries} />
-      <_SplitButtonWithLabel 
-        label="Domicile" 
-        defaultSelection="USA"
-        fieldName="country"
-        data={countries} />
+      <Countries
+        data={countries}
+        items={[
+          {label: "Nationality", defaultSelection: "CA"}, 
+          {label: "Residence", defaultSelection: "CA"},
+          {label: "Domicile", defaultSelection: "CA"}
+        ]}
+        />
 
-      <_InputText label="Occupation" />
+      <Row>
+        <_InputText label="Occupation" />
+      </Row>
 
       <DateInput title="Birth Date"/>
       <DateInput title="Deceased Date"/>
+
+      <Contacts labels={["Phone", "Email"]} />
+      <Contacts labels={["Fax", "Other"]} />
 
   </form>
 </Col>
