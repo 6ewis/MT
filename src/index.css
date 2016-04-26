@@ -70,11 +70,20 @@
 
 /***************Modify Record*************/
 /* icons for calendar */
-.input-calendar .calendar-icon {
- padding: 0px 5px !important;
+.input-calendar {
+  width: 100% !important;
 }
+
 .input-calendar-wrapper {
- width: 210px !important;
+  width: 35% !important;
+}
+
+.input-calendar input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Pontano Sans', sans-serif;
+    font-size: 16px;
+    padding: 2px 8px;
 }
 
 /* remove button*/
@@ -130,4 +139,9 @@
 
 .react-autosuggest__suggestion--focused {
   background-color: #ddd;
+}
+
+/* space between inputs */
+.form-group {
+ margin-bottom: 0px
 }

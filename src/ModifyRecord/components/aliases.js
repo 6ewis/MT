@@ -15,14 +15,15 @@ export default class Aliases extends Component {
   }
   renderAliases(n) {
     return (
-      <Row key={n} className="form-inline" style={{marginBottom: '0.2%'}}>
+      <Row key={n} className="form-inline">
          <_SplitButton data={this.props.data} fieldName={this.props.fieldName}/>
          &nbsp; <input type="text" className="form-control"/>
          &nbsp;
-         <i style={{cursor: "pointer"}} 
+         <i style={{cursor: "pointer"}}
             onClick ={() => this.setState({numberOfAliases: --this.state.numberOfAliases})}
             className="fa fa-minus-circle makeItRed" ariaHidden="true">
          </i>
+         <br/>
       </Row>
     );
   }
@@ -37,7 +38,7 @@ export default class Aliases extends Component {
         <Row>
           <Button
             bsStyle="primary"
-            onClick={() => this.setState({numberOfAliases: ++this.state.numberOfAliases})}> 
+            onClick={() => this.setState({numberOfAliases: ++this.state.numberOfAliases})}>
               + Add Alias
           </Button>
         </Row>

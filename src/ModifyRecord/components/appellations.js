@@ -8,10 +8,11 @@ export default ({labels}) => {
       return (
        <Row key={index}>
          <_InputText label={label} />
+         <br/>
        </Row>
       );
     });
-  } 
+  }
 
   return (
     <div>

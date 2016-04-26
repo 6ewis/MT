@@ -17,8 +17,8 @@ export default ({aliases, entityTypes, countries, billingClient}) => {
  return (
   <Col md={12}>
    <form>
-      <_SplitButtonWithLabel 
-        label="Type" 
+      <_SplitButtonWithLabel
+        label="Type"
         defaultSelection="Individual"
         data={entityTypes}
         fieldName="entityType"
@@ -32,7 +32,7 @@ export default ({aliases, entityTypes, countries, billingClient}) => {
       <Countries
         data={countries}
         items={[
-          {label: "Nationality", defaultSelection: "CA"}, 
+          {label: "Nationality", defaultSelection: "CA"},
           {label: "Residence", defaultSelection: "CA"},
           {label: "Domicile", defaultSelection: "CA"}
         ]}
@@ -40,6 +40,7 @@ export default ({aliases, entityTypes, countries, billingClient}) => {
 
       <Row>
         <_InputText label="Occupation" />
+        <br/>
       </Row>
 
       <DateInput title="Birth Date"/>
@@ -47,7 +48,10 @@ export default ({aliases, entityTypes, countries, billingClient}) => {
 
       <Contacts labels={["Phone", "Email"]} />
       <Contacts labels={["Fax", "Other"]} />
+
+      <br/>
       <Row>
+        <hr/>
         <Button
           bsStyle="primary"
           >
@@ -56,39 +60,94 @@ export default ({aliases, entityTypes, countries, billingClient}) => {
       </Row>
 
       <br/>
-      <Row>
+        <Row>
         <Well>
-          <_SplitButtonWithLabel 
-           label="Address Type" 
+
+          <Row>
+            <Col mdOffset={11}>
+              <i className="fa fa-trash-o fa-3x makeItRed"
+                 aria-hidden="true"
+                 style={{cursor: 'pointer'}}
+                 >
+              </i>
+            </Col>
+          </Row>
+          <_SplitButtonWithLabel
+           label="Address Type"
            defaultSelection="Registered"
            data={entityTypes}
-           fieldName="entityType"
+           fieldName="address"
            />
-          <_SplitButtonWithLabel 
-           label="Entity Specific" 
+          <_SplitButtonWithLabel
+           label="Entity Specific"
            defaultSelection="None Selected"
            data={entityTypes}
-           fieldName="entityType"
+           fieldName="address"
            />
 
-          <br/>
           <Row>
             <_Label name="Address"/>
           </Row>
           <Row>
-            <input type="text" />
+            <Col md={10} style={{paddingLeft: '0px'}}>
+              <_InputText />
+            </Col>
+            <Col md={2} style={{paddingLeft: '0px'}}>
+              <i className="fa fa-trash-o" aria-hidden="true"></i>
+            </Col>
           </Row>
           <Row>
-            <input type="text" />
+            <Col md={10} style={{paddingLeft: '0px'}}>
+              <_InputText />
+            </Col>
           </Row>
           <Row>
-            <input type="text" />
+            <Col md={10} style={{paddingLeft: '0px'}}>
+              <_InputText />
+            </Col>
           </Row>
           <Row>
-            <Input type="text"/>
+            <Col md={10} style={{paddingLeft: '0px'}}>
+              <_InputText />
+            </Col>
           </Row>
+
+        <br/>
+        <Row>
+          <Col md={10} style={{paddingLeft: '0px'}}>
+            <_InputText label="City" />
+          </Col>
+        </Row>
+
+        <br/>
+        <Row>
+          <Col md={10} style={{paddingLeft: '0px'}}>
+            <_InputText label="Province/State" />
+          </Col>
+        </Row>
+
+        <br/>
+        <Row>
+          <Col md={10} style={{paddingLeft: '0px'}}>
+            <_InputText label="Country" />
+          </Col>
+        </Row>
+
+        <br/>
+        <_SplitButtonWithLabel
+           label="New Field"
+           defaultSelection="None Selected"
+           data={entityTypes}
+           fieldName="address"
+         />
+
+        <Row>
+          <Button style={{paddingLeft: '0px'}}>
+            Add New Field
+          </Button>
+        </Row>
         </Well>
-      </Row>
+        </Row>
   </form>
 </Col>
  );
