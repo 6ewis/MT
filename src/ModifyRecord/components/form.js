@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import {Row, Col} from 'react-bootstrap';
+import {Input, Row, Col, Button, Well} from 'react-bootstrap';
 //Shared Components
 import _SplitButtonWithLabel from './shared/_splitButtonWithLabel';
 import _InputText from './shared/_inputText';
@@ -47,7 +47,48 @@ export default ({aliases, entityTypes, countries, billingClient}) => {
 
       <Contacts labels={["Phone", "Email"]} />
       <Contacts labels={["Fax", "Other"]} />
+      <Row>
+        <Button
+          bsStyle="primary"
+          >
+            + Add Address
+        </Button>
+      </Row>
 
+      <br/>
+      <Row>
+        <Well>
+          <_SplitButtonWithLabel 
+           label="Address Type" 
+           defaultSelection="Registered"
+           data={entityTypes}
+           fieldName="entityType"
+           />
+          <_SplitButtonWithLabel 
+           label="Entity Specific" 
+           defaultSelection="None Selected"
+           data={entityTypes}
+           fieldName="entityType"
+           />
+
+          <br/>
+          <Row>
+            <_Label name="Address"/>
+          </Row>
+          <Row>
+            <input type="text" />
+          </Row>
+          <Row>
+            <input type="text" />
+          </Row>
+          <Row>
+            <input type="text" />
+          </Row>
+          <Row>
+            <Input type="text"/>
+          </Row>
+        </Well>
+      </Row>
   </form>
 </Col>
  );

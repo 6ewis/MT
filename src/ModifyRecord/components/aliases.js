@@ -19,7 +19,8 @@ export default class Aliases extends Component {
          <_SplitButton data={this.props.data} fieldName={this.props.fieldName}/>
          &nbsp; <input type="text" className="form-control"/>
          &nbsp;
-         <i style={{cursor: "pointer"}} onClick ={() => this.setState({numberOfAliases: --this.state.numberOfAliases})}
+         <i style={{cursor: "pointer"}} 
+            onClick ={() => this.setState({numberOfAliases: --this.state.numberOfAliases})}
             className="fa fa-minus-circle makeItRed" ariaHidden="true">
          </i>
       </Row>
@@ -37,7 +38,7 @@ export default class Aliases extends Component {
           <Button
             bsStyle="primary"
             onClick={() => this.setState({numberOfAliases: ++this.state.numberOfAliases})}> 
-              Add Alias
+              + Add Alias
           </Button>
         </Row>
         <br/>
