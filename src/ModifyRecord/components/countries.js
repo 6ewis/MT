@@ -11,7 +11,7 @@ export default ({data, items}) => {
           key= {index}
           label= {item.label}
           defaultSelection= {item.defaultSelection}
-          fieldName="countryname"
+          fieldName="country_name"
           data={data} />
              );
     });

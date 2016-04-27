@@ -18,11 +18,11 @@ class StateOfForm extends Component {
 //}
 
 function mapStateToProps({formContent}) {
-  const {aliases, entityTypes, countries, billing_client} = formContent;
+  const {aliases, entityTypes, countries, billing_clients} = formContent;
   return { aliases: aliases,
            entityTypes: entityTypes,
            countries: countries,
-           billingClient: billing_client
+           billingClients: billing_clients
          };
 }
 

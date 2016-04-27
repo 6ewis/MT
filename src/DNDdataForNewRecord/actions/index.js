@@ -62,7 +62,7 @@ export const CLICK_X = 'CLICK_X';
    "email": "smith@conyersdill.com",
    "telex": "425-566-193000"
     };
-  
+
   let second_entity = {
    "id": "1234",
   //Name
@@ -166,7 +166,7 @@ export function initialize() {
 
    return {
     type: INITIALIZE,
-    payload: request
-  //payload: serializeData(content.entities)
+  //  payload: request
+  payload: serializeData(content.entities)
   };
 }

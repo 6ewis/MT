@@ -13,7 +13,7 @@ import Contacts from './contacts.js';
 import DateInput from './dateInput';
 import Countries from './countries.js';
 
-export default ({aliases, entityTypes, countries, billingClient}) => {
+export default ({aliases, entityTypes, countries, billingClients}) => {
  return (
   <Col md={12}>
    <form>
@@ -27,7 +27,7 @@ export default ({aliases, entityTypes, countries, billingClient}) => {
       <Appellations labels={["Salutation", "Full Name", "Sort Name"]} />
 
       <Aliases data={aliases} />
-      <_Autosuggest label="Billing Client" data={billingClient}/>
+      <_Autosuggest label="Billing Client" data={billingClients}/>
 
       <Countries
         data={countries}

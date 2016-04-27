@@ -15,15 +15,26 @@ import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 
 
-//should be defined outside the component - everytime it re-renders it's recreating the store
+//should be defined outside the component - otherwise everytime it re-renders it's recreating the store
 const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
 class DNDdataForNewRecord extends Component {
+   constructor(props) {
+     super(props);
+     store.dispatch(initialize(props.location.state));
+   }
+
+   renderNextButton() {
+     let {originalData, sidebarContent} = store.getState();
+     console.log("should rerender when sidebar change but does not")
+    // debugger;
+     return (
+       <NextButton url="/ModifyRecord" state={{}}/>
+     );
+   }
+
    render() {
-
-    store.dispatch(initialize(this.props.location.state));
-
     return (
       <Provider store={store}>
         <div className="container-fluid">
@@ -37,7 +48,7 @@ class DNDdataForNewRecord extends Component {
                <BackButton url="/SelectRecordsToMerge"/>
              </div>
              <div className="col-md-3">
-               <NextButton url="/ModifyRecord" state={{}}/>
+               {this.renderNextButton()}
              </div>
              <div className="col-md-3">
                <CancelButton />
