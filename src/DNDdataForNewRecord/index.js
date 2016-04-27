@@ -26,11 +26,13 @@ class DNDdataForNewRecord extends Component {
    }
 
    renderNextButton() {
-     let {originalData, sidebarContent} = store.getState();
-     console.log("should rerender when sidebar change but does not")
-    // debugger;
      return (
-       <NextButton url="/ModifyRecord" state={{}}/>
+       <NextButton
+         url="/ModifyRecord"
+         state={{
+           droppedData: store.getState().droppedData,
+           sidebarContent: store.getState().sidebarContent
+         }}/>
      );
    }
 
