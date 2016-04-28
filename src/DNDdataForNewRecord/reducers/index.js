@@ -1,6 +1,6 @@
 import SelectedAccordion from './selectedAccordion';
 import SidebarContent from './sidebarContent';
-import droppedData from './originalData';
+import droppedData from './droppedData';
 import { combineReducers } from 'redux';
 
 const RootReducer = combineReducers({

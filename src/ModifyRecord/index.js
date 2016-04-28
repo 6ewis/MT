@@ -16,9 +16,12 @@ const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
 export default class ModifyRecord extends Component {
-   render() {
-     store.dispatch(initialize(this.props.location.state));
+   constructor(props) {
+     super(props);
+     store.dispatch(initialize(props.location.state));
+   }
 
+   render() {
      return (
        <Provider store={store}>
          <div className="container-fluid">

@@ -29,7 +29,8 @@ export default class _Autosuggest extends Component {
     const inputLength = inputValue.length;
 
     return inputLength === 0 ? [] : this.props.data.filter(billingClient =>
-      billingClient.client_number.toLowerCase().slice(0, inputLength) === inputValue
+      (billingClient.client_number.toLowerCase().slice(0, inputLength) === inputValue) ||
+      (billingClient.client_name.toLowerCase().slice(0, inputLength) === inputValue)
     );
   }
 
@@ -38,9 +39,20 @@ export default class _Autosuggest extends Component {
     // what should be the value of the input
     return suggestion.client_number; }
 
-  renderSuggestion(suggestion) {
+  renderSuggestion(
+    {client_name, client_number, address1, address2,
+     address3, address4, address5, address6}) {
+
     return (
-      <span>{suggestion.client_number}</span>
+      <span>
+        {client_name}
+        <strong>
+          ({client_number})
+        </strong>}
+        <br/>
+        {`${address1} ${address2} ${address3}
+          ${address4} ${address5} ${address6}`}
+      </span>
     );
   }
 

@@ -3,7 +3,7 @@ import {Row, Col} from 'react-bootstrap';
 import _InputText from './shared/_inputText';
 import _SplitButtonWithLabel from './shared/_splitButtonWithLabel';
 
-export default ({data, items}) => {
+export default ({options, items}) => {
   function renderInputs() {
     return items.map((item, index) => {
       return (
@@ -11,8 +11,7 @@ export default ({data, items}) => {
           key= {index}
           label= {item.label}
           defaultSelection= {item.defaultSelection}
-          fieldName="country_name"
-          data={data} />
+          options={options.map((item) => item.country_name)} />
              );
     });
   }

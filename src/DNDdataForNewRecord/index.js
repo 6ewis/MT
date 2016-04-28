@@ -29,10 +29,7 @@ class DNDdataForNewRecord extends Component {
      return (
        <NextButton
          url="/ModifyRecord"
-         state={{
-           droppedData: store.getState().droppedData,
-           sidebarContent: store.getState().sidebarContent
-         }}/>
+         state={store}/>
      );
    }
 

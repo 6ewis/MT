@@ -1,4 +1,5 @@
-import {EntityTypes, Aliases, Countries} from '../config/fakeData';
+import {BillingClients, Aliases, Countries} from '../config/fakeData';
+import R from 'ramda';
 
 export const INITIALIZE = 'INITIALIZE';
 
@@ -6,15 +7,18 @@ export const INITIALIZE = 'INITIALIZE';
 //2. we make async request to the server for the following: aliases, countries, billing client, addresses
 //3. we merge both piece of info  via a serialize function
 //4. we send it to the reducer
-export function initialize(initialData) {
+export function initialize(storeOfPreviousPage) {
+  console.log('the initialdata is:', storeOfPreviousPage);
   const fakeData =
-    {entityTypes: EntityTypes,
+    {
      aliases: Aliases,
-     countries: Countries};
+     countries: Countries,
+     billing_clients: BillingClients
+   };
 
   return {
     type: INITIALIZE,
-    payload: fakeData
+    payload: R.merge(storeOfPreviousPage.getState().droppedData, fakeData)
   //payload: serializeData(content.entities)
   };
 }

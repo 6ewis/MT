@@ -13,35 +13,46 @@ import Contacts from './contacts.js';
 import DateInput from './dateInput';
 import Countries from './countries.js';
 
-export default ({aliases, entityTypes, countries, billingClients}) => {
+export default (
+  {aliases, entity_type, countries, billing_clients,
+   salutation, name, sort_name}) => {
+
  return (
   <Col md={12}>
    <form>
       <_SplitButtonWithLabel
         label="Type"
-        defaultSelection="Individual"
-        data={entityTypes}
-        fieldName="entityType"
-        />
+        defaultSelection={entity_type}
+        options={["Individual", "Company", "Trust", "PartnerShip"]}
+      />
 
-      <Appellations labels={["Salutation", "Full Name", "Sort Name"]} />
+      <Appellations
+        data={
+          [{label: "Salutation", defaultValue: salutation},
+           {label: "Full Name", defaultValue: name},
+           {label: "Sort Name", defaultValue: sort_name}]
+            }
+       />
 
       <Aliases data={aliases} />
-      <_Autosuggest label="Billing Client" data={billingClients}/>
+
+      <_Autosuggest label="Billing Client" data={billing_clients}/>
 
       <Countries
-        data={countries}
+        options={countries}
         items={[
           {label: "Nationality", defaultSelection: "Canada"},
           {label: "Residence", defaultSelection: "Canada"},
           {label: "Domicile", defaultSelection: "Canada"}
         ]}
-        />
+      />
 
+{/*
       <Row>
         <_InputText label="Occupation" />
         <br/>
-      </Row>
+      </Row
+
 
       <DateInput title="Birth Date"/>
       <DateInput title="Deceased Date"/>
@@ -75,13 +86,13 @@ export default ({aliases, entityTypes, countries, billingClients}) => {
           <_SplitButtonWithLabel
            label="Address Type"
            defaultSelection="Registered"
-           data={entityTypes}
+           data={[]}
            fieldName="address"
            />
           <_SplitButtonWithLabel
            label="Entity Specific"
            defaultSelection="None Selected"
-           data={entityTypes}
+           data={[]}
            fieldName="address"
            />
 
@@ -137,7 +148,7 @@ export default ({aliases, entityTypes, countries, billingClients}) => {
         <_SplitButtonWithLabel
            label="New Field"
            defaultSelection="None Selected"
-           data={entityTypes}
+           data={[]}
            fieldName="address"
          />
 
@@ -148,6 +159,7 @@ export default ({aliases, entityTypes, countries, billingClients}) => {
         </Row>
         </Well>
         </Row>
+        */}
   </form>
 </Col>
  );

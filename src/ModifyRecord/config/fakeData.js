@@ -50,7 +50,7 @@
       "country_name": "Brazil"
     }];
 
-   export const billing_clients = [
+   export const BillingClients = [
     {
       "client_number": "00001",
       "matter_number": 111789,

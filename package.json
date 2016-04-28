@@ -54,7 +54,7 @@
     "eslint-plugin-react": "^3.6.2",
     "ramda": "^0.19.1",
     "react-autosuggest": "^3.7.3",
-    "react-bootstrap": "^0.28.5"
+    "react-bootstrap": "^0.29.2"
   },
   "browser": {
     "jquery": "./node_modules/jquery/dist/jquery.js",

@@ -18,12 +18,14 @@ class StateOfForm extends Component {
 //}
 
 function mapStateToProps({formContent}) {
-  const {aliases, entityTypes, countries, billing_clients} = formContent;
-  return { aliases: aliases,
-           entityTypes: entityTypes,
-           countries: countries,
-           billingClients: billing_clients
-         };
+  console.log("my formCOntent is", formContent);
+  return formContent;
+//  const {aliases, entity_type, countries, billing_clients} = formContent;
+//  return { aliases: aliases,
+//           entity_type: entityTypes,
+//           countries: countries,
+//           billingClients: billing_clients
+//         };
 }
 
 //export default connect(mapStateToProps, mapDispatchToProps)(StateOfCorporatePersonTab);

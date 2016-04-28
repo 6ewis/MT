@@ -2,12 +2,12 @@ import React from 'react';
 import {Row} from 'react-bootstrap';
 import _InputText from './shared/_inputText';
 
-export default ({labels}) => {
+export default ({data}) => {
   function renderInputs() {
-    return labels.map((label, index) => {
+    return data.map((item, index) => {
       return (
        <Row key={index}>
-         <_InputText label={label} />
+         <_InputText label={item.label} value={item.defaultValue} />
          <br/>
        </Row>
       );
