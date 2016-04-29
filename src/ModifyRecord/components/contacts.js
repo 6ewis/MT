@@ -16,6 +16,7 @@ export default ({items}) => {
   return (
     <Row>
       {renderInputs()}
+      <br/>
     </Row>
          );
 };

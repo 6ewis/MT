@@ -1,4 +1,4 @@
-import {BillingClients, Aliases, Countries} from '../config/fakeData';
+import {BillingClients, Aliases, Countries, MatterSpecificAddresses} from '../config/fakeData';
 import R from 'ramda';
 
 export const INITIALIZE = 'INITIALIZE';
@@ -13,7 +13,8 @@ export function initialize(storeOfPreviousPage) {
     {
      aliases: Aliases,
      countries: Countries,
-     billing_clients: BillingClients
+     billing_clients: BillingClients,
+     matterSpecificAddresses: MatterSpecificAddresses
    };
 
   return {

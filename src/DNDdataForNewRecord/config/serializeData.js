@@ -1,3 +1,4 @@
+import React from 'react';
 import R from 'ramda';
 import moment from 'moment';
 
@@ -12,10 +13,15 @@ export default (data) => {
     }
   };
 
+  const addNewLine = (address) => `${address} \n`;
+
   const transformation = R.evolve({
     'entity_type': serializeEntityType,
     'deceased_date': formatDate,
-    'birth_date': formatDate
+    'birth_date': formatDate,
+    'concatenated_registered_address': addNewLine,  //making sure there's a new line between different addreses
+    'concatenated_mailing_address': addNewLine,
+    'concatenated_dividend_address': addNewLine
   });
 
   const serializeNullValue = value => (value === 'null' ? null : value);
@@ -37,6 +43,6 @@ export default (data) => {
       R.join(" ", R.props(fields('divaddr'), object)))(object);
 
 
-  const objectUpdater = R.compose(addMailingAddress, addDividendAddress, addRegisteredAddress, R.map(serializeNullValue), transformation);
+  const objectUpdater = R.compose(transformation, addMailingAddress, addDividendAddress, addRegisteredAddress, R.map(serializeNullValue));
   return R.map(objectUpdater, data);
 };

@@ -13,10 +13,20 @@ import Contacts from './contacts.js';
 import DateInput from './dateInput';
 import Countries from './countries.js';
 
+import R from 'ramda';
+
 export default (
   {aliases, entity_type, countries, billing_clients,
    salutation, name, sort_name, birth_date, deceased_date,
-   phone, email, fax}) => {
+   phone, email, fax, matterSpecificAddresses,
+   concatenated_registered_address}) => {
+
+           //this is for addresses -
+           const onlyTheRegisteredAddresses = R.filter( R.propEq('address_type', 'Registered'), matterSpecificAddresses);
+           const returnEntitySpecificOption = (item) =>
+             `${item.client_name} (M#${item.matter}) \n
+              ${item.positions}`;
+           const options = R.map(returnEntitySpecificOption, onlyTheRegisteredAddresses);
 
  return (
   <Col md={12}>
@@ -68,8 +78,6 @@ export default (
            {label: "Other"}
          ]}
       />
-{/*
-      <Contacts labels={["Fax", "Other"]} />
 
       <br/>
       <Row>
@@ -94,17 +102,17 @@ export default (
               </i>
             </Col>
           </Row>
+
           <_SplitButtonWithLabel
            label="Address Type"
            defaultSelection="Registered"
-           data={[]}
-           fieldName="address"
+           disabled= {true}
+           options={[]}
            />
           <_SplitButtonWithLabel
            label="Entity Specific"
-           defaultSelection="None Selected"
-           data={[]}
-           fieldName="address"
+           defaultSelection="~ None Selected ~"
+           options={options}
            />
 
           <Row>
@@ -112,7 +120,7 @@ export default (
           </Row>
           <Row>
             <Col md={10} style={{paddingLeft: '0px'}}>
-              <_InputText />
+              <_InputText value={concatenated_registered_address}/>
             </Col>
             <Col md={2} style={{paddingLeft: '0px'}}>
               <i className="fa fa-trash-o" aria-hidden="true"></i>
@@ -123,6 +131,7 @@ export default (
               <_InputText />
             </Col>
           </Row>
+
           <Row>
             <Col md={10} style={{paddingLeft: '0px'}}>
               <_InputText />
@@ -137,7 +146,7 @@ export default (
         <br/>
         <Row>
           <Col md={10} style={{paddingLeft: '0px'}}>
-            <_InputText label="City" />
+            <_InputText label="City"/>
           </Col>
         </Row>
 
@@ -159,8 +168,7 @@ export default (
         <_SplitButtonWithLabel
            label="New Field"
            defaultSelection="None Selected"
-           data={[]}
-           fieldName="address"
+           options={[]}
          />
 
         <Row>
@@ -170,7 +178,6 @@ export default (
         </Row>
         </Well>
         </Row>
-        */}
   </form>
 </Col>
  );

@@ -28,6 +28,7 @@ export default class _SplitButton extends Component {
   render() {
     return (
       <SplitButton bsStyle='default'
+        {...this.props.disabled}
         title={this.state.title}
         id='split-button-basic-{this.props.fieldName}'>
        {this.renderMenuItems()}

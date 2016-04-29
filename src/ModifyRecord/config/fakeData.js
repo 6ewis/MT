@@ -96,3 +96,46 @@
       "address6": null
     }
   ];
+
+  export const MatterSpecificAddresses = [
+    {
+      "address_id": 304,
+      "address_type": "Registered",
+      "matter": "760840",
+      "client_name": "Abax Genesis Capital",
+      "cpref": 218950,
+      "address1": "Flat G, 43/F, Tower 2",
+      "address2": "The Victoria Towers",
+      "address3": "188 Canton Road",
+      "address4": "Tsim Sha Tsui",
+      "city": null,
+      "province": null,
+      "postal_code": null,
+      "country_numeric_code": 344,
+      "country_name": "Hong Kong",
+      "phone_number": null,
+      "email": null,
+      "preferred_name": "Richard YEE",
+      "positions": " Director"
+    },
+    {
+      "address_id": 305,
+      "address_type": "Mailing",
+      "matter": "760494",
+      "client_name": "AGC Asia 5 Ltd.",
+      "cpref": 218950,
+      "address1": "Flat G, 43/F, Tower 2",
+      "address2": "The Victoria Towers",
+      "address3": "188 Canton Road",
+      "address4": "Tsim Sha Tsui",
+      "city": null,
+      "province": null,
+      "postal_code": null,
+      "country_numeric_code": 344,
+      "country_name": "Hong Kong",
+      "phone_number": null,
+      "email": null,
+      "preferred_name": "Richard YEE",
+      "positions": " Director"
+    }
+  ];

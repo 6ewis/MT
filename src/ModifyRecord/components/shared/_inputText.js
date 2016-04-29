@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {FormGroup, Row, ControlLabel, FormControl} from 'react-bootstrap';
+import R from 'ramda';
 
 export default class _InputText extends Component {
   constructor(props) {
@@ -17,13 +18,18 @@ export default class _InputText extends Component {
    this.setState({value: e.target.value});
   }
 
+  renderLabel() {
+    let {label} = this.props;
+    return R.isNil(label) ? null : <ControlLabel>{label}</ControlLabel>;
+  }
+
   render() {
     return (
       <FormGroup
           controlId={`formControls${this.props.label}`}
           validationState={this.getValidationState()}
        >
-        <ControlLabel>{this.props.label}</ControlLabel>
+          {this.renderLabel()}
           <FormControl
             type="text"
             value={this.state.value}

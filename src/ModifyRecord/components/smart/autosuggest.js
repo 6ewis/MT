@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Row} from 'react-bootstrap';
 import Autosuggest from 'react-autosuggest';
 import _Label from '../shared/_label';
+import R from 'ramda';
 
 //return everything when you dont specify client number
 //add search by name and show address
@@ -24,14 +25,18 @@ export default class _Autosuggest extends Component {
     this.renderSuggestion = this.renderSuggestion.bind(this);
   }
 
+
   getSuggestions(value) {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
 
-    return inputLength === 0 ? [] : this.props.data.filter(billingClient =>
-      (billingClient.client_number.toLowerCase().slice(0, inputLength) === inputValue) ||
-      (billingClient.client_name.toLowerCase().slice(0, inputLength) === inputValue)
-    );
+    const checkIfInputEqBillingInfo = R.curry((value, acc, next) =>
+      acc || next.toLowerCase().slice(0, value.length) === value);
+
+    return inputLength === 0 ?
+      [] :
+      R.filter(billing => R.reduce(checkIfInputEqBillingInfo(inputValue),
+        false, [billing.client_number, billing.client_name]), this.props.data);
   }
 
   getSuggestionValue(suggestion) {
