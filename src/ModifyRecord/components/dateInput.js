@@ -11,7 +11,7 @@ export default class _DateInput extends Component {
            <_Label name={this.props.title} />
          </Row>
          <Row>
-           <Calendar format="DD/MM/YYYY" date={this.props.value} />
+           <Calendar format="DD/MM/YYYY" date={this.props.defaultValue} />
          </Row>
          <br/>
       </div>

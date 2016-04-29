@@ -2,7 +2,7 @@ import _Attribute from '../components/sidebar/shared/_attribute';
 import EntityType from '../components/sidebar/Name/entityType';
 
 //Name
-const NameTypes = ['Entity Types', 'Names', 'Sort Names', 'Salutation'];
+const NameTypes = ['Entity Type', 'Name', 'Sort Name', 'Salutation'];
 const [entityType, nameType, sortNameType, salutationType] = NameTypes;
 
 export const NameConfig = {
@@ -28,7 +28,7 @@ export const NameConfig = {
     },
     salutations: {
       attributeName: 'salutation',
-      attributeTitle: 'Salutation',
+      attributeTitle: 'Salutations',
       boxSourceType: salutationType,
       boxSourceComponent: _Attribute
     }
@@ -39,7 +39,7 @@ export const NameConfig = {
    //property to dispatch action to redux
     dispatchSelectAccordionValue: 'Names',
    //properties needed for react-bootstrap
-    header: 'Names',
+    header: 'Name',
     eventKey: '1',
    //property for the BoxTarget
     dropTargetTypes: NameTypes
@@ -47,7 +47,7 @@ export const NameConfig = {
 };
 
 //Date
-const DateTypes = ['Birth Dates', 'Death Dates'];
+const DateTypes = ['Birth Date', 'Death Date'];
 const [birthDateType, deceasedDateType] = DateTypes;
 
 export const DateConfig = {
@@ -74,7 +74,7 @@ export const DateConfig = {
 };
 
 //Domicile
-const DomicileTypes = ['Domiciles', 'Nationalities', 'Residences'];
+const DomicileTypes = ['Domicile', 'Nationality', 'Residence'];
 const [domicileTypes, nationalityTypes, residenceTypes] = DomicileTypes;
 
 export const DomicileConfig = {
@@ -107,7 +107,7 @@ export const DomicileConfig = {
 };
 
 //Phone/Fax
-const PhoneFaxTypes = ['Phones', 'Faxes', 'Emails', 'Telexes'];
+const PhoneFaxTypes = ['Phone', 'Fax', 'Email', 'Telex'];
 const [phoneTypes, faxTypes, emailTypes, telexTypes] = PhoneFaxTypes;
 
 export const PhoneFaxConfig = {

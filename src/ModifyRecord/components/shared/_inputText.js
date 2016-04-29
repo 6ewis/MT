@@ -27,7 +27,7 @@ export default class _InputText extends Component {
           <FormControl
             type="text"
             value={this.state.value}
-            onChange={this.handleChange}
+            onChange={this.handleChange.bind(this)}
           />
           <FormControl.Feedback /> {/* Add .Feedback for feedback icon*/}
           {/*<HelpBlock>Validation is based on string length.</HelpBlock>*/}

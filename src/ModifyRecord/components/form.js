@@ -15,7 +15,8 @@ import Countries from './countries.js';
 
 export default (
   {aliases, entity_type, countries, billing_clients,
-   salutation, name, sort_name}) => {
+   salutation, name, sort_name, birth_date, deceased_date,
+   phone, email, fax}) => {
 
  return (
   <Col md={12}>
@@ -47,17 +48,27 @@ export default (
         ]}
       />
 
-{/*
       <Row>
         <_InputText label="Occupation" />
         <br/>
-      </Row
+      </Row>
 
+      <DateInput title="Birth Date" defaultValue={birth_date}/>
+      <DateInput title="Deceased Date" defaultValue={deceased_date}/>
 
-      <DateInput title="Birth Date"/>
-      <DateInput title="Deceased Date"/>
-
-      <Contacts labels={["Phone", "Email"]} />
+      <Contacts
+         items={[
+           {label: "Phone", defaultValue: phone},
+           {label: "Email", defaultValue: email}
+         ]}
+      />
+     <Contacts
+         items={[
+           {label: "Fax", defaultValue: fax},
+           {label: "Other"}
+         ]}
+      />
+{/*
       <Contacts labels={["Fax", "Other"]} />
 
       <br/>

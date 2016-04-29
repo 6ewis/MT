@@ -48,10 +48,12 @@ export default class _Autosuggest extends Component {
         {client_name}
         <strong>
           ({client_number})
-        </strong>}
+        </strong>
         <br/>
+        <small>
         {`${address1} ${address2} ${address3}
           ${address4} ${address5} ${address6}`}
+        </small>
       </span>
     );
   }

@@ -1,7 +1,9 @@
 import R from 'ramda';
+import moment from 'moment';
 
 export default (data) => {
-  const serializeNullValue = value => (value === 'null' ? null : value);
+
+  const formatDate = (date) => moment(date).format('L');
 
   const serializeEntityType = entity_type => {
     switch (entity_type) {
@@ -9,6 +11,14 @@ export default (data) => {
       case 'C': return 'Company';
     }
   };
+
+  const transformation = R.evolve({
+    'entity_type': serializeEntityType,
+    'deceased_date': formatDate,
+    'birth_date': formatDate
+  });
+
+  const serializeNullValue = value => (value === 'null' ? null : value);
 
   const curryPrefixAddress = R.curry((prefix, value) => `${prefix}${value}`);
   const fields = (prefix) => R.map(curryPrefixAddress(prefix),
@@ -26,10 +36,7 @@ export default (data) => {
     R.assoc('concatenated_dividend_address',
       R.join(" ", R.props(fields('divaddr'), object)))(object);
 
-  const updateEntityType = R.evolve({
-    'entity_type': serializeEntityType
-  });
 
-  const objectUpdater = R.compose(addMailingAddress, addDividendAddress, addRegisteredAddress, R.map(serializeNullValue), updateEntityType);
+  const objectUpdater = R.compose(addMailingAddress, addDividendAddress, addRegisteredAddress, R.map(serializeNullValue), transformation);
   return R.map(objectUpdater, data);
 };
