@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export default (data) => {
 
-  const formatDate = (date) => moment(date).format('L');
+  const formatDate = (date) => (date === null) ? date : moment(date).format('L');
 
   const serializeEntityType = entity_type => {
     switch (entity_type) {

@@ -143,14 +143,16 @@ export function dropItem(item) {
   };
 }
 
-export function initialize() {
-  const initialData = "1,2,3,4,5";
+export function initialize(store) {
+//  const initialData = "1,2,3,4,5"; //useful for testing
+  const initialData = store.selectedEntities.map((item) => item.id ).join(",");
+  console.log("the initialData is: ", initialData);
   const config = {
     transformResponse: [(data) => serializeData(data)],
     responseType: 'json'
   };
 
-   const request = axios.get(`http://172.16.130.31:3000/corporate_persons/${initialData}`, config)
+   const request = axios.get(`http://cpmtdev01.codandev.local:3000/corporate_persons/${initialData}`, config)
     .catch((response) => {
       if (response instanceof Error) {
         console.log('Error', response.message);
@@ -166,7 +168,7 @@ export function initialize() {
 
    return {
     type: INITIALIZE,
-  //  payload: request
-  payload: serializeData(content.entities)
+    payload: request
+  //payload: serializeData(content.entities) //useful for testing
   };
 }

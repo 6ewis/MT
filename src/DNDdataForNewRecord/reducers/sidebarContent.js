@@ -5,7 +5,7 @@ export default function(state = [], action) {
  switch (action.type) {
   case INITIALIZE:
     console.log("I'm in the reducer and the data during initialization is: ", action.payload.data);
-    return action.payload;
+    return action.payload.data;
   case DROP_ITEM:
     const isPayloadDropItem = R.propEq(action.payload.attribute, action.payload.value);
     const removePayloadAttr = R.when(isPayloadDropItem, R.dissoc(action.payload.attribute));
