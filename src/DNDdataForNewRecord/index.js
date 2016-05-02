@@ -22,14 +22,17 @@ const store = createStoreWithMiddleware(reducers);
 class DNDdataForNewRecord extends Component {
    constructor(props) {
      super(props);
-     store.dispatch(initialize(props.location.state));
+     this.selectedIds = props.location.state.selectedEntities.map((item) => item.id ).join(",");
+     store.dispatch(initialize(this.selectedIds));
    }
 
    renderNextButton() {
      return (
        <NextButton
          url="/ModifyRecord"
-         state={store}/>
+         state={{store: store,
+                 selectedIds: this.selectedIds
+                }}/>
      );
    }
 

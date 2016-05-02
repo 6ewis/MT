@@ -143,17 +143,14 @@ export function dropItem(item) {
   };
 }
 
-export function initialize(store) {
-//  const initialData = "1,2,3,4,5"; //useful for testing
-  const initialData = store.selectedEntities.map((item) => item.id ).join(",");
-  console.log("the initialData is: ", initialData);
+export function initialize(selectedIds) {
   const config = {
     transformResponse: [(data) => serializeData(data)],
     responseType: 'json'
   };
 
-   const request = axios.get(`http://cpmtdev01.codandev.local:3000/corporate_persons/${initialData}`, config)
-    .catch((response) => {
+   const request = axios.get(`http://cpmtdev01.codandev.local:3000/corporate_persons/${selectedIds}`, config)
+    .catch(response => {
       if (response instanceof Error) {
         console.log('Error', response.message);
       } else {
