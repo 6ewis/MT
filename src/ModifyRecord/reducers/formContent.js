@@ -1,10 +1,17 @@
 import {INITIALIZE} from '../actions/index';
 
-export default function(state = [], action) {
+const defaultState = {
+  aliases: [],
+  countries: [],
+  billing_clients: [],
+  matter_specific_addresses: []
+};
+
+export default function(state = defaultState, action) {
   switch (action.type) {
    case INITIALIZE:
-     console.log("I'm in the reducer and the data during initialization is: ", action.payload.data);
-     return action.payload.data;
+     console.log("I'm in the reducer and the data during initialization is: ", action.payload);
+     return action.payload;
   }
   return state;
 }

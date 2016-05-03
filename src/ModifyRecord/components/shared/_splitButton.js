@@ -1,38 +1,20 @@
 import React, {Component} from 'react';
-import {Row, SplitButton, MenuItem} from 'react-bootstrap';
-
+import {FormControl, Row, SplitButton, MenuItem} from 'react-bootstrap';
 
 export default class _SplitButton extends Component {
-  constructor(props) {
-    super(props);
-    const {options, defaultSelection} = props;
-    this.state = {
-      title: (defaultSelection || options[0])
-    };
-  }
-
-  renderMenuItems() {
-    const {options} = this.props;
-    //We pass fieldName in order to reuse the component
-    return options.map((item, index) => {
-     return (item === this.state.title) ?
-       null :
-     ( <MenuItem
-         onClick={() => this.setState({title: item})}
-         key={index}
-         eventKey={index}>{item}
-       </MenuItem>);
-    });
+  //note: this is a class based component;
+  //we might need to set up the state when we'll go to to last page
+  renderOptions() {
+    const {options, defaultSelection} = this.props;
+    return options.map((item, index) =>
+      <option key={index} value={item}>{item}</option>);
   }
 
   render() {
     return (
-      <SplitButton bsStyle='default'
-        {...this.props.disabled}
-        title={this.state.title}
-        id='split-button-basic-{this.props.fieldName}'>
-       {this.renderMenuItems()}
-      </SplitButton>
+      <FormControl defaultValue={this.props.defaultSelection} componentClass="select" placeholder="select">
+       {this.renderOptions()}
+      </FormControl>
     );
   }
 }
