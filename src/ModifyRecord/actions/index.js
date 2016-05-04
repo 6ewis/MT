@@ -19,8 +19,19 @@ export function initialize(previousPageData) {
    };
   */
 
- const {selectedIds, store} = previousPageData;
- const droppedData = store.getState().droppedData;
+const {selectedIds, store} = previousPageData;
+const {droppedData, sidebarContent} = store.getState();
+const deserializedAddressesFunctions = R.pick([
+  'deserialized_concatenated_registered_address',
+  'deserialized_concatenated_mailing_address',
+  'deserialized_concatenated_dividend_address'
+], droppedData);
+
+const fetchedDeserializedAddresses =
+  R.map((item) => item(sidebarContent), deserializedAddressesFunctions);
+
+const mergedDroppedDataAndDeserializedAddresses =
+  R.merge(droppedData, fetchedDeserializedAddresses);
 
  const getAliases = () => axios.get(`http://cpmtdev01.codandev.local:3000/aliases/${selectedIds}`);
  const getCountries = () => axios.get(`http://cpmtdev01.codandev.local:3000/countries/`, {maxContentLength: 1000});
@@ -31,7 +42,7 @@ export function initialize(previousPageData) {
  const request = axios.all([getAliases(), getCountries(), billingClients(), matterSpecificAddresses()]).then(
    axios.spread((alias, countries, billingClients, matterSpecificAddresses) => {
      const retrievedData = R.mergeAll(R.map(item => retrieveData(item), [alias, countries, billingClients, matterSpecificAddresses]));
-     return R.merge(retrievedData, droppedData);
+     return R.merge(retrievedData, mergedDroppedDataAndDeserializedAddresses);
   })).catch(response => {
       if (response instanceof Error) {
          console.log('Error', response.message);

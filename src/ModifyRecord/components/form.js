@@ -42,7 +42,8 @@ export default (
   {aliases, entity_type, countries, billing_clients,
    salutation, name, sort_name, birth_date, deceased_date,
    phone, email, fax, matter_specific_addresses,
-   concatenated_registered_address, nationality, residence, domicile, telex}) => {
+   deserialized_concatenated_registered_address,
+   nationality, residence, domicile, telex}) => {
 
    if (R.isEmpty(billing_clients)) {return <Spinner config={opts}/>; }
 
@@ -52,6 +53,15 @@ export default (
              `${item.client_name} (M#${item.matter}) \n
               ${item.positions}`;
            const options = R.map(returnEntitySpecificOption, onlyTheRegisteredAddresses);
+
+           //utility func
+ const maybe = (method) => {
+   if (deserialized_concatenated_registered_address === true) {
+     return (deserialized_concatenated_registered_address.registeredAddressFields === true) ?
+       deserialized_concatenated_registered_address.registeredAddressFields[method] :
+       null;
+   }
+ };
 
  return (
   <Col md={12}>
@@ -132,12 +142,10 @@ export default (
            label="Address Type"
            defaultSelection="Registered"
            disabled= {true}
-           options={[]}
            />
           <_SplitButtonWithLabel
            label="Entity Specific"
            defaultSelection="~ None Selected ~"
-           options={options}
            />
 
           <Row>
@@ -145,7 +153,8 @@ export default (
           </Row>
           <Row>
             <Col md={10} style={{paddingLeft: '0px'}}>
-              <_InputText value={concatenated_registered_address}/>
+              <_InputText
+                value={maybe('regaddr_line_1')}/>
             </Col>
             <Col md={2} style={{paddingLeft: '0px'}}>
               <i className="fa fa-trash-o" aria-hidden="true"></i>
@@ -153,39 +162,51 @@ export default (
           </Row>
           <Row>
             <Col md={10} style={{paddingLeft: '0px'}}>
-              <_InputText />
+              <_InputText
+                value={maybe('regaddr_line_2')}
+              />
             </Col>
           </Row>
 
           <Row>
             <Col md={10} style={{paddingLeft: '0px'}}>
-              <_InputText />
+              <_InputText
+                value={maybe('regaddr_line_3')}
+              />
             </Col>
           </Row>
           <Row>
             <Col md={10} style={{paddingLeft: '0px'}}>
-              <_InputText />
+              <_InputText
+                value={maybe('regaddr_line_4')}
+              />
             </Col>
           </Row>
 
         <br/>
         <Row>
           <Col md={10} style={{paddingLeft: '0px'}}>
-            <_InputText label="City"/>
+            <_InputText label="City"
+               value={maybe('regaddr_locality')}
+            />
           </Col>
         </Row>
 
         <br/>
         <Row>
           <Col md={10} style={{paddingLeft: '0px'}}>
-            <_InputText label="Province/State" />
+            <_InputText label="Province/State"
+               value={maybe('regaddr_postal_code')}
+            />
           </Col>
         </Row>
 
         <br/>
         <Row>
           <Col md={10} style={{paddingLeft: '0px'}}>
-            <_InputText label="Country" />
+            <_InputText label="Country"
+               value={maybe('regaddr_country_name')}
+            />
           </Col>
         </Row>
 
@@ -193,7 +214,6 @@ export default (
         <_SplitButtonWithLabel
            label="New Field"
            defaultSelection="None Selected"
-           options={[]}
          />
 
         <Row>

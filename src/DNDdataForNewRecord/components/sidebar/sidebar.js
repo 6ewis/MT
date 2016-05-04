@@ -16,7 +16,7 @@ export default (props) => {
     <div style={{overflow: 'scroll'}}>
       <center>
       <br/>
-      <div className="well well-lg">
+      <div className="well well-lg" style={{height: '900px'}}>
         <div>
         <CurrentSidebarContent {...style}/>
         </div>
