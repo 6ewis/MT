@@ -13,7 +13,8 @@ import {BackButton, NextButton, CancelButton} from '../shared/transitionButtons/
 //DND
 import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
-
+import _Spinner from '../shared/_Spinner.js';
+import R from 'ramda';
 
 //should be defined outside the component - otherwise everytime it re-renders it's recreating the store
 const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
@@ -23,7 +24,7 @@ class DNDdataForNewRecord extends Component {
    constructor(props) {
      super(props);
      this.selectedIds = props.location.state.selectedEntities.map((item) => item.id ).join(",");
-     store.dispatch(initialize(this.selectedIds));
+     const voila = store.dispatch(initialize(this.selectedIds));
    }
 
    renderNextButton() {
@@ -36,29 +37,35 @@ class DNDdataForNewRecord extends Component {
      );
    }
 
+   renderSidebarAndTabs() {
+     return (
+          <div className="container-fluid">
+            <div className="col-md-3" style={{position: 'fixed'}}>
+              <Sidebar />
+            </div>
+            <div className="col-md-9 col-md-offset-3" style={{marginBottom: '1%'}}>
+              <br/>
+              <Tabs/>
+               <div className="col-md-3 col-md-offset-3">
+                 <BackButton url="/SelectRecordsToMerge"/>
+               </div>
+               <div className="col-md-3">
+                 {this.renderNextButton()}
+               </div>
+               <div className="col-md-3">
+                 <CancelButton />
+               </div>
+            </div>
+          </div>
+     );
+   }
+
    render() {
     return (
       <Provider store={store}>
-        <div className="container-fluid">
-          <div className="col-md-3" style={{position: 'fixed'}}>
-            <Sidebar />
-          </div>
-          <div className="col-md-9 col-md-offset-3" style={{marginBottom: '1%'}}>
-            <br/>
-            <Tabs/>
-             <div className="col-md-3 col-md-offset-3">
-               <BackButton url="/SelectRecordsToMerge"/>
-             </div>
-             <div className="col-md-3">
-               {this.renderNextButton()}
-             </div>
-             <div className="col-md-3">
-               <CancelButton />
-             </div>
-          </div>
-        </div>
+         {this.renderSidebarAndTabs()}
       </Provider>
-           );
+    )
   }
 }
 

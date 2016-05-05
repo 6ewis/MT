@@ -14,7 +14,7 @@ import DateInput from './dateInput';
 import Countries from './countries.js';
 
 import R from 'ramda';
-import _Spinner from './shared/_Spinner.js';
+import _Spinner from '../../shared/_Spinner.js';
 
 export default (
   {aliases, entity_type, countries, billing_clients,
