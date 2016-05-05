@@ -7,11 +7,12 @@ const defaultState = {
   matter_specific_addresses: []
 };
 
-export default function(state = defaultState, action) {
+//replace console.log by middleware logger
+export default (state = defaultState, action) => {
   switch (action.type) {
    case INITIALIZE:
      console.log("I'm in the reducer and the data during initialization is: ", action.payload);
      return action.payload;
   }
   return state;
-}
+};

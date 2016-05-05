@@ -13,6 +13,6 @@ class StateOfForm extends Component {
 
 function mapStateToProps({formContent}) {
    return formContent;
-}
+  }
 
 export default connect(mapStateToProps)(StateOfForm);

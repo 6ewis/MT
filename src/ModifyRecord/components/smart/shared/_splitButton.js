@@ -17,8 +17,14 @@ export default class _SplitButton extends Component {
 
   render() {
     return (
-      <FormControl defaultValue={this.props.defaultSelection} componentClass="select" placeholder="select">
-       {this.renderOptions()}
+      <FormControl
+        defaultValue={this.props.defaultSelection}
+        componentClass="select"
+        onChange={this.props.onSelect}
+        placeholder="select">
+
+        {this.renderOptions()}
+
       </FormControl>
     );
   }

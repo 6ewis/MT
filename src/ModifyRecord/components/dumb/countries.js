@@ -1,6 +1,6 @@
 import React from 'react';
 import {Row, Col} from 'react-bootstrap';
-import _InputText from './shared/_inputText';
+import _InputText from '../smart/shared/_inputText';
 import _SplitButtonWithLabel from './shared/_splitButtonWithLabel';
 
 export default ({options, items}) => {
