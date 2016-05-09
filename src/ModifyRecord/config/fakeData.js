@@ -97,6 +97,16 @@
     }
   ];
 
+  //dont need it here since addresses are built out of the data of the 2nd page
+ // export const Addresses = [
+ //   {
+ //     "registeredAddress": "",
+ //     "mailingAddress": "",
+ //     "dividendAddress": ""
+ //   } 
+ // ];
+  //
+  //use it to select out of the api call entity specific
   export const MatterSpecificAddresses = [
     {
       "address_id": 304,

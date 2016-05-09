@@ -65,7 +65,7 @@ class DNDdataForNewRecord extends Component {
       <Provider store={store}>
          {this.renderSidebarAndTabs()}
       </Provider>
-    )
+    );
   }
 }
 
