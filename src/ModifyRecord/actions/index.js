@@ -9,35 +9,45 @@ export const INITIALIZE = 'INITIALIZE';
 //3. we merge both piece of info  via a serialize function
 //4. we send it to the reducer
 export function initialize(previousPageData) {
-  
-  const fakeData =
-    {
-     aliases: Aliases,
-     countries: Countries,
-     billing_clients: BillingClients,
-     matterSpecificAddresses: MatterSpecificAddresses
-   };
-  
 
-//const {selectedIds, store} = previousPageData;
-//const {droppedData, sidebarContent} = store.getState();
-//const deserializedAddressesFunctions = R.pick([
-//  'deserialized_concatenated_registered_address',
-//  'deserialized_concatenated_mailing_address',
-//  'deserialized_concatenated_dividend_address'
-//], droppedData);
-//
-//const fetchedDeserializedAddresses =
-//  R.map((item) => item(sidebarContent), deserializedAddressesFunctions);
-//
-//const mergedDroppedDataAndDeserializedAddresses =
-//  R.merge(droppedData, fetchedDeserializedAddresses);
-//
-// const getAliases = () => axios.get(`http://cpmtdev01.codandev.local:3000/aliases/${selectedIds}`);
-// const getCountries = () => axios.get(`http://cpmtdev01.codandev.local:3000/countries/`, {maxContentLength: 1000});
-// const billingClients = () => axios.get(`http://cpmtdev01.codandev.local:3000/billing_clients/`);
-// const matterSpecificAddresses = () => axios.get(`http://cpmtdev01.codandev.local:3000/matter_specific_addresses/${selectedIds}`);
-//
+const fakeData =
+  {
+   aliases: Aliases,
+   countries: Countries,
+   billing_clients: BillingClients,
+   matterSpecificAddresses: MatterSpecificAddresses
+ };
+
+//we merge the result of the redux store droppedData and the result of calling
+//deseriialized_concatenanted_*
+//the registered, mailing and dividend addresses are functions that expect
+//to be called with the sidebar content of the second page
+const {selectedIds, store} = previousPageData;
+const {droppedData, sidebarContent} = store.getState();
+const deserialized_concatenated_strings = [
+  'deserialized_concatenated_registered_address',
+  'deserialized_concatenated_mailing_address',
+  'deserialized_concatenated_dividend_address'
+];
+const deserializedAddressesFunctions = R.pick(deserialized_concatenated_strings, droppedData);
+
+
+const fetchedDeserializedAddresses =
+  R.map((item) => item(sidebarContent), deserializedAddressesFunctions);
+
+const cleanDroppedData = R.omit(deserialized_concatenated_strings, droppedData);
+const mergedDroppedDataAndDeserializedAddresses =
+  R.merge(cleanDroppedData, {
+    registeredAddressFields: R.path(['deserialized_concatenated_registered_address', 'registeredAddressFields'], fetchedDeserializedAddresses),
+    mailingAddressFields: R.path(['deserialized_concatenated_mailing_address', 'mailingAddressFields'], fetchedDeserializedAddresses),
+    dividendaddressFields: R.path(['deserialized_concatenated_dividend_address', 'dividendAddressFields'], fetchedDeserializedAddresses)
+  });
+
+ //const getAliases = () => axios.get(`http://cpmtdev01.codandev.local:3000/aliases/${selectedIds}`);
+ //const getCountries = () => axios.get(`http://cpmtdev01.codandev.local:3000/countries/`, {maxContentLength: 1000});
+ //const billingClients = () => axios.get(`http://cpmtdev01.codandev.local:3000/billing_clients/`);
+ //const matterSpecificAddresses = () => axios.get(`http://cpmtdev01.codandev.local:3000/matter_specific_addresses/${selectedIds}`);
+
 // const retrieveData = R.path(['data']);
 // const request = axios.all([getAliases(), getCountries(), billingClients(), matterSpecificAddresses()]).then(
 //   axios.spread((alias, countries, billingClients, matterSpecificAddresses) => {
@@ -58,6 +68,6 @@ export function initialize(previousPageData) {
   return {
     type: INITIALIZE,
     //payload: request
-    payload: fakeData
+    payload: R.merge(fakeData, mergedDroppedDataAndDeserializedAddresses)
   };
 }

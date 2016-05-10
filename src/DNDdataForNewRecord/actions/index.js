@@ -144,28 +144,28 @@ export function dropItem(item) {
 }
 
 export function initialize(selectedIds) {
-  const config = {
-    transformResponse: [(data) => serializeData(data)],
-    responseType: 'json'
-  };
+//  const config = {
+//    transformResponse: [(data) => serializeData(data)],
+//    responseType: 'json'
+//  };
 
-   const request = axios.get(`http://cpmtdev01.codandev.local:3000/corporate_persons/${selectedIds}`, config)
-    .catch(response => {
-      if (response instanceof Error) {
-        console.log('Error', response.message);
-      } else {
-         // The request was made, but the server responded with a status code
-         // that falls out of the range of 2xx
-         console.log(response.data);
-         console.log(response.status);
-         console.log(response.headers);
-         console.log(response.config);
-      }
-    });
+//   const request = axios.get(`http://cpmtdev01.codandev.local:3000/corporate_persons/${selectedIds}`, config)
+//    .catch(response => {
+//      if (response instanceof Error) {
+//        console.log('Error', response.message);
+//      } else {
+//         // The request was made, but the server responded with a status code
+//         // that falls out of the range of 2xx
+//         console.log(response.data);
+//         console.log(response.status);
+//         console.log(response.headers);
+//         console.log(response.config);
+//      }
+//    });
 
    return {
     type: INITIALIZE,
-    payload: request
-  //payload: serializeData(content.entities) //useful for testing
+    //payload: request
+    payload: serializeData(content.entities) //useful for testing
   };
 }

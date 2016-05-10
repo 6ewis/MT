@@ -23,7 +23,7 @@ const store = createStoreWithMiddleware(reducers);
 class DNDdataForNewRecord extends Component {
    constructor(props) {
      super(props);
-     this.selectedIds = props.location.state.selectedEntities.map((item) => item.id ).join(",");
+     //this.selectedIds = props.location.state.selectedEntities.map((item) => item.id ).join(",");
      const voila = store.dispatch(initialize(this.selectedIds));
    }
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Input, Row, Col, Button, Well} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 //Shared Components
 import _SplitButtonWithLabel from './shared/_splitButtonWithLabel';
 import _InputText from './shared/_inputText';
@@ -21,11 +21,13 @@ export default (
   {aliases, entity_type, countries, billing_clients,
    salutation, name, sort_name, birth_date, deceased_date,
    phone, email, fax, nationality, residence, domicile, telex,
-   address}) => {
+   mailingAddressFields, registeredAddressFields, dividendAddressFields
+  }) => {
 
-   // what's the best way to check that the requests made to the server is done in React.js
-     // I'll have to use a middleware
-     // use global-spinner-middleware-
+  const addressData =
+    {mailingAddressFields, registeredAddressFields, dividendAddressFields};
+   // check that the requests made to the server is done in React.js
+     //  use a middleware
    return (R.isEmpty(billing_clients)) ?
      <_Spinner/> :
      (
@@ -78,7 +80,8 @@ export default (
               {label: "Other", defaultValue: telex}
             ]}
          />
-        <Address withProps={address} />
+        <Address {...addressData}
+        />
       </form>
 </Col>
  );

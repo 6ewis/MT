@@ -13,8 +13,6 @@ class StateOfForm extends Component {
 
 function mapStateToProps({formContent}) {
    return formContent;
-   //  could deserialize deserialize)concatenated_registered_address here into adress
-   //  but prefer to do it in the serializer component of action
-}
+  }
 
 export default connect(mapStateToProps)(StateOfForm);
