@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
 //Shared Components
 import AddressContainer from './address_container';
+import {Button, Accordion, Row} from 'react-bootstrap';
+import R from 'ramda';
+//import S from 'sanctuary';
 
-export default ({mailingAddressFields, registeredAddressFields, dividendAddressFields}) => {
+export default class Address extends Component {
+  constructor(props) {
+     super(props);
+     this.state = {newAddresses: []};
+  }
       //I most likely don't need it anymore
           // //this is for addresses - will be extracted in its own component- WIP
           // const onlyTheRegisteredAddresses = R.filter( R.propEq('address_type', 'Registered'), matter_specific_addresses);
@@ -10,18 +17,48 @@ export default ({mailingAddressFields, registeredAddressFields, dividendAddressF
           //   `${item.client_name} (M#${item.matter}) \n
           //    ${item.positions}`;
           // const options = R.map(returnEntitySpecificOption, onlyTheRegisteredAddresses);
-  const renderAllAddresses = () => {
-    return [{obj: mailingAddressFields, defaultSelection: "Mailing"},
-            {obj: registeredAddressFields, defaultSelection: "Registered"},
-            {obj: dividendAddressFields, defaultSelection: "Dividend"}].map((item, index) =>
+ renderKnownAddresses() {
+    const {mailingAddressFields, registeredAddressFields, dividendAddressFields} =
+      this.props;
+    return [Object.assign({defaultSelection: "Mailing", header: "header one", eventKey: '1'},
+        mailingAddressFields),
+       Object.assign({defaultSelection: "Registered", header: "header two", eventKey: '2'},
+        registeredAddressFields),
+       Object.assign({defaultSelection: "Dividend", header: "header three", eventKey: '3'},
+        dividendAddressFields)
+       ].map((item, index) =>
       item === undefined ?
         null :
         <AddressContainer key={index}
-          {...Object.assign({defaultSelection: item.defaultSelection}, item.obj)} />
+          {...item} />
     );
-  };
+}
 
-  return (
-    <div>{renderAllAddresses()}</div>
-  );
-};
+  render() {
+    return (
+      <div>
+        <br/>
+        <Row>
+          <hr/>
+          <Button
+            bsStyle="primary"
+            onClick={() =>
+              this.setState({newAddresses:
+                R.append(<AddressContainer />, this.state.newAddresses)
+            })}
+          >
+              + Add Address
+          </Button>
+        </Row>
+
+        <br/>
+        <Row>
+          <Accordion defaultActiveKey='1'>
+            {this.renderKnownAddresses()}
+            {this.state.newAddresses}
+          </Accordion>
+        </Row>
+      </div>
+    );
+  }
+}

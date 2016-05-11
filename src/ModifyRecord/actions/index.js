@@ -18,31 +18,34 @@ const fakeData =
    matterSpecificAddresses: MatterSpecificAddresses
  };
 
-//we merge the result of the redux store droppedData and the result of calling
-//deseriialized_concatenanted_*
-//the registered, mailing and dividend addresses are functions that expect
-//to be called with the sidebar content of the second page
-const {selectedIds, store} = previousPageData;
-const {droppedData, sidebarContent} = store.getState();
-const deserialized_concatenated_strings = [
-  'deserialized_concatenated_registered_address',
-  'deserialized_concatenated_mailing_address',
-  'deserialized_concatenated_dividend_address'
-];
-const deserializedAddressesFunctions = R.pick(deserialized_concatenated_strings, droppedData);
+function mergedDroppedDataAndDeserializedAddresses() {
+  //we merge the result of the redux store droppedData and the result of calling
+  //deseriialized_concatenanted_*
+  //the registered, mailing and dividend addresses are functions that expect
+  //to be called with the sidebar content of the second page
+  const {selectedIds, store} = previousPageData;
+  const {droppedData, sidebarContent} = store.getState();
+  const deserialized_concatenated_strings = [
+    'deserialized_concatenated_registered_address',
+    'deserialized_concatenated_mailing_address',
+    'deserialized_concatenated_dividend_address'
+  ];
+  const deserializedAddressesFunctions = R.pick(deserialized_concatenated_strings, droppedData);
 
 
-const fetchedDeserializedAddresses =
-  R.map((item) => item(sidebarContent), deserializedAddressesFunctions);
+  const fetchedDeserializedAddresses =
+    R.map((item) => item(sidebarContent), deserializedAddressesFunctions);
 
-const cleanDroppedData = R.omit(deserialized_concatenated_strings, droppedData);
-const mergedDroppedDataAndDeserializedAddresses =
-  R.merge(cleanDroppedData, {
-    registeredAddressFields: R.path(['deserialized_concatenated_registered_address', 'registeredAddressFields'], fetchedDeserializedAddresses),
-    mailingAddressFields: R.path(['deserialized_concatenated_mailing_address', 'mailingAddressFields'], fetchedDeserializedAddresses),
-    dividendaddressFields: R.path(['deserialized_concatenated_dividend_address', 'dividendAddressFields'], fetchedDeserializedAddresses)
-  });
+  const cleanDroppedData = R.omit(deserialized_concatenated_strings, droppedData);
+  const mergedDroppedDataAndDeserializedAddresses =
+    R.merge(cleanDroppedData, {
+      registeredAddressFields: R.path(['deserialized_concatenated_registered_address', 'registeredAddressFields'], fetchedDeserializedAddresses),
+      mailingAddressFields: R.path(['deserialized_concatenated_mailing_address', 'mailingAddressFields'], fetchedDeserializedAddresses),
+      dividendaddressFields: R.path(['deserialized_concatenated_dividend_address', 'dividendAddressFields'], fetchedDeserializedAddresses)
+    });
 
+  return mergedDroppedDataAndDeserializedAddresses;
+}
  //const getAliases = () => axios.get(`http://cpmtdev01.codandev.local:3000/aliases/${selectedIds}`);
  //const getCountries = () => axios.get(`http://cpmtdev01.codandev.local:3000/countries/`, {maxContentLength: 1000});
  //const billingClients = () => axios.get(`http://cpmtdev01.codandev.local:3000/billing_clients/`);
@@ -68,6 +71,6 @@ const mergedDroppedDataAndDeserializedAddresses =
   return {
     type: INITIALIZE,
     //payload: request
-    payload: R.merge(fakeData, mergedDroppedDataAndDeserializedAddresses)
+    payload: R.merge(fakeData /*, mergedDroppedDataAndDeserializedAddresses()*/)
   };
 }
