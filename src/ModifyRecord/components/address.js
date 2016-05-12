@@ -20,11 +20,11 @@ export default class Address extends Component {
  renderKnownAddresses() {
     const {mailingAddressFields, registeredAddressFields, dividendAddressFields} =
       this.props;
-    return [Object.assign({defaultSelection: "Mailing", header: "header one", eventKey: '1'},
+    return [Object.assign({defaultSelection: "Mailing", header: "Mailing", eventKey: '1'},
         mailingAddressFields),
-       Object.assign({defaultSelection: "Registered", header: "header two", eventKey: '2'},
+       Object.assign({defaultSelection: "Registered", header: "Registered", eventKey: '2'},
         registeredAddressFields),
-       Object.assign({defaultSelection: "Dividend", header: "header three", eventKey: '3'},
+       Object.assign({defaultSelection: "Dividend", header: "Dividend", eventKey: '3'},
         dividendAddressFields)
        ].map((item, index) =>
       item === undefined ?
@@ -44,7 +44,7 @@ export default class Address extends Component {
             bsStyle="primary"
             onClick={() =>
               this.setState({newAddresses:
-                R.append(<AddressContainer />, this.state.newAddresses)
+                R.append(<AddressContainer header={"More Address"}/>, this.state.newAddresses)
             })}
           >
               + Add Address
@@ -53,7 +53,7 @@ export default class Address extends Component {
 
         <br/>
         <Row>
-          <Accordion defaultActiveKey='1'>
+          <Accordion defaultActiveKey='2'>
             {this.renderKnownAddresses()}
             {this.state.newAddresses}
           </Accordion>
