@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 //Shared Components
-import AddressContainer from './address_container';
+import AddressContainer from './addressContainer';
+import AdditionalAddressContainer from './additionalAddressContainer';
 import {Button, Accordion, Row} from 'react-bootstrap';
 import R from 'ramda';
 //import S from 'sanctuary';
@@ -8,7 +9,9 @@ import R from 'ramda';
 export default class Address extends Component {
   constructor(props) {
      super(props);
-     this.state = {newAddresses: []};
+     this.state = {newAddresses: [],
+                   eventKey: 3}; //increment eventKey everytime a new address is appended to the
+                                //newAddresses ;; also useful to have unique keys
   }
       //I most likely don't need it anymore
           // //this is for addresses - will be extracted in its own component- WIP
@@ -34,6 +37,22 @@ export default class Address extends Component {
     );
 }
 
+  onClickHandler() {
+    this.setState(state => {
+      let eventKeyInc = state.eventKey + 1;
+      return {
+        eventKey: eventKeyInc,
+        newAddresses:
+          R.append(
+             <AdditionalAddressContainer
+                key={eventKeyInc}
+                eventKey={eventKeyInc}
+                header={`Mailing ${eventKeyInc}`}/>,
+              state.newAddresses)
+      };
+    });
+  }
+
   render() {
     return (
       <div>
@@ -42,10 +61,7 @@ export default class Address extends Component {
           <hr/>
           <Button
             bsStyle="primary"
-            onClick={() =>
-              this.setState({newAddresses:
-                R.append(<AddressContainer header={"More Address"}/>, this.state.newAddresses)
-            })}
+            onClick={this.onClickHandler.bind(this)}
           >
               + Add Address
           </Button>

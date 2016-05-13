@@ -25,7 +25,7 @@ export default class AddNewField extends Component {
 
         <Row>
           <Button
-            onClick={props.spawnNewField(this.state.selected)}
+            onClick={this.props.spawnNewField(this.state.selected)}
             style={{paddingLeft: '0px'}}>
               Add New Field
           </Button>
@@ -33,4 +33,4 @@ export default class AddNewField extends Component {
       </div>
     );
   }
-};
+}
