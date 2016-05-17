@@ -3,7 +3,7 @@
 import React, {Component} from 'react';
 import {Row, SplitButton, Button, MenuItem} from 'react-bootstrap';
 
-import _Label from './shared/_label';
+import _Label from '../dumb/shared/_label';
 import _SplitButton from './shared/_splitButton';
 import R from 'ramda';
 

@@ -3,10 +3,9 @@ import {Col, Panel, Button, Row, Well} from 'react-bootstrap';
 //Shared Components
 import _SplitButtonWithLabel from './shared/_splitButtonWithLabel';
 import _Label from './shared/_label';
-import _InputText from './shared/_inputText';
+import _InputText from '../smart/shared/_inputText';
 
 export default (props) => {
-
   const {country_name, line_1, line_2, line_3, line_4, locality,
   postal_code, region, defaultSelection, header} = props;
 

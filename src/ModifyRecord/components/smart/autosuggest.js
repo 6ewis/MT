@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
 import {Row} from 'react-bootstrap';
 import Autosuggest from 'react-autosuggest';
-import _Label from '../shared/_label';
+import _Label from '../dumb/shared/_label';
 import R from 'ramda';
-
-//return everything when you dont specify client number
-//add search by name and show address
-//name (client number)
-//address
 
 export default class _Autosuggest extends Component {
   constructor() {

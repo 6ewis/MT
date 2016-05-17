@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 //Shared Components
-import AddressContainer from './addressContainer';
+import AddressContainer from '../dumb/addressContainer';
 import AdditionalAddressContainer from './additionalAddressContainer';
 import {Button, Accordion, Row} from 'react-bootstrap';
 import R from 'ramda';
@@ -12,14 +12,8 @@ export default class Address extends Component {
                    eventKey: 3}; //increment eventKey everytime a new address is appended to the
                                 //newAddresses ;; also useful to have unique keys
   }
-      //I most likely don't need it anymore
-          // //this is for addresses - will be extracted in its own component- WIP
-          // const onlyTheRegisteredAddresses = R.filter( R.propEq('address_type', 'Registered'), matter_specific_addresses);
-          // const returnEntitySpecificOption = (item) =>
-          //   `${item.client_name} (M#${item.matter}) \n
-          //    ${item.positions}`;
-          // const options = R.map(returnEntitySpecificOption, onlyTheRegisteredAddresses);
- renderKnownAddresses() {
+
+  renderKnownAddresses() {
     const {mailingAddressFields, registeredAddressFields, dividendAddressFields} =
       this.props;
     return [Object.assign({defaultSelection: "Registered", header: "Registered", eventKey: '1'},
@@ -32,7 +26,7 @@ export default class Address extends Component {
         <AddressContainer key={index}
           {...item} />
     );
-}
+  }
 
   onClickHandler() {
     this.setState(state => {

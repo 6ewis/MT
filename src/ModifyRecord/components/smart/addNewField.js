@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Row, Button} from 'react-bootstrap';
 //Shared Components
-import _SplitButtonWithLabel from './shared/_splitButtonWithLabel';
+import _SplitButtonWithLabel from '../dumb/shared/_splitButtonWithLabel';
 
 export default class AddNewField extends Component {
   constructor() {

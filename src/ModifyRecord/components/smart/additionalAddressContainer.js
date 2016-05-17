@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {Col, Panel, Row, Well} from 'react-bootstrap';
 //Shared Components
-import _SplitButtonWithLabel from './shared/_splitButtonWithLabel';
+import _SplitButtonWithLabel from '../dumb/shared/_splitButtonWithLabel';
 import AddNewField from './addNewField';
-import AddressList from './addressList';
+import AddressList from '../dumb/addressInfo';
+import _InputText from './shared/_inputText';
 import R from 'ramda';
 
 export default class AddressContainer extends Component {
@@ -12,27 +13,31 @@ export default class AddressContainer extends Component {
      this.state = {newFields: [], uniqueKey: 0};
   }
 
-  renderField(type) {
+  renderField(type, selectedItem) {
     this.setState((previousState, currentProps) => {
-      let incrementedKey = R.add(1, previousState.key);
+      let incrementedKey = R.add(1, previousState.uniqueKey);
       let updatedNewFields =
-        R.append(React.createElement(type, {key: incrementedKey}), previousState.newFields);
-      return {newFields: updatedNewFields, key: incrementedKey};
+        R.append(React.createElement(type,
+          {key: incrementedKey, label: selectedItem}),
+          previousState.newFields);
+      return {newFields: updatedNewFields, uniqueKey: incrementedKey};
     });
   }
 
   spawnNewFieldHandler(selectedItem, e) {
-    console.log("I'm in the spawnNreFieldHandler method");
      switch (selectedItem) {
        case "Address":
-         this.renderField(AddressList);
-       break;
+         this.renderField(AddressList, selectedItem);
+         break;
        case "Preferred Name":
-         return console.log('I have not set it up yet');
+         this.renderField(_InputText, selectedItem);
+         break;
        case "Phone":
-         return console.log('the phone number input goes here');
+         this.renderField(_InputText, selectedItem);
+         break;
        case "Email":
-         return console.log("the email address goes here");
+         this.renderField(_InputText, selectedItem);
+         break;
      }
   }
 

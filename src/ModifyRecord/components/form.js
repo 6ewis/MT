@@ -1,19 +1,20 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'react-bootstrap';
 //Shared Components
-import _SplitButtonWithLabel from './shared/_splitButtonWithLabel';
-import _InputText from './shared/_inputText';
-import _Label from './shared/_label';
+import _SplitButtonWithLabel from './dumb/shared/_splitButtonWithLabel';
+import _InputText from './smart/shared/_inputText';
+import _Label from './dumb/shared/_label';
 import _Autosuggest from './smart/autosuggest';
 
 //Not Shared
-import Aliases from './aliases';
-import Appellations from './appellations.js';
-import Contacts from './contacts.js';
-import DateInput from './dateInput';
-import Countries from './countries.js';
+import Aliases from './smart/aliases';
+import Appellations from './dumb/appellations.js';
+import Contacts from './dumb/contacts.js';
+import DateInput from './dumb/dateInput';
+import Countries from './dumb/countries.js';
 import _Spinner from '../../shared/_Spinner.js';
-import Address from './address.js';
+//this spinner sucks
+import Address from './smart/addressRoot.js';
 
 import R from 'ramda';
 
