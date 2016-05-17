@@ -12,10 +12,21 @@ export default class AddressContainer extends Component {
      this.state = {newFields: []};
   }
 
-  spawnNewFieldHandler(selectedItem) {
+  spawnNewFieldHandler(selectedItem, e) {
+    console.log("I'm in the spawnNreFieldHandler method");
+    //we don't do anything with the return value
      switch (selectedItem) {
        case "Address":
-         return this.setState({newfields: R.append(<AddressList />)});
+          this.setState((previousState, currentProps) => {
+           console.log("im in the address");
+           let OupdatedNewFields = R.append(<AddressList />, previousState.newFields);
+           let updatedNewFields = [<AddressList />];
+           console.log(OupdatedNewFields, updatedNewFields);
+           console.log("updated new fields is: ", updatedNewFields);
+           return {newFields: updatedNewFields};
+       });
+       debugger
+       break;
        case "Preferred Name":
          return console.log('I have not set it up yet');
        case "Phone":

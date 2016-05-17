@@ -19,13 +19,13 @@ export default class AddNewField extends Component {
         <_SplitButtonWithLabel
            label="New Field"
            defaultSelection="~ None Selected ~"
-           options={["Preferred Name", "Address", "Phone", "Email"]}
-           onSelect={this.onSelectHandler}
+           options={["~ None Selected ~", "Preferred Name", "Address", "Phone", "Email"]}
+           onSelect={this.onSelectHandler.bind(this)}
          />
 
         <Row>
           <Button
-            onClick={this.props.spawnNewField(this.state.selected)}
+            onClick={this.props.spawnNewField.bind(this, this.state.selected)}
             style={{paddingLeft: '0px'}}>
               Add New Field
           </Button>
