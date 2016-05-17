@@ -25,8 +25,8 @@ export default class AddNewField extends Component {
 
         <Row>
           <Button
-            onClick={this.props.spawnNewField.bind(this, this.state.selected)}
-            style={{paddingLeft: '0px'}}>
+            onClick={() => this.props.spawnNewField(this.state.selected)}
+            style={{paddingLeft: '5px'}}>
               Add New Field
           </Button>
         </Row>

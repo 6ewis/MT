@@ -4,7 +4,6 @@ import AddressContainer from './addressContainer';
 import AdditionalAddressContainer from './additionalAddressContainer';
 import {Button, Accordion, Row} from 'react-bootstrap';
 import R from 'ramda';
-//import S from 'sanctuary';
 
 export default class Address extends Component {
   constructor(props) {
@@ -23,11 +22,9 @@ export default class Address extends Component {
  renderKnownAddresses() {
     const {mailingAddressFields, registeredAddressFields, dividendAddressFields} =
       this.props;
-    return [Object.assign({defaultSelection: "Mailing", header: "Mailing", eventKey: '1'},
-        mailingAddressFields),
-       Object.assign({defaultSelection: "Registered", header: "Registered", eventKey: '2'},
-        registeredAddressFields),
-       Object.assign({defaultSelection: "Dividend", header: "Dividend", eventKey: '3'},
+    return [Object.assign({defaultSelection: "Registered", header: "Registered", eventKey: '1'},
+        registeredAddressFields), Object.assign({defaultSelection: "Mailing", header: "Mailing", eventKey: '2'},
+        mailingAddressFields), Object.assign({defaultSelection: "Dividend", header: "Dividend", eventKey: '3'},
         dividendAddressFields)
        ].map((item, index) =>
       item === undefined ?
@@ -39,15 +36,15 @@ export default class Address extends Component {
 
   onClickHandler() {
     this.setState(state => {
-      let eventKeyInc = state.eventKey + 1;
+      let incrementedEventKey = R.add(1, state.eventKey);
       return {
-        eventKey: eventKeyInc,
+        eventKey: incrementedEventKey,
         newAddresses:
           R.append(
              <AdditionalAddressContainer
-                key={eventKeyInc}
-                eventKey={eventKeyInc}
-                header={`Mailing ${eventKeyInc}`}/>,
+                key={incrementedEventKey}
+                eventKey={incrementedEventKey}
+                header={`Mailing ${incrementedEventKey}`}/>,
               state.newAddresses)
       };
     });
@@ -69,7 +66,7 @@ export default class Address extends Component {
 
         <br/>
         <Row>
-          <Accordion defaultActiveKey='2'>
+          <Accordion defaultActiveKey='1'>
             {this.renderKnownAddresses()}
             {this.state.newAddresses}
           </Accordion>

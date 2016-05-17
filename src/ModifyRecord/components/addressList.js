@@ -5,8 +5,8 @@ import {Col, Row} from 'react-bootstrap';
 import _Label from './shared/_label';
 import _InputText from './shared/_inputText';
 
-export default (country_name, line_1, line_2, line_3, line_4, locality,
-  postal_code, region) => {
+export default ({country_name, line_1, line_2, line_3, line_4, locality,
+  postal_code, region}) => {
 
   return (
     <div>

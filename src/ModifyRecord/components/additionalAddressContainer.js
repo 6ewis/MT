@@ -9,23 +9,23 @@ import R from 'ramda';
 export default class AddressContainer extends Component {
   constructor() {
      super();
-     this.state = {newFields: []};
+     this.state = {newFields: [], uniqueKey: 0};
+  }
+
+  renderField(type) {
+    this.setState((previousState, currentProps) => {
+      let incrementedKey = R.add(1, previousState.key);
+      let updatedNewFields =
+        R.append(React.createElement(type, {key: incrementedKey}), previousState.newFields);
+      return {newFields: updatedNewFields, key: incrementedKey};
+    });
   }
 
   spawnNewFieldHandler(selectedItem, e) {
     console.log("I'm in the spawnNreFieldHandler method");
-    //we don't do anything with the return value
      switch (selectedItem) {
        case "Address":
-          this.setState((previousState, currentProps) => {
-           console.log("im in the address");
-           let OupdatedNewFields = R.append(<AddressList />, previousState.newFields);
-           let updatedNewFields = [<AddressList />];
-           console.log(OupdatedNewFields, updatedNewFields);
-           console.log("updated new fields is: ", updatedNewFields);
-           return {newFields: updatedNewFields};
-       });
-       debugger
+         this.renderField(AddressList);
        break;
        case "Preferred Name":
          return console.log('I have not set it up yet');
@@ -63,7 +63,7 @@ export default class AddressContainer extends Component {
                {this.state.newFields}
 
               <br/>
-              <AddNewField spawnNewField={this.spawnNewFieldHandler} />
+              <AddNewField spawnNewField={this.spawnNewFieldHandler.bind(this)} />
         </Well>
       </Panel>
     );
