@@ -14,7 +14,7 @@ import DateInput from './dumb/dateInput';
 import Countries from './dumb/countries.js';
 import _Spinner from '../../shared/_Spinner.js';
 //this spinner sucks
-import Address from './smart/addressRoot.js';
+import AddressRoot from './smart/addressRoot.js';
 
 import R from 'ramda';
 
@@ -25,6 +25,7 @@ export default (
    mailingAddressFields, registeredAddressFields, dividendAddressFields
   }) => {
 
+  debugger;
   const addressData =
     {mailingAddressFields, registeredAddressFields, dividendAddressFields};
    // check that the requests made to the server is done in React.js
@@ -81,7 +82,7 @@ export default (
               {label: "Other", defaultValue: telex}
             ]}
          />
-        <Address {...addressData}
+        <AddressRoot {...addressData}
         />
       </form>
 </Col>

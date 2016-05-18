@@ -3,7 +3,7 @@ import {Col, Panel, Row, Well} from 'react-bootstrap';
 //Shared Components
 import _SplitButtonWithLabel from '../dumb/shared/_splitButtonWithLabel';
 import AddNewField from './addNewField';
-import AddressList from '../dumb/addressInfo';
+import AddressInfo from '../dumb/addressInfo';
 import _InputText from './shared/_inputText';
 import R from 'ramda';
 
@@ -13,30 +13,44 @@ export default class AddressContainer extends Component {
      this.state = {newFields: [], uniqueKey: 0};
   }
 
-  renderField(type, selectedItem) {
+  renderField(type) {
     this.setState((previousState, currentProps) => {
       let incrementedKey = R.add(1, previousState.uniqueKey);
       let updatedNewFields =
-        R.append(React.createElement(type,
-          {key: incrementedKey, label: selectedItem}),
-          previousState.newFields);
-      return {newFields: updatedNewFields, uniqueKey: incrementedKey};
+        R.append(type, previousState.newFields);
+    return {newFields: updatedNewFields, uniqueKey: incrementedKey};
     });
   }
+
+  renderInput(selectedItem) {
+    return this.renderField(
+      <Row>
+        <_InputText label={selectedItem}
+          key={this.state.uniqueKey}/>
+        <br/>
+      </Row>
+    );
+   }
+
+  renderAddressInfo(selectedItem) {
+     return this.renderField(
+       <AddressInfo label={selectedItem}
+         key={this.state.uniqueKey} />);
+   }
 
   spawnNewFieldHandler(selectedItem, e) {
      switch (selectedItem) {
        case "Address":
-         this.renderField(AddressList, selectedItem);
+         this.renderAddressInfo(selectedItem);
          break;
        case "Preferred Name":
-         this.renderField(_InputText, selectedItem);
+         this.renderInput(selectedItem);
          break;
        case "Phone":
-         this.renderField(_InputText, selectedItem);
+         this.renderInput(selectedItem);
          break;
        case "Email":
-         this.renderField(_InputText, selectedItem);
+         this.renderInput(selectedItem);
          break;
      }
   }
@@ -58,6 +72,7 @@ export default class AddressContainer extends Component {
               <_SplitButtonWithLabel
                label="Address Type"
                defaultSelection= {this.props.defaultSelection}
+               options= {["Mailing", "Dividend"]}
                disabled= {true}
                />
               <_SplitButtonWithLabel

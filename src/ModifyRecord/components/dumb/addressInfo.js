@@ -71,6 +71,7 @@ export default ({country_name, line_1, line_2, line_3, line_4, locality,
           />
         </Col>
       </Row>
+      <br/>
     </div>
   );
 };

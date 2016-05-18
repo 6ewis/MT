@@ -4,7 +4,7 @@ const defaultState = {
   aliases: [],
   countries: [],
   billing_clients: [],
-  matter_specific_addresses: []
+  matter_Positions: []
 };
 
 //replace console.log by middleware logger
