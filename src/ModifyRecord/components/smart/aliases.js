@@ -21,7 +21,17 @@ export default class Aliases extends Component {
     return (
       <Row key={n} className="form-inline">
          <_SplitButton options={[ 'AKA', 'FKA']}/>
-         &nbsp; <input onChange={(e) => this.seState({value: e.target.val})} type="text" value={alias || this.state.value} className="form-control"/>
+         &nbsp;
+         <input
+           onChange={e =>
+             {
+             this.setState({value: e.target.val},
+             this.props.updateFormData(this.state.);
+             }
+           )}
+           type="text"
+           value={alias || this.state.value}
+           className="form-control"/>
          &nbsp;
          <i style={{cursor: "pointer"}}
             onClick ={() => alias ?

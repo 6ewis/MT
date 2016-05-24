@@ -28,7 +28,8 @@ class StateOfForm extends Component {
   }
 
   updateFormData(field) {
-    this.setState({[field.label]: field.value}); 
+    console.log("here we go- a new field has been completed: ", field);
+    this.setState({[field.label]: field.value});
   }
 
   render() {

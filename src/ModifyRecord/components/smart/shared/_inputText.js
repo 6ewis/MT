@@ -3,29 +3,30 @@ import {FormGroup, Row, ControlLabel, FormControl} from 'react-bootstrap';
 import R from 'ramda';
 
 export default class _InputText extends Component {
- // constructor(props) {
- //   super(props);
- //   this.state = {
- //     value: props.value || ''
- //   };
- // }
+  constructor(props) {
+    super(props);
+    this.state = {
+     value: props.value || ''
+    };
+  }
 
- // getValidationState() {
- //   //return the validation here - either 'success' 'warning' or 'error'
- // }
+ getValidationState() {
+   //return the validation here - either 'success' 'warning' or 'error'
+ }
 
- // componentWillReceiveProps(nextProps) {
- //   this.setState({value: nextProps.value});
- // }
+ componentWillReceiveProps(nextProps) {
+    this.setState({value: nextProps.value});
+ }
 
- // handleChange(e) {
- //   this.setState({value: e.target.value});
- // }
+  handleChange(e) {
+    this.setState({value: e.target.value});
+    this.props.updateFormData({label: this.props.label, value: e.target.value });
+  }
 
- // renderLabel() {
- //   let {label} = this.props;
- //   return R.isNil(label) ? null : <ControlLabel>{label}</ControlLabel>;
- // }
+  renderLabel() {
+    let {label} = this.props;
+    return R.isNil(label) ? null : <ControlLabel>{label}</ControlLabel>;
+  }
 
   render() {
     return (
@@ -37,9 +38,7 @@ export default class _InputText extends Component {
           <FormControl
             type="text"
             value={this.state.value}
-            onChange={ e =>
-              this.props.updateFormData({label: this.props.label, value: e.target.value })
-            }
+            onChange={this.handleChange.bind(this)}
           />
           <FormControl.Feedback /> {/* Add .Feedback for feedback icon*/}
           {/*<HelpBlock>Validation is based on string length.</HelpBlock>*/}

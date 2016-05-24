@@ -18,7 +18,7 @@ export default class _SplitButton extends Component {
       <FormControl
         defaultValue={this.props.defaultSelection}
         componentClass="select"
-        onChange={e => 
+        onChange={e =>
           this.props.updateFormData({label: this.props.label, value: e.target.value })}
         placeholder="select">
 
