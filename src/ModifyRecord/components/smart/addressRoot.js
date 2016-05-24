@@ -14,11 +14,32 @@ export default class Address extends Component {
   }
 
   renderKnownAddresses() {
-    const {mailingAddressFields, registeredAddressFields, dividendAddressFields} =
-      this.props;
-    return [Object.assign({defaultSelection: "Registered", header: "Registered", eventKey: '1'},
-        registeredAddressFields), Object.assign({defaultSelection: "Mailing", header: "Mailing", eventKey: '2'},
-        mailingAddressFields), Object.assign({defaultSelection: "Dividend", header: "Dividend", eventKey: '3'},
+    const {
+      mailingAddressFields,
+      registeredAddressFields,
+      dividendAddressFields,
+      updateFormData
+    } = this.props;
+    return [
+      Object.assign(
+        {defaultSelection: "Registered",
+         header: "Registered",
+         eventKey: '1',
+         updateFormData: updateFormData
+        },
+        registeredAddressFields),
+      Object.assign(
+        {defaultSelection: "Mailing",
+         header: "Mailing",
+         eventKey: '2',
+         updateFormData: updateFormData},
+        mailingAddressFields),
+      Object.assign(
+        {defaultSelection: "Dividend", 
+         header: "Dividend", 
+         eventKey: '3',
+         updateFormData: updateFormData 
+        },
         dividendAddressFields)
        ].map((item, index) =>
       item === undefined ?
@@ -36,6 +57,7 @@ export default class Address extends Component {
         newAddresses:
           R.append(
              <AdditionalAddressContainer
+                updateFormData= {this.props.updateFormData}
                 key={incrementedEventKey}
                 eventKey={incrementedEventKey}
                 header={`Mailing ${incrementedEventKey}`}/>,

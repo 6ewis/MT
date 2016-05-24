@@ -19,17 +19,19 @@ import AddressRoot from './smart/addressRoot.js';
 import R from 'ramda';
 
 export default (
-  {aliases, entity_type, countries, billing_clients,
+  {updateFormData, aliases, entity_type, countries, billing_clients,
    salutation, name, sort_name, birth_date, deceased_date,
    phone, email, fax, nationality, residence, domicile, telex,
    mailingAddressFields, registeredAddressFields, dividendAddressFields
   }) => {
 
-  debugger;
   const addressData =
-    {mailingAddressFields, registeredAddressFields, dividendAddressFields};
-   // check that the requests made to the server is done in React.js
-     //  use a middleware
+    {mailingAddressFields,
+     registeredAddressFields,
+     dividendAddressFields,
+     updateFormData
+  };
+
    return (R.isEmpty(billing_clients)) ?
      <_Spinner/> :
      (
@@ -39,9 +41,11 @@ export default (
            label="Type"
            defaultSelection={entity_type}
            options={["Individual", "Company", "Trust", "PartnerShip"]}
+           updateFormData={updateFormData}
          />
 
          <Appellations
+           updateFormData={updateFormData}
            data={
              [{label: "Salutation", defaultValue: salutation},
               {label: "Full Name", defaultValue: name},
@@ -49,11 +53,19 @@ export default (
                }
           />
 
-         <Aliases data={aliases} />
+         <Aliases 
+           data={aliases}
+           updateFormData= {updateFormData} 
+           />
 
-         <_Autosuggest label="Billing Client" data={billing_clients}/>
+         <_Autosuggest 
+           label="Billing Client" 
+           data={billing_clients}
+           updateFormData= {updateFormData} 
+           />
 
          <Countries
+           updateFormData= {updateFormData}
            options={countries}
            items={[
              {label: "Nationality", defaultSelection: nationality},
@@ -63,24 +75,31 @@ export default (
          />
 
          <Row>
-           <_InputText label="Occupation" />
+           <_InputText 
+             updateFormData = {updateFormData}
+             label="Occupation" />
            <br/>
          </Row>
 
-         <DateInput title="Birth Date" defaultValue={birth_date}/>
+         <DateInput 
+           updateFormData= {updateFormData}
+           title="Birth Date" 
+           defaultValue={birth_date}/>
          <DateInput title="Deceased Date" defaultValue={deceased_date}/>
 
          <Contacts
-            items={[
-              {label: "Phone", defaultValue: phone},
-              {label: "Email", defaultValue: email}
+           updateFormData= {updateFormData}
+           items={[
+             {label: "Phone", defaultValue: phone},
+             {label: "Email", defaultValue: email}
             ]}
          />
         <Contacts
-            items={[
-              {label: "Fax", defaultValue: fax},
-              {label: "Other", defaultValue: telex}
-            ]}
+          updateFormData = {updateFormData}
+          items={[
+            {label: "Fax", defaultValue: fax},
+            {label: "Other", defaultValue: telex}
+          ]}
          />
         <AddressRoot {...addressData}
         />

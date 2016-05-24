@@ -3,8 +3,6 @@ import {FormControl, Row, SplitButton, MenuItem} from 'react-bootstrap';
 import R from 'ramda';
 
 export default class _SplitButton extends Component {
-  //note: this is a class based component;
-  //we might need to set up the state when we'll go to to last page
   renderOptions() {
     const {options, defaultSelection} = this.props;
     return R.isNil(options)
@@ -20,7 +18,8 @@ export default class _SplitButton extends Component {
       <FormControl
         defaultValue={this.props.defaultSelection}
         componentClass="select"
-        onChange={this.props.onSelect}
+        onChange={e => 
+          this.props.updateFormData({label: this.props.label, value: e.target.value })}
         placeholder="select">
 
         {this.renderOptions()}
