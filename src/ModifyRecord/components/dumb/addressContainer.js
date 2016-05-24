@@ -5,9 +5,11 @@ import _SplitButtonWithLabel from './shared/_splitButtonWithLabel';
 import _Label from './shared/_label';
 import _InputText from '../smart/shared/_inputText';
 
+import Select from 'react-select';
+
 export default (props) => {
   const {country_name, line_1, line_2, line_3, line_4, locality,
-  postal_code, region, defaultSelection, header} = props;
+  postal_code, region, defaultSelection, header, matterPositions} = props;
 
   return (
     <Panel {...props} header={header || `new Header`}>
@@ -27,10 +29,18 @@ export default (props) => {
              defaultSelection= {defaultSelection}
              disabled= {true}
              />
+
+            {/*
             <_SplitButtonWithLabel
              label="Entity Specific"
+             options={serializedMatterPositions}
              defaultSelection="~ None Selected ~"
-             />
+             />*/}
+
+            <Select
+              name="form-field-name"
+              options= {matterPositions}
+            />
 
             <Row>
               <_Label name="Address"/>

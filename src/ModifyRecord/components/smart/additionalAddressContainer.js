@@ -77,6 +77,7 @@ export default class AddressContainer extends Component {
                />
               <_SplitButtonWithLabel
                label="Entity Specific"
+               options={this.props.matterPositions}
                defaultSelection="~ None Selected ~"
                />
 

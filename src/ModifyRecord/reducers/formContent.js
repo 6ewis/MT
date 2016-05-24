@@ -1,10 +1,12 @@
 import {INITIALIZE} from '../actions/index';
 
 const defaultState = {
+  //components expect an array for certain properties
+  //preventing undefined errors on first rendering
   aliases: [],
   countries: [],
   billing_clients: [],
-  matter_Positions: []
+  matter_positions: []
 };
 
 //replace console.log by middleware logger

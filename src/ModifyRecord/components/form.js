@@ -22,16 +22,26 @@ export default (
   {updateFormData, aliases, entity_type, countries, billing_clients,
    salutation, name, sort_name, birth_date, deceased_date,
    phone, email, fax, nationality, residence, domicile, telex,
-   mailingAddressFields, registeredAddressFields, dividendAddressFields
+   mailingAddressFields, registeredAddressFields, dividendAddressFields,
+   matter_positions
   }) => {
 
-  const addressData =
-    {mailingAddressFields,
-     registeredAddressFields,
-     dividendAddressFields,
-     updateFormData
-  };
+  //the selected inputs expect an object with a value and a label
+  const serializedMatterPositions =
+    (obj) => {
+      const concatenatedProperties = `${obj.client_name} (M#${obj.matter}) -${obj.positions}`;
+      return {
+         value: concatenatedProperties,
+         label: concatenatedProperties};
+     };
 
+  const matterPositions = R.map(serializedMatterPositions, matter_positions);
+
+  const addressData =
+    {mailingAddressFields, registeredAddressFields,
+     dividendAddressFields, matterPositions, updateFormData};
+   // check that the requests made to the server is done in React.js
+   //  use a middleware
    return (R.isEmpty(billing_clients)) ?
      <_Spinner/> :
      (
@@ -53,15 +63,15 @@ export default (
                }
           />
 
-         <Aliases 
+         <Aliases
            data={aliases}
-           updateFormData= {updateFormData} 
+           updateFormData= {updateFormData}
            />
 
-         <_Autosuggest 
-           label="Billing Client" 
+         <_Autosuggest
+           label="Billing Client"
            data={billing_clients}
-           updateFormData= {updateFormData} 
+           updateFormData= {updateFormData}
            />
 
          <Countries
@@ -75,15 +85,15 @@ export default (
          />
 
          <Row>
-           <_InputText 
+           <_InputText
              updateFormData = {updateFormData}
              label="Occupation" />
            <br/>
          </Row>
 
-         <DateInput 
+         <DateInput
            updateFormData= {updateFormData}
-           title="Birth Date" 
+           title="Birth Date"
            defaultValue={birth_date}/>
          <DateInput title="Deceased Date" defaultValue={deceased_date}/>
 

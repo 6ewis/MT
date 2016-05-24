@@ -26,19 +26,23 @@ export default class Address extends Component {
          header: "Registered",
          eventKey: '1',
          updateFormData: updateFormData
+         matterPositions: matterPositions,
         },
         registeredAddressFields),
       Object.assign(
         {defaultSelection: "Mailing",
          header: "Mailing",
          eventKey: '2',
-         updateFormData: updateFormData},
+         updateFormData: updateFormData,
+         matterPositions: matterPositions
+       },
         mailingAddressFields),
       Object.assign(
-        {defaultSelection: "Dividend", 
-         header: "Dividend", 
+        {defaultSelection: "Dividend",
+         header: "Dividend",
          eventKey: '3',
-         updateFormData: updateFormData 
+         updateFormData: updateFormData,
+         matterPositions: matterPositions
         },
         dividendAddressFields)
        ].map((item, index) =>
@@ -58,6 +62,8 @@ export default class Address extends Component {
           R.append(
              <AdditionalAddressContainer
                 updateFormData= {this.props.updateFormData}
+                matterPositions=
+                  {this.props.matterPositions}
                 key={incrementedEventKey}
                 eventKey={incrementedEventKey}
                 header={`Mailing ${incrementedEventKey}`}/>,
