@@ -18,15 +18,16 @@ export default class Address extends Component {
       mailingAddressFields,
       registeredAddressFields,
       dividendAddressFields,
-      updateFormData
+      updateFormData,
+      matterPositions
     } = this.props;
     return [
       Object.assign(
         {defaultSelection: "Registered",
          header: "Registered",
          eventKey: '1',
-         updateFormData: updateFormData
-         matterPositions: matterPositions,
+         updateFormData: updateFormData,
+         matterPositions: matterPositions
         },
         registeredAddressFields),
       Object.assign(

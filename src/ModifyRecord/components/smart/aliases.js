@@ -1,5 +1,3 @@
-//need to be refactored - technical debt due to approaching dateline
-//numberOfAliases should not be negative otherwise it returns an error
 import React, {Component} from 'react';
 import {Row, SplitButton, Button, MenuItem} from 'react-bootstrap';
 
@@ -11,32 +9,78 @@ export default class Aliases extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     numberOfAliases: 0,
-     data: props.data,
-     value: null
-    };
-    this.renderNewAliases = this.renderNewAliases.bind(this);
+     uniqueKey: 0,
+     aliases: [],
+     data: props.data};
   }
-  renderNewAliases(n, alias) {
+
+  updateFormData(newState) {
+    this.props.updateFormData(newState);
+    this.setState({aliases: newState});
+  }
+
+  IsUniqueKeyExistsInState(uniqueKey) {
+    const test = R.contains(uniqueKey, R.map(R.prop('uniqueKey'), this.state.aliases));
+    console.log('uniqueKey:', uniqueKey);
+    console.log('uniqueKeyExists', test);
+    return test;
+  }
+
+  appendToAliases(uniqueKey, newValue) {
+    const newState =
+      R.append({uniqueKey: uniqueKey, value: newValue, label: 'AKA'}, this.state.aliases);
+    console.log("appenedToAliases:", newState);
+    this.updateFormData(newState);
+  }
+
+  updateObjectWithKey(uniqueKey, transformation) {
+    const newState =
+       R.map(R.when(R.propEq('uniqueKey', uniqueKey), R.evolve(transformation)))(this.state.aliases);
+     console.log("updateObjectWithKey", newState);
+     this.updateFormData(newState);
+  }
+
+  handleChange(uniqueKey, event) {
+    const newValue = event.target.value;
+    if (this.IsUniqueKeyExistsInState(uniqueKey) === false) {
+      this.appendToAliases(uniqueKey, newValue);
+     } else {
+      const transformation = {value: () => newValue};
+      this.updateObjectWithKey(uniqueKey, transformation);
+    }
+  }
+
+  updateSplitData(uniqueKey, data) {
+    console.log("inupdateSplitData", data);
+    const transformation = {label: () => data.value};
+    this.updateObjectWithKey(uniqueKey, transformation);
+  }
+
+  aliasesWithoutObjectWith(uniqueKey) {
+    console.log("aliaseswithoutbordersObjectWith: ", R.reject(R.propEq('uniqueKey', uniqueKey), this.state.aliases));
+    return R.reject(R.propEq('uniqueKey', uniqueKey), this.state.aliases);
+  }
+
+  findObjectBasedOnKey(uniqueKey) {
+    console.log("finobjectbasedONKEY: ", R.find(R.propEq('uniqueKey', uniqueKey))(this.state.aliases));
+    return R.find(R.propEq('uniqueKey', uniqueKey))(this.state.aliases);
+  }
+
+  renderAlias(uniqueKey, aliasValue) {
     return (
-      <Row key={n} className="form-inline">
-         <_SplitButton options={[ 'AKA', 'FKA']}/>
+      <Row key={uniqueKey} className="form-inline">
+         <_SplitButton
+           updateFormData={this.updateSplitData.bind(this, uniqueKey)}
+           options={[ 'AKA', 'FKA']}/>
          &nbsp;
          <input
-           onChange={e =>
-             {
-             this.setState({value: e.target.val},
-             this.props.updateFormData(this.state.);
-             }
-           )}
+           onChange={this.handleChange.bind(this, uniqueKey)}
            type="text"
-           value={alias || this.state.value}
+           value={this.findObjectBasedOnKey.value}
            className="form-control"/>
          &nbsp;
          <i style={{cursor: "pointer"}}
-            onClick ={() => alias ?
-              this.setState({data: R.remove(n, 1, this.state.data)}) :
-              this.setState({numberOfAliases: --this.state.numberOfAliases})}
+            onClick ={() => this.aliasesWithoutObjectWith(uniqueKey)}
             className="fa fa-minus-circle makeItRed" ariaHidden="true">
          </i>
          <br/>
@@ -44,8 +88,9 @@ export default class Aliases extends Component {
     );
   }
 
-  renderKnownAliases() {
-    return this.state.data.map((item, index) => this.renderNewAliases(index, item.alias));
+  renderAliases() {
+    return this.state.data.map((item, index) =>
+      this.renderAlias(index, item.alias));
   }
 
   render() {
@@ -54,13 +99,12 @@ export default class Aliases extends Component {
         <Row>
           <_Label name="Aliases" />
         </Row>
-        {this.renderKnownAliases()}
-        {R.times(this.renderNewAliases, this.state.numberOfAliases)}
+         {this.renderAliases()}
         <br/>
         <Row>
           <Button
             bsStyle="primary"
-            onClick={() => this.setState({numberOfAliases: ++this.state.numberOfAliases})}>
+            onClick={() => this.setState({data: R.append({alias: ""}, this.state.data)})}>
               + Add Alias
           </Button>
         </Row>
@@ -69,3 +113,5 @@ export default class Aliases extends Component {
     );
  }
 }
+//minus
+//initialState--data

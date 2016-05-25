@@ -103,10 +103,23 @@
  //     "registeredAddress": "",
  //     "mailingAddress": "",
  //     "dividendAddress": ""
- //   } 
+ //   }
  // ];
   //
   //use it to select out of the api call entity specific
+  export const MatterPositions = [
+    {
+      "matter": "001250         ",
+      "client_name": "BP (Bermuda) Limited",
+      "cpref": 1,
+      "positions": " Shareholder"
+    },
+    {"matter": "001260         ",
+     "client_name": "BP Peru Limited",
+     "cpref": 1,
+     "positions": " Shareholder"
+   }];
+
   export const MatterSpecificAddresses = [
     {
       "address_id": 304,

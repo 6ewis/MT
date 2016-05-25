@@ -1,4 +1,4 @@
-import {BillingClients, Aliases, Countries, MatterSpecificAddresses} from '../config/fakeData';
+import {BillingClients, Aliases, Countries, MatterPositions} from '../config/fakeData';
 import R from 'ramda';
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ const fakeData =
    aliases: Aliases,
    countries: Countries,
    billing_clients: BillingClients,
-   matterSpecificAddresses: MatterSpecificAddresses
+   matter_positions: MatterPositions
  };
 
  /*
