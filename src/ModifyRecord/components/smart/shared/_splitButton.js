@@ -5,11 +5,12 @@ import R from 'ramda';
 export default class _SplitButton extends Component {
   renderOptions() {
     const {options, defaultSelection} = this.props;
+
     return R.isNil(options)
       ?
-      <option value={defaultSelection}>{defaultSelection}</option>
+      <option value={defaultSelection}>{defaultSelection || "None Selected"}</option>
       :
-      options.map((item, index) =>
+      R.prepend("None Selected", options).map((item, index) =>
         <option key={index} value={item}>{item}</option>);
   }
 

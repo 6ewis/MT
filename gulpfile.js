@@ -1,4 +1,4 @@
-"use strict" 
+"use strict"
 var gulp = require('gulp'); //task runner
 var connect = require('gulp-connect'); // Runs a local dev server
 var history = require('connect-history-api-fallback'); //middleware to proxy request through a specified index page

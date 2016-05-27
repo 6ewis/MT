@@ -3,20 +3,34 @@ import Calendar from 'react-input-calendar';
 import {Row} from 'react-bootstrap';
 import _Label from './shared/_label';
 
-export default (props) => {
-  const renderDate = () => {
-    return (
-       <div>
-         <Row>
-           <_Label name={props.title} />
-         </Row>
-         <Row>
-           <Calendar format="DD/MM/YYYY" date={props.defaultValue} />
-         </Row>
-         <br/>
-      </div>
-    );
-  };
+export default class DateInput extends Component {
+  constructor() {
+    super();
+    this.state = {date: null};
+  }
 
-  return renderDate();
-};
+  handleUpdateDataForm(value) {
+    const {updateFormData, title} = this.props;
+    updateFormData({label: title, value: value});
+    this.setState({date: value});
+  }
+
+  render() {
+     const {defaultValue, title} = this.props;
+     return (
+        <div>
+          <Row>
+            <_Label name={title} />
+          </Row>
+          <Row>
+            <Calendar
+              format="DD/MM/YYYY"
+              date={this.state.date || defaultValue}
+              onChange={this.handleUpdateDataForm.bind(this)}
+            />
+          </Row>
+          <br/>
+       </div>
+     );
+  }
+}

@@ -62,7 +62,7 @@ export default class Aliases extends Component {
   }
 
   nextIdValue() {
-    const arrayOfIds = R.map(R.prop('uniqueKey'), this.state.aliases);
+    const arrayOfIds = R.pluck('uniqueKey', this.state.aliases);
     return R.add(1, R.reduce(R.max, 0, arrayOfIds));
   }
 

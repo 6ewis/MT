@@ -95,7 +95,10 @@ export default (
            updateFormData= {updateFormData}
            title="Birth Date"
            defaultValue={birth_date}/>
-         <DateInput title="Deceased Date" defaultValue={deceased_date}/>
+         <DateInput
+           updateFormData= {updateFormData}
+           title="Deceased Date"
+           defaultValue={deceased_date}/>
 
          <Contacts
            updateFormData= {updateFormData}
