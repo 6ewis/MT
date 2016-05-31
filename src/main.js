@@ -1,7 +1,6 @@
 'use strict';
 /* REFACTOR THIS FILE  */
 window.$ = window.jQuery = require('jquery'); //investigate where jQuery is being used and refactor
-window.foundation = require('foundation'); //foundation has a dependency on jQuery
 window.Dexie = require('dexie'); //dexie has a dependency on jQuery
 window.db = new window.Dexie('my-database'); //This is pretty much the indexDB
 
@@ -16,7 +15,7 @@ window.db.version(1).stores({
 //
 window.db.open();
 
-var React = require('react');  
+var React = require('react');
 var Router = require('react-router').Router;
 var routes = require('./routes');
 var ReactDOM = require('react-dom');
