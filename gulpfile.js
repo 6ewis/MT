@@ -27,6 +27,7 @@ const config = {
     css: [
         './src/*.css',
         './node_modules/react-input-calendar/styles/input-calendar.css',
+        './node_modules/react-select/dist/react-select.min.css',
         './node_modules/react-widgets/dist/css/*.css'
     ],
     destination: {folder: './dist', css: 'bundle.css', js: 'bundle.js'},

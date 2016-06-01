@@ -29,8 +29,17 @@ export default (
   //the selected inputs expect an object with a value and a label
   const serializedMatterPositions =
     (obj) => {
-      const concatenatedProperties = `${obj.client_name} (M#${obj.matter}) -${obj.positions}`;
+      const updateFormData =
+         {client_name: obj.client_name,
+          matter: R.trim(obj.matter),
+          positions: obj.positions};
+
+      const concatenatedProperties = `${obj.client_name} (M#${updateFormData.matter}) -${obj.positions}`;
       return {
+         //following props are needed to save it to the store
+         //which will eventually use it to save it in the db layer
+         updateFormData: updateFormData,
+         //following props are needed for ReactSelect to work properly
          value: concatenatedProperties,
          label: concatenatedProperties};
      };
