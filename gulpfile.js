@@ -1,23 +1,28 @@
-var gulp = require('gulp'), //task runner
-    del = require('del'), //clean previously built code
-    less = require('gulp-less'), //compile less code into css files
-    cssmin = require('gulp-minify-css'), //minify css files
-    browserify = require('browserify'), //let you require node modules in the browser
-    uglify = require('gulp-uglify'), //uglify js files
-    concat = require('gulp-concat'), //concatenates files
-    eslint = require('gulp-eslint'), //lint JS files
-    source = require('vinyl-source-stream'), //convert normal text to vinyl stream
-    buffer = require('vinyl-buffer'), //convert to a buffered stream which is expected by most gulp tasks
-    babelify = require('babelify'), // browserify transform for babel , transpiles es6 to es5
-    history = require('connect-history-api-fallback'); //middleware to proxy request through a specified index page
-    connect = require('gulp-connect'), //webserver which automatically refresh when code is rebuilt
-    open = require('gulp-open'); //Open a Url in a web browser
+'use strict';
+const gulp = require('gulp'), //task runner
+      del = require('del'), //clean previously built code
+      less = require('gulp-less'), //compile less code into css files
+      cssmin = require('gulp-minify-css'), //minify css files
+      browserify = require('browserify'), //let you require node modules in the browser
+      uglify = require('gulp-uglify'), //uglify js files
+      concat = require('gulp-concat'), //concatenates files
+      eslint = require('gulp-eslint'), //lint JS files
+      source = require('vinyl-source-stream'), //convert normal text to vinyl stream
+      buffer = require('vinyl-buffer'), //convert to a buffered stream which is expected by most gulp tasks
+      babelify = require('babelify'), // browserify transform for babel , transpiles es6 to es5
+      history = require('connect-history-api-fallback'), //middleware to proxy request through a specified index page
+      connect = require('gulp-connect'), //webserver which automatically refresh when code is rebuilt
+      open = require('gulp-open'), //Open a Url in a web browser
+      runSequence = require('run-sequence'); //run tasks synchronously
 
-var config = {
+const config = {
   port: 8888,
   devBaseUrl: 'http://localhost',
   paths: {
     html: './src/*.html',
+    fonts: [
+      './node_modules/react-widgets/dist/fonts/*.*'
+    ],
     js: './src/**/*.js',
     css: [
         './src/*.css',
@@ -33,15 +38,15 @@ var config = {
 /**
  * Cleaning dist/ folder
  */
-gulp.task('clean', function(cb) {
-  del(['dist/**'], cb);
+gulp.task('clean', (cb) => {
+  return del(['dist/**'], cb);
 })
 
 /**
  * Running livereload server
  */
-.task('server', function() {
-  return connect.server({
+.task('server', () => {
+  connect.server({
     root: ['dist'],
     port: config.port,
     base: config.devBaseUrl,
@@ -53,8 +58,8 @@ gulp.task('clean', function(cb) {
 })
 
 
-.task('open', ['server'], function() {
-  return gulp.src ('dist/index.html')
+.task('open', ['server'], () => {
+  gulp.src ('dist/index.html')
   .pipe(open({uri: config.devBaseUrl + ":" + config.port + '/'}))
 })
 
@@ -62,8 +67,8 @@ gulp.task('clean', function(cb) {
 /**
  * html
  */
-.task('html', function() {
-  return gulp.src(config.paths.html)
+.task('html', () => {
+  gulp.src(config.paths.html)
   .pipe(gulp.dest(config.paths.destination.folder))
   .pipe(connect.reload());
 })
@@ -71,16 +76,16 @@ gulp.task('clean', function(cb) {
 /**
  * Less compilation
  */
-.task('less', function() {
-  return gulp.src(config.paths.css)
+.task('less', () => {
+  gulp.src(config.paths.css)
   .pipe(less())
   .pipe(concat(config.paths.destination.css))
   .pipe(gulp.dest(config.paths.destination.folder + '/css'))
   .pipe(connect.reload());
 
 })
-.task('less:min', function() {
-  return gulp.src(config.paths.css)
+.task('less:min', () => {
+  gulp.src(config.paths.css)
   .pipe(less())
   .pipe(concat(config.paths.destination.css))
   .pipe(cssmin())
@@ -91,15 +96,15 @@ gulp.task('clean', function(cb) {
 /**
  * ESLint validation
  */
-.task('eslint', function() {
-  return gulp.src(config.paths.destination.js)
+.task('eslint', () => {
+  return gulp.src(config.paths.js)
   .pipe(eslint({config: 'eslint.config.json'}))
   .pipe(eslint.format());
 })
 
 /** JavaScript compilation */
-.task('js', function() {
-  return browserify(config.paths.origin, {debug: true}) //enables source maps
+.task('js', () => {
+  browserify(config.paths.origin, {debug: true}) //enables source maps
   .transform(babelify)
   .bundle() //bundle into a single js file
   .on('error', console.error.bind(console))
@@ -107,26 +112,35 @@ gulp.task('clean', function(cb) {
   .pipe(gulp.dest(config.paths.destination.folder + '/scripts'))
   .pipe(connect.reload());
 })
-.task('js:min', function() {
-  return browserify(config.paths.origin)
+.task('js:min', () => {
+  bowserify(config.paths.origin)
   .transform(babelify)
   .bundle()
   .pipe(source(config.paths.destination.js))
   .pipe(buffer())
   .pipe(uglify())
-  .pipe(gulp.dest(config.paths.destination.dist + '/scripts'))
+  .pipe(gulp.dest(config.paths.destination.folder + '/scripts'))
   .pipe(connect.reload());
+})
+
+
+/**
+* fonts
+*/
+.task('fonts', () => {
+  gulp.src(config.paths.fonts)
+    .pipe(gulp.dest(config.paths.destination.folder + '/fonts'))
 })
 
 /**
  * Compiling resources and serving application
  */
 
-.task('watch', function() {
+.task('watch', () => {
    gulp.watch(config.paths.html, ['html']);
    gulp.watch(config.paths.js, ['js', 'eslint']);
-   gulp.watch(config.paths.js, ['less']);
+   gulp.watch(config.paths.css, ['less']);
 })
 
-.task('default', ['clean', 'html', 'eslint', 'less', 'js', 'server', 'open', 'watch'])
-.task('serve:minified', ['clean', 'html', 'eslint', 'less:min', 'js:min', 'server', 'open', 'watch']);
+.task('default', () => runSequence('clean', 'html', 'fonts', 'eslint', 'less', 'js', 'open', 'watch'))
+.task('serve:minified', () => runSequence('clean', 'html', 'fonts', 'eslint', 'less:min', 'js:min', 'open', 'watch'));
