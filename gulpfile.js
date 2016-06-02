@@ -114,7 +114,7 @@ gulp.task('clean', (cb) => {
   .pipe(connect.reload());
 })
 .task('js:min', () => {
-  bowserify(config.paths.origin)
+  browserify(config.paths.origin)
   .transform(babelify)
   .bundle()
   .pipe(source(config.paths.destination.js))
