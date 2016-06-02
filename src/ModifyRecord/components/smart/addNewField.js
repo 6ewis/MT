@@ -20,6 +20,7 @@ export default class AddNewField extends Component {
            label="New Field"
            defaultSelection="~ None Selected ~"
            options={["~ None Selected ~", "Preferred Name", "Address", "Phone", "Email"]}
+           updateFormData={}
            onSelect={this.onSelectHandler.bind(this)}
          />
 

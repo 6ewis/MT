@@ -13,7 +13,6 @@ import Contacts from './dumb/contacts.js';
 import DateInput from './dumb/dateInput';
 import Countries from './dumb/countries.js';
 import _Spinner from '../../shared/_Spinner.js';
-//this spinner sucks
 import AddressRoot from './smart/addressRoot.js';
 
 import R from 'ramda';
@@ -29,15 +28,15 @@ export default (
   //the selected inputs expect an object with a value and a label
   const serializedMatterPositions =
     (obj) => {
-      const updateFormData =
+      const data =
          {client_name: obj.client_name,
           matter: R.trim(obj.matter),
           positions: obj.positions};
 
-      const concatenatedProperties = `${obj.client_name} (M#${updateFormData.matter}) -${obj.positions}`;
+      const concatenatedProperties = `${obj.client_name} (M#${data.matter}) -${obj.positions}`;
       return {
          //following props are needed to save it to the store
-         //which will eventually use it to save it in the db layer
+         //which will eventually be saved in the db layer
          updateFormData: updateFormData,
          //following props are needed for ReactSelect to work properly
          value: concatenatedProperties,

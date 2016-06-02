@@ -5,9 +5,10 @@ import _SplitButtonWithLabel from '../dumb/shared/_splitButtonWithLabel';
 import AddNewField from './addNewField';
 import AddressInfo from '../dumb/addressInfo';
 import _InputText from './shared/_inputText';
+import _ReactSelect from '../smart/shared/_reactSelect';
 import R from 'ramda';
 
-export default class AddressContainer extends Component {
+export default class AdditionalAddressContainer extends Component {
   constructor() {
      super();
      this.state = {newFields: [], uniqueKey: 0};
@@ -56,6 +57,7 @@ export default class AddressContainer extends Component {
   }
 
   render() {
+    console.log('im in the additional address container')
     return (
       <Panel {...this.props} header={this.props.header || `new Header`}>
         <Well>
@@ -75,10 +77,10 @@ export default class AddressContainer extends Component {
                options= {["Mailing", "Dividend"]}
                disabled= {true}
                />
-              <_SplitButtonWithLabel
-               label="Entity Specific"
-               options={this.props.matterPositions}
-               defaultSelection="~ None Selected ~"
+
+              <_ReactSelect
+                 data={this.props.matterPositions}
+                 updateFormData={this.props.updateFormData}
                />
 
                {this.state.newFields}
@@ -86,7 +88,7 @@ export default class AddressContainer extends Component {
               <br/>
               <AddNewField spawnNewField={this.spawnNewFieldHandler.bind(this)} />
         </Well>
-      </Panel>
+    </Panel>
     );
 }
 }

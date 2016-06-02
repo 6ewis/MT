@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 //Shared Components
-import AddressContainer from '../dumb/addressContainer';
+import KnownAddressesContainer from '../dumb/knownaddressesContainer';
 import AdditionalAddressContainer from './additionalAddressContainer';
 import {Button, Accordion, Row} from 'react-bootstrap';
 import R from 'ramda';
@@ -22,12 +22,13 @@ export default class Address extends Component {
       matterPositions
     } = this.props;
     return [
+      //core addresses
+      //we show "Registered", "Mailing", and Dividend by default
       Object.assign(
         {defaultSelection: "Registered",
          header: "Registered",
          eventKey: '1',
-         updateFormData: updateFormData,
-         matterPositions: matterPositions
+         updateFormData: updateFormData
         },
         registeredAddressFields),
       Object.assign(
@@ -42,33 +43,35 @@ export default class Address extends Component {
         {defaultSelection: "Dividend",
          header: "Dividend",
          eventKey: '3',
-         updateFormData: updateFormData,
-         matterPositions: matterPositions
+         updateFormData: updateFormData
         },
         dividendAddressFields)
        ].map((item, index) =>
       item === undefined ?
         null :
-        <AddressContainer key={index}
+        <KnownAddressesContainer key={index}
           {...item} />
     );
   }
 
+  renderAdditionalAddressContainer(incrementedEventKey) {
+     const {matterPositions, updateFormData} = this.props;
+     return <AdditionalAddressContainer
+        key={incrementedEventKey}
+        eventKey={incrementedEventKey} //needed for the react-bootstrap accordion component
+        matterPositions={matterPositions}
+        updateFormData={updateFormData}
+        header={`Mailing ${incrementedEventKey}`}/>;
+  }
   onClickHandler() {
-    this.setState(state => {
+    const self = this;
+    self.setState(state => {
       let incrementedEventKey = R.add(1, state.eventKey);
       return {
         eventKey: incrementedEventKey,
         newAddresses:
-          R.append(
-             <AdditionalAddressContainer
-                updateFormData= {this.props.updateFormData}
-                matterPositions=
-                  {this.props.matterPositions}
-                key={incrementedEventKey}
-                eventKey={incrementedEventKey}
-                header={`Mailing ${incrementedEventKey}`}/>,
-              state.newAddresses)
+          R.append(self.renderAdditionalAddressContainer(incrementedEventKey),
+            state.newAddresses)
       };
     });
   }
@@ -91,7 +94,7 @@ export default class Address extends Component {
         <Row>
           <Accordion defaultActiveKey='1'>
             {this.renderKnownAddresses()}
-            {this.state.newAddresses}
+            { this.state.newAddresses }
           </Accordion>
         </Row>
       </div>

@@ -4,12 +4,25 @@ import {Col, Panel, Button, Row, Well} from 'react-bootstrap';
 import _SplitButtonWithLabel from './shared/_splitButtonWithLabel';
 import _Label from './shared/_label';
 import _InputText from '../smart/shared/_inputText';
-import _ReactSelect from '../smart/shared/_ReactSelect';
+import _ReactSelect from '../smart/shared/_reactSelect';
 
 export default (props) => {
   const {country_name, line_1, line_2, line_3, line_4, locality,
   postal_code, region, defaultSelection, header, matterPositions,
   updateFormData} = props;
+
+//need to push changes here to update store
+//updatFormData({`header`: {'AddressType': childrenUpdates.addressType }});
+  const renderReactSelect = () => {
+    return (header === 'Mailing') ?
+      (
+        <_ReactSelect
+          data= {matterPositions}
+          updateFormData= {updateFormData}
+        />
+      ) :
+      null;
+  };
 
   return (
     <Panel {...props} header={header || `new Header`}>
@@ -30,10 +43,7 @@ export default (props) => {
              disabled= {true}
              />
 
-             <_ReactSelect
-              data={matterPositions}
-              updateFormData={updateFormData}
-              />
+            {renderReactSelect()}
             <br/>
 
             <Row>
@@ -43,6 +53,7 @@ export default (props) => {
             <Row>
               <Col md={10} style={{paddingLeft: '0px'}}>
                 <_InputText
+                  updateFormData={updateFormData}
                   value={line_1}/>
               </Col>
               <Col md={2} style={{paddingLeft: '0px'}}>
@@ -53,6 +64,7 @@ export default (props) => {
             <Row>
               <Col md={10} style={{paddingLeft: '0px'}}>
                 <_InputText
+                  updateFormData={updateFormData}
                   value={line_2}
                 />
               </Col>
@@ -61,6 +73,7 @@ export default (props) => {
             <Row>
               <Col md={10} style={{paddingLeft: '0px'}}>
                 <_InputText
+                  updateFormData={updateFormData}
                   value={line_3}
                 />
               </Col>
@@ -69,6 +82,7 @@ export default (props) => {
             <Row>
               <Col md={10} style={{paddingLeft: '0px'}}>
                 <_InputText
+                  updateFormData={updateFormData}
                   value={line_4}
                 />
               </Col>
@@ -77,7 +91,9 @@ export default (props) => {
 
             <Row>
               <Col md={10} style={{paddingLeft: '0px'}}>
-                <_InputText label="City"
+                <_InputText
+                   label="City"
+                   updateFormData={updateFormData}
                    value={locality}
                 />
               </Col>
@@ -86,7 +102,9 @@ export default (props) => {
             <br/>
             <Row>
               <Col md={10} style={{paddingLeft: '0px'}}>
-                <_InputText label="Province/State"
+                <_InputText
+                   label="Province/State"
+                   updateFormData={updateFormData}
                    value={postal_code}
                 />
               </Col>
@@ -95,24 +113,16 @@ export default (props) => {
             <br/>
             <Row>
               <Col md={10} style={{paddingLeft: '0px'}}>
-                <_InputText label="Country"
+                <_InputText
+                   label="Country"
+                   updateFormData={updateFormData}
                    value={country_name}
                 />
               </Col>
             </Row>
 
             <br/>
-            <_SplitButtonWithLabel
-               label="New Field"
-               defaultSelection="None Selected"
-             />
-
-            <Row>
-              <Button style={{paddingLeft: '0px'}}>
-                Add New Field
-              </Button>
-            </Row>
-      </Well>
+        </Well>
     </Panel>
   );
 };
