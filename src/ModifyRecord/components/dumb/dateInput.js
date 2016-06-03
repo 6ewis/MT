@@ -11,7 +11,7 @@ export default class DateInput extends Component {
 
   handleUpdateDataForm(value) {
     const {updateFormData, title} = this.props;
-    updateFormData({label: title, value: value});
+    updateFormData({[`${title}`]: value });
     this.setState({date: value});
   }
 

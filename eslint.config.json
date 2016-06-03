@@ -15,11 +15,16 @@
     "no-trailing-spaces": 0,
     "eol-last": 0,
     "no-unused-vars": 0,
+    "no-unused-expressions": 1,
+    "no-this-before-super": 2,
     "no-underscore-dangle": 0,
     "no-alert": 0,
     "no-lone-blocks": 0,
     "new-cap": 0,
-    "no-shadow": 0
+    "no-shadow": 0,
+    "semi": 1,
+    "semi-spacing": 1,
+    "no-extra-semi": 1
   },
   "globals": {
     $: true

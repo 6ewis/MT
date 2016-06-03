@@ -20,7 +20,14 @@ export default class _InputText extends Component {
 
   handleChange(e) {
     this.setState({value: e.target.value});
-    this.props.updateFormData({label: this.props.label, value: e.target.value });
+    //if the label is passed as props then this function is smart enough to use it
+    //otherwise we expect the updateFormData function to be curried with the label
+    //then we'd only need to pass the event value to updateFormData
+    /*eslint-disable */
+    R.isNil(this.props.label) ?
+      this.props.updateFormData(e.target.value) :
+      this.props.updateFormData({[`${this.props.label}`]: e.target.value });
+    /*eslint-enable */
   }
 
   renderLabel() {

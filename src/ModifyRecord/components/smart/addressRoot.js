@@ -9,8 +9,14 @@ export default class Address extends Component {
   constructor(props) {
      super(props);
      this.state = {newAddresses: [],
-                   eventKey: 3}; //increment eventKey everytime a new address is appended to the
-                                //newAddresses ;; also useful to have unique keys
+                   eventKey: 3
+                  }; //increment eventKey everytime a new address is appended to the
+                     //newAddresses ;; also useful to have unique keys
+     this.updateAddressData = this.updateAddressData.bind(this);
+  }
+
+  updateAddressData(obj) {
+    this.props.updateFormData({addressesContainer: obj});
   }
 
   renderKnownAddresses() {
@@ -26,24 +32,24 @@ export default class Address extends Component {
       //we show "Registered", "Mailing", and Dividend by default
       Object.assign(
         {defaultSelection: "Registered",
-         header: "Registered",
+         header: "#1 Registered",
          eventKey: '1',
-         updateFormData: updateFormData
+         updateAddressData: this.updateAddressData
         },
         registeredAddressFields),
       Object.assign(
         {defaultSelection: "Mailing",
-         header: "Mailing",
+         header: "#2 Mailing",
          eventKey: '2',
-         updateFormData: updateFormData,
+         updateAddressData: this.updateAddressData,
          matterPositions: matterPositions
        },
         mailingAddressFields),
       Object.assign(
         {defaultSelection: "Dividend",
-         header: "Dividend",
+         header: "#3 Dividend",
          eventKey: '3',
-         updateFormData: updateFormData
+         updateAddressData: this.updateAddressData
         },
         dividendAddressFields)
        ].map((item, index) =>
@@ -60,8 +66,8 @@ export default class Address extends Component {
         key={incrementedEventKey}
         eventKey={incrementedEventKey} //needed for the react-bootstrap accordion component
         matterPositions={matterPositions}
-        updateFormData={updateFormData}
-        header={`Mailing ${incrementedEventKey}`}/>;
+        updateAddressData={this.updateAddressData}
+        header={`#${incrementedEventKey} Mailing`}/>;
   }
   onClickHandler() {
     const self = this;
@@ -94,7 +100,7 @@ export default class Address extends Component {
         <Row>
           <Accordion defaultActiveKey='1'>
             {this.renderKnownAddresses()}
-            { this.state.newAddresses }
+            {this.state.newAddresses}
           </Accordion>
         </Row>
       </div>

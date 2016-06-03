@@ -14,11 +14,15 @@ export default class _SplitButton extends Component {
         <option key={index} value={item}>{item}</option>);
   }
 
-  changeHandler(e) {
-   //updateFormData is progagated up to the form.js component 
-   this.props.updateFormData({label: this.props.label, value: e.target.value });
+  onChangeHandler(e) {
+   //updateFormData is progagated up to the form.js component
+   this.props.updateFormData({[`${this.props.label}`]: e.target.value });
    //if there's an onSelect props, it sent the event to the parent element
-   this.props.onSelect ? this.props.onSelect(e) : null;
+   /*eslint-disable */
+   R.isNil(this.props.onSelect) ?
+     null :
+     this.props.onSelect(e);
+   /*eslint-enable */
   }
 
   render() {
@@ -26,7 +30,7 @@ export default class _SplitButton extends Component {
       <FormControl
         defaultValue={this.props.defaultSelection}
         componentClass="select"
-        onChange={this.changeHandler.bind(this)}
+        onChange={this.onChangeHandler.bind(this)}
         placeholder="select">
 
         {this.renderOptions()}

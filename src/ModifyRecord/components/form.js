@@ -46,8 +46,11 @@ export default (
   const matterPositions = R.map(serializedMatterPositions, matter_positions);
 
   const addressData =
-    {mailingAddressFields, registeredAddressFields,
-     dividendAddressFields, matterPositions, updateFormData};
+    {mailingAddressFields,
+     registeredAddressFields,
+     dividendAddressFields,
+     matterPositions,
+     updateFormData};
    // check that the requests made to the server is done in React.js
    //  use a middleware
    return (R.isEmpty(billing_clients)) ?

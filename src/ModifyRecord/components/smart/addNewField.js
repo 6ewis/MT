@@ -10,12 +10,10 @@ export default class AddNewField extends Component {
   }
 
   onSelectHandler(event) {
-    console.log('its being saved in the state');
     this.setState({selected: event.target.value});
   }
 
   render() {
-    console.log("Im in the addNewField address", this.props.spawnNewField);
     return (
       <div>
         <_SplitButtonWithLabel

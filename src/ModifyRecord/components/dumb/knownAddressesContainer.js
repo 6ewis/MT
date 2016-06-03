@@ -5,20 +5,31 @@ import _SplitButtonWithLabel from './shared/_splitButtonWithLabel';
 import _Label from './shared/_label';
 import _InputText from '../smart/shared/_inputText';
 import _ReactSelect from '../smart/shared/_reactSelect';
+import R from 'ramda';
 
 export default (props) => {
   const {country_name, line_1, line_2, line_3, line_4, locality,
   postal_code, region, defaultSelection, header, matterPositions,
-  updateFormData} = props;
+  updateAddressData} = props;
 
-//need to push changes here to update store
-//updatFormData({`header`: {'AddressType': childrenUpdates.addressType }});
+  const updateKnownAddressDataCurried = R.curry((curriedProperty, updatedValue) => {
+    //if it's a registered address it will update the addressData of
+    //the parent element with {registeredAddress: {city: foo, country: foo...}}
+    updateAddressData(
+      {
+        [`${header}Address`]: { [curriedProperty]: updatedValue }
+    });
+  });
+
+  const updateKnownAddressData = (updatedObject) =>
+    updateAddressData({[`${header}Address`]: updatedObject});
+
   const renderReactSelect = () => {
     return (header === 'Mailing') ?
       (
         <_ReactSelect
           data= {matterPositions}
-          updateFormData= {updateFormData}
+          updateAddressData= {updateAddressData}
         />
       ) :
       null;
@@ -37,6 +48,7 @@ export default (props) => {
               </Col>
             </Row>
 
+            {/* have to remember to save it to the store by default*/}
             <_SplitButtonWithLabel
              label="Address Type"
              defaultSelection= {defaultSelection}
@@ -53,7 +65,7 @@ export default (props) => {
             <Row>
               <Col md={10} style={{paddingLeft: '0px'}}>
                 <_InputText
-                  updateFormData={updateFormData}
+                  updateFormData={updateKnownAddressDataCurried('line_1')}
                   value={line_1}/>
               </Col>
               <Col md={2} style={{paddingLeft: '0px'}}>
@@ -64,7 +76,7 @@ export default (props) => {
             <Row>
               <Col md={10} style={{paddingLeft: '0px'}}>
                 <_InputText
-                  updateFormData={updateFormData}
+                  updateFormData={updateKnownAddressDataCurried('line_2')}
                   value={line_2}
                 />
               </Col>
@@ -73,7 +85,7 @@ export default (props) => {
             <Row>
               <Col md={10} style={{paddingLeft: '0px'}}>
                 <_InputText
-                  updateFormData={updateFormData}
+                  updateFormData={updateKnownAddressDataCurried('line_3')}
                   value={line_3}
                 />
               </Col>
@@ -82,7 +94,7 @@ export default (props) => {
             <Row>
               <Col md={10} style={{paddingLeft: '0px'}}>
                 <_InputText
-                  updateFormData={updateFormData}
+                  updateFormData={updateKnownAddressDataCurried('line_4')}
                   value={line_4}
                 />
               </Col>
@@ -93,7 +105,7 @@ export default (props) => {
               <Col md={10} style={{paddingLeft: '0px'}}>
                 <_InputText
                    label="City"
-                   updateFormData={updateFormData}
+                   updateFormData={updateKnownAddressData}
                    value={locality}
                 />
               </Col>
@@ -104,7 +116,7 @@ export default (props) => {
               <Col md={10} style={{paddingLeft: '0px'}}>
                 <_InputText
                    label="Province/State"
-                   updateFormData={updateFormData}
+                   updateFormData={updateKnownAddressData}
                    value={postal_code}
                 />
               </Col>
@@ -115,7 +127,7 @@ export default (props) => {
               <Col md={10} style={{paddingLeft: '0px'}}>
                 <_InputText
                    label="Country"
-                   updateFormData={updateFormData}
+                   updateFormData={updateKnownAddressData}
                    value={country_name}
                 />
               </Col>
