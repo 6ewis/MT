@@ -10,23 +10,25 @@ export default class AddNewField extends Component {
   }
 
   onSelectHandler(event) {
+    console.log('its being saved in the state');
     this.setState({selected: event.target.value});
   }
 
   render() {
+    console.log("Im in the addNewField address", this.props.spawnNewField);
     return (
       <div>
         <_SplitButtonWithLabel
            label="New Field"
            defaultSelection="~ None Selected ~"
            options={["~ None Selected ~", "Preferred Name", "Address", "Phone", "Email"]}
-           updateFormData={}
+           updateFormData={() => null}
            onSelect={this.onSelectHandler.bind(this)}
          />
 
         <Row>
           <Button
-            onClick={() => this.props.spawnNewField(this.state.selected)}
+            onClick={(e) => this.props.spawnNewField(this.state.selected, e)}
             style={{paddingLeft: '5px'}}>
               Add New Field
           </Button>

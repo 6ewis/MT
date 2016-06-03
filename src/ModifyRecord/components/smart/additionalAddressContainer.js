@@ -26,7 +26,8 @@ export default class AdditionalAddressContainer extends Component {
   renderInput(selectedItem) {
     return this.renderField(
       <Row>
-        <_InputText label={selectedItem}
+        <_InputText 
+          label={selectedItem}
           key={this.state.uniqueKey}/>
         <br/>
       </Row>
@@ -34,12 +35,14 @@ export default class AdditionalAddressContainer extends Component {
    }
 
   renderAddressInfo(selectedItem) {
+    console.log('Im in the address info');
      return this.renderField(
        <AddressInfo label={selectedItem}
          key={this.state.uniqueKey} />);
    }
 
   spawnNewFieldHandler(selectedItem, e) {
+    console.log('Im in the spawnNewFieldHandler', selectedItem, e)
      switch (selectedItem) {
        case "Address":
          this.renderAddressInfo(selectedItem);
@@ -57,7 +60,7 @@ export default class AdditionalAddressContainer extends Component {
   }
 
   render() {
-    console.log('im in the additional address container')
+    console.log('im in the additional address container');
     return (
       <Panel {...this.props} header={this.props.header || `new Header`}>
         <Well>

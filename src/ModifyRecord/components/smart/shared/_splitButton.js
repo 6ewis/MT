@@ -14,13 +14,19 @@ export default class _SplitButton extends Component {
         <option key={index} value={item}>{item}</option>);
   }
 
+  changeHandler(e) {
+   //updateFormData is progagated up to the form.js component 
+   this.props.updateFormData({label: this.props.label, value: e.target.value });
+   //if there's an onSelect props, it sent the event to the parent element
+   this.props.onSelect ? this.props.onSelect(e) : null;
+  }
+
   render() {
     return (
       <FormControl
         defaultValue={this.props.defaultSelection}
         componentClass="select"
-        onChange={e =>
-          this.props.updateFormData({label: this.props.label, value: e.target.value })}
+        onChange={this.changeHandler.bind(this)}
         placeholder="select">
 
         {this.renderOptions()}
