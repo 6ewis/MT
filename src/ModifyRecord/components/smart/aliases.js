@@ -18,7 +18,6 @@ export default class Aliases extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     uniqueKey: 0,
      aliases: this.initializeAliases(props),
      data: props.data};
   }
@@ -30,9 +29,13 @@ export default class Aliases extends Component {
     });
   }
 
-  updateFormData(newState) {
-    this.props.updateFormData(newState);
-    this.setState({aliases: newState});
+  updateState(newState) {
+    //we need to keep track of the uniqueKey and the index so we cannot remove
+    //the item with uniqueKey: undefined in the state of the component.
+    //However we can remove those orphans items when we call updateFormData
+    const removedOrphans = R.filter((item) => item.uniqueKey !== undefined);
+    this.setState({aliases: newState},
+      () => this.props.updateFormData({Aliases: removedOrphans(this.state.aliases)}));
   }
 
   //utility function
@@ -43,13 +46,13 @@ export default class Aliases extends Component {
   appendToAliases(uniqueKey, newValue) {
     const newState =
       R.append({uniqueKey: uniqueKey, value: newValue, label: 'AKA'}, this.state.aliases);
-    this.updateFormData(newState);
+    this.updateState(newState);
   }
 
   updateObjectWithKey(uniqueKey, transformation) {
     const newState =
        R.map(R.when(R.propEq('uniqueKey', uniqueKey), R.evolve(transformation)))(this.state.aliases);
-     this.updateFormData(newState);
+     this.updateState(newState);
   }
 
   findObjectBasedOnKey(uniqueKey) {
@@ -78,7 +81,7 @@ export default class Aliases extends Component {
   }
 
   handleSplitData(uniqueKey, data) {
-    const transformation = {label: () => data.value};
+    const transformation = {label: () => data.alias};
     this.updateObjectWithKey(uniqueKey, transformation);
   }
 
@@ -108,6 +111,7 @@ export default class Aliases extends Component {
       (
         <Row key={index} className="form-inline">
            <_SplitButton
+             label="alias"
              updateFormData={this.handleSplitData.bind(this, index)}
              defaultSelection={alias.label}
              options={[ 'AKA', 'FKA']}/>

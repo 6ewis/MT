@@ -15,14 +15,14 @@ export default class _SplitButton extends Component {
   }
 
   onChangeHandler(e) {
-   //updateFormData is progagated up to the form.js component
-   this.props.updateFormData({[`${this.props.label}`]: e.target.value });
-   //if there's an onSelect props, it sent the event to the parent element
-   /*eslint-disable */
-   R.isNil(this.props.onSelect) ?
-     null :
-     this.props.onSelect(e);
-   /*eslint-enable */
+    const {updateFormData, onSelect, label} = this.props;
+    //updateFormData is progagated up to the form.js component if it exists
+    //the props updateFormData is passed by most components
+    if (!R.isNil(updateFormData)) {updateFormData({[`${label}`]: e.target.value }); }
+    //if there's an onSelect props, it sent the event to the parent element
+    //the parent element will subsequently call updateFormData
+    //component currently using it is the following: addNewField
+    if (!R.isNil(onSelect)) {onSelect(e); }
   }
 
   render() {
