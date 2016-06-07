@@ -27,7 +27,7 @@ export default class _InputText extends Component {
     //in which cas4 we'd only need to pass the event value to updateFormData
     if (!R.isNil(updateFormData)) {
       /*eslint-disable */
-      R.isNil(label) ?
+    const test =   R.isNil(label) ?
         updateFormData(e.target.value) :
         updateFormData({[`${label}`]: e.target.value });
       /*eslint-enable */

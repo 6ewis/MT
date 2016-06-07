@@ -3,6 +3,7 @@ import R from 'ramda';
 import axios from 'axios';
 
 export const INITIALIZE = 'INITIALIZE';
+export const UPDATE = 'UPDATE';
 
 //1. we carry data from the second page forward
 //2. we make async request to the server for the following: aliases, countries, billing client, addresses
@@ -78,5 +79,13 @@ function mergedDroppedDataAndDeserializedAddresses() {
     type: INITIALIZE,
     //payload: request
     payload: R.merge(fakeData, {})
+  };
+}
+
+//we store the updated form content
+export function update(data) {
+  return {
+    type: UPDATE,
+    payload: data
   };
 }

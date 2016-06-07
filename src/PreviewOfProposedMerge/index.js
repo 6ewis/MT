@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 //Components
-import Form from './containers/stateOfForm.js';
 //Redux
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -14,17 +13,18 @@ import {BackButton, NextButton, CancelButton} from '../shared/transitionButtons/
 const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
-export default class ModifyRecord extends Component {
+export default class PreviewOfProposedMerge extends Component {
    constructor(props) {
      super(props);
      //initialize data from previous page
-     store.dispatch(initialize(props.location.state));
+     //store.dispatch(initialize(props.location.state));
    }
 
    renderNextButton() {
+     let {updatedFormContent} = store.getState();
      return (
        <NextButton
-         url="/PreviewOfProposedMerge"
+         url="/ModifyRecord"
          state={{store: store}}
        />
      );
@@ -54,8 +54,10 @@ export default class ModifyRecord extends Component {
            </div>
            <div className="col-md-6 col-md-offset-3" style={{marginBottom: '1%'}}>
              <br/>
-             <Form />
-             {this.renderTansitionsButtons()}
+              <h1>
+                We started from the bottom now were here
+              </h1>
+                {JSON.stringify(this.props.location.state.store.getState().updatedFormContent)}
            </div>
            <div className="col-md-3"></div>
          </div>

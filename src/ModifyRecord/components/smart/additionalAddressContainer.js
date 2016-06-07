@@ -11,33 +11,50 @@ import R from 'ramda';
 export default class AdditionalAddressContainer extends Component {
   constructor() {
      super();
-     this.state = {newFields: [], uniqueKey: 0};
+     this.state = {
+       newFields: [],
+       uniqueKey: 0
+     };
+
+     this.updateAdditionalAddressData = this.updateAdditionalAddressData.bind(this);
+     this.spawnNewFieldHandler = this.spawnNewFieldHandler.bind(this);
   }
 
-  renderField(type) {
-    this.setState((previousState, currentProps) => {
-      let incrementedKey = R.add(1, previousState.uniqueKey);
-      let updatedNewFields =
-        R.append(type, previousState.newFields);
-    return {newFields: updatedNewFields, uniqueKey: incrementedKey};
-    });
+  renderField(selectedItem) {
+    const incrementedKey = R.add(1, this.state.uniqueKey);
+    let updatedNewFields =
+      R.append(selectedItem, this.state.newFields);
+    this.setState({
+      newFields: updatedNewFields,
+      uniqueKey: incrementedKey});
+  }
+
+  updateAdditionalAddressData(updatedObject) {
+    const {updateAddressData, header} = this.props;
+    updateAddressData({[`${header}Address`]: updatedObject});
   }
 
   renderInput(selectedItem) {
-    return this.renderField(
-      <Row>
+    this.renderField(
+      <Row key={this.state.uniqueKey}>
         <_InputText
           label={selectedItem}
-          key={this.state.uniqueKey}/>
+          updateFormData={this.updateAdditionalAddressData}
+        />
         <br/>
       </Row>
-    );
+     );
    }
 
   renderAddressInfo(selectedItem) {
-     return this.renderField(
-       <AddressInfo label={selectedItem}
-         key={this.state.uniqueKey} />);
+    this.renderField(
+       <AddressInfo
+         label={selectedItem}
+         header={this.props.header}
+         updateAddressData={this.updateAdditionalAddressData}
+         key={this.state.uniqueKey}
+       />
+     );
    }
 
   spawnNewFieldHandler(selectedItem, e) {
@@ -58,39 +75,42 @@ export default class AdditionalAddressContainer extends Component {
   }
 
   render() {
+    const {header, defaultSelection, matterPositions} = this.props;
     return (
-      <Panel {...this.props} header={this.props.header || `new Header`}>
-        <Well>
-              <Row>
-                <Col mdOffset={11}>
-                  <i className="fa fa-trash-o fa-3x makeItRed"
-                     aria-hidden="true"
-                     style={{cursor: 'pointer'}}
-                     >
-                  </i>
-                </Col>
-              </Row>
+        <Panel {...this.props} header={header || `new Header`}>
+          <Well>
+                <Row>
+                  <Col mdOffset={11}>
+                    <i className="fa fa-trash-o fa-3x makeItRed"
+                       aria-hidden="true"
+                       style={{cursor: 'pointer'}}
+                       >
+                    </i>
+                  </Col>
+                </Row>
 
-              <_SplitButtonWithLabel
-               label="Address Type"
-               defaultSelection= {this.props.defaultSelection}
-               options= {["Mailing", "Dividend"]}
-               disabled= {true}
-               />
+                <_SplitButtonWithLabel
+                 label="Address Type"
+                 defaultSelection= {defaultSelection}
+                 updateFormData={this.updateAdditionalAddressData}
+                 options= {["Mailing", "Dividend"]}
+                 disabled= {true}
+                 />
 
-              <_ReactSelect
-                 data={this.props.matterPositions}
-                 updateFormData={this.props.updateFormData}
-               />
+                <_ReactSelect
+                   label="Entity Specific"
+                   data={matterPositions}
+                   updateAddressData={this.updateAdditionalAddressData}
+                 />
 
-               <br/>
+                 <br/>
 
-               {this.state.newFields}
+                 {this.state.newFields}
 
-              <br/>
-              <AddNewField spawnNewField={this.spawnNewFieldHandler.bind(this)} />
-        </Well>
-    </Panel>
+                <br/>
+                <AddNewField spawnNewField={this.spawnNewFieldHandler} />
+          </Well>
+      </Panel>
     );
 }
 }

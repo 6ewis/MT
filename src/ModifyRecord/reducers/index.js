@@ -1,8 +1,10 @@
-import FormContentReducer from './formContent';
+import initialFormContentReducer from './initialFormContent';
+import updatedFormContentReducer from './updatedFormContent';
 import { combineReducers } from 'redux';
 
 const RootReducer = combineReducers({
-  formContent: FormContentReducer
+  initialFormContent: initialFormContentReducer,
+  updatedFormContent: updatedFormContentReducer
 });
 
 export default RootReducer;

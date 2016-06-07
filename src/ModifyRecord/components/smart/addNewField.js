@@ -18,8 +18,8 @@ export default class AddNewField extends Component {
       <div>
         <_SplitButtonWithLabel
            label="New Field"
-           defaultSelection="~ None Selected ~"
-           options={["~ None Selected ~", "Preferred Name", "Address", "Phone", "Email"]}
+           defaultSelection="None Selected"
+           options={["Preferred Name", "Address", "Phone", "Email"]}
            updateFormData={() => null}
            onSelect={this.onSelectHandler.bind(this)}
          />

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Row} from 'react-bootstrap';
+import _Label from '../../dumb/shared/_label';
 //third party lib
 import R from 'ramda';
 import Select from 'react-select';
@@ -16,13 +17,41 @@ export default class ReactSelect extends Component {
     };
   }
 
+  //the selected inputs expect an object with a value and a label
+  serializedMatterPositions(obj) {
+    const clientName = R.trim(obj.client_name);
+    const matter = R.trim(obj.matter);
+    const positions = R.trim(obj.positions);
+
+    const concatenatedProperties =
+      `${clientName} (M#${matter}) -${positions}`;
+    return {
+       //following props are needed to save it to the global store
+       //which will eventually be saved in the db layer
+       client_name: clientName,
+       matter: matter,
+       positions: positions,
+       //following props are needed for ReactSelect to work properly
+       value: concatenatedProperties,
+       label: concatenatedProperties};
+   }
+
+  matterPositions() {
+    return R.map(this.serializedMatterPositions, this.props.data);
+  }
+
   handleChange(obj) {
+    const {label, updateAddressData} = this.props;
     if (!R.isNil(obj)) {
       this.setState({currentValue: obj.value});
-      this.props.updateFormData(
-        {client_name: obj.updateFormData.client_name,
-         matter: obj.updateFormData.matter,
-         positions: obj.updateFormData.positions});
+      //updateAddressData call updateFormData
+      //the structure expected by updateFormData is quite stirct
+      //{AddressContainer: {property1: {nestedProperty: value}}}
+      //'AddressContainer' is added on the parent element
+      updateAddressData({
+        //{property1: {nestedProperty: value}}}
+        [`${label}`]: {clientName: obj.client_name}
+      });
     } else {
       this.setState({currentValue: ""});
     }
@@ -30,14 +59,19 @@ export default class ReactSelect extends Component {
 
   render() {
     return (
-      <Row>
-        <Select
-          name="form-field-name"
-          value= {this.state.currentValue}
-          options= {this.props.data}
-          onChange= {this.handleChange.bind(this)}
-        />
-      </Row>
+      <div>
+        <Row>
+          <_Label name={this.props.label} />
+        </Row>
+        <Row>
+          <Select
+            name="form-field-name"
+            value= {this.state.currentValue}
+            options= {this.matterPositions()}
+            onChange= {this.handleChange.bind(this)}
+          />
+        </Row>
+     </div>
     );
   }
 }

@@ -21,13 +21,15 @@ export default (props) => {
     });
   });
 
+  //some components have a label field sets, we can use it by default
   const updateKnownAddressData = (updatedObject) =>
     updateAddressData({[`${header}Address`]: updatedObject});
 
   const renderReactSelect = () => {
-    return (header === 'Mailing') ?
+    return (header.includes('Mailing')) ?
       (
         <_ReactSelect
+          label="Entity Specific"
           data= {matterPositions}
           updateAddressData= {updateAddressData}
         />

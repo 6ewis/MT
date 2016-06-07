@@ -22,6 +22,7 @@ const routes = (
       <IndexRoute component={require("./SelectRecords/index.js")} />
       <Route path="SelectRecordsToMerge" component={require('./SelectRecords/index.js')} />
       <Route path="SelectDataForNewRecord" component={require('./DNDdataForNewRecord/index.js')} />
+      <Route path="PreviewOfProposedMerge" component={require('./PreviewOfProposedMerge/index.js')} />
       <Route path="ModifyRecord" component={require('./ModifyRecord/index.js')} />
       <Route path="*" component={require('./404.js')} />
     </Route>
