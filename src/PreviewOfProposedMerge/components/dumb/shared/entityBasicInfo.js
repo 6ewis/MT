@@ -1,94 +1,91 @@
 import React, {Component} from 'react';
-import {Panel, Col, Row} from 'react-bootstrap';
+import {Table, Panel, Col, Row} from 'react-bootstrap';
 
 export default ({data}) => {
   return (
-    <div> 
-      <Row className="">
-        <Col md={2}><strong>Entity Type</strong></Col>
-        <Col md={2}><strong>Conyers Employee</strong></Col>
-      </Row>
-      <Row className="">
-        <Col md={2}>Individual</Col>
-        <Col md={2}>Yes</Col>
-      </Row>
+    <div>
+     <Table hover>
+       <tbody>
+          <tr>
+            <td><strong>Entity Type</strong></td>
+            <td><strong>Conyers Employee</strong></td>
+          </tr>
+          <tr>
+            <td>Individual</td>
+            <td>Yes</td>
+          </tr>
 
-      <Row className="">
-        <Col md={2}><strong>Name</strong></Col>
-        <Col md={2}><strong>Aliases</strong></Col>
-      </Row>
-      <Row className="">
-        <Col md={2}>John Smith</Col>
-        <Col md={2}>John E.Smith, Johnny Smith</Col>
-      </Row>
+          <tr>
+            <td><strong>Name</strong></td>
+            <td><strong>Aliases</strong></td>
+          </tr>
+          <tr>
+            <td>John Smith</td>
+            <td>John E.Smith, Johnny Smith</td>
+          </tr>
 
-      <Row className="">
-        <Col md={2}><strong>Title</strong></Col>
-      </Row>
-      <Row className="">
-        <Col md={2}>Mr.</Col>
-      </Row>
+          <tr>
+            <td><strong>Title</strong></td>
+          </tr>
+          <tr>
+            <td>Mr.</td>
+          </tr>
 
-      <Row className="">
-        <Col md={2}><strong>Birth Date</strong></Col>
-        <Col md={2}><strong>Deceased Date</strong></Col>
-      </Row>
-      <Row className="">
-        <Col md={2}>01/06/1976</Col>
-        <Col md={2}>01/06/1976</Col>
-      </Row>
+          <tr>
+            <td><strong>Birth Date</strong></td>
+            <td><strong>Deceased Date</strong></td>
+          </tr>
+          <tr>
+            <td>01/06/1976</td>
+            <td>01/06/1976</td>
+          </tr>
 
-      <Row className="">
-        <Col md={2}><strong>Birth Date</strong></Col>
-        <Col md={2}><strong>Deceased Date</strong></Col>
-      </Row>
-      <Row className="">
-        <Col md={2}>01/06/1976</Col>
-        <Col md={2}>01/06/1976</Col>
-      </Row>
+          <tr>
+            <td><strong>Nationality</strong></td>
+            <td><strong>Country of Residence</strong></td>
+            <td><strong>Country of Domicile</strong></td>
+          </tr>
+          <tr>
+            <td>Canada</td>
+            <td>Spain</td>
+            <td>Spain</td>
+          </tr>
 
-      <Row className="">
-        <Col md={2}><strong>Nationality</strong></Col>
-        <Col md={2}><strong>Country of Residence</strong></Col>
-        <Col md={2}><strong>Country of Domicile</strong></Col>
-      </Row>
-      <Row className="">
-        <Col md={2}>Canada</Col>
-        <Col md={2}>Canada</Col>
-        <Col md={2}>Canada</Col>
-      </Row>
+          <tr>
+            <td><strong>Email</strong></td>
+            <td><strong>Phone</strong></td>
+          </tr>
+          <tr>
+            <td>test@conyersdill.com</td>
+            <td>647-111-444</td>
+          </tr>
 
-      <Row className="">
-        <Col md={2}><strong>Email</strong></Col>
-        <Col md={2}><strong>Phone</strong></Col>
-      </Row>
-      <Row className="">
-        <Col md={2}>test@conyersdill.com</Col>
-        <Col md={2}>647-111-222</Col>
-      </Row>
+          <tr>
+            <td><strong>Telex</strong></td>
+            <td><strong>Fax</strong></td>
+          </tr>
+          <tr>
+            <td>1-888-999-111</td>
+            <td>647-111-444</td>
+          </tr>
+        </tbody>
+      </Table>
 
-      <Row className="">
-        <Col md={2}><strong>Telex</strong></Col>
-        <Col md={2}><strong>Fax</strong></Col>
-      </Row>
-      <Row className="">
-        <Col md={2}>1-888-999-111</Col>
-        <Col md={2}>647-111-222</Col>
-      </Row>
-       
       <Panel header="Registered">
-        <Row>
-          Clarenden House
-        </Row>
-        <Row>
-          2 church Street
-        </Row>
-        <Row>
-          Hamilton
-        </Row>
-        <Row>
-          Bermuda
-        </Row>
+        <Col md={12}>
+            <Row>
+              <Col md={2} Clarenden House></Col>
+            </Row>
+            <Row>
+              <Col md={2}> 2 church Street</Col>
+            </Row>
+            <Row>
+              <Col md={2}>Hamilton</Col>
+            </Row>
+            <Row>
+              <Col md={2}>Bermuda</Col>
+            </Row>
+        </Col>
       </Panel>
     </div>
   );

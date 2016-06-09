@@ -7,14 +7,17 @@ import BasicInfo from '../shared/entityBasicInfo';
 
 export default ({data}) => {
   return (
-    <div>
-      <Row>
-        <h2> Duplicate Corporate Persons To Be Merged </h2>
-      </Row>
-       
-       <BasicInfo data={null}/>
-       {/*duplicateToBeMerged.positions*/}
-       <Positions data={null} />
-    </div>
+      <div>
+        <Row>
+          <h4> Duplicate Corporate Persons To Be Merged </h4>
+        </Row>
+        <Panel>
+          <Col md={12}>
+             <BasicInfo data={null}/>
+             {/*duplicateToBeMerged.positions*/}
+             <Positions data={null} />
+          </Col>
+        </Panel>
+      </div>
   );
 };

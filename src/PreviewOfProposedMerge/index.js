@@ -22,6 +22,7 @@ export default class PreviewOfProposedMerge extends Component {
      //store.dispatch(initialize(props.location.state));
    }
 
+   /* have not set up the logic for the transition buttons yet */
    renderNextButton() {
      let {updatedFormContent} = store.getState();
      return (
@@ -32,7 +33,7 @@ export default class PreviewOfProposedMerge extends Component {
      );
    }
 
-   renderTansitionsButtons() {
+   renderTransitionsButtons() {
     return (
      <div>
        <div className="col-md-3 col-md-offset-3">
@@ -52,17 +53,18 @@ export default class PreviewOfProposedMerge extends Component {
      return (
        <Provider store={store}>
          <div className="container-fluid">
-           <div className="col-md-3" style={{position: 'fixed'}}>
+           <div className="col-md-2" style={{position: 'fixed'}}>
            </div>
-           <div className="col-md-6 col-md-offset-3" style={{marginBottom: '1%'}}>
+           <div className="col-md-8 col-md-offset-3" style={{marginBottom: '1%'}}>
              <br/>
               {/* add fake data */}
               <Preview updatedFormContent={{fakeData: null}}/>
               {/*<Preview updatedFormContent=
                 {this.props.location.state.store.getState().updatedFormContent}/>
               */}
+              {this.renderTransitionsButtons()}
            </div>
-           <div className="col-md-3"></div>
+           <div className="col-md-2"></div>
          </div>
        </Provider>
             );

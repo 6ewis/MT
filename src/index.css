@@ -40,7 +40,7 @@
 	transform: rotateY(180deg);
 }
 
-/* DNDdataForNewRecord & Modify Record*/
+/* DNDdataForNewRecord*/
 /**********************/
 .DNDhover:hover {
   background: darkseagreen
@@ -174,7 +174,9 @@
     width: 100%;
 }
 
-/*utility css */
+/* Preview Proposed Merge*/
+/**********************/
+/*utility css - useful while testing grid */
 .show-grid [class^=col-] {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -182,4 +184,15 @@
     background-color: rgba(86,61,124,.15);
     border: 1px solid #ddd;
     border: 1px solid rgba(86,61,124,.2);
+}
+
+/******************************/
+.table {
+  border-bottom:0px !important;
+}
+.table th, .table td {
+  border: 1px !important;
+}
+.fixed-table-container {
+  border:0px !important;
 }

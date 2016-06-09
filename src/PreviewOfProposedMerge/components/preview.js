@@ -7,19 +7,17 @@ import DuplicateToBeMerged from './dumb/duplicateToBeMerged';
 
 export default ({updatedFormContent}) => {
   //don't forget to serialize it
-  const {newCorporatePerson, compliance, duplicateToBeMerged} = 
+  const {newCorporatePerson, compliance, duplicateToBeMerged} =
     updatedFormContent;
   return (
       <div>
         <Row>
-          <center><h1>Preview of Proposed Merge</h1></center>
+          <center><h2>Preview of Proposed Merge</h2></center>
         </Row>
         <NewCorporatePerson data={newCorporatePerson} />
         <Compliance data={compliance} />
         <hr/>
-        <Panel>
-          <DuplicateToBeMerged data={duplicateToBeMerged} />
-        </Panel>
+        <DuplicateToBeMerged data={duplicateToBeMerged} />
         {JSON.stringify(updatedFormContent)}
       </div>
   );
