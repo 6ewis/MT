@@ -4,21 +4,24 @@ import {Panel, Col, Row} from 'react-bootstrap';
 import NewCorporatePerson from './dumb/newCorporatePerson';
 import Compliance from './dumb/compliance';
 import DuplicateToBeMerged from './dumb/duplicateToBeMerged';
+//Utility
+import SerializeData from './utility/serializeData';
 
-export default ({updatedFormContent}) => {
-  //don't forget to serialize it
-  const {newCorporatePerson, compliance, duplicateToBeMerged} =
-    updatedFormContent;
+export default (props) => {
+  const serializedProps = SerializeData(props.updatedFormContent);
+  const {newCorporatePerson, compliance, duplicatePersonToBeMerged} =
+    serializedProps;
+
   return (
       <div>
         <Row>
           <center><h2>Preview of Proposed Merge</h2></center>
         </Row>
-        <NewCorporatePerson data={newCorporatePerson} />
+        <NewCorporatePerson {...newCorporatePerson} />
         <Compliance data={compliance} />
         <hr/>
-        <DuplicateToBeMerged data={duplicateToBeMerged} />
-        {JSON.stringify(updatedFormContent)}
+        <DuplicateToBeMerged data={duplicatePersonToBeMerged} />
+        {JSON.stringify(props)}
       </div>
   );
 };

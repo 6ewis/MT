@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import {Table, Panel, Col, Row} from 'react-bootstrap';
 
-export default ({data}) => {
+export default (props) => {
+    const { EntityType, Name, Aliases, Title, BirthDate, DeceasedDate, Nationality, Residence,
+  Domicile, Email, Phone, Telex, Fax } = props;
+    console.log('the props are', props)
+
   return (
     <div>
      <Table hover>
@@ -11,7 +15,8 @@ export default ({data}) => {
             <td><strong>Conyers Employee</strong></td>
           </tr>
           <tr>
-            <td>Individual</td>
+            <td>{EntityType}</td>
+            {/*static*/}
             <td>Yes</td>
           </tr>
 
@@ -20,15 +25,15 @@ export default ({data}) => {
             <td><strong>Aliases</strong></td>
           </tr>
           <tr>
-            <td>John Smith</td>
-            <td>John E.Smith, Johnny Smith</td>
+            <td>{Name}</td>
+            <td>{Aliases}</td>
           </tr>
 
           <tr>
             <td><strong>Title</strong></td>
           </tr>
           <tr>
-            <td>Mr.</td>
+            <td>{Title}</td>
           </tr>
 
           <tr>
@@ -36,8 +41,8 @@ export default ({data}) => {
             <td><strong>Deceased Date</strong></td>
           </tr>
           <tr>
-            <td>01/06/1976</td>
-            <td>01/06/1976</td>
+            <td>{BirthDate}</td>
+            <td>{DeceasedDate}</td>
           </tr>
 
           <tr>
@@ -46,9 +51,9 @@ export default ({data}) => {
             <td><strong>Country of Domicile</strong></td>
           </tr>
           <tr>
-            <td>Canada</td>
-            <td>Spain</td>
-            <td>Spain</td>
+            <td>{Nationality}</td>
+            <td>{Residence}</td>
+            <td>{Domicile}</td>
           </tr>
 
           <tr>
@@ -56,8 +61,8 @@ export default ({data}) => {
             <td><strong>Phone</strong></td>
           </tr>
           <tr>
-            <td>test@conyersdill.com</td>
-            <td>647-111-444</td>
+            <td>{Email}</td>
+            <td>{Phone}</td>
           </tr>
 
           <tr>
@@ -65,12 +70,13 @@ export default ({data}) => {
             <td><strong>Fax</strong></td>
           </tr>
           <tr>
-            <td>1-888-999-111</td>
-            <td>647-111-444</td>
+            <td>{Telex}</td>
+            <td>{Fax}</td>
           </tr>
         </tbody>
       </Table>
 
+      {/*static */}
       <Panel header="Registered">
         <Col md={12}>
             <Row>

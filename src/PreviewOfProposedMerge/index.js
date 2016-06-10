@@ -50,15 +50,14 @@ export default class PreviewOfProposedMerge extends Component {
    }
 
    render() {
+     const updatedFormContent =
+       this.props.location.state.store.getState().updatedFormContent;
      return (
        <Provider store={store}>
          <div className="container-fluid">
-           <div className="col-md-2" style={{position: 'fixed'}}>
-           </div>
-           <div className="col-md-8 col-md-offset-3" style={{marginBottom: '1%'}}>
+           <div className="col-md-8 col-md-offset-2" style={{marginBottom: '1%'}}>
              <br/>
-              {/* add fake data */}
-              <Preview updatedFormContent={{fakeData: null}}/>
+              <Preview updatedFormContent={updatedFormContent}/>
               {/*<Preview updatedFormContent=
                 {this.props.location.state.store.getState().updatedFormContent}/>
               */}

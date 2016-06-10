@@ -3,7 +3,8 @@ import {Panel, Col, Row} from 'react-bootstrap';
 //Shared Components
 import BasicInfo from './shared/entityBasicInfo';
 
-export default ({data}) => {
+export default (props) => {
+  console.log("the props are", props);
   return (
     <div>
       <Row>
@@ -12,7 +13,7 @@ export default ({data}) => {
         </Col>
       </Row>
 
-      <BasicInfo />
+      <BasicInfo {...props}/>
       <br/>
       {/* The panel below should be added to BasicInfo when I'll work on the dynamic part */}
        <Panel header={"Mailing/Hoffmann-LA Roche Ltd.(M#006600)"}>
