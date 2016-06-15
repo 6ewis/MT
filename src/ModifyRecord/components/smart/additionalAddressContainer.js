@@ -20,13 +20,34 @@ export default class AdditionalAddressContainer extends Component {
      this.spawnNewFieldHandler = this.spawnNewFieldHandler.bind(this);
   }
 
-  renderField(selectedItem) {
+  removeField(selectedItem, event) {
+    console.log('removeField', selectedItem);
+    //const self = this;
+    const removedAddress =
+      R.filter(R.complement(R.propEq('selectedItem', selectedItem)),
+       this.state.newFields);
+    console.log('the removedAddress is', removedAddress);
+    this.setState({newFields: removedAddress});
+  }
+
+  isSelectedItemEq(selectedItem) {
+    return R.isEmpty(this.state.newFields) ?
+      null :
+      R.find(R.propEq('selectedItem', selectedItem), this.state.newFields);
+  }
+
+  renderField(renderedItem, selectedItem) {
+    console.log("Im in the renderField", selectedItem);
     const incrementedKey = R.add(1, this.state.uniqueKey);
-    let updatedNewFields =
-      R.append({uniqueKey: incrementedKey, value: selectedItem}, this.state.newFields);
-    this.setState({
-      newFields: updatedNewFields,
-      uniqueKey: incrementedKey});
+      if (R.isNil(this.isSelectedItemEq(selectedItem))) {  //only add it if it's not present
+        let updatedNewFields =
+          R.append({value: renderedItem, selectedItem: selectedItem},
+            this.state.newFields);
+            console.log('renderFiel still', updatedNewFields);
+        this.setState({
+          newFields: updatedNewFields,
+          uniqueKey: incrementedKey});
+      }
   }
 
   updateAdditionalAddressData(updatedObject) {
@@ -35,26 +56,40 @@ export default class AdditionalAddressContainer extends Component {
   }
 
   renderInput(selectedItem) {
+    console.log('im inthe renderInput', selectedItem);
     this.renderField(
-      <Row key={this.state.uniqueKey}>
-        <_InputText
-          label={selectedItem}
-          updateFormData={this.updateAdditionalAddressData}
-        />
+      <div>
+        <Row key={this.state.uniqueKey}>
+          <Col md={10} style={{paddingLeft: '0px'}}>
+            <_InputText
+              label={selectedItem}
+              updateFormData={this.updateAdditionalAddressData}
+            />
+          </Col>
+          <Col md={2}>
+            <i onClick={this.removeField.bind(this, selectedItem)}
+               style={{cursor: 'pointer'}}
+               className="fa fa-trash-o"
+               aria-hidden="true">
+            </i>
+          </Col>
+        </Row>
         <br/>
-      </Row>
+      </div>, selectedItem
      );
    }
 
   renderAddressInfo(selectedItem) {
+    console.log('im in the renderAddressInfo', selectedItem);
     this.renderField(
        <AddressInfo
          countries= {this.props.countries}
          label={selectedItem}
          header={this.props.header}
+         removeField={this.removeField.bind(this)}
          updateAddressData={this.updateAdditionalAddressData}
          key={this.state.uniqueKey}
-       />
+       />, selectedItem
      );
    }
 
@@ -106,7 +141,7 @@ export default class AdditionalAddressContainer extends Component {
 
                  <br/>
 
-                 {this.state.newFields.value}
+                 {R.map(R.prop('value'), this.state.newFields)}
 
                 <br/>
                 <AddNewField spawnNewField={this.spawnNewFieldHandler} />

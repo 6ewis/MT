@@ -61,11 +61,13 @@ export default (
            updateFormData= {updateFormData}
            />
 
+         {/* JIRA CPMT-39 #Billing client needs to be converted to a display field
          <_Autosuggest
            label="Billing Client"
            data={billing_clients}
            updateFormData= {updateFormData}
            />
+           */}
 
          <Countries
            updateFormData= {updateFormData}
@@ -77,12 +79,14 @@ export default (
            ]}
          />
 
+         {/* JIRA CPMT-39 #Hide occupation
          <Row>
            <_InputText
              updateFormData = {updateFormData}
              label="Occupation" />
            <br/>
          </Row>
+         */}
 
          <DateInput
            updateFormData= {updateFormData}
