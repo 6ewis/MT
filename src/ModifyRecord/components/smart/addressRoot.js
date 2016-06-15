@@ -25,7 +25,8 @@ export default class Address extends Component {
       registeredAddressFields,
       dividendAddressFields,
       updateFormData,
-      matterPositions
+      matterPositions,
+      countries
     } = this.props;
     return [
       //core addresses
@@ -34,7 +35,8 @@ export default class Address extends Component {
         {defaultSelection: "Registered",
          header: "#1 Registered",
          eventKey: '1',
-         updateAddressData: this.updateAddressData
+         updateAddressData: this.updateAddressData,
+         countries: countries
         },
         registeredAddressFields),
       Object.assign(
@@ -42,13 +44,14 @@ export default class Address extends Component {
          header: "#2 Mailing",
          eventKey: '2',
          updateAddressData: this.updateAddressData,
-         matterPositions: matterPositions
+         countries: countries
        },
         mailingAddressFields),
       Object.assign(
         {defaultSelection: "Dividend",
          header: "#3 Dividend",
          eventKey: '3',
+         countries: countries,
          updateAddressData: this.updateAddressData
         },
         dividendAddressFields)
@@ -61,9 +64,10 @@ export default class Address extends Component {
   }
 
   renderAdditionalAddressContainer(incrementedEventKey) {
-     const {matterPositions, updateFormData} = this.props;
+     const {countries, matterPositions, updateFormData} = this.props;
      return <AdditionalAddressContainer
         key={incrementedEventKey}
+        countries={countries}
         eventKey={incrementedEventKey} //needed for the react-bootstrap accordion component
         matterPositions={matterPositions}
         updateAddressData={this.updateAddressData}

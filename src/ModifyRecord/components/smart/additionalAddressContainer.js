@@ -23,7 +23,7 @@ export default class AdditionalAddressContainer extends Component {
   renderField(selectedItem) {
     const incrementedKey = R.add(1, this.state.uniqueKey);
     let updatedNewFields =
-      R.append(selectedItem, this.state.newFields);
+      R.append({uniqueKey: incrementedKey, value: selectedItem}, this.state.newFields);
     this.setState({
       newFields: updatedNewFields,
       uniqueKey: incrementedKey});
@@ -49,6 +49,7 @@ export default class AdditionalAddressContainer extends Component {
   renderAddressInfo(selectedItem) {
     this.renderField(
        <AddressInfo
+         countries= {this.props.countries}
          label={selectedItem}
          header={this.props.header}
          updateAddressData={this.updateAdditionalAddressData}
@@ -105,7 +106,7 @@ export default class AdditionalAddressContainer extends Component {
 
                  <br/>
 
-                 {this.state.newFields}
+                 {this.state.newFields.value}
 
                 <br/>
                 <AddNewField spawnNewField={this.spawnNewFieldHandler} />

@@ -31,7 +31,8 @@ export default (
      registeredAddressFields,
      dividendAddressFields,
      matterPositions,
-     updateFormData};
+     updateFormData,
+     countries};
    // check that the requests made to the server is done in React.js
    //  use a middleware
    return (R.isEmpty(billing_clients)) ?
