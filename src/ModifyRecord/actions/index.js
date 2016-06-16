@@ -11,15 +11,15 @@ export const UPDATE = 'UPDATE';
 //4. we send it to the reducer
 export function initialize(previousPageData) {
 
-const fakeData =
-  {
-   aliases: Aliases,
-   countries: Countries,
-   billing_clients: BillingClients,
-   matter_positions: MatterPositions
- };
+//  const fakeData =
+//    {
+//     aliases: Aliases,
+//     countries: Countries,
+//     billing_clients: BillingClients,
+//     matter_positions: MatterPositions
+//   };
 
- /*
+
 function mergedDroppedDataAndDeserializedAddresses() {
   //we merge the result of the redux store droppedData and the result of calling
   //deseriialized_concatenanted_*
@@ -74,11 +74,10 @@ function mergedDroppedDataAndDeserializedAddresses() {
          console.log(response.config);
   }});
 
-  */
   return {
     type: INITIALIZE,
-    //payload: request
-    payload: R.merge(fakeData, {})
+    payload: request
+    //payload: R.merge(fakeData, {})
   };
 }
 
