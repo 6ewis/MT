@@ -9,9 +9,10 @@ import _ReactSelect from '../smart/shared/_reactSelect';
 import R from 'ramda';
 
 export default class AdditionalAddressContainer extends Component {
-  constructor() {
-     super();
+  constructor(props) {
+     super(props);
      this.state = {
+       header: props.header,
        newFields: [],
        uniqueKey: 0
      };
@@ -20,13 +21,15 @@ export default class AdditionalAddressContainer extends Component {
      this.spawnNewFieldHandler = this.spawnNewFieldHandler.bind(this);
   }
 
+  removeComponentInstance() {
+    const {removeComponentInstance, eventKey} = this.props;
+    removeComponentInstance(eventKey);
+  }
+
   removeField(selectedItem, event) {
-    console.log('removeField', selectedItem);
-    //const self = this;
     const removedAddress =
       R.filter(R.complement(R.propEq('selectedItem', selectedItem)),
        this.state.newFields);
-    console.log('the removedAddress is', removedAddress);
     this.setState({newFields: removedAddress});
   }
 
@@ -37,13 +40,11 @@ export default class AdditionalAddressContainer extends Component {
   }
 
   renderField(renderedItem, selectedItem) {
-    console.log("Im in the renderField", selectedItem);
     const incrementedKey = R.add(1, this.state.uniqueKey);
       if (R.isNil(this.isSelectedItemEq(selectedItem))) {  //only add it if it's not present
         let updatedNewFields =
           R.append({value: renderedItem, selectedItem: selectedItem},
             this.state.newFields);
-            console.log('renderFiel still', updatedNewFields);
         this.setState({
           newFields: updatedNewFields,
           uniqueKey: incrementedKey});
@@ -56,7 +57,6 @@ export default class AdditionalAddressContainer extends Component {
   }
 
   renderInput(selectedItem) {
-    console.log('im inthe renderInput', selectedItem);
     this.renderField(
       <div>
         <Row key={this.state.uniqueKey}>
@@ -66,10 +66,10 @@ export default class AdditionalAddressContainer extends Component {
               updateFormData={this.updateAdditionalAddressData}
             />
           </Col>
-          <Col md={2}>
+          <Col md={2} style={{paddingLeft: '0px'}}>
             <i onClick={this.removeField.bind(this, selectedItem)}
                style={{cursor: 'pointer'}}
-               className="fa fa-trash-o"
+               className="fa fa-trash-o fa-2x makeItRed"
                aria-hidden="true">
             </i>
           </Col>
@@ -80,7 +80,6 @@ export default class AdditionalAddressContainer extends Component {
    }
 
   renderAddressInfo(selectedItem) {
-    console.log('im in the renderAddressInfo', selectedItem);
     this.renderField(
        <AddressInfo
          countries= {this.props.countries}
@@ -110,14 +109,18 @@ export default class AdditionalAddressContainer extends Component {
      }
   }
 
+  setHeader(clientName) {
+    this.setState({header: clientName});
+  }
+
   render() {
     const {header, defaultSelection, matterPositions} = this.props;
     return (
-        <Panel {...this.props} header={header || `new Header`}>
+        <Panel {...this.props} header={this.state.header}>
           <Well>
                 <Row>
                   <Col mdOffset={11}>
-                    <i className="fa fa-trash-o fa-3x makeItRed"
+                    <i onClick={this.removeComponentInstance.bind(this)} className="fa fa-trash-o fa-3x makeItRed"
                        aria-hidden="true"
                        style={{cursor: 'pointer'}}
                        >
@@ -137,6 +140,7 @@ export default class AdditionalAddressContainer extends Component {
                    label="Entity Specific"
                    data={matterPositions}
                    updateAddressData={this.updateAdditionalAddressData}
+                   setHeader={this.setHeader.bind(this)}
                  />
 
                  <br/>

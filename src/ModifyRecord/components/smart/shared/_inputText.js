@@ -14,10 +14,6 @@ export default class _InputText extends Component {
    //return the validation here - either 'success' 'warning' or 'error'
  }
 
- componentWillReceiveProps(nextProps) {
-    this.setState({value: nextProps.value});
- }
-
   handleChange(e) {
     const {updateFormData, label} = this.props;
     this.setState({value: e.target.value});

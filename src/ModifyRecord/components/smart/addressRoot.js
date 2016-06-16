@@ -9,14 +9,22 @@ export default class Address extends Component {
   constructor(props) {
      super(props);
      this.state = {newAddresses: [],
-                   eventKey: 3
-                  }; //increment eventKey everytime a new address is appended to the
-                     //newAddresses ;; also useful to have unique keys
+                   lastEventKey: 3
+                   //3 because there are three 'known Addresses rendering
+                   //beforehand with event key 1,2,3
+                  };
      this.updateAddressData = this.updateAddressData.bind(this);
   }
 
   updateAddressData(obj) {
     this.props.updateFormData({addressesContainer: obj});
+  }
+
+  removeComponentInstance(eventKey) {
+    const removedComponentInstance =
+      R.filter(R.complement(R.propEq('uniqueKey', eventKey)),
+       this.state.newAddresses);
+    this.setState({newAddresses: removedComponentInstance});
   }
 
   renderKnownAddresses() {
@@ -64,24 +72,37 @@ export default class Address extends Component {
   }
 
   renderAdditionalAddressContainer(incrementedEventKey) {
+    //we render additional Addresses whenever we click on +add addresses
      const {countries, matterPositions, updateFormData} = this.props;
      return <AdditionalAddressContainer
         key={incrementedEventKey}
         countries={countries}
-        eventKey={incrementedEventKey} //needed for the react-bootstrap accordion component
+        eventKey={incrementedEventKey}
         matterPositions={matterPositions}
         updateAddressData={this.updateAddressData}
+        removeComponentInstance={this.removeComponentInstance.bind(this)}
         header={`#${incrementedEventKey} Mailing`}/>;
   }
+
+  renderAdditionalAddresses() {
+    return R.map(R.prop('value'), this.state.newAddresses);
+  }
+
   onClickHandler() {
+  //Note that an eventKey is equivalent to uniqueKey, the name is just to differentiate
+  //the purpose. uniqueKey is used to remove item easily and eventkey
+  //is needed for the react-bootstrap accordion component
+  //We increment eventKey everytime a new address is appended to newAddresses
+  //to keep it unique for every component on the appended list
     const self = this;
     self.setState(state => {
-      let incrementedEventKey = R.add(1, state.eventKey);
+      let incrementedEventKey = R.add(1, state.lastEventKey);
       return {
-        eventKey: incrementedEventKey,
+        lastEventKey: incrementedEventKey,
         newAddresses:
-          R.append(self.renderAdditionalAddressContainer(incrementedEventKey),
-            state.newAddresses)
+          R.append({uniqueKey: incrementedEventKey,
+                    value: self.renderAdditionalAddressContainer(incrementedEventKey)},
+                   state.newAddresses)
       };
     });
   }
@@ -104,7 +125,7 @@ export default class Address extends Component {
         <Row>
           <Accordion defaultActiveKey='1'>
             {this.renderKnownAddresses()}
-            {this.state.newAddresses}
+            {this.renderAdditionalAddresses()}
           </Accordion>
         </Row>
       </div>

@@ -41,7 +41,7 @@ export default class ReactSelect extends Component {
   }
 
   handleChange(obj) {
-    const {label, updateAddressData} = this.props;
+    const {setHeader, label, updateAddressData} = this.props;
     if (!R.isNil(obj)) {
       this.setState({currentValue: obj.value});
       //updateAddressData call updateFormData
@@ -52,6 +52,7 @@ export default class ReactSelect extends Component {
         //{property1: {nestedProperty: value}}}
         [`${label}`]: {clientName: obj.client_name}
       });
+      setHeader(`Mailing / ${obj.client_name} (M#${obj.matter})`);
     } else {
       this.setState({currentValue: ""});
     }

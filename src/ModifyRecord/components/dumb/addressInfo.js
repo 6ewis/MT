@@ -31,7 +31,7 @@ export default ({countries, header, updateAddressData, removeField}) => {
          <Col md={2} style={{paddingLeft: '0px'}}>
             <i onClick={removeField.bind(undefined, 'Address')}
                style={{cursor: 'pointer'}}
-               className="fa fa-trash-o"
+               className="fa fa-trash-o fa-2x makeItRed"
                aria-hidden="true"></i>
          </Col>
       </Row>
