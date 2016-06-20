@@ -130,9 +130,8 @@ export default class AdditionalAddressContainer extends Component {
 
                 <_SplitButtonWithLabel
                  label="Address Type"
-                 defaultSelection= {defaultSelection}
+                 defaultSelection= "Mailing"
                  updateFormData={this.updateAdditionalAddressData}
-                 options= {["Mailing", "Dividend"]}
                  disabled= {true}
                  />
 

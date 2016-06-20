@@ -41,7 +41,7 @@ export default class Address extends Component {
       //we show "Registered", "Mailing", and Dividend by default
       Object.assign(
         {defaultSelection: "Registered",
-         header: "#1 Registered",
+         header: "Registered",
          eventKey: '1',
          updateAddressData: this.updateAddressData,
          countries: countries
@@ -49,7 +49,7 @@ export default class Address extends Component {
         registeredAddressFields),
       Object.assign(
         {defaultSelection: "Mailing",
-         header: "#2 Mailing",
+         header: "Mailing",
          eventKey: '2',
          updateAddressData: this.updateAddressData,
          countries: countries
@@ -57,7 +57,7 @@ export default class Address extends Component {
         mailingAddressFields),
       Object.assign(
         {defaultSelection: "Dividend",
-         header: "#3 Dividend",
+         header: "Dividend",
          eventKey: '3',
          countries: countries,
          updateAddressData: this.updateAddressData
@@ -81,7 +81,7 @@ export default class Address extends Component {
         matterPositions={matterPositions}
         updateAddressData={this.updateAddressData}
         removeComponentInstance={this.removeComponentInstance.bind(this)}
-        header={`#${incrementedEventKey} Mailing`}/>;
+        header="New Mailing"/>;
   }
 
   renderAdditionalAddresses() {

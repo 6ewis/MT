@@ -9,6 +9,7 @@ import reducers from './reducers/index';
 import { initialize } from './actions/index';
 //Transition Buttons
 import {BackButton, NextButton, CancelButton} from '../shared/transitionButtons/index.js';
+import {Col} from 'react-bootstrap';
 
 //should be defined outside the component - everytime it re-renders it's recreating the store
 const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
@@ -21,28 +22,24 @@ export default class ModifyRecord extends Component {
      store.dispatch(initialize(props.location.state));
    }
 
-   renderNextButton() {
-     return (
-       <NextButton
-         url="/PreviewOfProposedMerge"
-         state={{store: store}}
-       />
-     );
+   style() {
+     return {paddingLeft: '0px', paddingRight: '0px'}
    }
-
    renderTansitionsButtons() {
     return (
-     <div>
-       <div className="col-md-3 col-md-offset-3">
+     <Col md={12}>
+       <Col md={3}>
+       </Col>
+       <Col md={3} style={this.style()}>
          <BackButton url="/SelectRecordsToMerge"/>
-       </div>
-       <div className="col-md-3">
-         {this.renderNextButton()}
-       </div>
-       <div className="col-md-3">
+       </Col>
+       <Col md={3}>
+         <NextButton url="/PreviewOfProposedMerge" state={{store: store}} />
+       </Col>
+       <Col md={3}>
          <CancelButton />
-       </div>
-     </div>
+       </Col>
+     </Col>
    );
    }
 

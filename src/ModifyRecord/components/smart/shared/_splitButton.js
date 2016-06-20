@@ -5,12 +5,14 @@ import R from 'ramda';
 export default class _SplitButton extends Component {
   renderOptions() {
     const {options, defaultSelection} = this.props;
+    //if the prop defaultSelection is not defined the user will see "none selected"
+    const listOptions = R.isNil(defaultSelection) ? R.prepend("None Selected", options) : options
 
     return R.isNil(options)
       ?
       <option value={defaultSelection}>{defaultSelection || "None Selected"}</option>
       :
-      R.prepend("None Selected", options).map((item, index) =>
+      listOptions.map((item, index) =>
         <option key={index} value={item}>{item}</option>);
   }
 
