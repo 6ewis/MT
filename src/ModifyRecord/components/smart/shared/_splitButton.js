@@ -6,7 +6,7 @@ export default class _SplitButton extends Component {
   renderOptions() {
     const {options, defaultSelection} = this.props;
     //if the prop defaultSelection is not defined the user will see "none selected"
-    const listOptions = R.isNil(defaultSelection) ? R.prepend("None Selected", options) : options
+    const listOptions = R.isNil(defaultSelection) ? R.prepend("None Selected", options) : options;
 
     return R.isNil(options)
       ?

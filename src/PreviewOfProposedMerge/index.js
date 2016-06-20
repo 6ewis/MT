@@ -7,6 +7,8 @@ import { createStore, applyMiddleware } from 'redux';
 import reduxPromise from 'redux-promise';
 import reducers from './reducers/index';
 import { initialize } from './actions/index';
+//Utility Libs
+import {Col} from 'react-bootstrap';
 //Transition Buttons
 import {BackButton, NextButton, CancelButton} from '../shared/transitionButtons/index.js';
 
@@ -35,17 +37,19 @@ export default class PreviewOfProposedMerge extends Component {
 
    renderTransitionsButtons() {
     return (
-     <div>
-       <div className="col-md-3 col-md-offset-3">
+     <Col md={12}>
+       <Col md={3}>
          <BackButton url="/SelectRecordsToMerge"/>
-       </div>
-       <div className="col-md-3">
+       </Col>
+       <Col md={3}>
          {this.renderNextButton()}
-       </div>
-       <div className="col-md-3">
+       </Col>
+       <Col md={3}>
          <CancelButton />
-       </div>
-     </div>
+       </Col>
+       <Col md={3}>
+       </Col>
+     </Col>
    );
    }
 
@@ -55,15 +59,11 @@ export default class PreviewOfProposedMerge extends Component {
      return (
        <Provider store={store}>
          <div className="container-fluid">
-           <div className="col-md-8 col-md-offset-2" style={{marginBottom: '1%'}}>
+           <Col md={8} mdOffset={2} style={{marginBottom: '1%'}}>
              <br/>
               <Preview updatedFormContent={updatedFormContent}/>
-              {/*<Preview updatedFormContent=
-                {this.props.location.state.store.getState().updatedFormContent}/>
-              */}
               {this.renderTransitionsButtons()}
-           </div>
-           <div className="col-md-2"></div>
+           </Col>
          </div>
        </Provider>
             );

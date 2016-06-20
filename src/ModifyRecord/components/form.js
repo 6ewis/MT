@@ -5,7 +5,6 @@ import _SplitButtonWithLabel from './dumb/shared/_splitButtonWithLabel';
 import _InputText from './smart/shared/_inputText';
 import _Label from './dumb/shared/_label';
 import _Autosuggest from './smart/autosuggest';
-
 //Not Shared
 import Aliases from './smart/aliases';
 import Appellations from './dumb/appellations.js';
@@ -14,16 +13,34 @@ import DateInput from './dumb/dateInput';
 import Countries from './dumb/countries.js';
 import _Spinner from '../../shared/_Spinner.js';
 import AddressRoot from './smart/addressRoot.js';
-
+//Utility libs
 import R from 'ramda';
+//Transition Buttons
+import {BackButton, NextButton, CancelButton} from '../../shared/transitionButtons/index.js';
 
 export default (
   {updateFormData, aliases, entity_type, countries, billing_clients,
    salutation, name, sort_name, birth_date, deceased_date,
    phone, email, fax, nationality, residence, domicile, telex,
    mailingAddressFields, registeredAddressFields, dividendAddressFields,
-   matter_positions
+   matter_positions, loading, store
   }) => {
+
+   const renderTransitionsButtons =
+     <Col md={12}>
+       <Col md={2}>
+       </Col>
+       <Col md={3} style={{paddingLeft: '0px', paddingRight: '0px'}}>
+         <BackButton url="/SelectRecordsToMerge"/>
+       </Col>
+       <Col md={3}>
+         <NextButton url="/PreviewOfProposedMerge" state={{store: store}} />
+       </Col>
+       <Col md={3}>
+         <CancelButton />
+       </Col>
+     </Col>
+   ;
 
   const matterPositions = matter_positions;
   const addressData =
@@ -35,7 +52,7 @@ export default (
      countries};
    // check that the requests made to the server is done in React.js
    //  use a middleware
-   return (R.isEmpty(billing_clients)) ?
+   return loading ?
      <_Spinner/> :
      (
      <Col md={12}>
@@ -114,6 +131,7 @@ export default (
         <AddressRoot {...addressData}
         />
       </form>
+      {renderTransitionsButtons}
 </Col>
  );
 };

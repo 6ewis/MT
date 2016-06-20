@@ -10,6 +10,7 @@ import reducers from './reducers';
 import reduxPromise from 'redux-promise';
 //Utility libs
 import R from 'ramda';
+import {Col} from 'react-bootstrap';
 //Transition Buttons
 import {NextButton} from '../shared/transitionButtons/index';
 
@@ -21,12 +22,12 @@ class SelectRecords extends Component {
   renderNextButton() {
     let {selectedEntities} = store.getState(); //Refactor-we should pass the store instead- it's safer not to rely on the unusual rerendering of the component
     if (!R.isEmpty(selectedEntities)) {
-      return <div style={{marginTop: '5%'}} className="col-md-5 col-md-offset-7">
-               <NextButton
-                 url="/SelectDataForNewRecord"
-                 state={{selectedEntities: selectedEntities}}
-               />
-             </div>;
+      return <Col style={{marginTop: '5%', marginBottom: '5%'}} md={2} mdOffset={10}>
+                 <NextButton
+                   url="/SelectDataForNewRecord"
+                   state={{selectedEntities: selectedEntities}}
+                 />
+               </Col>;
     }
   }
 
@@ -34,16 +35,16 @@ class SelectRecords extends Component {
     return (
       <Provider store={store}>
         <div className="container-fluid">
-          <div className="col-md-3">
+          <Col md={3}>
              <Sidebar /> {/* I suspect the animation that uses jquery and changes the DOM forces the component to re-render*/}
-          </div>
-          <div className="col-md-9">
+          </Col>
+          <Col md={9}>
             <br/>
             <SearchBar />
             <br/>
             <ListOfEntities />
             {this.renderNextButton()}
-          </div>
+          </Col>
         </div>
       </Provider>
            );

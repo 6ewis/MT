@@ -6,7 +6,8 @@ const defaultState = {
   aliases: [],
   countries: [],
   billing_clients: [],
-  matter_positions: []
+  matter_positions: [],
+  loading: true //the spinner will be watching this property
 };
 
 //replace console.log by middleware logger
