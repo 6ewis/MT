@@ -8,13 +8,29 @@ import R from 'ramda';
 export default class Address extends Component {
   constructor(props) {
      super(props);
-     this.state = {newAddresses: [],
-                   lastEventKey: 3
-                   //3 because there are three 'known Addresses rendering
-                   //beforehand with event key 1,2,3
-                  };
+     //We populate the AddressRoot with the existing entity specific address passed down
+     const existingEntitySpecificAddresses = this.existingEntitySpecificAddresses();
+    //we use 3 + the length of the existing entity specific addresses
+    //because there are x unknow existing entity specific Addresses
+    //and three maximum possible known core addresses rendering.
+    //It's needed if new items are added later
+    //their uniqueKey will be incremented by 1: lastEventkey + 1
+     const existingEntitySpecificAddressesLength = existingEntitySpecificAddresses.length + 3;
+     this.state = {newAddresses: existingEntitySpecificAddresses,
+                   lastEventKey: existingEntitySpecificAddressesLength};
      this.updateAddressData = this.updateAddressData.bind(this);
   }
+
+  existingEntitySpecificAddresses() {
+    //if some of the entities have matter specific addresses ,
+    //we should autopopulate the matter specific address field.
+    const serializedMatterSpecificAddress = (matterSpecificAddress, index) => {
+      return {uniqueKey: index,
+       value: this.renderAdditionalAddressContainer(index, matterSpecificAddress)};
+    };
+    const mapIndexed = R.addIndex(R.map);
+    return mapIndexed(serializedMatterSpecificAddress, this.props.matterSpecificAddresses);
+ }
 
   updateAddressData(obj) {
     this.props.updateFormData({addressesContainer: obj});
@@ -71,17 +87,18 @@ export default class Address extends Component {
     );
   }
 
-  renderAdditionalAddressContainer(incrementedEventKey) {
-    //we render additional Addresses whenever we click on +add addresses
-     const {countries, matterPositions, updateFormData} = this.props;
-     return <AdditionalAddressContainer
-        key={incrementedEventKey}
-        countries={countries}
-        eventKey={incrementedEventKey}
-        matterPositions={matterPositions}
-        updateAddressData={this.updateAddressData}
-        removeComponentInstance={this.removeComponentInstance.bind(this)}
-        header="New Mailing"/>;
+  renderAdditionalAddressContainer(incrementedEventKey, matterSpecificAddress) {
+  //we render additional Addresses whenever we click on +add addresses
+   const {countries, matterPositions, updateFormData} = this.props;
+   return <AdditionalAddressContainer
+      key={incrementedEventKey}
+      countries={countries}
+      eventKey={incrementedEventKey}
+      matterPositions={matterPositions}
+      matterSpecificAddress={matterSpecificAddress}
+      updateAddressData={this.updateAddressData}
+      removeComponentInstance={this.removeComponentInstance.bind(this)}
+      header="New Mailing"/>;
   }
 
   renderAdditionalAddresses() {

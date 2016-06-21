@@ -11,14 +11,45 @@ import R from 'ramda';
 export default class AdditionalAddressContainer extends Component {
   constructor(props) {
      super(props);
+     console.log("debuggging man", props.matterSpecificAddress);
+     //We populate the AdditionalAddressContainer with the props passed
+     const initialNewFields = this.initialNewFields();
+     const initialNewFieldsLength = initialNewFields.length;
      this.state = {
-       header: props.header,
-       newFields: [],
-       uniqueKey: 0
+       header: props.header, //the header is dynamically changed when the user choose a position
+       newFields: initialNewFields,
+       uniqueKey: initialNewFieldsLength
      };
 
      this.updateAdditionalAddressData = this.updateAdditionalAddressData.bind(this);
      this.spawnNewFieldHandler = this.spawnNewFieldHandler.bind(this);
+  }
+
+  initialNewFields() {
+    const {matterSpecificAddress} = this.props;
+    if (R.isNil(matterSpecificAddress)) { return []; }
+    const fields = ["Preferred Name", "Phone", "Email"];
+    const matterSpecificAddressField = field => {
+      switch(field) {
+        case fields[0]:
+          return matterSpecificAddress.preferred_name;
+        case fields[1]:
+          return matterSpecificAddress.phone;
+        case fields[2]:
+          return matterSpecificAddress.email;
+      }
+    };
+
+    const serializedMatterSpecificAddress = (field, index) => {
+      //we re-use the renderInput function by passing twos extra arguments
+      //matterSpecificAddress(field) and index
+      const renderedInput = this.renderInput(field, matterSpecificAddressField(field), index);
+      return {value: renderedInput, selectedItem: field};
+    };
+
+    const mapIndexed = R.addIndex(R.map);
+    const inputsFieldsToRender = mapIndexed(serializedMatterSpecificAddress, fields);
+    return inputsFieldsToRender;
   }
 
   removeComponentInstance() {
@@ -56,13 +87,14 @@ export default class AdditionalAddressContainer extends Component {
     updateAddressData({[`${header}Address`]: updatedObject});
   }
 
-  renderInput(selectedItem) {
-    this.renderField(
-      <div>
-        <Row key={this.state.uniqueKey}>
+  renderInput(selectedItem, matterSpecificAddressProp, indexUniqueKey) {
+    return (
+      <div key={R.isNil(indexUniqueKey) ? this.state.uniqueKey : indexUniqueKey}>
+        <Row>
           <Col md={10} style={{paddingLeft: '0px'}}>
             <_InputText
               label={selectedItem}
+              value={matterSpecificAddressProp}
               updateFormData={this.updateAdditionalAddressData}
             />
           </Col>
@@ -75,12 +107,12 @@ export default class AdditionalAddressContainer extends Component {
           </Col>
         </Row>
         <br/>
-      </div>, selectedItem
+      </div>
      );
    }
 
   renderAddressInfo(selectedItem) {
-    this.renderField(
+    return (
        <AddressInfo
          countries= {this.props.countries}
          label={selectedItem}
@@ -88,23 +120,23 @@ export default class AdditionalAddressContainer extends Component {
          removeField={this.removeField.bind(this)}
          updateAddressData={this.updateAdditionalAddressData}
          key={this.state.uniqueKey}
-       />, selectedItem
+       />
      );
    }
 
   spawnNewFieldHandler(selectedItem, e) {
      switch (selectedItem) {
        case "Address":
-         this.renderAddressInfo(selectedItem);
+         this.renderField(this.renderAddressInfo(selectedItem), selectedItem);
          break;
        case "Preferred Name":
-         this.renderInput(selectedItem);
+         this.renderField(this.renderInput(selectedItem), selectedItem);
          break;
        case "Phone":
-         this.renderInput(selectedItem);
+         this.renderField(this.renderInput(selectedItem), selectedItem);
          break;
        case "Email":
-         this.renderInput(selectedItem);
+         this.renderField(this.renderInput(selectedItem), selectedItem);
          break;
      }
   }
@@ -115,6 +147,7 @@ export default class AdditionalAddressContainer extends Component {
 
   render() {
     const {header, defaultSelection, matterPositions} = this.props;
+
     return (
         <Panel {...this.props} header={this.state.header}>
           <Well>

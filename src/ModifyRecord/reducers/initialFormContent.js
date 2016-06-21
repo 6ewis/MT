@@ -7,6 +7,7 @@ const defaultState = {
   countries: [],
   billing_clients: [],
   matter_positions: [],
+  matter_specific_addresses: [],
   loading: true //the spinner will be watching this property
 };
 

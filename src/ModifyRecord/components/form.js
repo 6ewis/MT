@@ -23,7 +23,7 @@ export default (
    salutation, name, sort_name, birth_date, deceased_date,
    phone, email, fax, nationality, residence, domicile, telex,
    mailingAddressFields, registeredAddressFields, dividendAddressFields,
-   matter_positions, loading, store
+   matter_positions, matter_specific_addresses, loading, store
   }) => {
 
    const renderTransitionsButtons =
@@ -43,11 +43,14 @@ export default (
    ;
 
   const matterPositions = matter_positions;
+  const matterSpecificAddresses = matter_specific_addresses;
+
   const addressData =
     {mailingAddressFields,
      registeredAddressFields,
      dividendAddressFields,
      matterPositions,
+     matterSpecificAddresses,
      updateFormData,
      countries};
    // check that the requests made to the server is done in React.js
