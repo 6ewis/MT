@@ -22,6 +22,7 @@ export default ({updateAddressData, item}) => {
           <Col md={10} style={{paddingLeft: '0px'}}>
             <_InputText
               updateFormData={updateAdditionalAddressDataCurried(item)}
+              value={item}
             />
           </Col>
       </Row>);

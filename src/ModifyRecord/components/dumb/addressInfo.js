@@ -7,8 +7,9 @@ import _Label from './shared/_label';
 import _InputText from '../smart/shared/_inputText';
 import _inputAddress from './_inputAddress';
 
-export default ({countries, header, updateAddressData, removeField}) => {
-
+export default ({countries, header, updateAddressData, removeField, city,
+  province, postal_code, line_1, line_2, line_3, line_4}) => {
+    console.log(line_1)
   //some components have a label field sets, we can use it by default
   const updateAdditionalAddressData = (updatedObject) =>
     updateAddressData(updatedObject);
@@ -19,7 +20,7 @@ export default ({countries, header, updateAddressData, removeField}) => {
           updateAddressData={updateAddressData}
           item={item}
           key={item} />,
-         ['line_1', 'line_2', 'line_3', 'line_4']);
+         [line_1, line_2, line_3, line_4]);
 
 
   return (
@@ -56,7 +57,7 @@ export default ({countries, header, updateAddressData, removeField}) => {
           />
         </Col>
       </Row>
-
+      <br/>
       <Row>
         <Col md={10} style={{paddingLeft: '0px'}}>
           <_InputText

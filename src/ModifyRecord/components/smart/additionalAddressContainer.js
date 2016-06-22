@@ -11,7 +11,8 @@ import R from 'ramda';
 export default class AdditionalAddressContainer extends Component {
   constructor(props) {
      super(props);
-     console.log("debuggging man", props.matterSpecificAddress);
+     this.updateAdditionalAddressData = this.updateAdditionalAddressData.bind(this);
+     this.spawnNewFieldHandler = this.spawnNewFieldHandler.bind(this);
      //We populate the AdditionalAddressContainer with the props passed
      const initialNewFields = this.initialNewFields();
      const initialNewFieldsLength = initialNewFields.length;
@@ -20,15 +21,12 @@ export default class AdditionalAddressContainer extends Component {
        newFields: initialNewFields,
        uniqueKey: initialNewFieldsLength
      };
-
-     this.updateAdditionalAddressData = this.updateAdditionalAddressData.bind(this);
-     this.spawnNewFieldHandler = this.spawnNewFieldHandler.bind(this);
   }
 
   initialNewFields() {
     const {matterSpecificAddress} = this.props;
     if (R.isNil(matterSpecificAddress)) { return []; }
-    const fields = ["Preferred Name", "Phone", "Email"];
+    const fields = ["Preferred Name", "Phone", "Email", "Address"];
     const matterSpecificAddressField = field => {
       switch(field) {
         case fields[0]:
@@ -37,19 +35,31 @@ export default class AdditionalAddressContainer extends Component {
           return matterSpecificAddress.phone;
         case fields[2]:
           return matterSpecificAddress.email;
+        case fields[3]:
+          const {
+            city,
+            province,
+            postal_code,
+            addess_1: line_1,
+            address_2: line_2,
+            address_3: line_3,
+            address_4: line_4} = matterSpecificAddress;
+          return {city, province, postal_code, line_1, line_2, line_3, line_4};
       }
     };
 
     const serializedMatterSpecificAddress = (field, index) => {
       //we re-use the renderInput function by passing twos extra arguments
       //matterSpecificAddress(field) and index
-      const renderedInput = this.renderInput(field, matterSpecificAddressField(field), index);
+      const renderedInput = (field === "Address") ?
+        this.renderAddressInfo(field, matterSpecificAddressField(field), index) :
+        this.renderInput(field, matterSpecificAddressField(field), index);
       return {value: renderedInput, selectedItem: field};
     };
 
     const mapIndexed = R.addIndex(R.map);
-    const inputsFieldsToRender = mapIndexed(serializedMatterSpecificAddress, fields);
-    return inputsFieldsToRender;
+    const fieldsToRender = mapIndexed(serializedMatterSpecificAddress, fields);
+    return fieldsToRender;
   }
 
   removeComponentInstance() {
@@ -83,8 +93,8 @@ export default class AdditionalAddressContainer extends Component {
   }
 
   updateAdditionalAddressData(updatedObject) {
-    const {updateAddressData, header} = this.props;
-    updateAddressData({[`${header}Address`]: updatedObject});
+    const {updateAddressData} = this.props;
+    updateAddressData({[`${this.state.header}Address`]: updatedObject});
   }
 
   renderInput(selectedItem, matterSpecificAddressProp, indexUniqueKey) {
@@ -111,7 +121,7 @@ export default class AdditionalAddressContainer extends Component {
      );
    }
 
-  renderAddressInfo(selectedItem) {
+  renderAddressInfo(selectedItem, matterSpecificAddressProp, indexUniqueKey) {
     return (
        <AddressInfo
          countries= {this.props.countries}
@@ -119,7 +129,8 @@ export default class AdditionalAddressContainer extends Component {
          header={this.props.header}
          removeField={this.removeField.bind(this)}
          updateAddressData={this.updateAdditionalAddressData}
-         key={this.state.uniqueKey}
+         matterSpecificAddressProp={matterSpecificAddressProp}
+         key={R.isNil(indexUniqueKey) ? this.state.uniqueKey : indexUniqueKey}
        />
      );
    }
@@ -146,7 +157,8 @@ export default class AdditionalAddressContainer extends Component {
   }
 
   render() {
-    const {header, defaultSelection, matterPositions} = this.props;
+    const {matterSpecificAddress, header, defaultSelection, matterPositions} = this.props;
+    const {client_name, positions, matter} = matterSpecificAddress;
 
     return (
         <Panel {...this.props} header={this.state.header}>
@@ -164,14 +176,19 @@ export default class AdditionalAddressContainer extends Component {
                 <_SplitButtonWithLabel
                  label="Address Type"
                  defaultSelection= "Mailing"
-                 updateFormData={this.updateAdditionalAddressData}
+                 updateFormData={this.updateAdditionalAddressData.bind(this)}
                  disabled= {true}
                  />
 
                 <_ReactSelect
                    label="Entity Specific"
                    data={matterPositions}
-                   updateAddressData={this.updateAdditionalAddressData}
+                   defaultValue=
+                     {{client_name: client_name,
+                       positions: positions,
+                       matter: matter
+                     }}
+                   updateAddressData={this.updateAdditionalAddressData.bind(this)}
                    setHeader={this.setHeader.bind(this)}
                  />
 

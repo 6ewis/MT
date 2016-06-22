@@ -9,15 +9,15 @@ export default class ReactSelect extends Component {
   //Note: Warning: FormControl is changing a controlled input of type text to be uncontrolled
   //it might be related to React 0.15 update
   //the third party lib did not take it into account
-  //investigate
-  constructor() {
-    super();
+  //investigate ?
+  constructor(props) {
+    super(props);
     this.state = {
        currentValue: ""
     };
   }
 
-  //the selected inputs expect an object with a value and a label
+    //the selected inputs expect an object with a value and a label
   serializedMatterPositions(obj) {
     const clientName = R.trim(obj.client_name);
     const matter = R.trim(obj.matter);
@@ -36,8 +36,8 @@ export default class ReactSelect extends Component {
        label: concatenatedProperties};
    }
 
-  matterPositions() {
-    return R.map(this.serializedMatterPositions, this.props.data);
+  matterPositions(data) {
+    return R.map(this.serializedMatterPositions, data);
   }
 
   handleChange(obj) {
@@ -58,6 +58,22 @@ export default class ReactSelect extends Component {
     }
   }
 
+  componentDidMount() {
+     const {updateAddressData, defaultValue, setHeader, label} = this.props;
+     const {value, client_name, matter} = this.serializedMatterPositions(defaultValue);
+     console.log('the value is', value);
+     const p = new Promise((resolve, reject) => resolve(this.setState({currentValue: value})));
+     p.then(() => setHeader(`Mailing / ${client_name} (M#${matter})`))
+     //updateAddressData call updateFormData
+     //the structure expected by updateFormData is quite stirct
+     //{AddressContainer: {property1: {nestedProperty: value}}}
+     //'AddressContainer' is added on the parent element
+     .then(() => updateAddressData({
+         [`${label}`]: {clientName: client_name}
+     })).catch(err => console.log("_reactSelect componentDidMount rejected:", err));
+}
+
+
   render() {
     return (
       <div>
@@ -68,7 +84,7 @@ export default class ReactSelect extends Component {
           <Select
             name="form-field-name"
             value= {this.state.currentValue}
-            options= {this.matterPositions()}
+            options= {this.matterPositions(this.props.data)}
             onChange= {this.handleChange.bind(this)}
           />
         </Row>

@@ -16,7 +16,7 @@ const gulp = require('gulp'), //task runner
       runSequence = require('run-sequence'); //run tasks synchronously
 
 const config = {
-  port: 8888,
+  port: 9000,
   devBaseUrl: 'http://localhost',
   paths: {
     html: './src/*.html',
