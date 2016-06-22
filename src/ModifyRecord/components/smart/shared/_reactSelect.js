@@ -10,10 +10,11 @@ export default class ReactSelect extends Component {
   //it might be related to React 0.15 update
   //the third party lib did not take it into account
   //investigate
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    console.log("the default value is", props.defaultValue);
     this.state = {
-       currentValue: ""
+       currentValue: props.defaultValue || ""
     };
   }
 

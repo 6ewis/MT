@@ -164,14 +164,15 @@ export default class AdditionalAddressContainer extends Component {
                 <_SplitButtonWithLabel
                  label="Address Type"
                  defaultSelection= "Mailing"
-                 updateFormData={this.updateAdditionalAddressData}
+                 updateFormData={this.updateAdditionalAddressData.bind(this)}
                  disabled= {true}
                  />
 
                 <_ReactSelect
                    label="Entity Specific"
                    data={matterPositions}
-                   updateAddressData={this.updateAdditionalAddressData}
+                   defaultValue= "BP Peru Limited (M#001260) -Shareholder"
+                   updateAddressData={this.updateAdditionalAddressData.bind(this)}
                    setHeader={this.setHeader.bind(this)}
                  />
 
