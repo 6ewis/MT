@@ -11,7 +11,8 @@ import R from 'ramda';
 export default class AdditionalAddressContainer extends Component {
   constructor(props) {
      super(props);
-     console.log("debuggging man", props.matterSpecificAddress);
+     this.updateAdditionalAddressData = this.updateAdditionalAddressData.bind(this);
+     this.spawnNewFieldHandler = this.spawnNewFieldHandler.bind(this);
      //We populate the AdditionalAddressContainer with the props passed
      const initialNewFields = this.initialNewFields();
      const initialNewFieldsLength = initialNewFields.length;
@@ -20,9 +21,6 @@ export default class AdditionalAddressContainer extends Component {
        newFields: initialNewFields,
        uniqueKey: initialNewFieldsLength
      };
-
-     this.updateAdditionalAddressData = this.updateAdditionalAddressData.bind(this);
-     this.spawnNewFieldHandler = this.spawnNewFieldHandler.bind(this);
   }
 
   initialNewFields() {
@@ -171,7 +169,11 @@ export default class AdditionalAddressContainer extends Component {
                 <_ReactSelect
                    label="Entity Specific"
                    data={matterPositions}
-                   defaultValue= "BP Peru Limited (M#001260) -Shareholder"
+                   defaultValue= 
+                     {{client_name: "BP Peru Limited",
+                       positions: "Shareholder",
+                       matter: "001260"
+                     }}
                    updateAddressData={this.updateAdditionalAddressData.bind(this)}
                    setHeader={this.setHeader.bind(this)}
                  />

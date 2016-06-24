@@ -8,6 +8,7 @@ import R from 'ramda';
 export default class Address extends Component {
   constructor(props) {
      super(props);
+     this.updateAddressData = this.updateAddressData.bind(this);
      //We populate the AddressRoot with the existing entity specific address passed down
      const existingEntitySpecificAddresses = this.existingEntitySpecificAddresses();
     //we use 3 + the length of the existing entity specific addresses
@@ -18,7 +19,6 @@ export default class Address extends Component {
      const existingEntitySpecificAddressesLength = existingEntitySpecificAddresses.length + 3;
      this.state = {newAddresses: existingEntitySpecificAddresses,
                    lastEventKey: existingEntitySpecificAddressesLength};
-     this.updateAddressData = this.updateAddressData.bind(this);
   }
 
   existingEntitySpecificAddresses() {

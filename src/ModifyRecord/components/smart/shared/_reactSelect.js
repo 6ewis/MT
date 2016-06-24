@@ -9,16 +9,16 @@ export default class ReactSelect extends Component {
   //Note: Warning: FormControl is changing a controlled input of type text to be uncontrolled
   //it might be related to React 0.15 update
   //the third party lib did not take it into account
-  //investigate
+  //investigate ?
   constructor(props) {
     super(props);
     console.log("the default value is", props.defaultValue);
     this.state = {
-       currentValue: props.defaultValue || ""
+       currentValue: ""
     };
   }
 
-  //the selected inputs expect an object with a value and a label
+    //the selected inputs expect an object with a value and a label
   serializedMatterPositions(obj) {
     const clientName = R.trim(obj.client_name);
     const matter = R.trim(obj.matter);
@@ -37,8 +37,8 @@ export default class ReactSelect extends Component {
        label: concatenatedProperties};
    }
 
-  matterPositions() {
-    return R.map(this.serializedMatterPositions, this.props.data);
+  matterPositions(data) {
+    return R.map(this.serializedMatterPositions, data);
   }
 
   handleChange(obj) {
@@ -59,6 +59,18 @@ export default class ReactSelect extends Component {
     }
   }
 
+  componentDidMount() {
+      const {updateAddressData, defaultValue, setHeader, label} = this.props;
+      const {concatenatedProperties, client_name, matter} = this.serializedMatterPositions(defaultValue);
+      this.setState({currentValue: concatenatedProperties});
+      updateAddressData({
+          //{property1: {nestedProperty: value}}}
+          [`${label}`]: {clientName: client_name}
+      });
+      setHeader(`Mailing / ${client_name} (M#${matter})`);
+    }
+
+
   render() {
     return (
       <div>
@@ -69,7 +81,7 @@ export default class ReactSelect extends Component {
           <Select
             name="form-field-name"
             value= {this.state.currentValue}
-            options= {this.matterPositions()}
+            options= {this.matterPositions(this.props.data)}
             onChange= {this.handleChange.bind(this)}
           />
         </Row>
