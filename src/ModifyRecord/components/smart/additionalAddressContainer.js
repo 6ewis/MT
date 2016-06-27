@@ -15,7 +15,7 @@ export default class AdditionalAddressContainer extends Component {
      this.spawnNewFieldHandler = this.spawnNewFieldHandler.bind(this);
      //We populate the AdditionalAddressContainer with the props passed
      const initialNewFields = this.initialNewFields();
-     const initialNewFieldsLength = initialNewFields.length;
+     const initialNewFieldsLength = initialNewFields.length + 1;
      this.state = {
        header: props.header, //the header is dynamically changed when the user choose a position
        newFields: initialNewFields,
@@ -51,9 +51,10 @@ export default class AdditionalAddressContainer extends Component {
     const serializedMatterSpecificAddress = (field, index) => {
       //we re-use the renderInput function by passing twos extra arguments
       //matterSpecificAddress(field) and index
+      const matterSpecificAddressProps = matterSpecificAddressField(field);
       const renderedInput = (field === "Address") ?
-        this.renderAddressInfo(field, matterSpecificAddressField(field), index) :
-        this.renderInput(field, matterSpecificAddressField(field), index);
+        this.renderAddressInfo(field, matterSpecificAddressProps, index) :
+        this.renderInput(field, matterSpecificAddressProps, index);
       return {value: renderedInput, selectedItem: field};
     };
 
@@ -98,30 +99,31 @@ export default class AdditionalAddressContainer extends Component {
   }
 
   renderInput(selectedItem, matterSpecificAddressProp, indexUniqueKey) {
-    return (
-      <div key={R.isNil(indexUniqueKey) ? this.state.uniqueKey : indexUniqueKey}>
-        <Row>
-          <Col md={10} style={{paddingLeft: '0px'}}>
-            <_InputText
-              label={selectedItem}
-              value={matterSpecificAddressProp}
-              updateFormData={this.updateAdditionalAddressData}
-            />
-          </Col>
-          <Col md={2} style={{paddingLeft: '0px'}}>
-            <i onClick={this.removeField.bind(this, selectedItem)}
-               style={{cursor: 'pointer'}}
-               className="fa fa-trash-o fa-2x makeItRed"
-               aria-hidden="true">
-            </i>
-          </Col>
-        </Row>
-        <br/>
-      </div>
-     );
+      console.log("im in the renderInput and the key is", indexUniqueKey);
+      return ( <div key={R.isNil(indexUniqueKey) ? this.state.uniqueKey : indexUniqueKey}>
+             <Row>
+               <Col md={10} style={{paddingLeft: '0px'}}>
+                 <_InputText
+                   label={selectedItem}
+                   value={matterSpecificAddressProp}
+                   updateFormData={this.updateAdditionalAddressData}
+                 />
+               </Col>
+               <Col md={2} style={{paddingLeft: '0px'}}>
+                 <i onClick={this.removeField.bind(this, selectedItem)}
+                    style={{cursor: 'pointer'}}
+                    className="fa fa-trash-o fa-2x makeItRed"
+                    aria-hidden="true">
+                 </i>
+               </Col>
+             </Row>
+             <br/>
+           </div>
+          );
    }
 
   renderAddressInfo(selectedItem, matterSpecificAddressProp, indexUniqueKey) {
+    console.log("im in the renderAddressInfo and the key is", indexUniqueKey);
     return (
        <AddressInfo
          countries= {this.props.countries}
@@ -158,7 +160,10 @@ export default class AdditionalAddressContainer extends Component {
 
   render() {
     const {matterSpecificAddress, header, defaultSelection, matterPositions} = this.props;
-    const {client_name, positions, matter} = matterSpecificAddress;
+
+    //Whenever we click + Add addresses we do not expect existing matterSpecificAddress to be available
+    //since it can only come from the previous page
+    const {client_name, positions, matter} = matterSpecificAddress || {};
 
     return (
         <Panel {...this.props} header={this.state.header}>
@@ -184,16 +189,16 @@ export default class AdditionalAddressContainer extends Component {
                    label="Entity Specific"
                    data={matterPositions}
                    defaultValue=
-                     {{client_name: client_name,
+                     {client_name ?
+                       {client_name: client_name,
                        positions: positions,
                        matter: matter
-                     }}
+                       } : null}
                    updateAddressData={this.updateAdditionalAddressData.bind(this)}
                    setHeader={this.setHeader.bind(this)}
                  />
 
                  <br/>
-
                  {R.map(R.prop('value'), this.state.newFields)}
 
                 <br/>

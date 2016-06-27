@@ -9,17 +9,16 @@ import _inputAddress from './_inputAddress';
 
 export default ({countries, header, updateAddressData, removeField, city,
   province, postal_code, line_1, line_2, line_3, line_4}) => {
-    console.log(line_1)
   //some components have a label field sets, we can use it by default
   const updateAdditionalAddressData = (updatedObject) =>
     updateAddressData(updatedObject);
 
   const renderInputAddresses = () =>
-      R.map(item =>
+      R.addIndex(R.map)((item, index) =>
         <_inputAddress
           updateAddressData={updateAddressData}
           item={item}
-          key={item} />,
+          key={index} />,
          [line_1, line_2, line_3, line_4]);
 
 

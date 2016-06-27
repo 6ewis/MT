@@ -60,17 +60,18 @@ export default class ReactSelect extends Component {
 
   componentDidMount() {
      const {updateAddressData, defaultValue, setHeader, label} = this.props;
-     const {value, client_name, matter} = this.serializedMatterPositions(defaultValue);
-     console.log('the value is', value);
-     const p = new Promise((resolve, reject) => resolve(this.setState({currentValue: value})));
-     p.then(() => setHeader(`Mailing / ${client_name} (M#${matter})`))
-     //updateAddressData call updateFormData
-     //the structure expected by updateFormData is quite stirct
-     //{AddressContainer: {property1: {nestedProperty: value}}}
-     //'AddressContainer' is added on the parent element
-     .then(() => updateAddressData({
-         [`${label}`]: {clientName: client_name}
-     })).catch(err => console.log("_reactSelect componentDidMount rejected:", err));
+      if (defaultValue) {
+        const {value, client_name, matter} = this.serializedMatterPositions(defaultValue); console.log('the value is', value);
+        const p = new Promise((resolve, reject) => resolve(this.setState({currentValue: value})));
+        p.then(() => setHeader(`Mailing / ${client_name} (M#${matter})`))
+        //updateAddressData call updateFormData
+        //the structure expected by updateFormData is quite stirct
+        //{AddressContainer: {property1: {nestedProperty: value}}}
+        //'AddressContainer' is added on the parent element
+        .then(() => updateAddressData({
+            [`${label}`]: {clientName: client_name}
+        })).catch(err => console.log("_reactSelect componentDidMount rejected:", err));
+     }
 }
 
 
