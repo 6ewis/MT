@@ -24,43 +24,59 @@ export default class AdditionalAddressContainer extends Component {
   }
 
   initialNewFields() {
+
+    const serializeEmptyStrings = (attr) => {
+      if (attr) { return R.isEmpty(R.trim(attr)) ? null : attr; }
+    };
+
     const {matterSpecificAddress} = this.props;
     if (R.isNil(matterSpecificAddress)) { return []; }
     const fields = ["Preferred Name", "Phone", "Email", "Address"];
     const matterSpecificAddressField = field => {
       switch(field) {
         case fields[0]:
-          return matterSpecificAddress.preferred_name;
+          return serializeEmptyStrings(matterSpecificAddress.preferred_name);
         case fields[1]:
-          return matterSpecificAddress.phone;
+          return serializeEmptyStrings(matterSpecificAddress.phone);
         case fields[2]:
-          return matterSpecificAddress.email;
+          return serializeEmptyStrings(matterSpecificAddress.email);
         case fields[3]:
           const {
             city,
             province,
-            postal_code,
-            addess_1: line_1,
-            address_2: line_2,
-            address_3: line_3,
-            address_4: line_4} = matterSpecificAddress;
-          return {city, province, postal_code, line_1, line_2, line_3, line_4};
+            country_name: country,
+            postal_code: postalCode,
+            address1: line1,
+            address2: line2,
+            address3: line3,
+            address4: line4} = matterSpecificAddress;
+          return {city, province, postalCode, country, line1, line2, line3, line4};
       }
     };
 
-    const serializedMatterSpecificAddress = (field, index) => {
-      //we re-use the renderInput function by passing twos extra arguments
-      //matterSpecificAddress(field) and index
-      const matterSpecificAddressProps = matterSpecificAddressField(field);
-      const renderedInput = (field === "Address") ?
-        this.renderAddressInfo(field, matterSpecificAddressProps, index) :
-        this.renderInput(field, matterSpecificAddressProps, index);
-      return {value: renderedInput, selectedItem: field};
-    };
+      const serializedMatterSpecificAddress = (field, index) => {
+        //we re-use the renderInput function by passing twos extra arguments
+        //matterSpecificAddress(field) and index
+        const matterSpecificAddressProps = matterSpecificAddressField(field);
+        //Only the popuated inputs form should appear on the screen
+        const matterSpecificAddressPropsIsNull =
+          R.ifElse(R.is(Object),
+            (array) => R.all((item) =>
+              serializeEmptyStrings(item) ? false : true)(R.values(array)), R.isNil)(matterSpecificAddressProps);
 
-    const mapIndexed = R.addIndex(R.map);
-    const fieldsToRender = mapIndexed(serializedMatterSpecificAddress, fields);
-    return fieldsToRender;
+        if (matterSpecificAddressPropsIsNull) {
+          return {value: null, selectedItem: null};
+        }
+        //render
+        const renderedInput = (field === "Address") ?
+          this.renderAddressInfo(field, matterSpecificAddressProps, index) :
+          this.renderInput(field, matterSpecificAddressProps, index);
+        return {value: renderedInput, selectedItem: field};
+      };
+
+     const mapIndexed = R.addIndex(R.map);
+     const fieldsToRender = mapIndexed(serializedMatterSpecificAddress, fields);
+     return fieldsToRender;
   }
 
   removeComponentInstance() {
@@ -99,7 +115,6 @@ export default class AdditionalAddressContainer extends Component {
   }
 
   renderInput(selectedItem, matterSpecificAddressProp, indexUniqueKey) {
-      console.log("im in the renderInput and the key is", indexUniqueKey);
       return ( <div key={R.isNil(indexUniqueKey) ? this.state.uniqueKey : indexUniqueKey}>
              <Row>
                <Col md={10} style={{paddingLeft: '0px'}}>
@@ -123,7 +138,6 @@ export default class AdditionalAddressContainer extends Component {
    }
 
   renderAddressInfo(selectedItem, matterSpecificAddressProp, indexUniqueKey) {
-    console.log("im in the renderAddressInfo and the key is", indexUniqueKey);
     return (
        <AddressInfo
          countries= {this.props.countries}

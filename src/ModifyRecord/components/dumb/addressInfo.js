@@ -7,8 +7,15 @@ import _Label from './shared/_label';
 import _InputText from '../smart/shared/_inputText';
 import _inputAddress from './_inputAddress';
 
-export default ({countries, header, updateAddressData, removeField, city,
-  province, postal_code, line_1, line_2, line_3, line_4}) => {
+export default ({matterSpecificAddressProp, countries, header, updateAddressData, removeField}) => {
+  const {city,
+         country,
+         province,
+         postalCode,
+         line1,
+         line2,
+         line3,
+         line4} = matterSpecificAddressProp || {};
   //some components have a label field sets, we can use it by default
   const updateAdditionalAddressData = (updatedObject) =>
     updateAddressData(updatedObject);
@@ -19,7 +26,7 @@ export default ({countries, header, updateAddressData, removeField, city,
           updateAddressData={updateAddressData}
           item={item}
           key={index} />,
-         [line_1, line_2, line_3, line_4]);
+         [line1, line2, line3, line4]);
 
 
   return (
@@ -43,6 +50,7 @@ export default ({countries, header, updateAddressData, removeField, city,
           <_InputText
             updateFormData={updateAdditionalAddressData}
             label="City"
+            value={city}
           />
         </Col>
       </Row>
@@ -53,6 +61,7 @@ export default ({countries, header, updateAddressData, removeField, city,
           <_InputText
             label="Province/State"
             updateFormData={updateAdditionalAddressData}
+            value={province}
           />
         </Col>
       </Row>
@@ -62,6 +71,7 @@ export default ({countries, header, updateAddressData, removeField, city,
           <_InputText
             label="Postal/Zip Code"
             updateFormData={updateAdditionalAddressData}
+            value={postalCode}
           />
         </Col>
       </Row>
@@ -70,6 +80,7 @@ export default ({countries, header, updateAddressData, removeField, city,
       <_SplitButtonWithLabel
         updateFormData= {updateAdditionalAddressData}
         label="Country"
+        defaultSelection={country}
         options={countries.map(item => item.country_name)} />
       <br/>
     </div>

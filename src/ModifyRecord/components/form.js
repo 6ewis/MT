@@ -62,7 +62,7 @@ export default (
       <form>
          <_SplitButtonWithLabel
            label="Type"
-           defaultSelection={entity_type}
+           defaultSelection="Individual"
            options={["Individual", "Company", "Trust", "PartnerShip"]}
            updateFormData={updateFormData}
          />
