@@ -1,32 +1,52 @@
-"use strict" 
-var gulp = require('gulp'); //task runner
-var connect = require('gulp-connect'); // Runs a local dev server
-var history = require('connect-history-api-fallback'); //middleware to proxy request through a specified index page
-var open = require('gulp-open'); //Open a Url in a web browser
-var browserify = require('browserify'); //Bundle JS
-//var reactify = require('reactify'); //Transforms React JSX to JS
-var source = require('vinyl-source-stream');  //Use conventional text stream with Gulp
-var concat = require('gulp-concat'); //Concatenates files
-var lint = require('gulp-eslint'); //lint JS files
-var babelify = require('babelify'); //transpiler es6
-//var sourcemaps = require('gulp-sourcemaps');
-//var buffer = require('vinyl-buffer');
+'use strict';
+const gulp = require('gulp'), //task runner
+      del = require('del'), //clean previously built code
+      less = require('gulp-less'), //compile less code into css files
+      cssmin = require('gulp-minify-css'), //minify css files
+      browserify = require('browserify'), //let you require node modules in the browser
+      uglify = require('gulp-uglify'), //uglify js files
+      concat = require('gulp-concat'), //concatenates files
+      eslint = require('gulp-eslint'), //lint JS files
+      source = require('vinyl-source-stream'), //convert normal text to vinyl stream
+      buffer = require('vinyl-buffer'), //convert to a buffered stream which is expected by most gulp tasks
+      babelify = require('babelify'), // browserify transform for babel , transpiles es6 to es5
+      history = require('connect-history-api-fallback'), //middleware to proxy request through a specified index page
+      connect = require('gulp-connect'), //webserver which automatically refresh when code is rebuilt
+      open = require('gulp-open'), //Open a Url in a web browser
+      runSequence = require('run-sequence'); //run tasks synchronously
 
-var config = {
-  port: 8888,
+const config = {
+  port: 9000,
   devBaseUrl: 'http://localhost',
   paths: {
     html: './src/*.html',
+    fonts: [
+      './node_modules/react-widgets/dist/fonts/*.*'
+    ],
     js: './src/**/*.js',
-    //I might need the sass pluggin here
-    css: ['./src/*.css','./node_modules/react-input-calendar/styles/input-calendar.css'],
-    dist: './dist',
-    mainJs: './src/main.js'
+    css: [
+        './src/*.css',
+        './node_modules/react-input-calendar/styles/input-calendar.css',
+        './node_modules/react-select/dist/react-select.min.css',
+        './node_modules/react-widgets/dist/css/*.css'
+    ],
+    destination: {folder: './dist', css: 'bundle.css', js: 'bundle.js'},
+    origin: './src/main.js'
   }
 };
 
-//Start a local dev server
-gulp.task('connect', function() {
+
+/**
+ * Cleaning dist/ folder
+ */
+gulp.task('clean', (cb) => {
+  return del(['dist/**'], cb);
+})
+
+/**
+ * Running livereload server
+ */
+.task('server', () => {
   connect.server({
     root: ['dist'],
     port: config.port,
@@ -36,47 +56,92 @@ gulp.task('connect', function() {
       return [history()];
     }
   });
-});
+})
 
-gulp.task('open', ['connect'], function() {
+
+.task('open', ['server'], () => {
   gulp.src ('dist/index.html')
-      .pipe(open({uri: config.devBaseUrl + ":" + config.port + '/'}))
-});
+  .pipe(open({uri: config.devBaseUrl + ":" + config.port + '/'}))
+})
 
-gulp.task('html', function() {
+
+/**
+ * html
+ */
+.task('html', () => {
   gulp.src(config.paths.html)
-      .pipe(gulp.dest(config.paths.dist))
-      .pipe(connect.reload());
-});
+  .pipe(gulp.dest(config.paths.destination.folder))
+  .pipe(connect.reload());
+})
 
-gulp.task('js', function() {//presets so we have access to the spread operator
-  browserify(config.paths.mainJs, {debug: true})
-    .transform(babelify)
-    .bundle()
-    .on('error', console.error.bind(console))
-    .pipe(source('bundle.js'))
-   // .pipe(buffer())
-   // .pipe(sourcemaps.init({loadMaps: true}))
-   // .pipe(sourcemaps.write('./src'))
-    .pipe(gulp.dest(config.paths.dist + '/scripts'))
-    .pipe(connect.reload());
-});
-
-gulp.task('css', function() {
+/**
+ * Less compilation
+ */
+.task('less', () => {
   gulp.src(config.paths.css)
-      .pipe(concat('bundle.css'))
-      .pipe(gulp.dest(config.paths.dist + '/css'))
-});
+  .pipe(less())
+  .pipe(concat(config.paths.destination.css))
+  .pipe(gulp.dest(config.paths.destination.folder + '/css'))
+  .pipe(connect.reload());
 
-gulp.task('lint', function() {
+})
+.task('less:min', () => {
+  gulp.src(config.paths.css)
+  .pipe(less())
+  .pipe(concat(config.paths.destination.css))
+  .pipe(cssmin())
+  .pipe(gulp.dest(config.paths.destination.folder + '/css'))
+  .pipe(connect.reload());
+})
+
+/**
+ * ESLint validation
+ */
+.task('eslint', () => {
   return gulp.src(config.paths.js)
-             .pipe(lint({config: 'eslint.config.json'}))
-             .pipe(lint.format());
-});
+  .pipe(eslint({config: 'eslint.config.json'}))
+  .pipe(eslint.format());
+})
 
-gulp.task('watch', function() {
+/** JavaScript compilation */
+.task('js', () => {
+  browserify(config.paths.origin, {debug: true}) //enables source maps
+  .transform(babelify)
+  .bundle() //bundle into a single js file
+  .on('error', console.error.bind(console))
+  .pipe(source(config.paths.destination.js))
+  .pipe(gulp.dest(config.paths.destination.folder + '/scripts'))
+  .pipe(connect.reload());
+})
+.task('js:min', () => {
+  browserify(config.paths.origin)
+  .transform(babelify)
+  .bundle()
+  .pipe(source(config.paths.destination.js))
+  .pipe(buffer())
+  .pipe(uglify())
+  .pipe(gulp.dest(config.paths.destination.folder + '/scripts'))
+  .pipe(connect.reload());
+})
+
+
+/**
+* fonts
+*/
+.task('fonts', () => {
+  gulp.src(config.paths.fonts)
+    .pipe(gulp.dest(config.paths.destination.folder + '/fonts'))
+})
+
+/**
+ * Compiling resources and serving application
+ */
+
+.task('watch', () => {
    gulp.watch(config.paths.html, ['html']);
-   gulp.watch(config.paths.js, ['js', 'lint']);
-});
+   gulp.watch(config.paths.js, ['js', 'eslint']);
+   gulp.watch(config.paths.css, ['less']);
+})
 
-gulp.task('default', ['html', 'css', 'js', 'lint', 'open', 'watch']);
+.task('default', () => runSequence('clean', 'html', 'fonts', 'eslint', 'less', 'js', 'open', 'watch'))
+.task('serve:minified', () => runSequence('clean', 'html', 'fonts', 'eslint', 'less:min', 'js:min', 'open', 'watch'));

@@ -1,17 +1,30 @@
 import React from 'react';
 
 import {Route, IndexRoute} from 'react-router';
+import { render } from 'react-dom';
 //move the import of line 7-12 here for consistency
+//turn that to es6 homie
+
+
+const App = React.createClass({
+  render() {
+    return (
+      <div>
+        {/*The header goes here */}
+        {this.props.children}
+      </div>
+      );
+    }
+});
+
 const routes = (
-    <Route path="/" component={require("./components/app.js")}>
-      <IndexRoute component={require("./components/homePage.js")} />
-      {/* <Route path="SelectRecordsToMerge" component={require('./components/SelectRecordsToMerge/SelectRecordsToMerge.js')} /> */}
+    <Route path="/" component={App}>
+      <IndexRoute component={require("./SelectRecords/index.js")} />
       <Route path="SelectRecordsToMerge" component={require('./SelectRecords/index.js')} />
-      {/* <Route path="SelectDataForNewRecord" component={require('./components/SelectDataForNewRecord/SelectDataForNewRecord.js')} /> */}
       <Route path="SelectDataForNewRecord" component={require('./DNDdataForNewRecord/index.js')} />
-      <Route path="ReviewAndModifyRecordDetails" component={require('./components/ReviewAndModifyRecordDetails/reviewAndModifyRecordDetails.js')} />
-      <Route path="PreviewOfProposedMerge" component={require('./components/PreviewOfProposedMerge/previewOfProposedMerge')} />
-      <Route path="*" component={require('./components/404.js')} />
+      <Route path="PreviewOfProposedMerge" component={require('./PreviewOfProposedMerge/index.js')} />
+      <Route path="ModifyRecord" component={require('./ModifyRecord/index.js')} />
+      <Route path="*" component={require('./404.js')} />
     </Route>
 );
 

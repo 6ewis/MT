@@ -13,10 +13,10 @@ export default (props) => {
   const style = {styleHeader, styleCursor};
 
   return (
-    <div style={{overflow: 'scroll'}}>
+    <div>
       <center>
       <br/>
-      <div className="well well-lg">
+      <div className="well well-lg" style={{height: '900px', overflow: 'scroll'}}>
         <div>
         <CurrentSidebarContent {...style}/>
         </div>

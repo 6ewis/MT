@@ -40,7 +40,7 @@
 	transform: rotateY(180deg);
 }
 
-/* DNDdataForNewRecord */
+/* DNDdataForNewRecord*/
 /**********************/
 .DNDhover:hover {
   background: darkseagreen
@@ -66,4 +66,133 @@
 
 .panel-default.panel-expanded > .panel-heading{
   background-color: #337ab7;
+}
+
+.panel-body {
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  border-top-width: 0px;
+}
+
+.well {
+  margin-bottom: 0px
+}
+
+/***************Modify Record*************/
+/* icons for calendar */
+.input-calendar {
+  width: 100% !important;
+}
+
+.input-calendar-wrapper {
+  width: 210px !important;
+}
+
+.input-calendar input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Pontano Sans', sans-serif;
+    font-size: 16px;
+    padding: 2px 8px;
+}
+
+/* remove button*/
+.makeItRed {
+  color: red
+}
+
+.react-autosuggest__container {
+  position: relative;
+}
+
+.react-autosuggest__input {
+  width: 100%;
+  height: 30%;
+  padding: 10px 20px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.react-autosuggest__input:focus {
+  outline: none;
+}
+
+.react-autosuggest__container--open .react-autosuggest__input {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.react-autosuggest__suggestions-container {
+  position: absolute;
+  top: 51px;
+  width: 280px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  font-family: Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  z-index: 2;
+}
+
+.react-autosuggest__suggestion {
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.react-autosuggest__suggestion--focused {
+  background-color: #ddd;
+}
+
+/* space between inputs */
+.form-group {
+ margin-bottom: 0px
+}
+
+
+.Select-control {
+    background-color: #fff;
+    border-color: #d9d9d9 #ccc #b3b3b3;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    color: #333;
+    cursor: default;
+    display: table;
+    height: 36px;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+/* Preview Proposed Merge*/
+/**********************/
+/*utility css - useful while testing grid */
+.show-grid [class^=col-] {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #eee;
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid #ddd;
+    border: 1px solid rgba(86,61,124,.2);
+}
+
+/******************************/
+.table {
+  border-bottom:0px !important;
+}
+.table th, .table td {
+  border: 1px !important;
+}
+.fixed-table-container {
+  border:0px !important;
 }

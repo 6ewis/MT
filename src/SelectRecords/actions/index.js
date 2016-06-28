@@ -13,7 +13,7 @@ export function fetchEntities(term = "") {
   }
 
   const request = $.ajax({
-    url: "http://172.16.130.31:3000/search?" + queryString(term),
+    url: "http://cpmtdev01.codandev.local:3000/search?" + queryString(term),
     dataType: 'json'
   });
 

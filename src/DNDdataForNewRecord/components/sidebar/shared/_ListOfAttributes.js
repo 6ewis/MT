@@ -22,6 +22,9 @@ export default ( {
 
   const retrieveAttributeValue = R.map(R.path(['props', 'attributeValue']));
 
+  //take care of the duplicates attribute values from different object
+  //make sure that we have unique values in the list of attributes we display
+  //to the user
   const alreadyProcessed = (resultList, item) => {
     const arrayOfAttributeValues = retrieveAttributeValue(resultList);
     return R.contains(item[attributeName], arrayOfAttributeValues);
