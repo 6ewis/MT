@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Table, Panel, Col, Row} from 'react-bootstrap';
+import R from 'ramda';
 
 export default (props) => {
-    const { EntityType, Name, Aliases, Title, BirthDate, DeceasedDate, Nationality, Residence,
+    const { EntityType, Name, Aliases, Title, "Birth Date": BirthDate, "Deceased Date": DeceasedDate, Nationality, Residence,
   Domicile, Email, Phone, Telex, Fax } = props;
     console.log('the props are', props)
 
@@ -26,7 +27,7 @@ export default (props) => {
           </tr>
           <tr>
             <td>{Name}</td>
-            <td>{Aliases}</td>
+            <td>{R.map((item) => `${item.label} ${item.value}. `, Aliases)}</td>
           </tr>
 
           <tr>
