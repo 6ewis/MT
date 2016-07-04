@@ -7,6 +7,9 @@ export default (props) => {
   Domicile, Email, Phone, Telex, Fax } = props;
     console.log('the props are', props)
 
+
+  const showAliases = R.isNil(Aliases) ? null : R.map((item) => `${item.label} ${item.value}. `, Aliases);
+
   return (
     <div>
      <Table hover>
@@ -27,7 +30,7 @@ export default (props) => {
           </tr>
           <tr>
             <td>{Name}</td>
-            <td>{R.map((item) => `${item.label} ${item.value}. `, Aliases)}</td>
+            <td>{showAliases}</td>
           </tr>
 
           <tr>

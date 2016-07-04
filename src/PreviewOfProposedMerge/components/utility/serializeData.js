@@ -1,4 +1,5 @@
 export default (props) => {
+  console.log("I'm in the serializedData and the props is:", props);
   const {Type, 'Full Name': FullName, Aliases, Salutation, 'Birth Date': BirthDate,
          'Deceased Date': DeceasedDate, Nationality, Residence, Domicile, Email, Phone,
          Other, Fax} = props;
@@ -17,7 +18,7 @@ export default (props) => {
       "Email": Email,
       "Phone": Phone,
       "Telex": Other,
-      "Fax": Fax,
+      "Fax": Fax
       //the rest is not currently being used
     //  "SortName": SortName,
     //  "Occupation": Occupation,
