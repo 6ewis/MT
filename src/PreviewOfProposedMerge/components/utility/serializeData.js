@@ -17,7 +17,7 @@ export default (props) => {
       "Email": Email,
       "Phone": Phone,
       "Telex": Other,
-      "Fax": Fax
+      "Fax": Fax,
       //the rest is not currently being used
     //  "SortName": SortName,
     //  "Occupation": Occupation,
