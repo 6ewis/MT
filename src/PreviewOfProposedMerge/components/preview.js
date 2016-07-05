@@ -9,7 +9,6 @@ import SerializeData from './utility/serializeData';
 
 export default (props) => {
   const serializedProps = SerializeData(props.updatedFormContent);
-  console.log("here is a props dudddddd", serializedProps);
   const {newCorporatePerson, compliance, duplicatePersonToBeMerged} =
     serializedProps;
 

@@ -4,9 +4,7 @@ import R from 'ramda';
 
 export default (props) => {
     const { EntityType, Name, Aliases, Title, "Birth Date": BirthDate, "Deceased Date": DeceasedDate, Nationality, Residence,
-  Domicile, Email, Phone, Telex, Fax } = props;
-    console.log('the props are', props)
-
+  Domicile, Email, Phone, Telex, Fax , addressesContainer} = props;
 
   const showAliases = R.isNil(Aliases) ? null : R.map((item) => `${item.label} ${item.value}. `, Aliases);
 
@@ -84,16 +82,16 @@ export default (props) => {
       <Panel header="Registered">
         <Col md={12}>
             <Row>
-              <Col md={2} Clarenden House></Col>
+              <Col md={2}>{addressContainer.RegisteredAddress.line_1}</Col>
             </Row>
             <Row>
-              <Col md={2}> 2 church Street</Col>
+              <Col md={2}> {addressContainer.RegisteredAddress.line_2}</Col>
             </Row>
             <Row>
-              <Col md={2}>Hamilton</Col>
+              <Col md={2}> {addressContainer.RegisteredAddress.line_3}</Col>
             </Row>
             <Row>
-              <Col md={2}>Bermuda</Col>
+              <Col md={2}>{addressContainer.RegisteredAddress.City}</Col>
             </Row>
         </Col>
       </Panel>
