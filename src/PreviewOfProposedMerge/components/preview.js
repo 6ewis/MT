@@ -18,9 +18,9 @@ export default (props) => {
           <center><h2>Preview of Proposed Merge</h2></center>
         </Row>
         <NewCorporatePerson {...newCorporatePerson} />
-        <Compliance data={compliance} />
+        {/* <Compliance data={compliance} /> */}
         <hr/>
-        {/*<DuplicateToBeMerged {...duplicatePersonToBeMerged} /> */}
+        <DuplicateToBeMerged {...duplicatePersonToBeMerged} />
         {JSON.stringify(props)}
       </div>
   );

@@ -4,7 +4,8 @@ import R from 'ramda';
 //Shared Components
 import _InputText from '../smart/shared/_inputText';
 
-export default ({updateAddressData, item}) => {
+export default ({updateAddressData, value, reactKey}) => {
+  console.log("im in the inputAddress with value,key", value, reactKey);
   const updateAdditionalAddressDataCurried =
     R.curry((curriedProperty, updatedValue) => {
     //if it's a registered address it will update the addressData of
@@ -21,8 +22,8 @@ export default ({updateAddressData, item}) => {
         <Row>
           <Col md={10} style={{paddingLeft: '0px'}}>
             <_InputText
-              updateFormData={updateAdditionalAddressDataCurried(item)}
-              value={item}
+              updateFormData={updateAdditionalAddressDataCurried(reactKey)}
+              value={value}
             />
           </Col>
       </Row>);

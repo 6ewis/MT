@@ -21,12 +21,13 @@ export default ({matterSpecificAddressProp, countries, header, updateAddressData
     updateAddressData(updatedObject);
 
   const renderInputAddresses = () =>
-      R.addIndex(R.map)((item, index) =>
+      R.mapObjIndexed((value, key, obj) =>
         <_inputAddress
           updateAddressData={updateAddressData}
-          item={item}
-          key={index} />,
-         [line1, line2, line3, line4]);
+          value={value}
+          reactKey={key}
+          key={key} />,
+         {"line1": line1, "line2": line2, "line3": line3, "line4": line4});
 
 
   return (
@@ -43,7 +44,7 @@ export default ({matterSpecificAddressProp, countries, header, updateAddressData
          </Col>
       </Row>
 
-      {renderInputAddresses()}
+      {R.values(renderInputAddresses())}
       <br/>
       <Row>
         <Col md={10} style={{paddingLeft: '0px'}}>
