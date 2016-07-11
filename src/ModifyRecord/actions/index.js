@@ -11,14 +11,14 @@ export const UPDATE = 'UPDATE';
 //4. we send it to the reducer
 export function initialize(previousPageData) {
 
-  const fakeData =
-    {
-     aliases: Aliases,
-     countries: Countries,
-     billing_clients: BillingClients,
-     matter_positions: MatterPositions,
-     matter_specific_addresses: MatterSpecificAddresses
-   };
+//  const fakeData =
+//    {
+//     aliases: Aliases,
+//     countries: Countries,
+//     billing_clients: BillingClients,
+//     matter_positions: MatterPositions,
+//     matter_specific_addresses: MatterSpecificAddresses
+//   };
 
 function mergedDroppedDataAndDeserializedAddresses() {
   //we merge the result of the redux store droppedData and the result of calling
@@ -60,7 +60,7 @@ function mergedDroppedDataAndDeserializedAddresses() {
  const request = axios.all([getAliases(), getCountries()/*, getBillingClients()*/, getMatterPositions(), getMatterSpecificAddresses()]).then(
    axios.spread((alias, countries/*, billingClients*/, matterPositions, matterSpecificAddresses) => {
      const retrievedData = R.mergeAll(R.map(item => retrieveData(item), [alias, countries/*, billingClients*/, matterPositions, matterSpecificAddresses]));
-     return R.merge(retrievedData, mergedDroppedDataAndDeserializedAddresses());
+     return R.mergeAll([retrievedData, mergedDroppedDataAndDeserializedAddresses(), {selectedIds: selectedIds}]);
   })).catch(response => {
       if (response instanceof Error) {
          console.log('Error', response.message);

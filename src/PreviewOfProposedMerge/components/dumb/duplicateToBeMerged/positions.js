@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {Col, Table, Row} from 'react-bootstrap';
+import R from 'ramda';
 
-export default ({data}) => {
-  return (
+export default ({positions}) => {
+  return R.isNil(positions) ?
+    null :
+    (
     <div>
       <Row>
         <Col md={12}><h4> Positions </h4></Col>
@@ -19,38 +22,18 @@ export default ({data}) => {
            </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Roche Financial Investmensts Ltd</td>
-            <td>007210</td>
-            <td>Tucker Hall/Deborah Doherty</td>
-            <td></td>
-            <td>Secretaty</td>
-          </tr>
-          <tr>
-            <td>Hoffmann-LA Roche Products Limited</td>
-            <td>006600</td>
-            <td>Tucker Hall/Deborah Doherty</td>
-            <td></td>
-            <td>Director</td>
-          </tr>
-          <tr>
-            <td>Hoffmann-LA Roche Products Limited</td>
-            <td>006600</td>
-            <td>Tucker Hall/Deborah Doherty</td>
-            <td></td>
-            <td>Shareholder</td>
-            <td>01/23/2012</td>
-          </tr>
-          <tr>
-            <td>AEGIS INDEMNITY LIMITED</td>
-            <td>000180</td>
-            <td>John Ross/Vicki JOhnston</td>
-            <td>08/07/2014</td>
-            <td>Director</td>
-            <td></td>
-          </tr>
+          {R.addIndex(R.map)((item, index) => {
+            return (<tr key={index}>
+              <td>{item.client_name}</td>
+              <td>{item.matter}</td>
+              <td>{item.manager}</td>
+              <td></td>
+              <td>{item.position}</td>
+            </tr>) },
+            positions
+          )}
         </tbody>
       </Table>
     </div>
-  );
+   );
 };

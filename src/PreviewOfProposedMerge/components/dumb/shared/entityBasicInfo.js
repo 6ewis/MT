@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import {Table, Panel, Col, Row} from 'react-bootstrap';
 import R from 'ramda';
 
-export default (props) => {
-    const { EntityType, Name, Aliases, Title, "Birth Date": BirthDate, "Deceased Date": DeceasedDate, Nationality, Residence,
-    Domicile, Email, Phone, Telex, Fax, addressesContainer} = props;
+export default ({ EntityType, Name, Aliases, Title, "Birth Date": BirthDate, "Deceased Date": DeceasedDate, Nationality, Residence,
+    Domicile, Email, Phone, Telex, Fax, addressesContainer}) => {
 
     const showAliases = R.isNil(Aliases) ? null : R.map((item) => `${item.label} ${item.value}. `, Aliases);
 
