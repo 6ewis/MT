@@ -1,7 +1,25 @@
+import axios from 'axios';
+
 export default (props) => {
   const {addressesContainer, Type, 'Full Name': FullName, Aliases, Salutation, 'Birth Date': BirthDate,
          'Deceased Date': DeceasedDate, Nationality, Residence, Domicile, Email, Phone,
-         Other, Fax} = props;
+         Other, Fax, selectedIds} = props;
+
+  console.log('selectedids is', selectedids);
+  const request = axios.get(`http://cpmtdev01.codandev.local:3000/corporate_persons/${selectedIds}`)
+    .catch(response => {
+      if (response instanceof Error) {
+        console.log('Error', response.message);
+      } else {
+         // The request was made, but the server responded with a status code
+         // that falls out of the range of 2xx
+         console.log(response.data);
+         console.log(response.status);
+         console.log(response.headers);
+         console.log(response.config);
+      }
+  });
+
   return {
     newCorporatePerson: {
       "EntityType": Type,
@@ -28,6 +46,6 @@ export default (props) => {
     compliance: {},
     //request to the server of the selectedIds and comes back with
     //the basicInfo, the addresses and the positions
-    duplicatePersonToBeMerged: {}
+    duplicatePersonToBeMerged: {...request}
  };
 };

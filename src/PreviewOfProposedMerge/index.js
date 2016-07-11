@@ -29,7 +29,7 @@ export default class PreviewOfProposedMerge extends Component {
      let {updatedFormContent} = store.getState();
      return (
        <NextButton
-         url="/ModifyRecord"
+         url=""
          state={{store: store}}
        />
      );
@@ -56,12 +56,15 @@ export default class PreviewOfProposedMerge extends Component {
    render() {
      const updatedFormContent =
        this.props.location.state.store.getState().updatedFormContent;
+     const selectedIds = this.props.location.state.store.getState().initialFormContent.selectedIds;
+       console.log("im in the main index, ", this.props.location.state.store.getState())
+       console.log(selectedIds);
      return (
        <Provider store={store}>
          <div className="container-fluid">
            <Col md={8} mdOffset={2} style={{marginBottom: '1%'}}>
              <br/>
-              <Preview updatedFormContent={updatedFormContent}/>
+              <Preview updatedFormContent={updatedFormContent} selectedIds={selectedIds}/>
               {this.renderTransitionsButtons()}
            </Col>
          </div>

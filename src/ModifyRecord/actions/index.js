@@ -60,7 +60,7 @@ function mergedDroppedDataAndDeserializedAddresses() {
  const request = axios.all([getAliases(), getCountries()/*, getBillingClients()*/, getMatterPositions(), getMatterSpecificAddresses()]).then(
    axios.spread((alias, countries/*, billingClients*/, matterPositions, matterSpecificAddresses) => {
      const retrievedData = R.mergeAll(R.map(item => retrieveData(item), [alias, countries/*, billingClients*/, matterPositions, matterSpecificAddresses]));
-     return R.merge(retrievedData, mergedDroppedDataAndDeserializedAddresses());
+     return R.mergeAll([retrievedData, mergedDroppedDataAndDeserializedAddresses(), {selectedIds: selectedIds}]);
   })).catch(response => {
       if (response instanceof Error) {
          console.log('Error', response.message);

@@ -7,6 +7,7 @@ import BasicInfo from '../shared/entityBasicInfo';
 
 export default (props) => {
   console.log("im in index.js of duplicateTOBMErged");
+  debugger;
   return (
       <div>
         <Row>

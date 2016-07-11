@@ -8,10 +8,10 @@ import DuplicateToBeMerged from './dumb/duplicateToBeMerged';
 import SerializeData from './utility/serializeData';
 
 export default (props) => {
-  const serializedProps = SerializeData(props.updatedFormContent);
+  console.log("Im in the preview index,", props);
+  const serializedProps = SerializeData(R.merge(props.updatedFormContent, {selectedIds: props.selectedIds});
   const {newCorporatePerson, compliance, duplicatePersonToBeMerged} =
     serializedProps;
-
   return (
       <div>
         <Row>
@@ -20,7 +20,7 @@ export default (props) => {
         <NewCorporatePerson {...newCorporatePerson} />
         {/* <Compliance data={compliance} /> */}
         <hr/>
-        <DuplicateToBeMerged {...duplicatePersonToBeMerged} />
+        <DuplicateToBeMerged {...DuplicateToBeMerged}/>
         {JSON.stringify(props)}
       </div>
   );
