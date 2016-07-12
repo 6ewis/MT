@@ -5,7 +5,7 @@ export default (props) => {
          'Deceased Date': DeceasedDate, Nationality, Residence, Domicile, Email, Phone,
          Other, Fax, selectedIds} = props;
 
-  console.log('selectedids is', selectedids);
+  console.log('im in the serializeData.js', props);
   const request = axios.get(`http://cpmtdev01.codandev.local:3000/corporate_persons/${selectedIds}`)
     .catch(response => {
       if (response instanceof Error) {

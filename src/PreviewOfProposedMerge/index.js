@@ -57,7 +57,7 @@ export default class PreviewOfProposedMerge extends Component {
      const updatedFormContent =
        this.props.location.state.store.getState().updatedFormContent;
      const selectedIds = this.props.location.state.store.getState().initialFormContent.selectedIds;
-       console.log("im in the main index, ", this.props.location.state.store.getState())
+       console.log("im in the main index, ", this.props.location.state.store.getState());
        console.log(selectedIds);
      return (
        <Provider store={store}>

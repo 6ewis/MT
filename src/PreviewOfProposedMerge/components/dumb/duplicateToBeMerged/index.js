@@ -6,8 +6,7 @@ import Positions from './positions';
 import BasicInfo from '../shared/entityBasicInfo';
 
 export default (props) => {
-  console.log("im in index.js of duplicateTOBMErged");
-  debugger;
+  console.log("im in index.js of duplicateTOBMErged", props);
   return (
       <div>
         <Row>
@@ -15,7 +14,7 @@ export default (props) => {
         </Row>
         <Panel>
           <Col md={12}>
-             <BasicInfo {...props}/>
+             {/*<BasicInfo {...props}/> */}
              {/*duplicateToBeMerged.positions*/}
              <Positions {...props} />
           </Col>
