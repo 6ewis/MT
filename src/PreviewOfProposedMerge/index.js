@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 //Components
-import Preview from './components/preview.js';
+import stateOfPreview from './containers/stateOfPreview';
 //Redux
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import reduxPromise from 'redux-promise';
 import reducers from './reducers/index';
 import { initialize } from './actions/index';
@@ -12,16 +12,20 @@ import {Col} from 'react-bootstrap';
 //Transition Buttons
 import {BackButton, NextButton, CancelButton} from '../shared/transitionButtons/index.js';
 
+//Enable Chrome Redux Plugin
+const enhancers = compose(
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+);
 
 //should be defined outside the component - everytime it re-renders it's recreating the store
 const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
-const store = createStoreWithMiddleware(reducers);
+const store = createStoreWithMiddleware(reducers, {}, enhancers);
 
 export default class PreviewOfProposedMerge extends Component {
    constructor(props) {
      super(props);
      //initialize data from previous page
-     //store.dispatch(initialize(props.location.state));
+     store.dispatch(initialize(props.location.state));
    }
 
    /* have not set up the logic for the transition buttons yet */
@@ -54,17 +58,12 @@ export default class PreviewOfProposedMerge extends Component {
    }
 
    render() {
-     const updatedFormContent =
-       this.props.location.state.store.getState().updatedFormContent;
-     const selectedIds = this.props.location.state.store.getState().initialFormContent.selectedIds;
-       console.log("im in the main index, ", this.props.location.state.store.getState());
-       console.log(selectedIds);
-     return (
+          return (
        <Provider store={store}>
          <div className="container-fluid">
            <Col md={8} mdOffset={2} style={{marginBottom: '1%'}}>
              <br/>
-              <Preview updatedFormContent={updatedFormContent} selectedIds={selectedIds}/>
+              <stateOfPreview/>
               {this.renderTransitionsButtons()}
            </Col>
          </div>

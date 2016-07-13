@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Col, Table, Row} from 'react-bootstrap';
 
-export default ({data}) => {
+export default (props) => {
   return (
     <div>
       <Row>

@@ -4,7 +4,6 @@ import {Panel, Col, Row} from 'react-bootstrap';
 import BasicInfo from './shared/entityBasicInfo';
 
 export default (props) => {
-  console.log("the props are", props);
   return (
     <div>
       <Row>
