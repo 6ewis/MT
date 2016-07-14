@@ -7,9 +7,9 @@ import { initialize } from '../actions/index';
 
 class StateOfPreview extends Component {
   render() {
-    debugger;
+    console.log("im in the stateOfPreview", this.props);
     return (
-      <Preview {...this.props.initialData} />
+      <Preview {...this.props} />
     );
   }
 }

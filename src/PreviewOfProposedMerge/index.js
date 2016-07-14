@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //Components
-import stateOfPreview from './containers/stateOfPreview';
+import StateOfPreview from './containers/stateOfPreview';
 //Redux
 import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware } from 'redux';
@@ -63,7 +63,7 @@ export default class PreviewOfProposedMerge extends Component {
          <div className="container-fluid">
            <Col md={8} mdOffset={2} style={{marginBottom: '1%'}}>
              <br/>
-              <stateOfPreview/>
+              <StateOfPreview/>
               {this.renderTransitionsButtons()}
            </Col>
          </div>

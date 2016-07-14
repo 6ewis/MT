@@ -15,6 +15,7 @@ export default (props) => {
         <Panel>
           <Col md={12}>
              {/*duplicateToBeMerged.positions*/}
+             <BasicInfo {...props} />
              <Positions {...props} />
           </Col>
         </Panel>
