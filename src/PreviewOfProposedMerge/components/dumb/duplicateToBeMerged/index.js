@@ -4,6 +4,7 @@ import {Panel, Col, Row} from 'react-bootstrap';
 import Positions from './positions';
 //Shared Components
 import BasicInfo from '../shared/entityBasicInfo';
+import R from 'ramda';
 
 export default (props) => {
   console.log("im in the indexDuplicate.js, this is just a test to see what the duplicate from backend is", props);
@@ -15,7 +16,7 @@ export default (props) => {
         <Panel>
           <Col md={12}>
              {/*duplicateToBeMerged.positions*/}
-             <BasicInfo {...props} />
+             {R.map(item => <BasicInfo {...item} />, R.values(props))}
              <Positions {...props} />
           </Col>
         </Panel>

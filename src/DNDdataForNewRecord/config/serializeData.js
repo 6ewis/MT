@@ -3,6 +3,7 @@ import R from 'ramda';
 import moment from 'moment';
 
 export default (data) => {
+  console.log("here are the data", data);
   //Date
   const formatDate = (date) => (date === null) ? date : moment(date).format('L');
   //New line Characters

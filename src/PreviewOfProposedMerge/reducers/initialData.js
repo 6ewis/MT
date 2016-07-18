@@ -9,7 +9,7 @@ import {INITIALIZE} from '../actions/index';
 export default (state = defaultState, action) => {
   switch (action.type) {
    case INITIALIZE:
-     return action.payload.data;
+     return action.payload;
   }
   return state;
 };

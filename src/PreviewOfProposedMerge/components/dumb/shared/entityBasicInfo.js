@@ -3,6 +3,7 @@ import {Table, Panel, Col, Row} from 'react-bootstrap';
 import R from 'ramda';
 
 export default (props) => {
+    console.log("here are the props", props);
     const { EntityType, Name, Aliases, Title, "Birth Date": BirthDate, "Deceased Date": DeceasedDate, Nationality, Residence,
     Domicile, Email, Phone, Telex, Fax, addressesContainer} = props;
 
