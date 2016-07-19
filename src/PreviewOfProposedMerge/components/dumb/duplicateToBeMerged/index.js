@@ -15,7 +15,7 @@ export default (props) => {
             <Col md={12}>
                 <BasicInfo {...item} />
             </Col>
-          </Panel>)}
+          </Panel>); }
         , R.values(props))}
       </div>
   );

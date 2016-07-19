@@ -28,13 +28,15 @@ export default (
 
    const renderTransitionsButtons =
      <Col md={12}>
-       <Col md={2}>
-       </Col>
        <Col md={3} style={{paddingLeft: '0px', paddingRight: '0px'}}>
          <BackButton url="/SelectRecordsToMerge"/>
        </Col>
+       <Col md={1}>
+       </Col>
        <Col md={3}>
          <NextButton url="/PreviewOfProposedMerge" state={{store: store}} />
+       </Col>
+       <Col md={1}>
        </Col>
        <Col md={3}>
          <CancelButton />

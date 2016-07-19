@@ -180,11 +180,11 @@ export function initialize(previousPageData) {
 // };
 
   const getCorporatePersons = () => axios.get(`http://cpmtdev01.codandev.local:3000/corporate_persons/${selectedIds}`);
-  const getMatterPositions = () => axios.get(`http://cpmtdev01.codandev.local:3000/matter_positions/${selectedIds}`);
+  const positions = () => axios.get(`http://cpmtdev01.codandev.local:3000/positions/${selectedIds}`);
 
-  const request = axios.all([getCorporatePersons(), getMatterPositions()]).then(
-    axios.spread((corporatePersons, matterPositions) => {
-      const getCorrespondingObjectBasedOnCpref = item => R.filter(R.propEq('cpref', item.id))(matterPositions.data.matter_positions);
+  const request = axios.all([getCorporatePersons(), positions()]).then(
+    axios.spread((corporatePersons, positions) => {
+      const getCorrespondingObjectBasedOnCpref = item => R.filter(R.propEq('cpref', item.id))(positions.data.positions);
       const mergePosition = item => R.merge(item, {positions: getCorrespondingObjectBasedOnCpref(item)});
       const mergedPositionsToFetchedCorporatePerson = R.map(mergePosition, corporatePersons.data);
       return serializeData( R.merge(updatedFormContent, {duplicatePersonToBeMerged: serializeDuplicatesPersonToBeMerged(mergedPositionsToFetchedCorporatePerson)}));

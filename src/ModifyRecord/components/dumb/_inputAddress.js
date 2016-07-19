@@ -5,11 +5,11 @@ import R from 'ramda';
 import _InputText from '../smart/shared/_inputText';
 
 export default ({updateAddressData, value, reactKey}) => {
-  console.log("im in the inputAddress with value,key", value, reactKey);
   const updateAdditionalAddressDataCurried =
     R.curry((curriedProperty, updatedValue) => {
     //if it's a registered address it will update the addressData of
     //the parent element with {registeredAddress: {city: foo, country: foo...}}
+      console.log("im in the deep ish curriedProperty and updatedValue", curriedProperty, updatedValue);
       updateAddressData(
       {
         //{city: foo}

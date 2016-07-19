@@ -61,7 +61,7 @@ export default class ReactSelect extends Component {
   componentDidMount() {
      const {updateAddressData, defaultValue, setHeader, label} = this.props;
       if (defaultValue) {
-        const {value, client_name, matter} = this.serializedMatterPositions(defaultValue); console.log('the value is', value);
+        const {value, client_name, matter} = this.serializedMatterPositions(defaultValue);
         const p = new Promise((resolve, reject) => resolve(this.setState({currentValue: value})));
         p.then(() => setHeader(`Mailing / ${client_name} (M#${matter})`))
         //updateAddressData call updateFormData
@@ -70,7 +70,16 @@ export default class ReactSelect extends Component {
         //'AddressContainer' is added on the parent element
         .then(() => updateAddressData({
             [`${label}`]: {clientName: client_name}
-        })).catch(err => console.log("_reactSelect componentDidMount rejected:", err));
+        })).then(() => {
+          //we programmatically trigger a change of event on the inputs field so that
+          //the content can be stored so that the next page can use it
+          //note that ideally the following code should not be there, however
+          //this is a quick fix - we need to trigger it only after the header has been setState
+          //since the fields are being stored based on the header name
+           var event = new Event('input', { bubbles: true });
+           [].map.call(document.querySelectorAll("input"),
+             function(item, idx) {item.dispatchEvent(event); });
+         }).catch(err => console.log("_reactSelect componentDidMount rejected:", err));
      }
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //Components
 import StateOfPreview from './containers/stateOfPreview';
+import ModalClass from './components/smart/modal';
 //Redux
 import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware } from 'redux';
@@ -8,7 +9,7 @@ import reduxPromise from 'redux-promise';
 import reducers from './reducers/index';
 import { initialize } from './actions/index';
 //Utility Libs
-import {Col} from 'react-bootstrap';
+import {Col, Button} from 'react-bootstrap';
 //Transition Buttons
 import {BackButton, NextButton, CancelButton} from '../shared/transitionButtons/index.js';
 
@@ -30,12 +31,11 @@ export default class PreviewOfProposedMerge extends Component {
 
    /* have not set up the logic for the transition buttons yet */
    renderNextButton() {
-     let {updatedFormContent} = store.getState();
      return (
-       <NextButton
-         url=""
-         state={{store: store}}
-       />
+       <Button bsSize="large">
+         <i className="fa fa-check-square-o" aria-hidden="true"></i>
+          &nbsp; Next Step &nbsp; &nbsp;
+       </Button>
      );
    }
 
@@ -43,10 +43,16 @@ export default class PreviewOfProposedMerge extends Component {
     return (
      <Col md={12}>
        <Col md={3}>
-         <BackButton url="/SelectRecordsToMerge"/>
+         <BackButton url="/SelectRecordsToMerge" icon="fa fa-pencil"/>
+       </Col>
+       <Col md={1}>
        </Col>
        <Col md={3}>
-         {this.renderNextButton()}
+         <ModalClass store={store}>
+           {this.renderNextButton()}
+         </ModalClass>
+       </Col>
+       <Col md={1}>
        </Col>
        <Col md={3}>
          <CancelButton />

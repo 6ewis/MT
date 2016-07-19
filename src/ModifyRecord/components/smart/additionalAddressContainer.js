@@ -111,7 +111,6 @@ export default class AdditionalAddressContainer extends Component {
 
   updateAdditionalAddressData(updatedObject) {
     const {updateAddressData} = this.props;
-    console.log("im in the updateAdditionalAddressData function,", updatedObject);
     updateAddressData({[`${this.state.header}Address`]: updatedObject});
   }
 

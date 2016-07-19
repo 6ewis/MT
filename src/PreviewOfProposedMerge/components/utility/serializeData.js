@@ -24,9 +24,8 @@ export default (props) => {
       //the rest is not currently being used
       //  "Occupation": Occupation,
     },
+    duplicatePersonToBeMerged: {...duplicatePersonToBeMerged},
     //it's not wired up yet on the review page
-    //use static data for now
-    compliance: {},
-    duplicatePersonToBeMerged: {...duplicatePersonToBeMerged}
+    compliance: {}
  };
 };

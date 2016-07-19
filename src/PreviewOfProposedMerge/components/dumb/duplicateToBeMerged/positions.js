@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {Col, Table, Row} from 'react-bootstrap';
+//third party libs
 import R from 'ramda';
+import moment from 'moment';
 
 export default ({positions}) => {
+  const formatDate = (date) => (date === null) ? date : moment(date).format('L');
   return R.isNil(positions) ?
     null :
     (
@@ -26,10 +29,11 @@ export default ({positions}) => {
             return (<tr key={index}>
               <td>{item.client_name}</td>
               <td>{item.matter}</td>
-              <td>{item.manager}</td>
-              <td></td>
-              <td>{item.position}</td>
-            </tr>) },
+              <td>{`${item.manager_name}/${item.administrator_name}`}</td>
+              <td>{formatDate(item.mclosedt)}</td>
+              <td>{item.position_name}</td>
+              <td>{formatDate(item.end_date)}</td>
+            </tr>); },
             positions
           )}
         </tbody>

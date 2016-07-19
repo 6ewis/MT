@@ -56,6 +56,7 @@ import R from 'ramda';
     const test = (firstKey(object) === 'addressesContainer') ?
       updateAddressData(object.addressesContainer, state) :
       R.assoc(`${rootObjectKey}`, rootObjectValue, state);
+    console.log("im in the reducer of the updatedFormData", test)
     return test;
     /*eslint-enable */
   };
